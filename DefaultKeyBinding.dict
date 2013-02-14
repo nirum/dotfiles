@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>^H</key>
+	<string>moveWordBackwardAndModifySelection:</string>
+	<key>^L</key>
+	<string>moveWordForwardAndModifySelection:</string>
+	<key>^h</key>
+	<string>moveWordBackward:</string>
+	<key>^l</key>
+	<string>moveWordForward:</string>
+	<key></key>
+	<string>moveToBeginningOfLine:</string>
+	<key></key>
+	<string>moveToEndOfLine:</string>
+</dict>
+</plist>

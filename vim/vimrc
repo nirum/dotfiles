@@ -1,0 +1,386 @@
+" Niru Maheswaranathan
+" vimrc
+
+""""""""""""
+" BASICS "
+""""""""""""
+call pathogen#infect()    " use pathogen
+call pathogen#helptags()  " pathogen helptags
+syntax on                 " Enable syntax highlighting
+filetype plugin indent on " Enable filetype-specific indenting and plugins
+let mapleader = ";"       " map leader
+
+""""""""""""
+" PLUGINS "
+""""""""""""
+" Enter insert mode automatically when editing git commit messages
+au FileType gitcommit startinsert
+
+" git commands
+map <Leader>ga :Gwrite<CR>
+map <Leader>gc :Gcommit<CR>
+map <Leader>gs :Gstatus<CR>
+map <Leader>gp :Git push origin master<CR>
+map <Leader>gu :Git pull origin master<CR>
+
+" vim-slime
+let g:slime_target = "tmux"
+
+" vim-wiki
+let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'path_html': '~/Documents/Web/wiki/', 'template_path': '~/Documents/Web/wiki/templates/', 'template_default': 'default', 'template_ext': '.html', 'auto_export': 0}]
+map <Leader>ref <Esc>o[[file:///Users/nirum/Dropbox/Papers/
+map <Leader>wp <Esc>:Vimwiki2HTML<CR>
+
+" ctrl-P
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 2                       " set working directory to closest directory with .git file
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.un~,*.git    " ignore some stuff
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|\.un~$\|\.DS_STORE$'
+let g:ctrlp_user_command = 'find %s -type f'            " use external tool for listing files
+
+" vim-r-plugin
+let vimrplugin_screenplugin = 0
+
+" nerdtree
+nmap <Leader>nt :NERDTree<CR>
+imap <Leader>nt <Esc>:NERDTree<CR>
+
+" syntastic
+let g:syntastic_enable_signs=0
+
+""""""""""""
+" MAPPINGS "
+""""""""""""
+" insert shortened matlab comment prefix
+map <Leader>mat <Esc>i% <CR>% Niru Maheswaranathan<CR>% <C-R>=strftime("%c")<CR><CR><CR><Esc>ggla
+
+" insert full matlab prefix
+map <Leader>fmat <Esc>i%<CR>% <CR>%<CR>% USAGE:<CR>%  <CR>%<CR>% VERSION 1.0, <C-R>=strftime("%c")<CR>         Initial version<CR>%<CR>% AUTHOR: Niru Maheswaranathan<CR>%         nirum@stanford.edu<CR><CR><CR><Esc>gga
+
+" python script declaration
+map <Leader>python <Esc>i#! /usr/bin/env python<CR><CR><Esc>i
+
+" mutt compose window shortcuts
+map <Leader>; 7jo<CR><Esc>ki
+
+" insert html template
+map <Leader>html <Esc>i<!DOCTYPE HTML><CR><html><CR><head><CR><title></<CR></<CR><body><CR><CR></<CR></<ESC>5k3wa
+
+" insert function comment line
+map <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
+
+" insert time
+map <Leader>time <Esc>"=strftime("%c")<CR>P
+
+" to save
+noremap <space> :w<CR>
+nmap <Leader>w :w<CR>
+imap <Leader>w <ESC>:w<CR>
+
+" to escape
+imap kj <Esc>
+imap kJ <Esc>
+imap Kj <Esc>
+imap KJ <Esc>
+
+" save when focus is lost
+au FocusLost * :wa
+
+" use jj to get out of insert mode
+inoremap jj <Esc>
+
+" dealing with windows
+map <Leader>j <C-w>j<CR>
+map <Leader>k <C-w>k<CR>
+map <Leader>l <C-w>l<CR>
+map <Leader>h <C-w>h<CR>
+map <Leader>x <C-w>c<CR>
+
+" copy all
+map <Leader>co ggvG$y
+" select line
+map <Leader>vl 0v$
+" copy line
+map <Leader>cl 0v$y:call system("pbcopy", getreg("\""))<CR>
+" edit rest of line
+map <Leader>cx v$hxi
+" send to tmux
+"map <Leader>tm <C-c><C-c>
+
+" Center search matches when jumping
+map N Nzz
+map n nzz
+
+" common terminal commands
+map <Leader>ls :!ls<CR>
+map <Leader>md :!mkdir
+map <Leader>rm :!rm
+map <Leader>rmrf :!rm -rf
+map <Leader>du :!du -sh<CR>
+map <Leader>touch :!touch<space>
+
+" change to common directories
+map <Leader>db :cd ~/Dropbox<cr>
+map <Leader>doc :cd ~/Documents<cr>
+map <Leader>ex :cd ~/Documents/examples<cr>
+map <Leader>neuro :cd ~/Dropbox/neuro<cr>
+map <Leader>.. :cd ..
+map <Leader>cd :cd<space>
+
+" LaTeX commands
+map <Leader>tex :!./build.sh %<CR>
+
+" pasting
+map <Leader>p :set paste<CR><c-v><ESC>:set nopaste<CR>
+
+" source
+map <Leader>so :so %<cr>
+
+" merge tabs
+"map <Leader>mt :call MergeTabs()<CR>
+
+" hex highlight
+map <Leader>hh :call HexHighlight()<CR>
+
+" highlight spelling errors
+hi clear SpellBad
+hi SpellBad ctermbg=Red guibg=Red term=reverse
+map <Leader>sp :set spell!<CR>
+
+" copy/paste with ctrl+c and ctrl+v in OSX
+vmap <c-c> y:call system("pbcopy", getreg("\""))<CR>
+nmap <c-v> :call setreg("\"",system("pbpaste"))<CR>p
+
+" move tabs with ctrl+k and ctrl+j
+map <c-j> :tabp<CR>
+map <c-k> :tabn<CR>
+
+" copy entire line
+map <Leader>y yy:call system("pbcopy", getreg("\""))<CR>
+
+" delete until previous line
+map <Leader>b 0whvgelxi<space><Esc>
+
+" deal with typos
+if has("user_commands")
+    command! -bang -nargs=? -complete=file E e<bang> <args>
+    command! -bang -nargs=? -complete=file W w<bang> <args>
+    command! -bang -nargs=? -complete=file Wq wq<bang> <args>
+    command! -bang -nargs=? -complete=file WQ wq<bang> <args>
+    command! -bang Wa wa<bang>
+    command! -bang WA wa<bang>
+    command! -bang Q q<bang>
+    command! -bang QA qa<bang>
+    command! -bang Qa qa<bang>
+endif
+
+" map comment commands (NERD Commenter)
+map <Leader>mm <Leader>c<space>
+
+" editing and sourcing vimrc
+map <Leader>erc :tabf ~/.vimrc<CR>
+map <Leader>src :source ~/.vimrc<CR>
+
+" Emacs-like beginning and end of line.
+imap <c-e> <c-o>$
+imap <c-a> <c-o>^
+
+" Edit another file in the same directory as the current file
+" uses expression to extract path from current file's path
+map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+map <Leader>t :tabf <C-R>=expand("%:p:h") . '/'<CR>
+map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
+map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
+map <Leader>q :q<CR>
+
+" Emacs-like beginning and end of line.
+imap <c-e> <c-o>$
+imap <c-a> <c-o>^
+
+
+"""""""""""""
+" HTML "
+"""""""""""""
+
+" for CSS, also have things in braces indented:
+autocmd FileType css set smartindent
+
+" for HTML, generally format text, but if a long line has been created
+" leave it alone when editing:
+autocmd FileType html set formatoptions+=tl
+
+" for both CSS and HTML, use genuine tab characters for
+" indentation, to make files a few bytes smaller:
+autocmd FileType html,css set noexpandtab tabstop=2
+
+
+"""""""""""""
+" OTHER "
+"""""""""""""
+" indent lines
+map <tab> I<tab><esc>
+
+" Highlight bad whitespace
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhitespace /\s\+$/
+nnoremap <silent> <Leader>wsp :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" Colorscheme
+set background=dark
+colorscheme ir_black
+
+set ofu=syntaxcomplete#Complete         " omnicomplete
+let g:SuperTabDefaultCompletionType = "context"
+set nocompatible                        " prevents vim from emulating vi's bugs
+set autoindent                          " automatic indenting
+set smartindent                         " smart indenting
+set tabstop=4                           " tab length (columns)
+set shiftwidth=4                        " tab length with reindent options (columns)
+set expandtab                           " tab inserts spaces in insert mode
+set smarttab                            " smart tabs
+set et                                  " appropriate tab spacing
+set showmatch                           " match brackets
+set guioptions-=T                       " turn off gui toolbar
+set guioptions-=m                       " turn off gui menu
+set noerrorbells                        " turn off error bells
+set visualbell                          " turn on visual bell
+set ruler                               " each window gets status line
+set history=500		                    " keep 500 lines of command line history
+set wildmenu                            " tab completion when file browsing
+set title                               " set vim title
+set nohls                               " no highlights on search
+set incsearch                           " search as you type
+set nobackup                            " no backup files
+set nowritebackup                       " only in case you don't want a backup file while editing
+set noswapfile                          " no swap files
+set autoread                            " auto read when file is changed externally
+set nonumber                            " don't show line numbers
+set scrolloff=10                        " scroll buffer
+set encoding=utf-8                      " file encoding
+set cmdheight=1                         " command bar height
+set laststatus=2                        " always show the status line
+set nofoldenable                        " Say no to code folding...
+set formatoptions-=or                   " Don't add the comment prefix when I hit enter or o/O on a comment line.
+set showcmd		                        " display incomplete commands
+set gdefault                            " assume the /g flag on :s substitutions to replace all matches in a line
+set undofile                            " generates .un file so undo/redo work even after saving
+set ttyfast                             " faster drawing
+set noesckeys                           " kills function and cursor keys
+set clipboard=unnamed                   " support the Mac OSX clipboard
+set cpo+=J                              " two-spacing after sentences
+
+" backspace config
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" ignore case when searching, set default to replace on all lines
+set ignorecase
+set smartcase
+set gdefault
+
+" cursor colors
+hi Cursor guifg=white guibg=grey
+set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
+
+if has("gui_running")
+    " fonts
+    set guifont=Inconsolata:h16
+endif
+
+" get current director
+function! CurDir()
+    let curdir = substitute(getcwd(), '/Users/nirum/', "~/", "g")
+    return curdir
+endfunction
+
+" show if I am in paste mode
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    else
+        return ''
+    endif
+endfunction
+
+" Set the tag file search order
+set tags=./tags;
+
+" Use _ as a word-separator
+set iskeyword-=_
+
+" Make the omnicomplete text readable
+:highlight PmenuSel ctermfg=cyan ctermbg=black guifg=cyan guibg=black
+:highlight Pmenu ctermfg=lightgrey ctermbg=darkgrey guifg=lightgrey guibg=darkgrey
+
+" Fuzzy finder: ignore stuff that can't be opened, and generated files
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+
+" Format xml files
+au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
+" When loading text files, wrap them and don't split up words.
+au BufNewFile,BufRead *.txt setlocal wrap
+au BufNewFile,BufRead *.txt setlocal lbr
+
+" Merge a tab into a split in the previous window
+function! MergeTabs()
+  if tabpagenr() == 1
+    return
+  endif
+  let bufferName = bufname("%")
+  if tabpagenr("$") == tabpagenr()
+    close!
+  else
+    close!
+    tabprev
+  endif
+  split
+  execute "buffer " . bufferName
+endfunction
+
+" Highlight HEX colors
+let s:HexColored = 0
+let s:HexColors = []
+function! HexHighlight()
+    if has("gui_running")
+        if s:HexColored == 0
+            let hexGroup = 4
+            let lineNumber = 0
+            while lineNumber <= line("$")
+                let currentLine = getline(lineNumber)
+                let hexLineMatch = 1
+                while match(currentLine, '#\x\{6}', 0, hexLineMatch) != -1
+                    let hexMatch = matchstr(currentLine, '#\x\{6}', 0, hexLineMatch)
+                    exe 'hi hexColor'.hexGroup.' guifg='.hexMatch.' guibg='.hexMatch
+                    exe 'let m = matchadd("hexColor'.hexGroup.'", "'.hexMatch.'", 25, '.hexGroup.')'
+                    let s:HexColors += ['hexColor'.hexGroup]
+                    let hexGroup += 1
+                    let hexLineMatch += 1
+                endwhile
+                let lineNumber += 1
+            endwhile
+            unlet lineNumber hexGroup
+            let s:HexColored = 1
+            echo "Highlighting hex colors..."
+        elseif s:HexColored == 1
+            for hexColor in s:HexColors
+                exe 'highlight clear '.hexColor
+            endfor
+            call clearmatches()
+            let s:HexColored = 0
+            echo "Unhighlighting hex colors..."
+        endif
+    else
+        echo "HexHighlight only works with a graphical version of vim"
+    endif
+endfunction
+
+" Organize matlab comments
+function! OrganizeComments()
+endfunction
+
+" Don't wait so long for the next keypress (particularly in ambigious Leader
+" situations.
+set timeoutlen=500

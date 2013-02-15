@@ -377,7 +377,7 @@ function! HexHighlight()
     endif
 endfunction
 
-" Organize matlab comments
+" Organize matlab comments (TODO)
 function! OrganizeComments()
 endfunction
 

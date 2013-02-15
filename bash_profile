@@ -67,6 +67,9 @@ alias gl='git lg'
 alias gp='git push'
 alias gb='git branch'
 
+## MATLAB
+alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
+
 ## useful things
 bind 'set show-all-if-ambiguous on' # show autocomplete options after first tab
 complete -d cd rmdir # only show folders for cd or rmdir

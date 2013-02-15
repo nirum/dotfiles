@@ -18,4 +18,7 @@ ln -fs ${PWD}/bash_profile ~/.bash_profile
 echo "Linking inputrc ..."
 ln -fs ${PWD}/inputrc ~/.inputrc
 
+echo "Key bindings ..."
+ln -fs ${PWD}/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
+
 echo "Done.\n"

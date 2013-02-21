@@ -21,16 +21,19 @@ set-window-option -g mode-keys vi
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
 
+# Powerline as status bar
+source 'usr/local/share/python/powerline/bindings/tmux/powerline.conf'
+
 # Set status bar
-set -g status-bg blue
-set -g status-fg black
-set -g status-left '#[fg=white]'
-set -g status-interval 5
+#set -g status-bg blue
+#set -g status-fg black
+#set -g status-left '#[fg=white]'
+#set -g status-interval 5
 
 # Other information
 # set -g status-right '#[fg=white]#(uptime | cut -d "," -f 2-)'
-set -g status-right '#[fg=white]#(memory)'
-set -g status-right-length 80
+#set -g status-right '#[fg=white]#(mem)'
+#set -g status-right-length 80
 
 # Automatically set window title
 setw -g automatic-rename on

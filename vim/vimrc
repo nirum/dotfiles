@@ -73,6 +73,10 @@ map <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
 " insert time
 map <Leader>time <Esc>"=strftime("%c")<CR>P
 
+" scripting headers
+map <Leader>bash <Esc>ggi#! /bin/bash<Esc>o
+map <Leader>py <Esc>ggi#! /usr/bin/python<Esc>o
+
 " to save
 noremap <space> :w<CR>
 nmap <Leader>w :w<CR>

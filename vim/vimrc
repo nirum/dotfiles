@@ -49,6 +49,8 @@ imap <Leader>nt <Esc>:NERDTree<CR>
 " syntastic
 let g:syntastic_enable_signs=0
 
+nmap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
+
 """"""""""""
 " MAPPINGS "
 """"""""""""
@@ -62,7 +64,7 @@ map <Leader>fmat <Esc>i%<CR>% <CR>%<CR>% USAGE:<CR>%  <CR>%<CR>% VERSION 1.0, <C
 map <Leader>python <Esc>i#! /usr/bin/env python<CR><CR><Esc>i
 
 " mutt compose window shortcuts
-map <Leader>; 7jo<CR><Esc>ki
+"map <Leader>; 7jo<CR><Esc>ki
 
 " insert html template
 map <Leader>html <Esc>i<!DOCTYPE HTML><CR><html><CR><head><CR><title></<CR></<CR><body><CR><CR></<CR></<ESC>5k3wa
@@ -143,6 +145,10 @@ map <Leader>so :so %<cr>
 
 " merge tabs
 "map <Leader>mt :call MergeTabs()<CR>
+
+" easymotion
+nmap f <Leader><Leader>w
+"let g:EasyMotion_leader_key = 'f'
 
 " hex highlight
 map <Leader>hh :call HexHighlight()<CR>

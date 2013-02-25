@@ -36,3 +36,4 @@ for row in range(1,len(vmLines)-2):
 # print 'Real Mem Total (ps):\t%.3f MB' % ( rssTotal/1024/1024 )
 denom = 1024.0*1024.0*1024.0
 print '%.2fGB (Free) %.2fGB (Active) %.2fGB (Inactive)' % (vmStats["Pages free"]/denom, vmStats["Pages active"]/denom, vmStats["Pages inactive"]/denom)
+print ''

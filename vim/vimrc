@@ -199,7 +199,7 @@ imap <c-a> <c-o>^
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>t :tabf <C-R>=expand("%:p:h") . '/'<CR>
+"map <Leader>t :tabf <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>q :q<CR>

@@ -47,6 +47,7 @@ alias imap='offlineimap'
 alias i='offlineimap'
 alias c='cal'
 alias calendar='cal'
+alias whos='who; echo ""; mem;'
 
 # functions
 function cdl { cd $1; ls;}
@@ -65,6 +66,7 @@ alias gd='git diff | mvim'
 alias ga='git add'
 alias gl='git lg'
 alias gp='git push'
+alias gu='git pull'
 alias gb='git branch'
 
 ## MATLAB

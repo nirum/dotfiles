@@ -294,8 +294,10 @@ set gdefault
 hi Cursor guifg=white guibg=grey
 set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 
-if has("gui_running")
-    " fonts
+" fonts
+if has("gui_gtk2")
+    set guifont=Deja\ Vu\ Sans\ Mono\ 10
+elseif has("gui_macvim")
     set guifont=Inconsolata:h16
 endif
 

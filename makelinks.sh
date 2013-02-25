@@ -21,4 +21,4 @@ ln -fs ${PWD}/inputrc ~/.inputrc
 echo "Key bindings ..."
 ln -fs ${PWD}/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 
-echo "Done.\n"
+echo "Done."

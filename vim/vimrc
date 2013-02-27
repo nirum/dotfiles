@@ -14,7 +14,10 @@ let mapleader = ";"       " map leader
 " PLUGINS "
 """"""""""""
 " Enter insert mode automatically when editing git commit messages
-au FileType gitcommit startinsert
+augroup git
+    autocmd!
+    autocmd FileType gitcommit startinsert
+augroup END
 
 " git commands
 noremap <Leader>ga :Gwrite<CR>
@@ -25,6 +28,7 @@ noremap <Leader>gu :Git pull origin master<CR>
 
 " vim-slime
 let g:slime_target = "tmux"
+noremap <Leader>tm <Esc><c-c><c-c>:echo "Sent to tmux"<CR>
 
 " vim-wiki
 let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'path_html': '~/Documents/Web/wiki/', 'template_path': '~/Documents/Web/wiki/templates/', 'template_default': 'default', 'template_ext': '.html', 'auto_export': 0}]
@@ -88,7 +92,10 @@ inoremap Kj <Esc>
 inoremap KJ <Esc>
 
 " save when focus is lost
-au FocusLost * :wa
+augroup focus
+    autocmd!
+    autocmd FocusLost * :wa
+augroup END
 
 " use jj to get out of insert mode
 inoremap jj <Esc>
@@ -181,7 +188,7 @@ if has("user_commands")
 endif
 
 " map comment commands (NERD Commenter)
-noremap <Leader>mm <Leader>c<space>
+map <Leader>mm <Leader>c<space>
 
 " editing and sourcing vimrc
 noremap <Leader>erc :tabf ~/.vimrc<CR>
@@ -202,9 +209,11 @@ noremap <Leader>q :q<CR>
 inoremap <c-e> <c-o>$
 inoremap <c-a> <c-o>^
 
+
 """""""""""""""""
 " ABBREVIATIONS "
 """""""""""""""""
+
 " Typos
 iabbrev @@      nirum@stanford.edu
 iabbrev adn     and
@@ -213,28 +222,45 @@ iabbrev waht    what
 iabbrev teh     the
 
 " TeX
-iabbrev alpha   \alpha
-iabbrev beta    \beta
-iabbrev delta   \delta
-iabbrev gamma   \gamma
-iabbrev eta     \eta
-iabbrev epsilon \epsilon
+augroup TeX
+    autocmd!
+    autocmd FileType tex iabbrev <buffer> alpha   \alpha
+    autocmd FileType tex iabbrev <buffer> beta    \beta
+    autocmd FileType tex iabbrev <buffer> delta   \delta
+    autocmd FileType tex iabbrev <buffer> gamma   \gamma
+    autocmd FileType tex iabbrev <buffer> eta     \eta
+    autocmd FileType tex iabbrev <buffer> epsilon \epsilon
+augroup END
 
 
 """""""""""""
 " HTML "
 """""""""""""
 
-" for CSS, also have things in braces indented:
-autocmd FileType css set smartindent
+augroup web
+    autocmd!
 
-" for HTML, generally format text, but if a long line has been created
-" leave it alone when editing:
-autocmd FileType html set formatoptions+=tl
+    " for CSS, also have things in braces indented:
+    autocmd FileType css set smartindent
 
-" for both CSS and HTML, use genuine tab characters for
-" indentation, to make files a few bytes smaller:
-autocmd FileType html,css set noexpandtab tabstop=2
+    " for HTML, generally format text, but if a long line has been created
+    " leave it alone when editing:
+    autocmd FileType html set formatoptions+=tl
+
+    " for both CSS and HTML, use genuine tab characters for
+    " indentation, to make files a few bytes smaller:
+    autocmd FileType html,css set noexpandtab tabstop=2
+
+    " automatically indent before writing
+    autocmd BufWritePre,BufRead *.html normal gg=G
+
+    " don't wrap html
+    autocmd BufWritePre,BufRead *.html setlocal nowrap
+
+    " format XML files
+    autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
+augroup END
 
 
 """""""""""""
@@ -244,9 +270,12 @@ autocmd FileType html,css set noexpandtab tabstop=2
 noremap <tab> I<tab><esc>
 
 " Highlight bad whitespace
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhitespace /\s\+$/
+augroup coloring
+    autocmd!
+    autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+augroup END
 nnoremap <silent> <Leader>wsp :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Colorscheme
@@ -310,7 +339,7 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 if has("gui_gtk2")
     set guifont=Deja\ Vu\ Sans\ Mono\ 10
 elseif has("gui_macvim")
-    set guifont=Inconsolata:h16
+    set guifont=Inconsolata:h18
 endif
 
 " get current director
@@ -341,12 +370,16 @@ set iskeyword-=_
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 
-" Format xml files
-au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
-
-" When loading text files, wrap them and don't split up words.
-au BufNewFile,BufRead *.txt setlocal wrap
-au BufNewFile,BufRead *.txt setlocal lbr
+" When loading text files, wrap them and don't split up words. Automatically
+" save new text files.
+augroup textfiles
+    autocmd!
+    autocmd BufNewFile,BufRead *.txt setlocal wrap
+    autocmd BufNewFile,BufRead *.txt setlocal lbr
+    autocmd BufNewFile *.txt write
+    autocmd BufNewFile *.md  write
+    autocmd BufNewFile *.mkd write
+augroup END
 
 " Merge a tab into a split in the previous window
 function! MergeTabs()
@@ -399,10 +432,6 @@ function! HexHighlight()
     else
         echo "HexHighlight only works with a graphical version of vim"
     endif
-endfunction
-
-" Organize matlab comments (TODO)
-function! OrganizeComments()
 endfunction
 
 " Don't wait so long for the next keypress (particularly in ambigious Leader

@@ -17,19 +17,19 @@ let mapleader = ";"       " map leader
 au FileType gitcommit startinsert
 
 " git commands
-map <Leader>ga :Gwrite<CR>
-map <Leader>gc :Gcommit<CR>
-map <Leader>gs :Gstatus<CR>
-map <Leader>gp :Git push origin master<CR>
-map <Leader>gu :Git pull origin master<CR>
+noremap <Leader>ga :Gwrite<CR>
+noremap <Leader>gc :Gcommit<CR>
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gp :Git push origin master<CR>
+noremap <Leader>gu :Git pull origin master<CR>
 
 " vim-slime
 let g:slime_target = "tmux"
 
 " vim-wiki
 let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'path_html': '~/Documents/Web/wiki/', 'template_path': '~/Documents/Web/wiki/templates/', 'template_default': 'default', 'template_ext': '.html', 'auto_export': 0}]
-map <Leader>ref <Esc>o[[file:///Users/nirum/Dropbox/Papers/
-map <Leader>wp <Esc>:Vimwiki2HTML<CR>
+noremap <Leader>ref <Esc>o[[file:///Users/nirum/Dropbox/Papers/
+noremap <Leader>wp <Esc>:Vimwiki2HTML<CR>
 
 " ctrl-P
 let g:ctrlp_map = '<c-p>'
@@ -43,52 +43,49 @@ let g:ctrlp_user_command = 'find %s -type f'            " use external tool for 
 let vimrplugin_screenplugin = 0
 
 " nerdtree
-nmap <Leader>nt :NERDTree<CR>
-imap <Leader>nt <Esc>:NERDTree<CR>
+nnoremap <Leader>nt :NERDTree<CR>
+inoremap <Leader>nt <Esc>:NERDTree<CR>
 
 " syntastic
 let g:syntastic_enable_signs=0
 
-nmap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
+nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
 
 """"""""""""
 " MAPPINGS "
 """"""""""""
 " insert shortened matlab comment prefix
-map <Leader>mat <Esc>i% <CR>% Niru Maheswaranathan<CR>% <C-R>=strftime("%c")<CR><CR><CR><Esc>ggla
+noremap <Leader>mat <Esc>i% <CR>% Niru Maheswaranathan<CR>% <C-R>=strftime("%c")<CR><CR><CR><Esc>ggla
 
 " insert full matlab prefix
-map <Leader>fmat <Esc>i%<CR>% <CR>%<CR>% USAGE:<CR>%  <CR>%<CR>% VERSION 1.0, <C-R>=strftime("%c")<CR>         Initial version<CR>%<CR>% AUTHOR: Niru Maheswaranathan<CR>%         nirum@stanford.edu<CR><CR><CR><Esc>gga
+noremap <Leader>fmat <Esc>i%<CR>% <CR>%<CR>% USAGE:<CR>%  <CR>%<CR>% VERSION 1.0, <C-R>=strftime("%c")<CR>         Initial version<CR>%<CR>% AUTHOR: Niru Maheswaranathan<CR>%         nirum@stanford.edu<CR><CR><CR><Esc>gga
 
 " python script declaration
-map <Leader>python <Esc>i#! /usr/bin/env python<CR><CR><Esc>i
-
-" mutt compose window shortcuts
-"map <Leader>; 7jo<CR><Esc>ki
+noremap <Leader>python <Esc>i#! /usr/bin/env python<CR><CR><Esc>i
 
 " insert html template
-map <Leader>html <Esc>i<!DOCTYPE HTML><CR><html><CR><head><CR><title></<CR></<CR><body><CR><CR></<CR></<ESC>5k3wa
+noremap <Leader>html <Esc>i<!DOCTYPE HTML><CR><html><CR><head><CR><title></<CR></<CR><body><CR><CR></<CR></<ESC>5k3wa
 
 " insert function comment line
-map <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
+noremap <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
 
 " insert time
-map <Leader>time <Esc>"=strftime("%c")<CR>P
+noremap <Leader>time <Esc>"=strftime("%c")<CR>P
 
 " scripting headers
-map <Leader>bash <Esc>ggi#! /bin/bash<Esc>o
-map <Leader>py <Esc>ggi#! /usr/bin/python<Esc>o
+noremap <Leader>bash <Esc>ggi#! /bin/bash<Esc>o
+noremap <Leader>py <Esc>ggi#! /usr/bin/python<Esc>o
 
 " to save
 noremap <space> :w<CR>
-nmap <Leader>w :w<CR>
-imap <Leader>w <ESC>:w<CR>
+nnoremap <Leader>w :w<CR>
+inoremap <Leader>w <ESC>:w<CR>
 
 " to escape
-imap kj <Esc>
-imap kJ <Esc>
-imap Kj <Esc>
-imap KJ <Esc>
+inoremap kj <Esc>
+inoremap kJ <Esc>
+inoremap Kj <Esc>
+inoremap KJ <Esc>
 
 " save when focus is lost
 au FocusLost * :wa
@@ -97,80 +94,78 @@ au FocusLost * :wa
 inoremap jj <Esc>
 
 " dealing with windows
-map <Leader>j <C-w>j<CR>
-map <Leader>k <C-w>k<CR>
-map <Leader>l <C-w>l<CR>
-map <Leader>h <C-w>h<CR>
-map <Leader>x <C-w>c<CR>
+noremap <Leader>j <C-w>j<CR>
+noremap <Leader>k <C-w>k<CR>
+noremap <Leader>l <C-w>l<CR>
+noremap <Leader>h <C-w>h<CR>
+noremap <Leader>x <C-w>c<CR>
 
 " copy all
-map <Leader>co ggvG$y
+noremap <Leader>co ggvG$y
 " select line
-map <Leader>vl 0v$
+noremap <Leader>vl 0v$
 " copy line
-map <Leader>cl 0v$y:call system("pbcopy", getreg("\""))<CR>
+noremap <Leader>cl 0v$y:call system("pbcopy", getreg("\""))<CR>
 " edit rest of line
-map <Leader>cx v$hxi
-" send to tmux
-"map <Leader>tm <C-c><C-c>
+noremap <Leader>cx v$hxi
 
 " Center search matches when jumping
-map N Nzz
-map n nzz
+noremap N Nzz
+noremap n nzz
 
 " common terminal commands
-map <Leader>ls :!ls<CR>
-map <Leader>md :!mkdir
-map <Leader>rm :!rm
-map <Leader>rmrf :!rm -rf
-map <Leader>du :!du -sh<CR>
-map <Leader>touch :!touch<space>
+noremap <Leader>ls :!ls<CR>
+noremap <Leader>md :!mkdir
+noremap <Leader>rm :!rm
+noremap <Leader>rmrf :!rm -rf
+noremap <Leader>du :!du -sh<CR>
+noremap <Leader>touch :!touch<space>
 
 " change to common directories
-map <Leader>db :cd ~/Dropbox<cr>
-map <Leader>doc :cd ~/Documents<cr>
-map <Leader>ex :cd ~/Documents/examples<cr>
-map <Leader>neuro :cd ~/Dropbox/neuro<cr>
-map <Leader>.. :cd ..
-map <Leader>cd :cd<space>
+noremap <Leader>db :cd ~/Dropbox<cr>
+noremap <Leader>doc :cd ~/Documents<cr>
+noremap <Leader>ex :cd ~/Documents/examples<cr>
+noremap <Leader>neuro :cd ~/Dropbox/neuro<cr>
+noremap <Leader>.. :cd ..
+noremap <Leader>cd :cd<space>
 
 " LaTeX commands
-map <Leader>tex :!./build.sh %<CR>
+noremap <Leader>tex :!./build.sh %<CR>
 
 " pasting
-map <Leader>p :set paste<CR><c-v><ESC>:set nopaste<CR>
+noremap <Leader>p :set paste<CR><c-v><ESC>:set nopaste<CR>
 
 " source
-map <Leader>so :so %<cr>
+noremap <Leader>so :so %<cr>
 
 " merge tabs
-"map <Leader>mt :call MergeTabs()<CR>
+"noremap <Leader>mt :call MergeTabs()<CR>
 
 " easymotion
-nmap f <Leader><Leader>w
+nnoremap f <Leader><Leader>w
 "let g:EasyMotion_leader_key = 'f'
 
 " hex highlight
-map <Leader>hh :call HexHighlight()<CR>
+noremap <Leader>hh :call HexHighlight()<CR>
 
 " highlight spelling errors
 hi clear SpellBad
 hi SpellBad ctermbg=Red guibg=Red term=reverse
-map <Leader>sp :set spell!<CR>
+noremap <Leader>sp :set spell!<CR>
 
 " copy/paste with ctrl+c and ctrl+v in OSX
-vmap <c-c> y:call system("pbcopy", getreg("\""))<CR>
-nmap <c-v> :call setreg("\"",system("pbpaste"))<CR>p
+vnoremap <c-c> y:call system("pbcopy", getreg("\""))<CR>
+nnoremap <c-v> :call setreg("\"",system("pbpaste"))<CR>p
 
 " move tabs with ctrl+k and ctrl+j
-map <c-j> :tabp<CR>
-map <c-k> :tabn<CR>
+noremap <c-j> :tabp<CR>
+noremap <c-k> :tabn<CR>
 
 " copy entire line
-map <Leader>y yy:call system("pbcopy", getreg("\""))<CR>
+noremap <Leader>y yy:call system("pbcopy", getreg("\""))<CR>
 
 " delete until previous line
-map <Leader>b 0whvgelxi<space><Esc>
+noremap <Leader>b 0whvgelxi<space><Esc>
 
 " deal with typos
 if has("user_commands")
@@ -186,27 +181,26 @@ if has("user_commands")
 endif
 
 " map comment commands (NERD Commenter)
-map <Leader>mm <Leader>c<space>
+noremap <Leader>mm <Leader>c<space>
 
 " editing and sourcing vimrc
-map <Leader>erc :tabf ~/.vimrc<CR>
-map <Leader>src :source ~/.vimrc<CR>
+noremap <Leader>erc :tabf ~/.vimrc<CR>
+noremap <Leader>src :source ~/.vimrc<CR>
 
 " Emacs-like beginning and end of line.
-imap <c-e> <c-o>$
-imap <c-a> <c-o>^
+inoremap <c-e> <c-o>$
+inoremap <c-a> <c-o>^
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
-map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-"map <Leader>t :tabf <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>q :q<CR>
+noremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+noremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
+noremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
+noremap <Leader>q :q<CR>
 
 " Emacs-like beginning and end of line.
-imap <c-e> <c-o>$
-imap <c-a> <c-o>^
+inoremap <c-e> <c-o>$
+inoremap <c-a> <c-o>^
 
 
 """""""""""""
@@ -229,7 +223,7 @@ autocmd FileType html,css set noexpandtab tabstop=2
 " OTHER "
 """""""""""""
 " indent lines
-map <tab> I<tab><esc>
+noremap <tab> I<tab><esc>
 
 " Highlight bad whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red

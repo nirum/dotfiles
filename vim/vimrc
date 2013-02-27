@@ -202,6 +202,24 @@ noremap <Leader>q :q<CR>
 inoremap <c-e> <c-o>$
 inoremap <c-a> <c-o>^
 
+"""""""""""""""""
+" ABBREVIATIONS "
+"""""""""""""""""
+" Typos
+iabbrev @@      nirum@stanford.edu
+iabbrev adn     and
+iabbrev tehn    then
+iabbrev waht    what
+iabbrev teh     the
+
+" TeX
+iabbrev alpha   \alpha
+iabbrev beta    \beta
+iabbrev delta   \delta
+iabbrev gamma   \gamma
+iabbrev eta     \eta
+iabbrev epsilon \epsilon
+
 
 """""""""""""
 " HTML "

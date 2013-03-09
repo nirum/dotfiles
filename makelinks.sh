@@ -14,6 +14,7 @@ ln -fs ${PWD}/git/gitignore ~/.gitignore
 
 echo "Linking bash profile ..."
 ln -fs ${PWD}/bash_profile ~/.bash_profile
+ln -fs ${PWD}/zshrc ~/.zshrc
 
 echo "Linking inputrc ..."
 ln -fs ${PWD}/inputrc ~/.inputrc

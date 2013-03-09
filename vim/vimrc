@@ -149,8 +149,11 @@ noremap <Leader>so :so %<cr>
 "noremap <Leader>mt :call MergeTabs()<CR>
 
 " easymotion
-nnoremap f <Leader><Leader>w
+map f <Leader><Leader>w
 "let g:EasyMotion_leader_key = 'f'
+
+" you complete me
+"imap <Tab> <C-P>
 
 " hex highlight
 noremap <Leader>hh :call HexHighlight()<CR>
@@ -307,7 +310,7 @@ set nobackup                            " no backup files
 set nowritebackup                       " only in case you don't want a backup file while editing
 set noswapfile                          " no swap files
 set autoread                            " auto read when file is changed externally
-set nonumber                            " don't show line numbers
+set number                              " show line numbers
 set scrolloff=10                        " scroll buffer
 set encoding=utf-8                      " file encoding
 set cmdheight=1                         " command bar height

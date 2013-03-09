@@ -1,11 +1,36 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="af-magic"
+
+# Comment this out to disable bi-weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git autojump brew git-extras lol osx vi-mode)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin
+
 eval "$(fasd --init auto)"
 export TERM=xterm-256color
 export CLICOLOR=1
 export LC_CTYPE=en_US.UTF-8 # use unicode
 
 # edit this file!
-alias erc='mvim ~/.bash_profile'
-alias src='source ~/.bash_profile'
+alias erc='mvim ~/.zshrc'
+alias src='source ~/.zshrc'
 
 # vim keybindings
 #set -o vi
@@ -18,18 +43,7 @@ export GCC_INCLUDE_DIR
 alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
 
 # homebrew tab completion
-source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-
-# jekyll blog creation
-function mkpost() {
-    filename="$(date +"%Y-%m-%d")-$@.md";
-    touch $filename;
-    echo "Created $filename";
-}
-
-# Power
-alias reboot="sudo shutdown -r now"
-alias off="sudo shutdown -h now"
+#source `brew --prefix`/Library/Contributions/brew_zsh_completion.sh
 
 #copy the working directory into the clipboard
 alias cwd='pwd | pbcopy'
@@ -56,25 +70,14 @@ function cdl { cd $1; ls;}
 alias j='fasd_cd -d' # use j to jump between folders
 alias e='f -e mvim' # quick opening files with vim
 
-_fasd_bash_hook_cmd_complete v m j o
-
 # The essential git commands.
 alias gs='git st'
-alias g='git'
-alias gc='git cm'
 alias gd='git diff | mvim'
-alias ga='git add'
-alias gl='git lg'
-alias gp='git push'
-alias gu='git pull'
-alias gb='git branch'
 
 ## MATLAB
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
 
 ## useful things
-bind 'set show-all-if-ambiguous on' # show autocomplete options after first tab
-complete -d cd rmdir # only show folders for cd or rmdir
 export GREP_OPTIONS='--color=auto' # automatically color grep output
 
 ## latex templates
@@ -85,5 +88,3 @@ alias rs='python manage.py runserver'
 
 ## colored ls output
 HOST=`hostname -s`
-PS1='\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;31m\]\h\[\033[00;34m\]{\[\033[01;34m\]\w\[\033[00;34m\]}\[\033[01;32m\]:\[\033[00m\] '
-export LSCOLORS='ExGxFxdxCxDxDxBxBxExEx'

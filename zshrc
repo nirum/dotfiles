@@ -33,7 +33,7 @@ alias erc='mvim ~/.zshrc'
 alias src='source ~/.zshrc'
 
 # vim keybindings
-#set -o vi
+set -o vi
 
 # GCC
 GCC_INCLUDE_DIR=/usr/include/
@@ -56,12 +56,16 @@ alias sl='ls -Fh'
 alias ..='cd ..;ls'
 alias .='echo $PWD'
 alias m='mutt'
-alias mutt='cd ~/Downloads && mutt'
+alias nm='notifymail'
 alias imap='offlineimap'
 alias i='offlineimap'
 alias c='cal'
 alias calendar='cal'
-alias whos='who; echo ""; mem;'
+alias whos='who; mem;'
+
+# ssh aliases
+alias lenna='ssh -CY lenna'
+alias tonto='ssh -CY niru@tonto'
 
 # functions
 function cdl { cd $1; ls;}
@@ -72,6 +76,7 @@ alias e='f -e mvim' # quick opening files with vim
 
 # The essential git commands.
 alias gs='git st'
+alias gc='git cm'
 alias gd='git diff | mvim'
 
 ## MATLAB

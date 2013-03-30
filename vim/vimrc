@@ -211,6 +211,14 @@ noremap <Leader>q :q<CR>
 inoremap <c-e> <c-o>$
 inoremap <c-a> <c-o>^
 
+" fix comment auto-indenting for different languages
+autocmd FileType python inoremap # X#
+autocmd FileType matlab inoremap % X%
+
+" brackets
+autocmd FileType python,matlab inoremap ( ()<Esc>i
+autocmd FileType python,matlab inoremap { {}<Esc>i
+autocmd FileType python,matlab inoremap [ []<Esc>i
 
 """""""""""""""""
 " ABBREVIATIONS "

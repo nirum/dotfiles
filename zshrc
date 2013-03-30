@@ -45,6 +45,9 @@ alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)
 # tmux stuff
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
+# teamocil autocomplete
+compctl -g '~/.teamocil/*(:t:r)' teamocil
+
 #copy the working directory into the clipboard
 alias cwd='pwd | pbcopy'
 

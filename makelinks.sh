@@ -8,6 +8,9 @@ ln -fs ${PWD}/vim ~/.vim
 echo "Linking tmux ..."
 ln -fs ${PWD}/tmux_conf ~/.tmux.conf
 
+echo "Linking teamocil ..."
+ln -fs ${PWD}/teamocil ~/.teamocil
+
 echo "Linking git ..."
 ln -fs ${PWD}/git/gitconfig ~/.gitconfig
 ln -fs ${PWD}/git/gitignore ~/.gitignore

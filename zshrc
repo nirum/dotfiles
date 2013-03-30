@@ -42,8 +42,8 @@ export GCC_INCLUDE_DIR
 # disk usage
 alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
 
-# homebrew tab completion
-#source `brew --prefix`/Library/Contributions/brew_zsh_completion.sh
+# tmux stuff
+PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 #copy the working directory into the clipboard
 alias cwd='pwd | pbcopy'

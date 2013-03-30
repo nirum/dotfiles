@@ -350,7 +350,8 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 if has("gui_gtk2")
     set guifont=Deja\ Vu\ Sans\ Mono\ 10
 elseif has("gui_macvim")
-    set guifont=Inconsolata:h16
+    set guifont=Inconsolata\ for\ Powerline:h16
+    let g:Powerline_symbols = 'fancy'
 endif
 
 " get current director

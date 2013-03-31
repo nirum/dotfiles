@@ -7,6 +7,7 @@ ln -fs ${PWD}/vim ~/.vim
 
 echo "Linking tmux ..."
 ln -fs ${PWD}/tmux_conf ~/.tmux.conf
+ln -fs ${PWD}/tmux-powerlinerc ~/.tmux-powerlinerc
 
 echo "Linking teamocil ..."
 ln -fs ${PWD}/teamocil ~/.teamocil

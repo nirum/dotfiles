@@ -30,6 +30,7 @@ set-option -g status-left-length 60
 set-option -g status-right-length 90
 set-option -g status-left "#(~/code/dotfiles/tmux-powerline/powerline.sh left)"
 set-option -g status-right "#(~/code/dotfiles/tmux-powerline/powerline.sh right)"
+set -g status-bg default
 
 # Automatically set window title
 setw -g automatic-rename on
@@ -51,4 +52,4 @@ bind X "kill-pane"
 set -g mouse-select-pane on
 
 # look good
-set -g default-terminal "screen-256color"
+set -g default-terminal screen-256color

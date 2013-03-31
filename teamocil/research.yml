@@ -1,0 +1,9 @@
+windows:
+  - name: "matlab"
+    root: "~"
+    panes:
+      - cmd: "matlab"
+  - name: "research"
+    root: "~/research/"
+    panes:
+      - cmd: "ls"

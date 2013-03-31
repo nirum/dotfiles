@@ -32,6 +32,9 @@ export LC_CTYPE=en_US.UTF-8 # use unicode
 alias erc='mvim ~/.zshrc'
 alias src='source ~/.zshrc'
 
+# ldap search
+alias lds='ldapsearch -h ldap-dev.stanford.edu -b dc=stanford,dc=edu'
+
 # vim keybindings
 set -o vi
 
@@ -51,11 +54,37 @@ compctl -g '~/.teamocil/*(:t:r)' teamocil
 #copy the working directory into the clipboard
 alias cwd='pwd | pbcopy'
 
+
+## completion
+
+# fuzzy matching
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle -e ':completion:*:approximate:*' \
+        max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
+
+# remove trailing slashes
+zstyle ':completion:*' squeeze-slashes true
+
+# sort menu by time
+zstyle ':completion:*:*:xdvi:*' menu yes select
+zstyle ':completion:*:*:xdvi:*' file-sort time
+
 ## aliases
+
+# suffix aliases
+alias -s tex=mvim
+alias -s m=mvim
+alias -s py=python
+alias -s pdf=open
+
+# generic
 alias clc=clear # more cmd style alias
 alias la='ls -FAh'
 alias ls='ls -Fh'
 alias sl='ls -Fh'
+alias sg='gs'
 alias ..='cd ..;ls'
 alias .='echo $PWD'
 alias m='mutt'
@@ -65,6 +94,15 @@ alias i='offlineimap'
 alias c='cal'
 alias calendar='cal'
 alias whos='who; mem;'
+
+# global aliases
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g L="| less"
+alias -g G="| grep"
+alias -g S='| sort'
+alias -g T='| tail'
 
 # ssh aliases
 alias lenna='ssh -CY lenna'

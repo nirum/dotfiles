@@ -3,7 +3,7 @@ windows:
     root: "~"
     panes:
       - cmd: "matlab"
-  - name: "research"
-    root: "~/research/"
+  - name: "cs228"
+    root: "~"
     panes:
-      - cmd: "clear; ls"
+      - cmd: "j cs228; clear; ls;"

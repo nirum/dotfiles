@@ -48,20 +48,25 @@ inoremap <Leader>nt <Esc>:NERDTree<CR>
 
 " syntastic
 let g:syntastic_enable_signs=0
-
 nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
 
 """"""""""""
 " MAPPINGS "
 """"""""""""
 " insert shortened matlab comment prefix
-noremap <Leader>mat <Esc>i% <CR>% Niru Maheswaranathan<CR>% <C-R>=strftime("%c")<CR><CR><CR><Esc>ggla
+noremap <Leader>mat <Esc>ggi% <CR>% Niru Maheswaranathan<CR>% <C-R>=strftime("%c")<CR><CR><CR><Esc>ggla
 
 " insert full matlab prefix
-noremap <Leader>fmat <Esc>i%<CR>% <CR>%<CR>% USAGE:<CR>%  <CR>%<CR>% VERSION 1.0, <C-R>=strftime("%c")<CR>         Initial version<CR>%<CR>% AUTHOR: Niru Maheswaranathan<CR>%         nirum@stanford.edu<CR><CR><CR><Esc>gga
+noremap <Leader>fmat <Esc>ggi%<CR>% <CR>%<CR>% USAGE:<CR>%  <CR>%<CR>% VERSION 1.0, <C-R>=strftime("%c")<CR>         Initial version<CR>%<CR>% AUTHOR: Niru Maheswaranathan<CR>%         nirum@stanford.edu<CR><CR><CR><Esc>gga
 
 " matlab header
 noremap <Leader>hdr <Esc>I% ======================================================<CR>% ===================== ??? ======================<CR>% ======================================================<CR><Esc>kkwwcw
+
+" css comment prefix
+noremap <Leader>css <Esc>ggi/* <CR> * Niru Maheswaranathan<CR>* <C-R>=strftime("%c")<CR><CR>*/<CR><CR><Esc>gg2la
+
+" add semicolon to the end of the line
+noremap <Leader>j; <Esc>$a;<Esc>j
 
 " python script declaration
 noremap <Leader>python <Esc>i#! /usr/bin/env python<CR><CR><Esc>i
@@ -203,6 +208,7 @@ inoremap <c-a> <c-o>^
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 noremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+noremap <Leader>t :tabf <C-R>=expand("%:p:h") . '/'<CR>
 noremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 noremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 noremap <Leader>q :q<CR>
@@ -214,11 +220,6 @@ inoremap <c-a> <c-o>^
 " fix comment auto-indenting for different languages
 autocmd FileType python inoremap # X#
 autocmd FileType matlab inoremap % X%
-
-" brackets
-autocmd FileType python,matlab inoremap ( ()<Esc>i
-autocmd FileType python,matlab inoremap { {}<Esc>i
-autocmd FileType python,matlab inoremap [ []<Esc>i
 
 """""""""""""""""
 " ABBREVIATIONS "

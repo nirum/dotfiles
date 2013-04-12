@@ -1,100 +1,99 @@
 " Niru Maheswaranathan
-" vimrc
+" ~/.vimrc file
 
-""""""""""""
-" BASICS "
-""""""""""""
+" Basic Settings ---------------------- {{{
+
 call pathogen#infect()    " use pathogen
 call pathogen#helptags()  " pathogen helptags
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 let mapleader = ";"       " map leader
 
-""""""""""""
-" PLUGINS "
-""""""""""""
+set ofu=syntaxcomplete#Complete         " omnicomplete
+let g:SuperTabDefaultCompletionType = "context"
+set nocompatible                        " prevents vim from emulating vi's bugs
+set autoindent                          " automatic indenting
+set smartindent                         " smart indenting
+set tabstop=4                           " tab length (columns)
+set shiftwidth=4                        " tab length with reindent options (columns)
+set expandtab                           " tab inserts spaces in insert mode
+set smarttab                            " smart tabs
+set et                                  " appropriate tab spacing
+set showmatch                           " match brackets
+set guioptions-=T                       " turn off gui toolbar
+set guioptions-=m                       " turn off gui menu
+set noerrorbells                        " turn off error bells
+set visualbell                          " turn on visual bell
+set ruler                               " each window gets status line
+set history=500		                    " keep 500 lines of command line history
+set foldlevelstart=1                    " fold automatically
+set wildmenu                            " tab completion when file browsing
+set title                               " set vim title
+set nohls                               " no highlights on search
+set incsearch                           " search as you type
+set nobackup                            " no backup files
+set nowritebackup                       " only in case you don't want a backup file while editing
+set noswapfile                          " no swap files
+set autoread                            " auto read when file is changed externally
+set number                              " show line numbers
+set scrolloff=10                        " scroll buffer
+set encoding=utf-8                      " file encoding
+set cmdheight=1                         " command bar height
+set laststatus=2                        " always show the status line
+set formatoptions-=or                   " Don't add the comment prefix when I hit enter or o/O on a comment line.
+set showcmd		                        " display incomplete commands
+set gdefault                            " assume the /g flag on :s substitutions to replace all matches in a line
+set undofile                            " generates .un file so undo/redo work even after saving
+set ttyfast                             " faster drawing
+set noesckeys                           " kills function and cursor keys
+set clipboard=unnamed                   " support the Mac OSX clipboard
+set cpo+=J                              " two-spacing after sentences
+set iskeyword-=_                        " Use _ as a word-separator
+set timeoutlen=500                      " Don't wait so long for the next keypress
+set tags=./tags;                        " Set the tag file search order
+
+" backspace config
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" ignore case when searching, set default to replace on all lines
+set ignorecase
+set smartcase
+set gdefault
+
+" }}}
+
+" Vimscript file settings ---------------------- {{{
+
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" editing and sourcing vimrc
+noremap <Leader>erc :tabf ~/.vimrc<CR>
+noremap <Leader>src :source ~/.vimrc<CR>
+
+" }}}
+
+" Git ---------------------- {{{
+
 " Enter insert mode automatically when editing git commit messages
 augroup git
     autocmd!
     autocmd FileType gitcommit startinsert
 augroup END
 
-" git commands
+" vim-fugitive aliases
 noremap <Leader>ga :Gwrite<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gp :Git push origin master<CR>
 noremap <Leader>gu :Git pull origin master<CR>
 
-" vim-slime
-let g:slime_target = "tmux"
-noremap <Leader>tm <Esc><c-c><c-c>:echo "Sent to tmux"<CR>
+" }}}
 
-" command-t
-nnoremap <silent> <C-t> :CommandT<CR>
-nnoremap <silent> <C-b> :CommandTBuffer<CR>
-
-" nerdtree
-nnoremap <Leader>nt :NERDTree<CR>
-inoremap <Leader>nt <Esc>:NERDTree<CR>
-
-" syntastic
-let g:syntastic_enable_signs=0
-nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
-
-""""""""""""
-" MAPPINGS "
-""""""""""""
-" insert shortened matlab comment prefix
-noremap <Leader>mat <Esc>ggi% <CR>% Niru Maheswaranathan<CR>% <C-R>=strftime("%c")<CR><CR><CR><Esc>ggla
-
-" insert full matlab prefix
-noremap <Leader>fmat <Esc>ggi%<CR>% <CR>%<CR>% USAGE:<CR>%  <CR>%<CR>% VERSION 1.0, <C-R>=strftime("%c")<CR>         Initial version<CR>%<CR>% AUTHOR: Niru Maheswaranathan<CR>%         nirum@stanford.edu<CR><CR><CR><Esc>gga
-
-" matlab header
-noremap <Leader>hdr <Esc>I% ======================================================<CR>% ===================== ??? ======================<CR>% ======================================================<CR><Esc>kkwwcw
-
-" css comment prefix
-noremap <Leader>css <Esc>ggi/* <CR> * Niru Maheswaranathan<CR>* <C-R>=strftime("%c")<CR><CR>*/<CR><CR><Esc>gg2la
-
-" add semicolon to the end of the line
-noremap <Leader>j; <Esc>$a;<Esc>j
-
-" python script declaration
-noremap <Leader>python <Esc>i#! /usr/bin/env python<CR><CR><Esc>i
-
-" insert html template
-noremap <Leader>html <Esc>i<!DOCTYPE HTML><CR><html><CR><head><CR><title></<CR></<CR><body><CR><CR></<CR></<ESC>5k3wa
-
-" insert function comment line
-noremap <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
-
-" insert time
-noremap <Leader>time <Esc>"=strftime("%c")<CR>P
-
-" scripting headers
-noremap <Leader>bash <Esc>ggi#! /bin/bash<Esc>o
-noremap <Leader>py <Esc>ggi#! /usr/bin/python<Esc>o
-
-" to save
-noremap <space> :w<CR>
-nnoremap <Leader>w :w<CR>
-inoremap <Leader>w <ESC>:w<CR>
-
-" to escape
-inoremap kj <Esc>
-inoremap kJ <Esc>
-inoremap Kj <Esc>
-inoremap KJ <Esc>
-
-" save when focus is lost
-augroup focus
-    autocmd!
-    autocmd FocusLost * :wa
-augroup END
-
-" use jj to get out of insert mode
-inoremap jj <Esc>
+" Navigation ---------------------- {{{
 
 " dealing with windows
 noremap <Leader>j <C-w>j<CR>
@@ -103,99 +102,9 @@ noremap <Leader>l <C-w>l<CR>
 noremap <Leader>h <C-w>h<CR>
 noremap <Leader>x <C-w>c<CR>
 
-" copy all
-noremap <Leader>co ggvG$y
-" select line
-noremap <Leader>vl 0v$
-" copy line
-noremap <Leader>cl 0v$y:call system("pbcopy", getreg("\""))<CR>
-" edit rest of line
-noremap <Leader>cx v$hxi
-
-" Center search matches when jumping
-noremap N Nzz
-noremap n nzz
-
-" common terminal commands
-noremap <Leader>ls :!ls<CR>
-noremap <Leader>md :!mkdir
-noremap <Leader>rm :!rm
-noremap <Leader>rmrf :!rm -rf
-noremap <Leader>du :!du -sh<CR>
-noremap <Leader>touch :!touch<space>
-
-" change to common directories
-noremap <Leader>db :cd ~/Dropbox<cr>
-noremap <Leader>doc :cd ~/Documents<cr>
-noremap <Leader>ex :cd ~/Documents/examples<cr>
-noremap <Leader>neuro :cd ~/Dropbox/neuro<cr>
-noremap <Leader>.. :cd ..
-noremap <Leader>cd :cd<space>
-
-" LaTeX commands
-noremap <Leader>tex :!./build.sh %<CR>
-
-" pasting
-noremap <Leader>p :set paste<CR><c-v><ESC>:set nopaste<CR>
-
-" source
-noremap <Leader>so :so %<cr>
-
-" merge tabs
-"noremap <Leader>mt :call MergeTabs()<CR>
-
-" easymotion
-map f <Leader><Leader>w
-"let g:EasyMotion_leader_key = 'f'
-
-" you complete me
-"imap <Tab> <C-P>
-
-" hex highlight
-noremap <Leader>hh :call HexHighlight()<CR>
-
-" highlight spelling errors
-hi clear SpellBad
-hi SpellBad ctermbg=Red guibg=Red term=reverse
-noremap <Leader>sp :set spell!<CR>
-
-" copy/paste with ctrl+c and ctrl+v in OSX
-vnoremap <c-c> y:call system("pbcopy", getreg("\""))<CR>
-nnoremap <c-v> :call setreg("\"",system("pbpaste"))<CR>p
-
 " move tabs with ctrl+k and ctrl+j
 noremap <c-j> :tabp<CR>
 noremap <c-k> :tabn<CR>
-
-" copy entire line
-noremap <Leader>y yy:call system("pbcopy", getreg("\""))<CR>
-
-" delete until previous line
-noremap <Leader>b 0whvgelxi<space><Esc>
-
-" deal with typos
-if has("user_commands")
-    command! -bang -nargs=? -complete=file E e<bang> <args>
-    command! -bang -nargs=? -complete=file W w<bang> <args>
-    command! -bang -nargs=? -complete=file Wq wq<bang> <args>
-    command! -bang -nargs=? -complete=file WQ wq<bang> <args>
-    command! -bang Wa wa<bang>
-    command! -bang WA wa<bang>
-    command! -bang Q q<bang>
-    command! -bang QA qa<bang>
-    command! -bang Qa qa<bang>
-endif
-
-" map comment commands (NERD Commenter)
-map <Leader>mm <Leader>c<space>
-
-" editing and sourcing vimrc
-noremap <Leader>erc :tabf ~/.vimrc<CR>
-noremap <Leader>src :source ~/.vimrc<CR>
-
-" Emacs-like beginning and end of line.
-inoremap <c-e> <c-o>$
-inoremap <c-a> <c-o>^
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -205,41 +114,81 @@ noremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 noremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 noremap <Leader>q :q<CR>
 
-" Emacs-like beginning and end of line.
-inoremap <c-e> <c-o>$
-inoremap <c-a> <c-o>^
+" get current director
+function! CurDir()
+    let curdir = substitute(getcwd(), '/Users/nirum/', "~/", "g")
+    return curdir
+endfunction
+
+" Fuzzy finder: ignore stuff that can't be opened, and generated files
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+
+" command-t
+nnoremap <silent> <C-t> :CommandT<CR>
+nnoremap <silent> <C-b> :CommandTBuffer<CR>
+
+" change to common directories
+noremap <Leader>db :cd ~/Dropbox<cr>
+noremap <Leader>doc :cd ~/Documents<cr>
+noremap <Leader>proj :cd ~/code/projects<cr>
+noremap <Leader>.. :cd ..
+noremap <Leader>cd :cd<space>
+
+" }}}
+
+" Plugins ---------------------- {{{
+
+" map comment commands (NERD Commenter)
+map <Leader>mm <Leader>c<space>
+
+" syntastic
+let g:syntastic_enable_signs=0
+nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
+
+" vim-slime
+let g:slime_target = "tmux"
+noremap <Leader>tm <Esc><c-c><c-c>:echo "Sent to tmux"<CR>
+
+" }}}
+
+" FileType-specific settings ---------------------- {{{
+
+" insert shortened matlab comment prefix
+noremap <Leader>mat <Esc>ggi% <CR>% Niru Maheswaranathan<CR>% <C-R>=strftime("%c")<CR><CR><CR><Esc>ggla
+
+" insert full matlab prefix
+noremap <Leader>fmat <Esc>ggi%<CR>% <CR>%<CR>% USAGE:<CR>%  <CR>%<CR>% VERSION 1.0, <C-R>=strftime("%c")<CR>         Initial version<CR>%<CR>% AUTHOR: Niru Maheswaranathan<CR>%         nirum@stanford.edu<CR><CR><CR><Esc>gga
+
+" matlab header
+noremap <Leader>hdr <Esc>I% ======================================================<CR>% ===================== ??? ======================<CR>% ======================================================<CR><Esc>kkwwcw
+
+" insert function comment line (matlab)
+noremap <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
+
+" css comment prefix
+noremap <Leader>css <Esc>ggi/* <CR> * Niru Maheswaranathan<CR>* <C-R>=strftime("%c")<CR><CR>*/<CR><CR><Esc>gg2la
+
+" LaTeX commands
+noremap <Leader>tex :!./build.sh %<CR>
+
+" hashbangs
+noremap <Leader>bash <Esc>ggi#! /bin/bash<Esc>o
+noremap <Leader>py <Esc>ggi#! /usr/bin/python<Esc>o
+
+" When loading text files, wrap them and don't split up words. Automatically
+" save new text files.
+augroup textfiles
+    autocmd!
+    autocmd BufNewFile,BufRead *.txt setlocal wrap
+    autocmd BufNewFile,BufRead *.txt setlocal lbr
+    autocmd BufNewFile *.txt write
+    autocmd BufNewFile *.md  write
+    autocmd BufNewFile *.mkd write
+augroup END
 
 " fix comment auto-indenting for different languages
 autocmd FileType python inoremap # X#
 autocmd FileType matlab inoremap % X%
-
-"""""""""""""""""
-" ABBREVIATIONS "
-"""""""""""""""""
-
-" Typos
-iabbrev @@      nirum@stanford.edu
-iabbrev adn     and
-iabbrev tehn    then
-iabbrev waht    what
-iabbrev teh     the
-iabbrev nriu    niru
-
-" TeX
-augroup TeX
-    autocmd!
-    autocmd FileType tex iabbrev <buffer> alpha   \alpha
-    autocmd FileType tex iabbrev <buffer> beta    \beta
-    autocmd FileType tex iabbrev <buffer> delta   \delta
-    autocmd FileType tex iabbrev <buffer> gamma   \gamma
-    autocmd FileType tex iabbrev <buffer> eta     \eta
-    autocmd FileType tex iabbrev <buffer> epsilon \epsilon
-augroup END
-
-
-"""""""""""""
-" HTML "
-"""""""""""""
 
 augroup web
     autocmd!
@@ -266,14 +215,103 @@ augroup web
 
 augroup END
 
+" }}}
 
-"""""""""""""
-" OTHER "
-"""""""""""""
-" indent lines
-noremap <tab> I<tab><esc>
+" Utilities ---------------------- {{{
 
-" Highlight bad whitespace
+" add semicolon to the end of the line
+noremap <Leader>j; <Esc>$a;<Esc>j
+
+" insert time
+noremap <Leader>time <Esc>"=strftime("%c")<CR>P
+
+
+" }}}
+
+" Save/Copy/Paste ---------------------- {{{
+
+" to save
+noremap <space> :w<CR>
+nnoremap <Leader>w :w<CR>
+inoremap <Leader>w <ESC>:w<CR>
+
+" save when focus is lost
+augroup focus
+    autocmd!
+    autocmd FocusLost * :wa
+augroup END
+
+" copy all
+noremap <Leader>co ggvG$y
+
+" select line
+noremap <Leader>vl 0v$
+
+" copy line (to clipboard)
+noremap <Leader>cl 0v$y:call system("pbcopy", getreg("\""))<CR>
+
+" edit rest of line
+noremap <Leader>cx v$hxa
+
+" pasting
+noremap <Leader>p :set paste<CR><c-v><ESC>:set nopaste<CR>
+
+" copy/paste with ctrl+c and ctrl+v in OSX
+vnoremap <c-c> y:call system("pbcopy", getreg("\""))<CR>
+nnoremap <c-v> :call setreg("\"",system("pbpaste"))<CR>p
+
+" delete until previous line
+noremap <Leader>b 0whvgelxi<space><Esc>
+
+" }}}
+
+" Abbreviations and Typos ---------------------- {{{
+
+" prose typos
+iabbrev @@      nirum@stanford.edu
+iabbrev adn     and
+iabbrev tehn    then
+iabbrev waht    what
+iabbrev teh     the
+iabbrev nriu    niru
+
+" command typos
+if has("user_commands")
+    command! -bang -nargs=? -complete=file E e<bang> <args>
+    command! -bang -nargs=? -complete=file W w<bang> <args>
+    command! -bang -nargs=? -complete=file Wq wq<bang> <args>
+    command! -bang -nargs=? -complete=file WQ wq<bang> <args>
+    command! -bang Wa wa<bang>
+    command! -bang WA wa<bang>
+    command! -bang Q q<bang>
+    command! -bang QA qa<bang>
+    command! -bang Qa qa<bang>
+endif
+
+" TeX
+augroup TeX
+    autocmd!
+    autocmd FileType tex iabbrev <buffer> alpha   \alpha
+    autocmd FileType tex iabbrev <buffer> beta    \beta
+    autocmd FileType tex iabbrev <buffer> delta   \delta
+    autocmd FileType tex iabbrev <buffer> gamma   \gamma
+    autocmd FileType tex iabbrev <buffer> eta     \eta
+    autocmd FileType tex iabbrev <buffer> epsilon \epsilon
+augroup END
+
+" }}}
+
+" Highlights, colors and themes ---------------------- {{{
+
+" hex highlight
+noremap <Leader>hh :call HexHighlight()<CR>
+
+" highlight spelling errors
+hi clear SpellBad
+hi SpellBad ctermbg=Red guibg=Red term=reverse
+noremap <Leader>sp :set spell!<CR>
+
+" highlight bad whitespace
 augroup coloring
     autocmd!
     autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -282,58 +320,13 @@ augroup coloring
 augroup END
 nnoremap <silent> <Leader>wsp :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+" Make the omnicomplete text readable
+highlight PmenuSel ctermfg=cyan ctermbg=black guifg=cyan guibg=black
+highlight Pmenu ctermfg=lightgrey ctermbg=darkgrey guifg=lightgrey guibg=darkgrey
+
 " Colorscheme
 set background=dark
 colorscheme ir_black
-
-set ofu=syntaxcomplete#Complete         " omnicomplete
-let g:SuperTabDefaultCompletionType = "context"
-set nocompatible                        " prevents vim from emulating vi's bugs
-set autoindent                          " automatic indenting
-set smartindent                         " smart indenting
-set tabstop=4                           " tab length (columns)
-set shiftwidth=4                        " tab length with reindent options (columns)
-set expandtab                           " tab inserts spaces in insert mode
-set smarttab                            " smart tabs
-set et                                  " appropriate tab spacing
-set showmatch                           " match brackets
-set guioptions-=T                       " turn off gui toolbar
-set guioptions-=m                       " turn off gui menu
-set noerrorbells                        " turn off error bells
-set visualbell                          " turn on visual bell
-set ruler                               " each window gets status line
-set history=500		                    " keep 500 lines of command line history
-set wildmenu                            " tab completion when file browsing
-set title                               " set vim title
-set nohls                               " no highlights on search
-set incsearch                           " search as you type
-set nobackup                            " no backup files
-set nowritebackup                       " only in case you don't want a backup file while editing
-set noswapfile                          " no swap files
-set autoread                            " auto read when file is changed externally
-set number                              " show line numbers
-set scrolloff=10                        " scroll buffer
-set encoding=utf-8                      " file encoding
-set cmdheight=1                         " command bar height
-set laststatus=2                        " always show the status line
-set nofoldenable                        " Say no to code folding...
-set formatoptions-=or                   " Don't add the comment prefix when I hit enter or o/O on a comment line.
-set showcmd		                        " display incomplete commands
-set gdefault                            " assume the /g flag on :s substitutions to replace all matches in a line
-set undofile                            " generates .un file so undo/redo work even after saving
-set ttyfast                             " faster drawing
-set noesckeys                           " kills function and cursor keys
-set clipboard=unnamed                   " support the Mac OSX clipboard
-set cpo+=J                              " two-spacing after sentences
-
-" backspace config
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" ignore case when searching, set default to replace on all lines
-set ignorecase
-set smartcase
-set gdefault
 
 " cursor colors
 hi Cursor guifg=white guibg=grey
@@ -347,60 +340,44 @@ elseif has("gui_macvim")
     let g:Powerline_symbols = 'fancy'
 endif
 
-" get current director
-function! CurDir()
-    let curdir = substitute(getcwd(), '/Users/nirum/', "~/", "g")
-    return curdir
-endfunction
+" }}}
 
-" show if I am in paste mode
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    else
-        return ''
-    endif
-endfunction
+" Generic Mappings ---------------------- {{{
 
-" Set the tag file search order
-set tags=./tags;
+" indent lines
+noremap <tab> I<tab><esc>
 
-" Use _ as a word-separator
-set iskeyword-=_
+" to escape
+inoremap kj <Esc>
+inoremap kJ <Esc>
+inoremap Kj <Esc>
+inoremap KJ <Esc>
 
-" Make the omnicomplete text readable
-:highlight PmenuSel ctermfg=cyan ctermbg=black guifg=cyan guibg=black
-:highlight Pmenu ctermfg=lightgrey ctermbg=darkgrey guifg=lightgrey guibg=darkgrey
+" use jj to get out of insert mode
+inoremap jj <Esc>
 
-" Fuzzy finder: ignore stuff that can't be opened, and generated files
-let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+" Center search matches when jumping
+noremap N Nzz
+noremap n nzz
 
-" When loading text files, wrap them and don't split up words. Automatically
-" save new text files.
-augroup textfiles
-    autocmd!
-    autocmd BufNewFile,BufRead *.txt setlocal wrap
-    autocmd BufNewFile,BufRead *.txt setlocal lbr
-    autocmd BufNewFile *.txt write
-    autocmd BufNewFile *.md  write
-    autocmd BufNewFile *.mkd write
-augroup END
+" common terminal commands
+noremap <Leader>ls :!ls<CR>
+noremap <Leader>md :!mkdir
+noremap <Leader>rm :!rm
+noremap <Leader>rmrf :!rm -rf
+noremap <Leader>du :!du -sh<CR>
+noremap <Leader>touch :!touch<space>
 
-" Merge a tab into a split in the previous window
-function! MergeTabs()
-  if tabpagenr() == 1
-    return
-  endif
-  let bufferName = bufname("%")
-  if tabpagenr("$") == tabpagenr()
-    close!
-  else
-    close!
-    tabprev
-  endif
-  split
-  execute "buffer " . bufferName
-endfunction
+" vim, you complete me
+"imap <Tab> <C-P>
+
+" Emacs-like beginning and end of line.
+inoremap <c-e> <c-o>$
+inoremap <c-a> <c-o>^
+
+" }}}
+
+" Functions ---------------------- {{{
 
 " Highlight HEX colors
 let s:HexColored = 0
@@ -439,6 +416,13 @@ function! HexHighlight()
     endif
 endfunction
 
-" Don't wait so long for the next keypress (particularly in ambigious Leader
-" situations.
-set timeoutlen=500
+" show if I am in paste mode
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    else
+        return ''
+    endif
+endfunction
+
+" }}}

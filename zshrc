@@ -1,3 +1,8 @@
+# Niru Maheswaranathan
+# ~/.zshrc file
+
+# oh-my-zsh ------------------- {{{
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -20,9 +25,14 @@ plugins=(git autojump brew git-extras lol osx vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
+# }}}
+
+# Basic options ------------------- {{{
+
+# Path
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin
 
+# fasd options
 eval "$(fasd --init auto)"
 export TERM=xterm-256color
 export CLICOLOR=1
@@ -32,18 +42,12 @@ export LC_CTYPE=en_US.UTF-8 # use unicode
 alias erc='mvim ~/.zshrc'
 alias src='source ~/.zshrc'
 
-# ldap search
-alias lds='ldapsearch -h ldap-dev.stanford.edu -b dc=stanford,dc=edu'
-
 # vim keybindings
 set -o vi
 
 # GCC
 GCC_INCLUDE_DIR=/usr/include/
 export GCC_INCLUDE_DIR
-
-# disk usage
-alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
 
 # tmux stuff
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
@@ -54,8 +58,19 @@ compctl -g '~/.teamocil/*(:t:r)' teamocil
 #copy the working directory into the clipboard
 alias cwd='pwd | pbcopy'
 
+# }}}
 
-## completion
+# Other ------------------- {{{
+
+# grep coloring
+export GREP_OPTIONS='--color=auto' # automatically color grep output
+
+# key bindings
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
+
+# colored ls output
+HOST=`hostname -s`
 
 # fuzzy matching
 zstyle ':completion:*' completer _complete _match _approximate
@@ -71,6 +86,16 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*:*:xdvi:*' menu yes select
 zstyle ':completion:*:*:xdvi:*' file-sort time
 
+# }}}
+
+# Aliases ------------------- {{{
+
+# ldap search
+alias lds='ldapsearch -h ldap-dev.stanford.edu -b dc=stanford,dc=edu'
+
+# disk usage
+alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
+
 ## aliases
 
 # suffix aliases
@@ -79,14 +104,16 @@ alias -s m=mvim
 alias -s py=python
 alias -s pdf=open
 
-# generic
+# navigation
 alias clc=clear # more cmd style alias
 alias la='ls -FAh'
 alias ls='ls -Fh'
 alias sl='ls -Fh'
-alias sg='gs'
 alias ..='cd ..;ls'
 alias .='echo $PWD'
+alias o='open .'
+
+# applications
 alias tcl='teamocil --here'
 alias m='mutt'
 alias nm='notifymail'
@@ -95,7 +122,6 @@ alias py='python'
 alias imap='offlineimap'
 alias i='offlineimap'
 alias c='cal'
-alias o='open .'
 alias calendar='cal'
 alias whos='who; mem;'
 
@@ -119,33 +145,22 @@ function cdl { cd $1; ls;}
 alias j='fasd_cd -d' # use j to jump between folders
 alias e='f -e mvim' # quick opening files with vim
 
-# The essential git commands.
+# extra git aliases
+alias sg='gs'
 alias gs='git st'
 alias gc='git cm'
 alias gd='git diff | mvim'
-eval "$(hub alias -s)"
 
-## MATLAB
+# matlab
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
 
-## ipython
+# ipython
 alias ipy='ipython --pylab'
 
-## useful things
-export GREP_OPTIONS='--color=auto' # automatically color grep output
-
-## latex templates
+# latex templates
 alias cpt='cp ~/.templates/latex/* .'
 
-## django
+# django
 alias rs='python manage.py runserver'
 
-## tman
-source ~/.tman/tman.conf
-
-## key bindings
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-forward
-
-## colored ls output
-HOST=`hostname -s`
+# }}}

@@ -30,17 +30,9 @@ noremap <Leader>gu :Git pull origin master<CR>
 let g:slime_target = "tmux"
 noremap <Leader>tm <Esc><c-c><c-c>:echo "Sent to tmux"<CR>
 
-" vim-wiki
-let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'path_html': '~/Documents/Web/wiki/', 'template_path': '~/Documents/Web/wiki/templates/', 'template_default': 'default', 'template_ext': '.html', 'auto_export': 0}]
-noremap <Leader>ref <Esc>o[[file:///Users/nirum/Dropbox/Papers/
-noremap <Leader>wp <Esc>:Vimwiki2HTML<CR>
-
 " command-t
 nnoremap <silent> <C-t> :CommandT<CR>
 nnoremap <silent> <C-b> :CommandTBuffer<CR>
-
-" vim-r-plugin
-let vimrplugin_screenplugin = 0
 
 " nerdtree
 nnoremap <Leader>nt :NERDTree<CR>

@@ -1,13 +1,18 @@
 [user]
-    	name = Niru Maheswaranathan
-    	email = nirum@stanford.edu
+   	name = Niru Maheswaranathan
+    email = nirum@stanford.edu
 
 [alias]
-    	cm = commit -m
-    	st = status -s
-    	a = add *
-    	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    	ignore = config --global core.excludesfile ~/.gitignore
+    cm = commit -m
+    st = status -s
+    a = add *
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ignore = config --global core.excludesfile ~/.gitignore
+    d = difftool
+
+[diff]
+    tool = vimdiff
+    prompt = false
 
 [core]
 	excludesfile = ~/.gitignore

@@ -91,6 +91,7 @@ alias tcl='teamocil --here'
 alias m='mutt'
 alias nm='notifymail'
 alias pm='pipemail'
+alias py='python'
 alias imap='offlineimap'
 alias i='offlineimap'
 alias c='cal'
@@ -122,9 +123,13 @@ alias e='f -e mvim' # quick opening files with vim
 alias gs='git st'
 alias gc='git cm'
 alias gd='git diff | mvim'
+eval "$(hub alias -s)"
 
 ## MATLAB
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
+
+## ipython
+alias ipy='ipython --pylab'
 
 ## useful things
 export GREP_OPTIONS='--color=auto' # automatically color grep output
@@ -134,6 +139,13 @@ alias cpt='cp ~/.templates/latex/* .'
 
 ## django
 alias rs='python manage.py runserver'
+
+## tman
+source ~/.tman/tman.conf
+
+## key bindings
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 
 ## colored ls output
 HOST=`hostname -s`

@@ -344,6 +344,9 @@ endif
 
 " Generic Mappings ---------------------- {{{
 
+" folding
+noremap <Leader>a za
+
 " indent lines
 noremap <tab> I<tab><esc>
 

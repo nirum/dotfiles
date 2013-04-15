@@ -29,7 +29,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Basic options ------------------- {{{
 
-# Path
+# path
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin
 
 # fasd options
@@ -124,6 +124,7 @@ alias i='offlineimap'
 alias c='cal'
 alias calendar='cal'
 alias whos='who; mem;'
+alias da='django-admin'
 
 # global aliases
 alias -g ...='../..'

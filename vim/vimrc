@@ -26,7 +26,7 @@ set noerrorbells                        " turn off error bells
 set visualbell                          " turn on visual bell
 set ruler                               " each window gets status line
 set history=500		                    " keep 500 lines of command line history
-set foldlevelstart=1                    " fold automatically
+set foldlevelstart=0                    " fold automatically
 set wildmenu                            " tab completion when file browsing
 set title                               " set vim title
 set nohls                               " no highlights on search
@@ -67,7 +67,7 @@ set gdefault
 
 augroup filetype_vim
     autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType vim,zsh setlocal foldmethod=marker
 augroup END
 
 " editing and sourcing vimrc

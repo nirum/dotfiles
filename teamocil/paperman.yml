@@ -1,0 +1,9 @@
+windows:
+  - name: "code"
+    root: "~/code/projects/paperman"
+    panes:
+      - cmd: "ls"
+  - name: "server"
+    root: "~/code/projects/paperman"
+    panes:
+      - cmd: "rs"

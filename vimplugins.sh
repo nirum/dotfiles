@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 
-echo "closetag.vim ..."
-git clone https://github.com/vim-scripts/closetag.vim vim/bundle/closetag.vim
-
 echo "command-t ..."
 git clone https://github.com/wincent/Command-T vim/bundle/command-t
 

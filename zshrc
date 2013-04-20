@@ -115,16 +115,21 @@ alias o='open .'
 
 # applications
 alias tcl='teamocil --here'
-alias m='mutt'
-alias nm='notifymail'
-alias pm='pipemail'
 alias py='python'
-alias imap='offlineimap'
-alias i='offlineimap'
+alias py3='python3'
+alias tman='py3 /Users/nirum/code/projects/tman/tman.py'
 alias c='cal'
 alias calendar='cal'
 alias whos='who; mem;'
 alias da='django-admin'
+
+# mail
+alias i='offlineimap'
+alias m='mutt'
+alias nm='notmuch new'
+alias pm='pipemail'
+alias kimap="kill -9 $(ps -A | grep '[o]fflineimap' | cut -c-5)"
+alias imap="ps -A | grep '[o]fflineimap'"
 
 # global aliases
 alias -g ...='../..'

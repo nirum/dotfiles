@@ -1,0 +1,45 @@
+[submodule "vim/bundle/jslint"]
+	path = vim/bundle/jslint
+	url = https://github.com/hallettj/jslint.vim
+[submodule "vim/bundle/nerdcommener"]
+	path = vim/bundle/nerdcommener
+	url = https://github.com/scrooloose/nerdcommenter
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = https://github.com/wincent/Command-T
+[submodule "vim/bundle/snipmate"]
+	path = vim/bundle/snipmate
+	url = https://github.com/nirum/snipmate
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/bundle/vim-gitgutter"]
+	path = vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "vim/bundle/vim-json"]
+	path = vim/bundle/vim-json
+	url = https://github.com/leshill/vim-json
+[submodule "vim/bundle/vim-less"]
+	path = vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less
+[submodule "vim/bundle/vim-matlab-fold"]
+	path = vim/bundle/vim-matlab-fold
+	url = https://github.com/djoshea/vim-matlab-fold
+[submodule "vim/bundle/vim-powerline"]
+	path = vim/bundle/vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline
+[submodule "vim/bundle/vim-slime"]
+	path = vim/bundle/vim-slime
+	url = https://github.com/jpalardy/vim-slime
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/bundle/YouCompleteMe"]
+	path = vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe

@@ -30,6 +30,9 @@ git submodule add https://github.com/leshill/vim-json vim/bundle/vim-json
 echo "vim-less ..."
 git submodule add https://github.com/groenewege/vim-less vim/bundle/vim-less
 
+echo "vim-markdown ..."
+git submodule add https://github.com/tpope/vim-markdown vim/bundle/vim-markdown
+
 echo "vim-matlab-fold ..."
 git submodule add https://github.com/djoshea/vim-matlab-fold vim/bundle/vim-matlab-fold
 

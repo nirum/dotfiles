@@ -87,3 +87,5 @@ alias rs='python manage.py runserver'
 HOST=`hostname -s`
 PS1='\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;31m\]\h\[\033[00;34m\]{\[\033[01;34m\]\w\[\033[00;34m\]}\[\033[01;32m\]:\[\033[00m\] '
 export LSCOLORS='ExGxFxdxCxDxDxBxBxExEx'
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

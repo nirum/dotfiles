@@ -145,9 +145,6 @@ alias -g T='| tail'
 alias lenna='ssh -CY lenna'
 alias tonto='ssh -CY niru@tonto'
 
-# functions
-function cdl { cd $1; ls;}
-
 ## fasd aliases
 alias j='fasd_cd -d' # use j to jump between folders
 alias e='f -e mvim' # quick opening files with vim
@@ -173,5 +170,23 @@ alias rs='python manage.py runserver'
 # other
 alias sv='sudo vim'
 alias svim='sudo vim'
+
+# }}}
+
+# Functions ------------------- {{{
+
+# change dir and ls
+function cdl { cd $1; ls;}
+
+# server
+function server() {
+    open "http://localhost:8000/"
+    python -m SimpleHTTPServer 8000
+}
+
+# make dir and cd
+function mcd () {
+    mkdir -p "$@" && cd "$@"
+}
 
 # }}}

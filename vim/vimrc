@@ -149,6 +149,12 @@ nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
 let g:slime_target = "tmux"
 noremap <Leader>tm <Esc><c-c><c-c>:echo "Sent to tmux"<CR>
 
+" tabularize
+if exists(":Tabularize")
+  nmap <Leader>= :Tabularize /=<CR>
+  vmap <Leader>= :Tabularize /=<CR>
+endif
+
 " }}}
 
 " FileType-specific settings ---------------------- {{{

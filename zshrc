@@ -51,6 +51,7 @@ export GCC_INCLUDE_DIR
 
 # tmux stuff
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+alias tls='tmux ls'
 
 # teamocil autocomplete
 compctl -g '~/.teamocil/*(:t:r)' teamocil
@@ -168,5 +169,9 @@ alias cpt='cp ~/.templates/latex/* .'
 
 # django
 alias rs='python manage.py runserver'
+
+# other
+alias sv='sudo vim'
+alias svim='sudo vim'
 
 # }}}

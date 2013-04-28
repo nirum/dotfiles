@@ -125,6 +125,7 @@ let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;
 
 " command-t
 nnoremap <silent> <C-t> :CommandT<CR>
+nnoremap <silent> <C-l> :CommandTFlush<CR>
 nnoremap <silent> <C-b> :CommandTBuffer<CR>
 
 " change to common directories
@@ -200,24 +201,32 @@ augroup web
     autocmd!
 
     " for CSS, also have things in braces indented:
-		autocmd FileType css set smartindent
+	autocmd FileType css set smartindent
 
-    "" for HTML, generally format text, but if a long line has been created
-    "" leave it alone when editing:
-		autocmd FileType html set formatoptions+=tl
+    " for HTML, generally format text, but if a long line has been created
+    " leave it alone when editing:
+	autocmd FileType html set formatoptions+=tl
 
-    "" for both CSS and HTML, use genuine tab characters for
-    "" indentation, to make files a few bytes smaller:
-		autocmd FileType html,css set noexpandtab tabstop=2
+    " for both CSS and HTML, use genuine tab characters for
+    " indentation, to make files a few bytes smaller:
+	autocmd FileType html,css set noexpandtab tabstop=2
 
-    "" automatically indent before writing
-		"autocmd BufWritePre,BufRead *.html normal
+    " automatically indent before writing
+	"autocmd BufWritePre,BufRead *.html normal
 
-    "" don't wrap html
-		autocmd BufWritePre,BufRead *.html setlocal nowrap
+    " don't wrap html
+	autocmd BufWritePre,BufRead *.html setlocal nowrap
 
-    "" format XML files
-		autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+    " format XML files
+	autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
+    " Beautify
+    " for JS
+    autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+    " for html
+    autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+    " for css or scss
+    autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 augroup END
 

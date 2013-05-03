@@ -150,7 +150,7 @@ nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
 let g:slime_target = "tmux"
 noremap <Leader>tm <Esc><c-c><c-c>:echo "Sent to tmux"<CR>
 
-" tabularize
+" tabularize (alignment)
 if exists(":Tabularize")
   nmap <Leader>= :Tabularize /=<CR>
   vmap <Leader>= :Tabularize /=<CR>
@@ -370,6 +370,10 @@ inoremap kj <Esc>
 inoremap kJ <Esc>
 inoremap Kj <Esc>
 inoremap KJ <Esc>
+inoremap jk <Esc>
+inoremap jK <Esc>
+inoremap Jk <Esc>
+inoremap JK <Esc>
 
 " use jj to get out of insert mode
 inoremap jj <Esc>

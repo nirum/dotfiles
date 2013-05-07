@@ -151,10 +151,10 @@ let g:slime_target = "tmux"
 noremap <Leader>tm <Esc><c-c><c-c>:echo "Sent to tmux"<CR>
 
 " tabularize (alignment)
-if exists(":Tabularize")
-  nmap <Leader>= :Tabularize /=<CR>
-  vmap <Leader>= :Tabularize /=<CR>
-endif
+nmap <Leader>= :Tabularize /=<CR>
+nmap <Leader>% :Tabularize /%<CR>
+vmap <Leader>= :Tabularize /=<CR>
+vmap <Leader>% :Tabularize /%<CR>
 
 " }}}
 
@@ -211,8 +211,9 @@ augroup web
     " indentation, to make files a few bytes smaller:
 	autocmd FileType html,css set noexpandtab tabstop=2
 
-    " automatically indent before writing
-	"autocmd BufWritePre,BufRead *.html normal
+    " closetag
+    autocmd FileType html,xml,xsl source ~/.vim/scripts/closetag.vim
+    let g:closetag_html_style=1
 
     " don't wrap html
 	autocmd BufWritePre,BufRead *.html setlocal nowrap

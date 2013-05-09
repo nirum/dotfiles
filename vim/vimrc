@@ -236,7 +236,8 @@ augroup END
 " Utilities ---------------------- {{{
 
 " add semicolon to the end of the line
-noremap <Leader>j; <Esc>$a;<Esc>j
+nnoremap  <Leader>j; <Esc>$a;<Esc>j;;
+inoremap  <Leader>j; <Esc>$a;<Esc>j;;
 
 " insert time
 noremap <Leader>time <Esc>"=strftime("%c")<CR>P

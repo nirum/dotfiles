@@ -158,6 +158,7 @@ alias glg='git lg'
 
 # matlab
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
+alias lsc='head -n 5' # output first few lines of the file (to show header comments)
 
 # ipython
 alias ipy='ipython --pylab'

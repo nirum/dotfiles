@@ -148,7 +148,6 @@ nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
 
 " vim-slime
 let g:slime_target = "tmux"
-noremap <Leader>tm <Esc><c-c><c-c>:echo "Sent to tmux"<CR>
 
 " tabularize (alignment)
 nmap <Leader>= :Tabularize /=<CR>

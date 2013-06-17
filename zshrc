@@ -152,6 +152,7 @@ alias e='f -e mvim' # quick opening files with vim
 
 # extra git aliases
 alias sg='gs'
+alias lgs='gs'
 alias gs='git st'
 alias gc='git cm'
 alias gd='git diff | mvim'

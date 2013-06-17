@@ -165,6 +165,18 @@ alias lsc='head -n 5' # output first few lines of the file (to show header comme
 # ipython
 alias ipy='ipython --pylab'
 
+# spotify
+alias sp='spotify'
+alias spst='spotify status'
+alias spl='spotify play'
+alias sps='spotify pause'
+alias spn='spotify next'
+alias spp='spotify prev'
+alias spu='spotify vol up'
+alias spd='spotify vol down'
+alias spv='spotify vol'
+alias spq='spotify quit'
+
 # latex templates
 alias cpt='cp ~/.templates/latex/* .'
 

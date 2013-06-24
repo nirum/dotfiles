@@ -130,7 +130,7 @@ alias i='offlineimap'
 alias m='mutt'
 alias nm='notmuch new'
 alias pm='pipemail'
-alias kimap="kill -9 $(ps -A | grep '[o]fflineimap' | cut -c-5)"
+alias kimap="pkill -9 python"
 alias imap="ps -A | grep '[o]fflineimap'"
 
 # global aliases
@@ -169,7 +169,7 @@ alias ipy='ipython --pylab'
 alias sp='spotify'
 alias spst='spotify status'
 alias spl='spotify play'
-alias sps='spotify pause'
+alias spa='spotify pause'
 alias spn='spotify next'
 alias spp='spotify prev'
 alias spu='spotify vol up'

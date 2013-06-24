@@ -89,7 +89,7 @@ noremap <Leader>ga :Gwrite<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gp :Git push origin master<CR>
-noremap <Leader>gu :Git pull origin master<CR>
+noremap <Leader>gl :Git pull origin master<CR>
 
 " }}}
 
@@ -364,7 +364,7 @@ endif
 noremap <Leader>a za
 
 " indent lines
-noremap <tab> I<tab><esc>
+nnoremap <tab> I<tab><esc>
 
 " to escape
 inoremap kj <Esc>
@@ -392,7 +392,7 @@ noremap <Leader>du :!du -sh<CR>
 noremap <Leader>touch :!touch<space>
 
 " vim, you complete me
-"imap <Tab> <C-P>
+imap <tab> <C-P>
 
 " Emacs-like beginning and end of line.
 inoremap <c-e> <c-o>$

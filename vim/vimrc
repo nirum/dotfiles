@@ -123,11 +123,6 @@ endfunction
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 
-" command-t
-nnoremap <silent> <C-t> :CommandT<CR>
-nnoremap <silent> <C-l> :CommandTFlush<CR>
-nnoremap <silent> <C-b> :CommandTBuffer<CR>
-
 " change to common directories
 noremap <Leader>db :cd ~/Dropbox<cr>
 noremap <Leader>doc :cd ~/Documents<cr>
@@ -139,6 +134,11 @@ noremap <Leader>cd :cd<space>
 
 " Plugins ---------------------- {{{
 
+" command-t
+nnoremap <silent> <C-t> :CommandT<CR>
+nnoremap <silent> <C-l> :CommandTFlush<CR>
+nnoremap <silent> <C-b> :CommandTBuffer<CR>
+
 " map comment commands (NERD Commenter)
 map <Leader>mm <Leader>c<space>
 
@@ -148,6 +148,9 @@ nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
 
 " vim-slime
 let g:slime_target = "tmux"
+
+" dash
+nmap <silent> <leader>d <Plug>DashSearch
 
 " tabularize (alignment)
 nmap <Leader>= :Tabularize /=<CR>
@@ -159,27 +162,8 @@ vmap <Leader>% :Tabularize /%<CR>
 
 " FileType-specific settings ---------------------- {{{
 
-" insert shortened matlab comment prefix
-noremap <Leader>mat <Esc>ggi% <CR>% Niru Maheswaranathan<CR>% <C-R>=strftime("%c")<CR><CR><CR><Esc>ggla
-
-" insert full matlab prefix
-noremap <Leader>fmat <Esc>ggi%<CR>% <CR>%<CR>% USAGE:<CR>%  <CR>%<CR>% VERSION 1.0, <C-R>=strftime("%c")<CR>         Initial version<CR>%<CR>% AUTHOR: Niru Maheswaranathan<CR>%         nirum@stanford.edu<CR><CR><CR><Esc>gga
-
-" matlab header
-noremap <Leader>hdr <Esc>I% ======================================================<CR>% ===================== ??? ======================<CR>% ======================================================<CR><Esc>kkwwcw
-
 " insert function comment line (matlab)
 noremap <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
-
-" css comment prefix
-noremap <Leader>css <Esc>ggi/* <CR> * Niru Maheswaranathan<CR>* <C-R>=strftime("%c")<CR><CR>*/<CR><CR><Esc>gg2la
-
-" LaTeX commands
-noremap <Leader>tex :!./build.sh %<CR>
-
-" hashbangs
-noremap <Leader>bash <Esc>ggi#! /bin/bash<Esc>o
-noremap <Leader>py <Esc>ggi#! /usr/bin/python<Esc>o
 
 " When loading text files, wrap them and don't split up words. Automatically
 " save new text files.
@@ -238,10 +222,6 @@ augroup END
 nnoremap  <Leader>j; <Esc>$a;<Esc>j;;
 inoremap  <Leader>j; <Esc>$a;<Esc>j;;
 
-" insert time
-noremap <Leader>time <Esc>"=strftime("%c")<CR>P
-
-
 " }}}
 
 " Save/Copy/Paste ---------------------- {{{
@@ -271,6 +251,8 @@ noremap <Leader>cx v$hxa
 
 " pasting
 noremap <Leader>p :set paste<CR><c-v><ESC>:set nopaste<CR>
+nmap <c-p> <Plug>yankstack_substitute_older_paste
+nmap <c-P> <Plug>yankstack_substitute_older_paste
 
 " copy/paste with ctrl+c and ctrl+v in OSX
 vnoremap <c-c> y:call system("pbcopy", getreg("\""))<CR>
@@ -375,9 +357,8 @@ inoremap jk <Esc>
 inoremap jK <Esc>
 inoremap Jk <Esc>
 inoremap JK <Esc>
-
-" use jj to get out of insert mode
 inoremap jj <Esc>
+inoremap kk <Esc>
 
 " Center search matches when jumping
 noremap N Nzz
@@ -385,14 +366,6 @@ noremap n nzz
 
 " common terminal commands
 noremap <Leader>ls :!ls<CR>
-noremap <Leader>md :!mkdir
-noremap <Leader>rm :!rm
-noremap <Leader>rmrf :!rm -rf
-noremap <Leader>du :!du -sh<CR>
-noremap <Leader>touch :!touch<space>
-
-" vim, you complete me
-imap <tab> <C-P>
 
 " Emacs-like beginning and end of line.
 inoremap <c-e> <c-o>$

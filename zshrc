@@ -164,6 +164,7 @@ alias lsc='head -n 5' # output first few lines of the file (to show header comme
 
 # ipython
 alias ipy='ipython --pylab'
+alias ipyn='ipython notebook --pylab=inline'
 
 # spotify
 alias sp='spotify'
@@ -182,9 +183,6 @@ alias cpt='cp ~/.templates/latex/* .'
 
 # django
 alias rs='python manage.py runserver'
-
-# json
-alias -g json='| python -mjson.tool'
 
 # other
 alias sv='sudo vim'

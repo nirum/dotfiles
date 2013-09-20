@@ -138,9 +138,13 @@ noremap <Leader>cd :cd<space>
 nnoremap <silent> <C-t> :CommandT<CR>
 nnoremap <silent> <C-l> :CommandTFlush<CR>
 nnoremap <silent> <C-b> :CommandTBuffer<CR>
+let g:CommandTMaxDepth=1
 
 " map comment commands (NERD Commenter)
 map <Leader>mm <Leader>c<space>
+
+" YouCompleteMe (ycm)
+let g:ycm_min_num_of_chars_for_completion = 4
 
 " syntastic
 let g:syntastic_enable_signs=0
@@ -295,6 +299,10 @@ augroup TeX
     autocmd FileType tex iabbrev <buffer> gamma   \gamma
     autocmd FileType tex iabbrev <buffer> eta     \eta
     autocmd FileType tex iabbrev <buffer> epsilon \epsilon
+
+    " surround with $
+    autocmd FileType tex nnoremap 44 i$<Esc>ea$<Esc>
+    autocmd FileType tex nnoremap 77 i&<Esc>ea&<Esc>
 augroup END
 
 " }}}
@@ -336,6 +344,7 @@ if has("gui_gtk2")
 elseif has("gui_macvim")
     set guifont=Inconsolata\ for\ Powerline:h16
     let g:Powerline_symbols = 'fancy'
+    let g:airline_powerline_fonts=1
 endif
 
 " }}}

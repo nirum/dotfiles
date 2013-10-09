@@ -163,8 +163,8 @@ alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
 alias lsc='head -n 5' # output first few lines of the file (to show header comments)
 
 # ipython
-alias ipy='ipython --pylab'
-alias ipyn='ipython notebook --pylab=inline'
+alias ipy='ipython --pylab --banner --nosep'
+alias ipynb='ipython notebook --profile=mbp'
 
 # spotify
 alias sp='spotify'

@@ -28,6 +28,7 @@ set ruler                               " each window gets status line
 set history=500		                    " keep 500 lines of command line history
 set foldlevelstart=0                    " fold automatically
 set wildmenu                            " tab completion when file browsing
+set wildignore+=*.png,*.jpg,*.pdf       " ignore certain files
 set title                               " set vim title
 set nohls                               " no highlights on search
 set incsearch                           " search as you type
@@ -138,7 +139,7 @@ noremap <Leader>cd :cd<space>
 nnoremap <silent> <C-t> :CommandT<CR>
 nnoremap <silent> <C-l> :CommandTFlush<CR>
 nnoremap <silent> <C-b> :CommandTBuffer<CR>
-let g:CommandTMaxDepth=1
+let g:CommandTMaxDepth=3
 
 " map comment commands (NERD Commenter)
 map <Leader>mm <Leader>c<space>
@@ -359,15 +360,7 @@ nnoremap <tab> I<tab><esc>
 
 " to escape
 inoremap kj <Esc>
-inoremap kJ <Esc>
-inoremap Kj <Esc>
-inoremap KJ <Esc>
 inoremap jk <Esc>
-inoremap jK <Esc>
-inoremap Jk <Esc>
-inoremap JK <Esc>
-inoremap jj <Esc>
-inoremap kk <Esc>
 
 " Center search matches when jumping
 noremap N Nzz

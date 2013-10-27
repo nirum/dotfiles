@@ -211,11 +211,11 @@ augroup web
 
     " Beautify
     " for JS
-    autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+    autocmd FileType javascript noremap <buffer>  <c-p> :call JsBeautify()<cr>
     " for html
-    autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+    autocmd FileType html noremap <buffer> <c-p> :call HtmlBeautify()<cr>
     " for css or scss
-    autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+    autocmd FileType css noremap <buffer> <c-p> :call CSSBeautify()<cr>
 
 augroup END
 
@@ -310,12 +310,17 @@ augroup END
 
 " Highlights, colors and themes ---------------------- {{{
 
-" hex highlight
-noremap <Leader>hh :call HexHighlight()<CR>
+" Colorscheme (put this first)
+set background=dark
+colorscheme ir_black
+
+" color column
+highlight ColorColumn guibg=#303030
+let &colorcolumn="80,".join(range(120,999),",")
 
 " highlight spelling errors
 hi clear SpellBad
-hi SpellBad ctermbg=Red guibg=Red term=reverse
+hi SpellBad guibg=#562323 term=reverse
 noremap <Leader>sp :set spell!<CR>
 
 " highlight bad whitespace
@@ -328,15 +333,11 @@ augroup END
 nnoremap <silent> <Leader>wsp :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Make the omnicomplete text readable
-highlight PmenuSel ctermfg=cyan ctermbg=black guifg=cyan guibg=black
-highlight Pmenu ctermfg=lightgrey ctermbg=darkgrey guifg=lightgrey guibg=darkgrey
-
-" Colorscheme
-set background=dark
-colorscheme ir_black
+highlight PmenuSel guifg=cyan guibg=#303030
+highlight Pmenu guifg=#cccccc guibg=#303030
 
 " cursor colors
-hi Cursor guifg=white guibg=grey
+hi Cursor guifg=cyan guibg=grey
 set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 
 " fonts
@@ -375,44 +376,7 @@ inoremap <c-a> <c-o>^
 
 " }}}
 
-" Functions ---------------------- {{{
-
-" Highlight HEX colors
-let s:HexColored = 0
-let s:HexColors = []
-function! HexHighlight()
-    if has("gui_running")
-        if s:HexColored == 0
-            let hexGroup = 4
-            let lineNumber = 0
-            while lineNumber <= line("$")
-                let currentLine = getline(lineNumber)
-                let hexLineMatch = 1
-                while match(currentLine, '#\x\{6}', 0, hexLineMatch) != -1
-                    let hexMatch = matchstr(currentLine, '#\x\{6}', 0, hexLineMatch)
-                    exe 'hi hexColor'.hexGroup.' guifg='.hexMatch.' guibg='.hexMatch
-                    exe 'let m = matchadd("hexColor'.hexGroup.'", "'.hexMatch.'", 25, '.hexGroup.')'
-                    let s:HexColors += ['hexColor'.hexGroup]
-                    let hexGroup += 1
-                    let hexLineMatch += 1
-                endwhile
-                let lineNumber += 1
-            endwhile
-            unlet lineNumber hexGroup
-            let s:HexColored = 1
-            echo "Highlighting hex colors..."
-        elseif s:HexColored == 1
-            for hexColor in s:HexColors
-                exe 'highlight clear '.hexColor
-            endfor
-            call clearmatches()
-            let s:HexColored = 0
-            echo "Unhighlighting hex colors..."
-        endif
-    else
-        echo "HexHighlight only works with a graphical version of vim"
-    endif
-endfunction
+"" Functions ---------------------- {{{
 
 " show if I am in paste mode
 function! HasPaste()

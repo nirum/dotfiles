@@ -17,12 +17,13 @@ DISABLE_UPDATE_PROMPT=true
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
-export UPDATE_ZSH_DAYS=5
+export UPDATE_ZSH_DAYS=1
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git autojump brew git-extras lol osx vi-mode)
+#plugins=(git autojump brew git-extras lol osx vi-mode)
+plugins=(git autojump bower brew git-extras lol github osx node npm pip)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -143,8 +144,9 @@ alias -g S='| sort'
 alias -g T='| tail'
 
 # ssh aliases
-alias lenna='ssh -CY lenna'
-alias tonto='ssh -CY niru@tonto'
+alias lenna='ssh -CY lenna.stanford.edu'
+alias cardinal='ssh -CY cardinal.stanford.edu'
+alias tonto='ssh -CY niru@tonto.stanford.edu'
 
 ## fasd aliases
 alias j='fasd_cd -d' # use j to jump between folders
@@ -155,6 +157,7 @@ alias sg='gs'
 alias lgs='gs'
 alias gs='git st'
 alias gc='git cm'
+alias gca='git commit -a'
 alias gd='git diff | mvim'
 alias glg='git lg'
 
@@ -204,6 +207,17 @@ function server() {
 # make dir and cd
 function mcd () {
     mkdir -p "$@" && cd "$@"
+}
+
+# echo lol plugin commands
+function lol {
+    echo "man\trtfm"
+    echo "cd\thai"
+    echo "ps -aux\tnomz"
+    echo "halt\tkthxbai"
+    echo "mkdir\ticanhas"
+    echo "rm\tdonotwant"
+    echo "cp\tdowant"
 }
 
 # }}}
@@ -270,5 +284,5 @@ fi
 
 # }}}
 
-### Added by the Heroku Toolbelt
+# Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"

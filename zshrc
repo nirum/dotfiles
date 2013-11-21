@@ -23,7 +23,7 @@ export UPDATE_ZSH_DAYS=1
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git autojump brew git-extras lol osx vi-mode)
-plugins=(git autojump bower brew git-extras lol github osx node npm pip)
+plugins=(git autojump bower brew git-extras lol github osx vi-mode node npm pip)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -54,6 +54,7 @@ export GCC_INCLUDE_DIR
 # tmux stuff
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 alias tls='tmux ls'
+alias tma='tmux attach -d -t'
 
 # teamocil autocomplete
 compctl -g '~/.teamocil/*(:t:r)' teamocil
@@ -143,6 +144,9 @@ alias -g G="| grep"
 alias -g S='| sort'
 alias -g T='| tail'
 
+# notebooks
+alias spokes='mvim ~/Dropbox/web/spokes/index.md'
+
 # ssh aliases
 alias lenna='ssh -CY lenna.stanford.edu'
 alias cardinal='ssh -CY cardinal.stanford.edu'
@@ -199,26 +203,29 @@ alias svim='sudo vim'
 function cdl { cd $1; ls;}
 
 # server
-function server() {
+function serve() {
     open "http://localhost:8000/"
-    python -m SimpleHTTPServer 8000
+    http-server -p 8000
 }
 
 # make dir and cd
-function mcd () {
+function mcd() {
     mkdir -p "$@" && cd "$@"
 }
 
 # echo lol plugin commands
 function lol {
-    echo "man\trtfm"
     echo "cd\thai"
-    echo "ps -aux\tnomz"
-    echo "halt\tkthxbai"
-    echo "mkdir\ticanhas"
-    echo "rm\tdonotwant"
     echo "cp\tdowant"
+    echo "man\trtfm"
+    echo "mkdir\ticanhas"
+    echo "mv\tgetme"
+    echo "ps -aux\tnomz"
+    echo "rm\tdonotwant"
 }
+
+# other lol commands
+alias getme='mv'
 
 # }}}
 

@@ -1,8 +1,15 @@
 # use pasteboard wrapper
 set-option -g default-command "reattach-to-user-namespace -l zsh"
 
+# modifier key
+unbind C-b
 set-option -g prefix C-s    # set ctrl-s to be the prefix
+
+# moving through windows / panes
 bind-key C-s last-pane      # binds a key for last window
+
+# start window numbering at 1
+set -g base-index 1
 
 # act like vim
 setw -g mode-keys vi
@@ -21,15 +28,18 @@ set-window-option -g mode-keys vi
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
 
+# unicode (utf-8)
+setw -g utf8 on
+set -g status-utf8 on
+
 # tmux-powerline
-set-option -g status on
-set-option -g status-interval 2
-set-option -g status-utf8 on
-#set-option -g status-justify "centre"
-set-option -g status-left-length 60
-set-option -g status-right-length 90
-set-option -g status-left "#(~/code/dotfiles/tmux-powerline/powerline.sh left)"
-set-option -g status-right "#(~/code/dotfiles/tmux-powerline/powerline.sh right)"
+set -g status on
+set -g status-interval 2
+#set -g status-justify "centre"
+set -g status-left-length 60
+set -g status-right-length 90
+set -g status-left "#(~/code/dotfiles/tmux-powerline/powerline.sh left)"
+set -g status-right "#(~/code/dotfiles/tmux-powerline/powerline.sh right)"
 set -g status-bg default
 
 # Automatically set window title
@@ -44,11 +54,10 @@ unbind X
 bind X "kill-pane"
 
 # mouse-select-pane [on | off]
-# # #   If on, tmux captures the mouse and when a window is
-# # #   split into multiple panes the mouse may be used to
-# # #   select the current pane.  The mouse click is also
-# # #   passed through to the application as normal.
-# # #
+#   If on, tmux captures the mouse and when a window is
+#   split into multiple panes the mouse may be used to
+#   select the current pane.  The mouse click is also
+#   passed through to the application as normal.
 set -g mouse-select-pane on
 
 # look good

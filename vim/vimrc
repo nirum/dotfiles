@@ -370,7 +370,7 @@ let g:airline_paste_symbol = 'ρ'
 let g:airline_left_alt_sep = '>'
 let g:airline_right_alt_sep = '<'
 let g:airline_readonly_symbol = 'R'
-let g:airline_section_z = '%{strftime("%c")}'
+let g:airline_section_z = '%{strftime("%l:%M %p %D")}'
 
 " }}}
 

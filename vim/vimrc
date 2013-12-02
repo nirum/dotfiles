@@ -135,6 +135,9 @@ noremap <Leader>cd :cd<space>
 
 " Plugins ---------------------- {{{
 
+" emmet (HTML expander)
+let g:user_emmet_leader_key = '<c-e>'
+
 " command-t
 nnoremap <silent> <C-t> :CommandT<CR>
 nnoremap <silent> <C-l> :CommandTFlush<CR>
@@ -357,9 +360,9 @@ let g:airline_enable_fugitive=1
 let g:airline_enable_syntastic=1
 let g:airline_theme='dark'
 "let g:airline_left_sep = '»'
-let g:airline_left_sep = '>'
+let g:airline_left_sep = '⟫'
 "let g:airline_right_sep = '«'
-let g:airline_right_sep = '<'
+let g:airline_right_sep = '⟪'
 "let g:airline_linecolumn_prefix = '␊ '
 "let g:airline_linecolumn_prefix = '␤ '
 let g:airline_linecolumn_prefix = '¶'
@@ -367,8 +370,6 @@ let g:airline_fugitive_prefix = '⎇ '
 let g:airline_paste_symbol = 'ρ'
 "let g:airline_paste_symbol = 'Þ'
 "let g:airline_paste_symbol = '∥'
-let g:airline_left_alt_sep = '>'
-let g:airline_right_alt_sep = '<'
 let g:airline_readonly_symbol = 'R'
 let g:airline_section_z = '%{strftime("%l:%M %p %D")}'
 

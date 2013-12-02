@@ -10,7 +10,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="daveverwer"
+ZSH_THEME="cloud"
 
 # auto updates
 DISABLE_UPDATE_PROMPT=true
@@ -55,6 +55,7 @@ export GCC_INCLUDE_DIR
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 alias tls='tmux ls'
 alias tma='tmux attach -d -t'
+alias tmn='tmux new -s'
 
 # teamocil autocomplete
 compctl -g '~/.teamocil/*(:t:r)' teamocil
@@ -110,7 +111,7 @@ alias -s pdf=open
 
 # navigation
 alias clc=clear # more cmd style alias
-alias la='ls -FAh'
+alias la='ls -FAhl'
 alias ls='ls -Fh'
 alias sl='ls -Fh'
 alias ..='cd ..;ls'
@@ -118,7 +119,7 @@ alias .='echo $PWD'
 alias o='open .'
 
 # applications
-alias tcl='teamocil --here'
+alias tcl='teamocil'
 alias py='python'
 alias py3='python3'
 alias tman='py3 /Users/nirum/code/projects/tman/tman.py'
@@ -170,7 +171,7 @@ alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
 alias lsc='head -n 5' # output first few lines of the file (to show header comments)
 
 # ipython
-alias ipy='ipython --pylab --banner --nosep'
+alias ipy='ipython --pylab --nosep'
 alias ipynb='ipython notebook --profile=mbp'
 
 # spotify
@@ -291,5 +292,6 @@ fi
 
 # }}}
 
-# Added by the Heroku Toolbelt
+# PATH stuff
+export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin"
 export PATH="/usr/local/heroku/bin:$PATH"

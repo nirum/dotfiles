@@ -189,8 +189,8 @@ alias spq='spotify quit'
 # latex templates
 alias cpt='cp ~/.templates/latex/* .'
 
-# django
-alias rs='python manage.py runserver'
+# rsync
+alias rs='rsync -avz'
 
 # other
 alias sv='sudo vim'

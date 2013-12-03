@@ -1,7 +1,0 @@
-windows:
-  - name: "sample-two-panes"
-    root: "~/code/"
-    layout: even-horizontal
-    panes:
-      - cmd: ["pwd", "ls -la"]
-      - cmd: "ls"

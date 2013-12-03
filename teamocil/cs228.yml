@@ -1,9 +1,0 @@
-windows:
-  - name: "matlab"
-    root: "~"
-    panes:
-      - cmd: "matlab"
-  - name: "cs228"
-    root: "~"
-    panes:
-      - cmd: "j cs228; clear; ls;"

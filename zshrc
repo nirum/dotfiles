@@ -22,8 +22,8 @@ export UPDATE_ZSH_DAYS=1
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(git autojump brew git-extras lol osx vi-mode)
-plugins=(git autojump bower brew git-extras lol github osx vi-mode node npm pip)
+#plugins=(git autojump bower brew git-extras lol github osx vi-mode node npm pip)
+plugins=(git autojump bower brew git-extras lol osx vi-mode node npm pip)
 
 source $ZSH/oh-my-zsh.sh
 

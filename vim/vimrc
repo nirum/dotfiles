@@ -161,6 +161,8 @@ let g:slime_target = "tmux"
 
 " dash
 nmap <silent> <leader>d <Plug>DashSearch
+nnoremap K :call investigate#Investigate()<CR>
+let g:investigate_use_dash=1
 
 " tabularize (alignment)
 nmap <Leader>= :Tabularize /=<CR>

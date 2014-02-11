@@ -73,6 +73,19 @@ export GREP_OPTIONS='--color=auto' # automatically color grep output
 # key bindings
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
+bindkey -v
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+# kill the lag
+export KEYTIMEOUT=1
 
 # colored ls output
 HOST=`hostname -s`
@@ -106,7 +119,7 @@ alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)
 # suffix aliases
 alias -s tex=mvim
 alias -s m=mvim
-alias -s py=python
+alias -s py=mvim
 alias -s pdf=open
 
 # navigation
@@ -120,21 +133,11 @@ alias o='open .'
 
 # applications
 alias tcl='teamocil'
-alias py='python'
-alias py3='python3'
 alias tman='py3 /Users/nirum/code/projects/tman/tman.py'
 alias c='cal'
 alias calendar='cal'
-alias whos='who; mem;'
+alias whos='who'
 alias da='django-admin'
-
-# mail
-alias i='offlineimap'
-alias m='mutt'
-alias nm='notmuch new'
-alias pm='pipemail'
-alias kimap="pkill -9 python"
-alias imap="ps -A | grep '[o]fflineimap'"
 
 # global aliases
 alias -g ...='../..'
@@ -143,10 +146,10 @@ alias -g .....='../../../..'
 alias -g L="| less"
 alias -g G="| grep"
 alias -g S='| sort'
-alias -g T='| tail'
+alias -g json='| python -mjson.tool'
 
 # notebooks
-alias spokes='mvim ~/Dropbox/web/spokes/index.md'
+alias alex='mvim ~/Dropbox/web/alexandria/index.md'
 
 # ssh aliases
 alias lenna='ssh -CY lenna.stanford.edu'
@@ -166,13 +169,19 @@ alias gca='git commit -a'
 alias gd='git diff | mvim'
 alias glg='git lg'
 
+# macvim
+alias v='mvim'
+
 # matlab
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
 alias lsc='head -n 5' # output first few lines of the file (to show header comments)
 
 # ipython
-alias ipy='ipython --pylab --nosep'
+alias ipy='ipython --nosep --profile=mbp'
 alias ipynb='ipython notebook --profile=mbp'
+
+# markdown
+alias mdpy='markdown_py -x mathjax'
 
 # spotify
 alias sp='spotify'
@@ -224,6 +233,22 @@ function lol {
     echo "ps -aux\tnomz"
     echo "rm\tdonotwant"
 }
+
+# echo virtualenv and virtualenvwrapper commands
+function ve {
+    echo "mkv myEnv\t\tmkvirtualenv myEnv"
+    echo "byebye\t\t\tdeactivate"
+    echo "lsv\t\t\tlsvirtualenv"
+    echo "guts\t\t\tlssitepackages"
+    echo "workon myEnv"
+    echo "rmvirtualenv myEnv"
+    echo "cdvirtualenv"
+    echo "cdsitepackages"
+}
+alias mkv='mkvirtualenv'
+alias lsv='lsvirtualenv'
+alias byebye='deactivate'
+alias guts='lssitepackages'
 
 # other lol commands
 alias getme='mv'
@@ -295,3 +320,6 @@ fi
 # PATH stuff
 export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# virtualenvwrapper
+source /usr/local/bin/virtualenvwrapper.sh

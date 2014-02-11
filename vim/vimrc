@@ -27,6 +27,7 @@ set visualbell                          " turn on visual bell
 set ruler                               " each window gets status line
 set history=500		                    " keep 500 lines of command line history
 set foldlevelstart=0                    " fold automatically
+set lazyredraw                          " redraw only when we need to
 set wildmenu                            " tab completion when file browsing
 set wildignore+=*.png,*.jpg,*.pdf       " ignore certain files
 set title                               " set vim title
@@ -136,7 +137,7 @@ noremap <Leader>cd :cd<space>
 " Plugins ---------------------- {{{
 
 " emmet (HTML expander)
-let g:user_emmet_leader_key = '<c-e>'
+"let g:user_emmet_leader_key = '<c-y>'
 
 " command-t
 nnoremap <silent> <C-t> :CommandT<CR>
@@ -150,7 +151,7 @@ map <Leader>mm <Leader>c<space>
 " YouCompleteMe (ycm)
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 0
 
 " syntastic
 let g:syntastic_enable_signs=0
@@ -167,8 +168,10 @@ let g:investigate_use_dash=1
 " tabularize (alignment)
 nmap <Leader>= :Tabularize /=<CR>
 nmap <Leader>% :Tabularize /%<CR>
+nmap <Leader># :Tabularize /#<CR>
 vmap <Leader>= :Tabularize /=<CR>
 vmap <Leader>% :Tabularize /%<CR>
+vmap <Leader># :Tabularize /#<CR>
 
 " }}}
 
@@ -176,6 +179,12 @@ vmap <Leader>% :Tabularize /%<CR>
 
 " insert function comment line (matlab)
 noremap <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
+
+augroup filetype_python
+    autocmd!
+    autocmd FileType python setlocal foldmethod=indent
+    autocmd FileType python inoremap # X#
+augroup END
 
 " When loading text files, wrap them and don't split up words. Automatically
 " save new text files.
@@ -189,7 +198,6 @@ augroup textfiles
 augroup END
 
 " fix comment auto-indenting for different languages
-autocmd FileType python inoremap # X#
 autocmd FileType matlab inoremap % X%
 
 augroup web
@@ -244,10 +252,10 @@ nnoremap <Leader>w :w<CR>
 inoremap <Leader>w <ESC>:w<CR>
 
 " save when focus is lost
-augroup focus
-    autocmd!
-    autocmd FocusLost * :wa
-augroup END
+"augroup focus
+    "autocmd!
+    "autocmd FocusLost * :wa
+"augroup END
 
 " copy all
 noremap <Leader>co ggvG$y
@@ -351,8 +359,7 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 if has("gui_gtk2")
     set guifont=Deja\ Vu\ Sans\ Mono\ 10
 elseif has("gui_macvim")
-    "set guifont=Inconsolata\ for\ Powerline:h16
-    set guifont=Cosmic\ Sans\ Neue\ Mono\ for\ Powerline:h16
+    set guifont=Cosmic\ Sans\ Neue\ Mono\ for\ Powerline:h18
     let g:Powerline_symbols = 'fancy'
 endif
 

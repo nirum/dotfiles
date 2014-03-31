@@ -2,6 +2,7 @@
 
 echo "Linking vim ..."
 ln -fs ${PWD}/vim/vimrc ~/.vimrc
+ln -fs ${PWD}/vim/encrypted_vimrc ~/.encrypted_vimrc
 rm ~/.vim
 ln -fs ${PWD}/vim ~/.vim
 

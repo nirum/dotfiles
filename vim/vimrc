@@ -53,6 +53,7 @@ set cpo+=J                              " two-spacing after sentences
 set iskeyword-=_                        " Use _ as a word-separator
 set timeoutlen=500                      " Don't wait so long for the next keypress
 set tags=./tags;                        " Set the tag file search order
+set cm=blowfish                         " Use blowfish for encryting files
 
 " backspace config
 set backspace=eol,start,indent
@@ -149,9 +150,11 @@ let g:CommandTMaxDepth=3
 map <Leader>mm <Leader>c<space>
 
 " YouCompleteMe (ycm)
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_insertion = 0
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_auto_trigger = 0
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " syntastic
 let g:syntastic_enable_signs=0
@@ -183,6 +186,7 @@ noremap <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
 augroup filetype_python
     autocmd!
     autocmd FileType python setlocal foldmethod=indent
+    autocmd FileType python setlocal foldlevelstart=1
     autocmd FileType python inoremap # X#
 augroup END
 
@@ -387,7 +391,7 @@ let g:airline_section_z = '%{strftime("%l:%M %p %D")}'
 " Generic Mappings ---------------------- {{{
 
 " folding
-noremap <Leader>a za
+noremap <Leader>a zA
 
 " indent lines
 nnoremap <tab> I<tab><esc>

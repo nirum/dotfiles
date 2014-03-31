@@ -1,0 +1,4 @@
+set background=dark
+set nobackup
+set noswapfile
+set nowritebackup

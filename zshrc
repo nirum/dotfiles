@@ -119,7 +119,7 @@ alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)
 # suffix aliases
 alias -s tex=mvim
 alias -s m=mvim
-alias -s py=mvim
+#alias -s py=mvim
 alias -s pdf=open
 
 # navigation
@@ -138,6 +138,7 @@ alias c='cal'
 alias calendar='cal'
 alias whos='who'
 alias da='django-admin'
+alias pym='python manage.py'
 
 # global aliases
 alias -g ...='../..'
@@ -169,8 +170,9 @@ alias gca='git commit -a'
 alias gd='git diff | mvim'
 alias glg='git lg'
 
-# macvim
+# macvim / encrypted vim
 alias v='mvim'
+alias vimenc='mvim -u ~/.encrypted_vimrc'
 
 # matlab
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
@@ -320,6 +322,7 @@ fi
 # PATH stuff
 export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
+export PYTHONPATH="$PYTHONPATH:/Users/nirum/code/toolbox/python-utils"
 
 # virtualenvwrapper
 source /usr/local/bin/virtualenvwrapper.sh

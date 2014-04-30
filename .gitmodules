@@ -31,6 +31,33 @@
 [submodule "vim/bundle/vim-matlab-fold"]
 	path = vim/bundle/vim-matlab-fold
 	url = https://github.com/djoshea/vim-matlab-fold
+[submodule "tmux-powerline"]
+	path = tmux-powerline
+	url = https://github.com/Lokaltog/powerline
+[submodule "ag.vim"]
+	path = vim/bundle/ag.vim
+	url = https://github.com/rking/ag.vim
+[submodule "emmet-vim"]
+	path = vim/bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim
+[submodule "investigate.com"]
+	path = vim/bundle/investigate.vim
+	url = https://github.com/Keithbsmiley/investigate.vim
+[submodule "vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "vim-autoclose"]
+	path = vim/bundle/vim-autoclose
+	url = https://github.com/Townk/vim-autoclose
+[submodule "vim-yankstack"]
+	path = vim/bundle/vim-yankstack
+	url = https://github.com/maxbrunsfeld/vim-yankstack
+[submodule "vim-jsbeautify"]
+	path = vim/bundle/vim-jsbeautify
+	url = https://github.com/maksimr/vim-jsbeautify
+[submodule "vim-css-color"]
+	path = vim/bundle/vim-css-color
+	url = https://github.com/skammer/vim-css-color
 [submodule "vim/bundle/vim-powerline"]
 	path = vim/bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline

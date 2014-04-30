@@ -137,13 +137,10 @@ noremap <Leader>cd :cd<space>
 " Plugins ---------------------- {{{
 
 " emmet (HTML expander)
-"let g:user_emmet_leader_key = '<c-y>'
+let g:user_emmet_leader_key = '<c-y>'
 
-" command-t
-"nnoremap <silent> <C-t> :CommandT<CR>
-"nnoremap <silent> <C-l> :CommandTFlush<CR>
-"nnoremap <silent> <C-b> :CommandTBuffer<CR>
-"let g:CommandTMaxDepth=3
+" ctrl-p (CtrlP)
+map <c-t> :CtrlP .
 
 " map comment commands (NERD Commenter)
 map <Leader>mm <Leader>c<space>

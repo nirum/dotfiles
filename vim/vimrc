@@ -140,10 +140,10 @@ noremap <Leader>cd :cd<space>
 "let g:user_emmet_leader_key = '<c-y>'
 
 " command-t
-nnoremap <silent> <C-t> :CommandT<CR>
-nnoremap <silent> <C-l> :CommandTFlush<CR>
-nnoremap <silent> <C-b> :CommandTBuffer<CR>
-let g:CommandTMaxDepth=3
+"nnoremap <silent> <C-t> :CommandT<CR>
+"nnoremap <silent> <C-l> :CommandTFlush<CR>
+"nnoremap <silent> <C-b> :CommandTBuffer<CR>
+"let g:CommandTMaxDepth=3
 
 " map comment commands (NERD Commenter)
 map <Leader>mm <Leader>c<space>

@@ -40,9 +40,6 @@
 [submodule "investigate.com"]
 	path = vim/bundle/investigate.vim
 	url = https://github.com/Keithbsmiley/investigate.vim
-[submodule "vim-airline"]
-	path = vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline
 [submodule "vim-autoclose"]
 	path = vim/bundle/vim-autoclose
 	url = https://github.com/Townk/vim-autoclose
@@ -55,9 +52,6 @@
 [submodule "vim-css-color"]
 	path = vim/bundle/vim-css-color
 	url = https://github.com/skammer/vim-css-color
-[submodule "vim/bundle/vim-powerline"]
-	path = vim/bundle/vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline
 [submodule "vim/bundle/vim-slime"]
 	path = vim/bundle/vim-slime
 	url = https://github.com/jpalardy/vim-slime

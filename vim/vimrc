@@ -25,8 +25,8 @@ set guioptions-=m                       " turn off gui menu
 set noerrorbells                        " turn off error bells
 set visualbell                          " turn on visual bell
 set ruler                               " each window gets status line
-set history=500		                 " keep 500 lines of command line history
-set foldlevelstart=0                    " fold automatically
+set history=500		                    " keep 500 lines of command line history
+set foldlevelstart=1                    " fold automatically
 set lazyredraw                          " redraw only when we need to
 set wildmenu                            " tab completion when file browsing
 set wildignore+=*.png,*.jpg,*.pdf       " ignore certain files
@@ -53,7 +53,6 @@ set cpo+=J                              " two-spacing after sentences
 set iskeyword-=_                        " Use _ as a word-separator
 set timeoutlen=500                      " Don't wait so long for the next keypress
 set tags=./tags;                        " Set the tag file search order
-set cm=blowfish                         " Use blowfish for encryting files
 
 " backspace config
 set backspace=eol,start,indent
@@ -149,13 +148,6 @@ let g:CommandTMaxDepth=3
 " map comment commands (NERD Commenter)
 map <Leader>mm <Leader>c<space>
 
-" YouCompleteMe (ycm)
-let g:ycm_min_num_of_chars_for_completion = 3
-let g:ycm_auto_trigger = 0
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
 " syntastic
 let g:syntastic_enable_signs=0
 nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
@@ -185,8 +177,7 @@ noremap <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
 
 augroup filetype_python
     autocmd!
-    autocmd FileType python setlocal foldmethod=indent
-    autocmd FileType python setlocal foldlevelstart=1
+    "autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python inoremap # X#
 augroup END
 
@@ -361,7 +352,7 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 
 " fonts
 if has("gui_gtk2")
-    set guifont=Deja\ Vu\ Sans\ Mono\ 10
+    set guifont=Ubuntu\ Mono\ 14
 elseif has("gui_macvim")
     set guifont=Cosmic\ Sans\ Neue\ Mono\ for\ Powerline:h18
     let g:Powerline_symbols = 'fancy'

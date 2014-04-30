@@ -28,8 +28,8 @@
 [submodule "vim/bundle/vim-matlab-fold"]
 	path = vim/bundle/vim-matlab-fold
 	url = https://github.com/djoshea/vim-matlab-fold
-[submodule "tmux-powerline"]
-	path = tmux-powerline
+[submodule "powerline"]
+	path = powerline
 	url = https://github.com/Lokaltog/powerline
 [submodule "ag.vim"]
 	path = vim/bundle/ag.vim

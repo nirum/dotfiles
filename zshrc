@@ -33,6 +33,7 @@ source $ZSH/oh-my-zsh.sh
 
 # path
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin
+export PYTHONPATH=$PYTHONPATH:/home/nirum/code/toolbox/python-utils
 
 # fasd options
 eval "$(fasd --init auto)"
@@ -180,6 +181,7 @@ alias lsc='head -n 5' # output first few lines of the file (to show header comme
 
 # ipython
 alias ipy='ipython --nosep --profile=mbp'
+alias ipyl='ipython --nosep --profile=lenna'
 alias ipynb='ipython notebook --profile=mbp'
 
 # markdown

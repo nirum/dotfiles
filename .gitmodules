@@ -28,9 +28,9 @@
 [submodule "vim/bundle/vim-matlab-fold"]
 	path = vim/bundle/vim-matlab-fold
 	url = https://github.com/djoshea/vim-matlab-fold
-[submodule "powerline"]
-	path = powerline
-	url = https://github.com/Lokaltog/powerline
+[submodule "vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline
 [submodule "ag.vim"]
 	path = vim/bundle/ag.vim
 	url = https://github.com/rking/ag.vim

@@ -68,6 +68,9 @@ alias cwd='pwd | pbcopy'
 
 # Other ------------------- {{{
 
+# fix pip (bypass clang error on os x)
+alias fixpip='sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip'
+
 # grep coloring
 export GREP_OPTIONS='--color=auto' # automatically color grep output
 

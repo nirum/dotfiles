@@ -274,7 +274,6 @@ noremap <Leader>cx v$hxa
 
 " pasting
 noremap <Leader>p :set paste<CR><c-v><ESC>:set nopaste<CR>
-nmap <c-p> <Plug>yankstack_substitute_older_paste
 nmap <c-P> <Plug>yankstack_substitute_older_paste
 
 " copy/paste with ctrl+c and ctrl+v in OSX

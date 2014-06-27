@@ -46,9 +46,6 @@
 [submodule "vim-yankstack"]
 	path = vim/bundle/vim-yankstack
 	url = https://github.com/maxbrunsfeld/vim-yankstack
-[submodule "vim-jsbeautify"]
-	path = vim/bundle/vim-jsbeautify
-	url = https://github.com/maksimr/vim-jsbeautify
 [submodule "vim-css-color"]
 	path = vim/bundle/vim-css-color
 	url = https://github.com/skammer/vim-css-color
@@ -67,3 +64,6 @@
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git

@@ -120,6 +120,9 @@ alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)
 
 ## aliases
 
+# generate password(s)
+alias genpass='python ~/code/genpass.py'
+
 # suffix aliases
 alias -s tex=mvim
 alias -s m=mvim
@@ -328,6 +331,10 @@ fi
 export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PYTHONPATH="$PYTHONPATH:/Users/nirum/code/toolbox/python-utils"
+
+export MAGICK_HOME="/Users/nirum/code/repositories/ImageMagick-6.8.9"
+export PATH="$MAGICK_HOME/bin:$PATH"
+export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"
 
 # virtualenvwrapper
 source /usr/local/bin/virtualenvwrapper.sh

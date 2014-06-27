@@ -137,6 +137,7 @@ noremap <Leader>cd :cd<space>
 " Plugins ---------------------- {{{
 
 " vim-airline (statusline)
+let g:airline_symbols = {}
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
@@ -151,7 +152,8 @@ let g:airline_theme='powerlineish'
 let g:user_emmet_leader_key = '<c-y>'
 
 " ctrl-p (CtrlP)
-map <c-t> :CtrlP .<cr>
+let g:ctrlp_map = '<c-t>'
+"map <c-t> :CtrlP .<cr>
 
 " map comment commands (NERD Commenter)
 map <Leader>mm <Leader>c<space>
@@ -361,7 +363,7 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 if has("gui_gtk2")
     set guifont=Ubuntu\ Mono\ 14
 elseif has("gui_macvim")
-    set guifont=Cosmic\ Sans\ Neue\ Mono\ for\ Powerline:h18
+    set guifont=Cosmic\ Sans\ Neue\ Mono\ for\ Powerline:h14
     let g:Powerline_symbols = 'fancy'
 endif
 

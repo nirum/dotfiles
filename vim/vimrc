@@ -14,8 +14,8 @@ let g:SuperTabDefaultCompletionType = "context"
 set nocompatible                        " prevents vim from emulating vi's bugs
 set autoindent                          " automatic indenting
 set smartindent                         " smart indenting
-set tabstop=4                           " tab length (columns)
-set shiftwidth=4                        " tab length with reindent options (columns)
+set tabstop=2                           " tab length (columns)
+set shiftwidth=2                        " tab length with reindent options (columns)
 set expandtab                           " tab inserts spaces in insert mode
 set smarttab                            " smart tabs
 set et                                  " appropriate tab spacing
@@ -148,9 +148,6 @@ let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 let g:airline_theme='powerlineish'
 
-" emmet (HTML expander)
-let g:user_emmet_leader_key = '<c-y>'
-
 " ctrl-p (CtrlP)
 let g:ctrlp_map = '<c-t>'
 "map <c-t> :CtrlP .<cr>
@@ -178,6 +175,9 @@ vmap <Leader>= :Tabularize /=<CR>
 vmap <Leader>% :Tabularize /%<CR>
 vmap <Leader># :Tabularize /#<CR>
 
+" vim-mustache-handlebars
+let g:mustache_abbreviations = 1
+
 " }}}
 
 " FileType-specific settings ---------------------- {{{
@@ -187,7 +187,7 @@ noremap <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
 
 augroup filetype_python
     autocmd!
-    "autocmd FileType python setlocal foldmethod=indent
+    autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python inoremap # X#
 augroup END
 
@@ -231,11 +231,11 @@ augroup web
 
     " Beautify
     " for JS
-    autocmd FileType javascript noremap <buffer>  <c-p> :call JsBeautify()<cr>
+    "autocmd FileType javascript noremap <buffer>  <c-p> :call JsBeautify()<cr>
     " for html
-    autocmd FileType html noremap <buffer> <c-p> :call HtmlBeautify()<cr>
+    "autocmd FileType html noremap <buffer> <c-p> :call HtmlBeautify()<cr>
     " for css or scss
-    autocmd FileType css noremap <buffer> <c-p> :call CSSBeautify()<cr>
+    "autocmd FileType css noremap <buffer> <c-p> :call CSSBeautify()<cr>
 
 augroup END
 
@@ -363,7 +363,7 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 if has("gui_gtk2")
     set guifont=Ubuntu\ Mono\ 14
 elseif has("gui_macvim")
-    set guifont=Cosmic\ Sans\ Neue\ Mono\ for\ Powerline:h14
+    set guifont=Cosmic\ Sans\ Neue\ Mono\ for\ Powerline:h16
     let g:Powerline_symbols = 'fancy'
 endif
 

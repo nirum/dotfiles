@@ -22,18 +22,14 @@ export UPDATE_ZSH_DAYS=1
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(git autojump bower brew git-extras lol github osx vi-mode node npm pip)
-plugins=(git autojump bower brew git-extras lol osx vi-mode node npm pip)
+#plugins=(git autojump bower brew git-extras lol osx vi-mode node npm pip github)
+plugins=(fasd bower vi-mode catimg dircycle dirhistory gitfast jsontools npm pip osx pip rand-quote tmux web-search)
 
 source $ZSH/oh-my-zsh.sh
 
 # }}}
 
 # Basic options ------------------- {{{
-
-# path
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin
-export PYTHONPATH=$PYTHONPATH:/home/nirum/code/toolbox/python-utils
 
 # fasd options
 eval "$(fasd --init auto)"
@@ -328,8 +324,7 @@ fi
 # }}}
 
 # PATH stuff
-export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin"
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin:/usr/local/go/bin:/usr/local/heroku/bin"
 export PYTHONPATH="$PYTHONPATH:/Users/nirum/code/toolbox/python-utils"
 
 export MAGICK_HOME="/Users/nirum/code/repositories/ImageMagick-6.8.9"
@@ -338,3 +333,6 @@ export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"
 
 # virtualenvwrapper
 source /usr/local/bin/virtualenvwrapper.sh
+
+# tmux
+export ZSH_TMUX_AUTOSTART=true

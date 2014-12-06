@@ -118,6 +118,7 @@ alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)
 
 # generate password(s)
 alias genpass='python ~/code/genpass.py'
+alias pw='node ~/code/projects/unpw/index.js'
 
 # suffix aliases
 alias -s tex=mvim
@@ -172,6 +173,9 @@ alias gc='git cm'
 alias gca='git commit -a'
 alias gd='git diff | mvim'
 alias glg='git lg'
+
+# imagemagick
+alias resize='mogrify -resize'
 
 # macvim / encrypted vim
 alias v='mvim'

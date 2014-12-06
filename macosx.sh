@@ -21,8 +21,8 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 2
 #echo "Enable iTunes track notifications in the Dock"
 #defaults write com.apple.dock itunes-notifications -bool true
 
-echo "Enable menu bar transparency"
-defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool true
+#echo "Enable menu bar transparency"
+#defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool true
 
 # Show remaining battery time; hide percentage
 # defaults write com.apple.menuextra.battery ShowPercent -string "NO"
@@ -167,9 +167,9 @@ defaults write com.apple.iTunes disablePing -bool true
 echo "Make ⌘ + F focus the search input in iTunes"
 defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
 
-echo "Disable send and reply animations in Mail.app"
-defaults write com.apple.Mail DisableReplyAnimations -bool true
-defaults write com.apple.Mail DisableSendAnimations -bool true
+#echo "Disable send and reply animations in Mail.app"
+#defaults write com.apple.Mail DisableReplyAnimations -bool true
+#defaults write com.apple.Mail DisableSendAnimations -bool true
 
 echo "Copy email addresses in Mail.app as foo@bar.com instead of (bracket)Foo bar(close bracket) foo@bar.com"
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false

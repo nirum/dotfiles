@@ -331,7 +331,7 @@ augroup END
 
 " Colorscheme (put this first)
 set background=dark
-colorscheme Monokai
+colorscheme spacegray
 
 " color column
 highlight ColorColumn guibg=#303030

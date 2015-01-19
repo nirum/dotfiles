@@ -6,6 +6,11 @@ ln -fs ${PWD}/vim/encrypted_vimrc ~/.encrypted_vimrc
 rm ~/.vim
 ln -fs ${PWD}/vim ~/.vim
 
+echo "Linking nvim ..."
+ln -fs ${PWD}/nvim/nvimrc ~/.nvimrc
+rm ~/.nvim
+ln -fs ${PWD}/nvim ~/.nvim
+
 echo "Linking tmux ..."
 ln -fs ${PWD}/tmux_conf ~/.tmux.conf
 ln -fs ${PWD}/tmux-powerlinerc ~/.tmux-powerlinerc

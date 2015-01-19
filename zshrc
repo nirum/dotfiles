@@ -10,7 +10,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="cloud"
+ZSH_THEME="bira"
 
 # auto updates
 DISABLE_UPDATE_PROMPT=true
@@ -187,6 +187,7 @@ alias lsc='head -n 5' # output first few lines of the file (to show header comme
 
 # ipython
 alias ipy='ipython --nosep --profile=mbp'
+alias ipy3='ipython3 --nosep --profile=mbp'
 alias ipyl='ipython --nosep --profile=lenna'
 alias ipynb='ipython notebook --profile=mbp'
 

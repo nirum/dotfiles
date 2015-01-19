@@ -14,7 +14,7 @@ let g:SuperTabDefaultCompletionType = "context"
 set nocompatible                        " prevents vim from emulating vi's bugs
 set autoindent                          " automatic indenting
 set smartindent                         " smart indenting
-set tabstop=2                           " tab length (columns)
+set tabstop=4                           " tab length (columns)
 set shiftwidth=2                        " tab length with reindent options (columns)
 set expandtab                           " tab inserts spaces in insert mode
 set smarttab                            " smart tabs

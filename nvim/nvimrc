@@ -20,7 +20,7 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'skammer/vim-css-color'
 Plug 'jpalardy/vim-slime'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-markdown'
+"Plug 'tpope/vim-markdown'
 Plug 'flazz/vim-colorschemes'
 Plug 'kien/ctrlp.vim'
 Plug 'pangloss/vim-javascript'
@@ -218,14 +218,14 @@ augroup END
 
 " When loading text files, wrap them and don't split up words. Automatically
 " save new text files.
-augroup textfiles
-    autocmd!
-    autocmd BufNewFile,BufRead *.txt setlocal wrap
-    autocmd BufNewFile,BufRead *.txt setlocal lbr
-    autocmd BufNewFile *.txt write
-    autocmd BufNewFile *.md  write
-    autocmd BufNewFile *.mkd write
-augroup END
+"augroup textfiles
+    "autocmd!
+    "autocmd BufNewFile,BufRead *.txt setlocal wrap
+    "autocmd BufNewFile,BufRead *.txt setlocal lbr
+    "autocmd BufNewFile *.txt write
+    "autocmd BufNewFile *.md  write
+    "autocmd BufNewFile *.mkd write
+"augroup END
 
 " fix comment auto-indenting for different languages
 autocmd FileType matlab inoremap % X%
@@ -238,21 +238,18 @@ augroup web
 
     " for HTML, generally format text, but if a long line has been created
     " leave it alone when editing:
-	autocmd FileType html set formatoptions+=tl
+	"autocmd FileType html set formatoptions+=tl
 
     " for both CSS and HTML, use genuine tab characters for
     " indentation, to make files a few bytes smaller:
-	autocmd FileType html,css set noexpandtab tabstop=2
+	"autocmd FileType html,css set noexpandtab tabstop=2
 
     " closetag
-    autocmd FileType html,xml,xsl source ~/.vim/scripts/closetag.vim
-    let g:closetag_html_style=1
+    "autocmd FileType html,xml,xsl source ~/.nvim/scripts/closetag.vim
+    "let g:closetag_html_style=1
 
     " don't wrap html
-	autocmd BufWritePre,BufRead *.html setlocal nowrap
-
-    " format XML files
-	autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+	"autocmd BufWritePre,BufRead *.html setlocal nowrap
 
     " Beautify
     " for JS
@@ -359,8 +356,8 @@ augroup END
 colorscheme ir_black
 
 " color column
-highlight ColorColumn guibg=#303030
-let &colorcolumn="80"
+"highlight ColorColumn guibg=#303030
+"let &colorcolumn="80"
 
 " highlight spelling errors
 hi clear SpellBad

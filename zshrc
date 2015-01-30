@@ -38,7 +38,7 @@ export CLICOLOR=1
 export LC_CTYPE=en_US.UTF-8 # use unicode
 
 # edit this file!
-alias erc='mvim ~/.zshrc'
+alias erc='nvim ~/.zshrc'
 alias src='source ~/.zshrc'
 
 # vim keybindings
@@ -121,9 +121,9 @@ alias genpass='python ~/code/genpass.py'
 alias pw='node ~/code/projects/unpw/index.js'
 
 # suffix aliases
-alias -s tex=mvim
-alias -s m=mvim
-#alias -s py=mvim
+alias -s tex=nvim
+alias -s m=nvim
+alias -s py=nvim
 alias -s pdf=open
 
 # navigation
@@ -153,9 +153,6 @@ alias -g G="| grep"
 alias -g S='| sort'
 alias -g json='| python -mjson.tool'
 
-# notebooks
-alias alex='mvim ~/Dropbox/web/alexandria/index.md'
-
 # ssh aliases
 alias lenna='ssh -CY lenna.stanford.edu'
 alias cardinal='ssh -CY cardinal.stanford.edu'
@@ -163,7 +160,7 @@ alias tonto='ssh -CY niru@tonto.stanford.edu'
 
 ## fasd aliases
 alias j='fasd_cd -d' # use j to jump between folders
-alias e='f -e mvim' # quick opening files with vim
+alias e='f -e nvim' # quick opening files with vim
 
 # extra git aliases
 alias sg='gs'
@@ -171,25 +168,25 @@ alias lgs='gs'
 alias gs='git st'
 alias gc='git cm'
 alias gca='git commit -a'
-alias gd='git diff | mvim'
+alias gd='git diff'
 alias glg='git lg'
 
 # imagemagick
 alias resize='mogrify -resize'
 
-# macvim / encrypted vim
-alias v='mvim'
-alias vimenc='mvim -u ~/.encrypted_vimrc'
+# neovim
+alias v='nvim'
 
 # matlab
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
 alias lsc='head -n 5' # output first few lines of the file (to show header comments)
 
 # ipython
-alias ipy='ipython --nosep --profile=mbp'
+alias ipy='ipython2 --nosep --profile=mbp'
 alias ipy3='ipython3 --nosep --profile=mbp'
-alias ipyl='ipython --nosep --profile=lenna'
-alias ipynb='ipython notebook --profile=mbp'
+alias ipyl='ipython2 --nosep --profile=lenna'
+alias nb='ipython2 notebook --profile=mbp'
+alias nb3='ipython3 notebook --profile=mbp'
 
 # markdown
 alias mdpy='markdown_py -x mathjax'
@@ -213,8 +210,8 @@ alias cpt='cp ~/.templates/latex/* .'
 alias rs='rsync -avz'
 
 # other
-alias sv='sudo vim'
-alias svim='sudo vim'
+alias sv='sudo nvim'
+alias svim='sudo nvim'
 
 # }}}
 
@@ -330,7 +327,6 @@ fi
 
 # PATH stuff
 export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin:/usr/local/go/bin:/usr/local/heroku/bin"
-export PYTHONPATH="$PYTHONPATH:/Users/nirum/code/toolbox/python-utils"
 
 export MAGICK_HOME="/Users/nirum/code/repositories/ImageMagick-6.8.9"
 export PATH="$MAGICK_HOME/bin:$PATH"

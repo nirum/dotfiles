@@ -16,7 +16,7 @@
 
 [core]
 	excludesfile = ~/.gitignore
-	editor = mvim
+	editor = nvim
 
 [merge]
 	tool = vimdiff

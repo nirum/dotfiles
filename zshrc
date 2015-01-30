@@ -188,21 +188,6 @@ alias ipyl='ipython2 --nosep --profile=lenna'
 alias nb='ipython2 notebook --profile=mbp'
 alias nb3='ipython3 notebook --profile=mbp'
 
-# markdown
-alias mdpy='markdown_py -x mathjax'
-
-# spotify
-alias sp='spotify'
-alias spst='spotify status'
-alias spl='spotify play'
-alias spa='spotify pause'
-alias spn='spotify next'
-alias spp='spotify prev'
-alias spu='spotify vol up'
-alias spd='spotify vol down'
-alias spv='spotify vol'
-alias spq='spotify quit'
-
 # latex templates
 alias cpt='cp ~/.templates/latex/* .'
 

@@ -15,14 +15,11 @@ echo "Linking tmux ..."
 ln -fs ${PWD}/tmux_conf ~/.tmux.conf
 ln -fs ${PWD}/tmux-powerlinerc ~/.tmux-powerlinerc
 
-echo "Linking teamocil ..."
-ln -fs ${PWD}/teamocil ~/.teamocil
-
 echo "Linking git ..."
 ln -fs ${PWD}/git/gitconfig ~/.gitconfig
 ln -fs ${PWD}/git/gitignore ~/.gitignore
 
-echo "Linking bash profile ..."
+echo "Linking shell profiles ..."
 ln -fs ${PWD}/bash_profile ~/.bash_profile
 ln -fs ${PWD}/zshrc ~/.zshrc
 

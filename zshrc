@@ -23,11 +23,12 @@ export UPDATE_ZSH_DAYS=1
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git autojump bower brew git-extras lol osx vi-mode node npm pip github)
-plugins=(fasd bower vi-mode catimg dircycle dirhistory gitfast jsontools npm pip osx pip rand-quote tmux web-search)
+#plugins=(fasd bower vi-mode catimg dircycle dirhistory gitfast jsontools npm pip osx pip rand-quote tmux web-search)
+plugins=(fasd bower vi-mode pip npm osx tmux)
 
 source $ZSH/oh-my-zsh.sh
 
-# }}}
+## }}}
 
 # Basic options ------------------- {{{
 
@@ -37,7 +38,7 @@ export TERM=xterm-256color
 export CLICOLOR=1
 export LC_CTYPE=en_US.UTF-8 # use unicode
 
-# edit this file!
+# edit this file
 alias erc='nvim ~/.zshrc'
 alias src='source ~/.zshrc'
 
@@ -48,24 +49,15 @@ set -o vi
 GCC_INCLUDE_DIR=/usr/include/
 export GCC_INCLUDE_DIR
 
-# tmux stuff
-PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+## tmux stuff
+#PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 alias tls='tmux ls'
 alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
 
-# teamocil autocomplete
-compctl -g '~/.teamocil/*(:t:r)' teamocil
+## }}}
 
-#copy the working directory into the clipboard
-alias cwd='pwd | pbcopy'
-
-# }}}
-
-# Other ------------------- {{{
-
-# fix pip (bypass clang error on os x)
-alias fixpip='sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future pip'
+## Other ------------------- {{{
 
 # grep coloring
 export GREP_OPTIONS='--color=auto' # automatically color grep output
@@ -108,21 +100,12 @@ zstyle ':completion:*:*:xdvi:*' file-sort time
 
 # Aliases ------------------- {{{
 
-# ldap search
-alias lds='ldapsearch -h ldap-dev.stanford.edu -b dc=stanford,dc=edu'
-
 # disk usage
 alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
 
-## aliases
-
-# generate password(s)
-alias genpass='python ~/code/genpass.py'
 alias pw='node ~/code/projects/unpw/index.js'
 
 # suffix aliases
-alias -s tex=nvim
-alias -s m=nvim
 alias -s py=nvim
 alias -s pdf=open
 
@@ -135,14 +118,11 @@ alias ..='cd ..;ls'
 alias .='echo $PWD'
 alias o='open .'
 
-# applications
-alias tcl='teamocil'
+## applications
 alias tman='py3 /Users/nirum/code/projects/tman/tman.py'
 alias c='cal'
 alias calendar='cal'
 alias whos='who'
-alias da='django-admin'
-alias pym='python manage.py'
 
 # global aliases
 alias -g ...='../..'
@@ -171,15 +151,11 @@ alias gca='git commit -a'
 alias gd='git diff'
 alias glg='git lg'
 
-# imagemagick
-alias resize='mogrify -resize'
-
 # neovim
 alias v='nvim'
 
 # matlab
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
-alias lsc='head -n 5' # output first few lines of the file (to show header comments)
 
 # ipython
 alias ipy='ipython2 --nosep --profile=mbp'
@@ -216,17 +192,6 @@ function mcd() {
     mkdir -p "$@" && cd "$@"
 }
 
-# echo lol plugin commands
-function lol {
-    echo "cd\thai"
-    echo "cp\tdowant"
-    echo "man\trtfm"
-    echo "mkdir\ticanhas"
-    echo "mv\tgetme"
-    echo "ps -aux\tnomz"
-    echo "rm\tdonotwant"
-}
-
 # echo virtualenv and virtualenvwrapper commands
 function ve {
     echo "mkv myEnv\t\tmkvirtualenv myEnv"
@@ -242,71 +207,6 @@ alias mkv='mkvirtualenv'
 alias lsv='lsvirtualenv'
 alias byebye='deactivate'
 alias guts='lssitepackages'
-
-# other lol commands
-alias getme='mv'
-
-# }}}
-
-# Bower completion ------------------- {{{
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-# Credits to npm's. Awesome completion utility.
-#
-# Bower completion script, based on npm completion script.
-
-###-begin-bower-completion-###
-#
-# Installation: bower completion >> ~/.bashrc  (or ~/.zshrc)
-# Or, maybe: bower completion > /usr/local/etc/bash_completion.d/npm
-#
-
-COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
-COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
-export COMP_WORDBREAKS
-
-if type complete &>/dev/null; then
-  _bower_completion () {
-    local si="$IFS"
-    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
-                           COMP_LINE="$COMP_LINE" \
-                           COMP_POINT="$COMP_POINT" \
-                           bower completion -- "${COMP_WORDS[@]}" \
-                           2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  complete -F _bower_completion bower
-elif type compdef &>/dev/null; then
-  _bower_completion() {
-    si=$IFS
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                 COMP_LINE=$BUFFER \
-                 COMP_POINT=0 \
-                 bower completion -- "${words[@]}" \
-                 2>/dev/null)
-    IFS=$si
-  }
-  compdef _bower_completion bower
-elif type compctl &>/dev/null; then
-  _bower_completion () {
-    local cword line point words si
-    read -Ac words
-    read -cn cword
-    let cword-=1
-    read -l line
-    read -ln point
-    si="$IFS"
-    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-                       COMP_LINE="$line" \
-                       COMP_POINT="$point" \
-                       bower completion -- "${words[@]}" \
-                       2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  compctl -K _bower_completion bower
-fi
-###-end-bower-completion-###
 
 # }}}
 

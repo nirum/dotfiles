@@ -52,6 +52,7 @@ export GCC_INCLUDE_DIR
 ## tmux stuff
 #PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 alias tls='tmux ls'
+alias tsl='tmux ls'
 alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
 

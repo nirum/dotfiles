@@ -21,6 +21,10 @@ alias tsl='tmux ls'
 alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
 
+# git
+alias gs='git st'
+alias ga='git add'
+
 # grep coloring
 export GREP_OPTIONS='--color=auto' # automatically color grep output
 

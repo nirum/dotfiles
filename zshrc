@@ -23,6 +23,7 @@ alias tmn='tmux new -s'
 
 # git
 alias gs='git st'
+alias sg='git st'
 alias ga='git add'
 
 # moving around

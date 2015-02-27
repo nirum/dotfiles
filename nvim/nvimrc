@@ -27,6 +27,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
 Plug 'digitaltoad/vim-jade'
 Plug 'JuliaLang/julia-vim'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 " }}}

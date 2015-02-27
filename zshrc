@@ -25,6 +25,10 @@ alias tmn='tmux new -s'
 alias gs='git st'
 alias ga='git add'
 
+# moving around
+alias ..='cd ..'
+alias ...='cd ../..'
+
 # grep coloring
 export GREP_OPTIONS='--color=auto' # automatically color grep output
 

@@ -20,14 +20,17 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'skammer/vim-css-color'
 Plug 'jpalardy/vim-slime'
 Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-markdown'
 Plug 'flazz/vim-colorschemes'
 Plug 'kien/ctrlp.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'scrooloose/nerdtree'
-Plug 'digitaltoad/vim-jade'
 Plug 'JuliaLang/julia-vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'nvie/vim-flake8'
 Plug 'mxw/vim-jsx'
+Plug 'moll/vim-node'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'marijnh/tern_for_vim'
+Plug 'Raimondi/delimitMate'
 
 call plug#end()
 " }}}
@@ -185,6 +188,10 @@ map <Leader>mm <Leader>c<space>
 let g:syntastic_enable_signs=0
 nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
 
+" snipmate triggers
+imap <C-J> <Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
+
 " vim-slime
 let g:slime_target = "tmux"
 
@@ -259,6 +266,9 @@ augroup web
     "autocmd FileType html noremap <buffer> <c-p> :call HtmlBeautify()<cr>
     " for css or scss
     "autocmd FileType css noremap <buffer> <c-p> :call CSSBeautify()<cr>
+
+    " split brackets onto separate lines {}
+    imap <C-e> <CR><Esc>O
 
 augroup END
 

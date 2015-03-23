@@ -93,7 +93,6 @@ alias svim='sudo nvim'
 # PATH stuff
 export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin:/usr/local/go/bin:/usr/local/heroku/bin"
 
-
-export PATH=/Users/nirum/code/repositories/torch/install/bin:$PATH  # Added automatically by torch-dist
-export LD_LIBRARY_PATH=/Users/nirum/code/repositories/torch/install/lib:$LD_LIBRARY_PATH  # Added automatically by torch-dist
-export DYLD_LIBRARY_PATH=/Users/nirum/code/repositories/torch/install/lib:$DYLD_LIBRARY_PATH  # Added automatically by torch-dist
+export PATH=/Users/nirum/code/repositories/torch/install/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib:/Users/nirum/code/repositories/torch/install/lib:$LD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=/Users/nirum/code/repositories/torch/install/lib:$DYLD_LIBRARY_PATH

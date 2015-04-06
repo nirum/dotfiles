@@ -1,10 +1,45 @@
 " Niru Maheswaranathan
 " ~/.vimrc file
 
+" Vim Plugins ------------------------- {{{
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'hallettj/jslint.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'nirum/snipmate'
+Plug 'scrooloose/syntastic'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'leshill/vim-json'
+Plug 'groenewege/vim-less'
+Plug 'djoshea/vim-matlab-fold'
+Plug 'bling/vim-airline'
+Plug 'rking/ag.vim'
+Plug 'mattn/emmet-vim'
+Plug 'Keithbsmiley/investigate.vim'
+Plug 'Townk/vim-autoclose'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'skammer/vim-css-color'
+Plug 'jpalardy/vim-slime'
+Plug 'tpope/vim-surround'
+Plug 'flazz/vim-colorschemes'
+Plug 'kien/ctrlp.vim'
+Plug 'JuliaLang/julia-vim'
+Plug 'mxw/vim-jsx'
+Plug 'moll/vim-node'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'marijnh/tern_for_vim'
+Plug 'Raimondi/delimitMate'
+
+call plug#end()
+
+" }}}
+
 " Basic Settings ---------------------- {{{
 
-call pathogen#infect()    " use pathogen
-call pathogen#helptags()  " pathogen helptags
 syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 let mapleader = ";"       " map leader
@@ -331,7 +366,7 @@ augroup END
 
 " Colorscheme (put this first)
 set background=dark
-colorscheme spacegray
+colorscheme ir_black
 
 " color column
 highlight ColorColumn guibg=#303030

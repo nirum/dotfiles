@@ -89,6 +89,7 @@ alias rs='rsync -avz'
 # other
 alias sv='sudo nvim'
 alias svim='sudo nvim'
+alias duf='du -shc *'
 
 # PATH stuff
 export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin:/usr/local/go/bin:/usr/local/heroku/bin"

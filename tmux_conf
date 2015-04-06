@@ -22,10 +22,6 @@ set -sg escape-time 1
 # reload ~/.tmux.conf using PREFIX r
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
 
-# use PREFIX | to split window horizontally and PREFIX - to split vertically
-bind | split-window -h
-bind - split-window -v
-
 # act like vim
 setw -g mode-keys vi
 bind h select-pane -L
@@ -57,6 +53,12 @@ unbind k
 bind k confirm-before "kill-window"
 unbind X
 bind X "kill-pane"
+
+# new windows should preserve the working directory
+unbind c
+bind c new-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind '"' split-window -c "#{pane_current_path}"
 
 # mouse-select-pane [on | off]
 #   If on, tmux captures the mouse and when a window is

@@ -71,7 +71,7 @@ alias cardinal='ssh -CY cardinal.stanford.edu'
 alias tonto='ssh -CY niru@tonto.stanford.edu'
 
 # neovim
-alias v='nvim'
+alias v='mvim'
 
 # matlab
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'

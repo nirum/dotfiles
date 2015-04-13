@@ -5,10 +5,11 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'hallettj/jslint.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'nirum/snipmate'
+Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -31,8 +32,9 @@ Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
-Plug 'marijnh/tern_for_vim'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'Raimondi/delimitMate'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 
 call plug#end()
 
@@ -121,13 +123,6 @@ augroup git
     autocmd FileType gitcommit startinsert
 augroup END
 
-" vim-fugitive aliases
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gp :Git push origin master<CR>
-noremap <Leader>gl :Git pull origin master<CR>
-
 " }}}
 
 " Navigation ---------------------- {{{
@@ -183,6 +178,10 @@ let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
 let g:airline_theme='powerlineish'
 
+" UltiSnips / vim-snippets
+let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnpsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
+
 " ctrl-p (CtrlP)
 let g:ctrlp_map = '<c-t>'
 "map <c-t> :CtrlP .<cr>
@@ -192,10 +191,16 @@ map <Leader>mm <Leader>c<space>
 
 " syntastic
 let g:syntastic_enable_signs=0
-nnoremap <Leader>esnip :tabf ~/.vim/bundle/snipMate/snippets/
+let g:syntastic_check_on_open=1
 
 " vim-slime
 let g:slime_target = "tmux"
+
+" (YCM) YouCompleteMe
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_key_list_select_completion=['<Enter>']
+let g:ycm_key_list_previous_completion=[]
+nnoremap <leader>g :YcmCompleter GoTo<CR>
 
 " dash
 nmap <silent> <leader>d <Plug>DashSearch
@@ -210,8 +215,8 @@ vmap <Leader>= :Tabularize /=<CR>
 vmap <Leader>% :Tabularize /%<CR>
 vmap <Leader># :Tabularize /#<CR>
 
-" vim-mustache-handlebars
-let g:mustache_abbreviations = 1
+" yankstack
+set macmeta
 
 " }}}
 
@@ -240,6 +245,9 @@ augroup END
 " fix comment auto-indenting for different languages
 autocmd FileType matlab inoremap % X%
 
+" javascript folding
+au FileType javascript call JavaScriptFold()
+
 augroup web
     autocmd!
 
@@ -263,14 +271,6 @@ augroup web
 
     " format XML files
 	autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
-
-    " Beautify
-    " for JS
-    "autocmd FileType javascript noremap <buffer>  <c-p> :call JsBeautify()<cr>
-    " for html
-    "autocmd FileType html noremap <buffer> <c-p> :call HtmlBeautify()<cr>
-    " for css or scss
-    "autocmd FileType css noremap <buffer> <c-p> :call CSSBeautify()<cr>
 
 augroup END
 
@@ -311,7 +311,7 @@ noremap <Leader>cx v$hxa
 
 " pasting
 noremap <Leader>p :set paste<CR><c-v><ESC>:set nopaste<CR>
-nmap <c-P> <Plug>yankstack_substitute_older_paste
+nmap <c-p> <Plug>yankstack_substitute_older_paste
 
 " copy/paste with ctrl+c and ctrl+v in OSX
 vnoremap <c-c> y:call system("pbcopy", getreg("\""))<CR>
@@ -366,11 +366,11 @@ augroup END
 
 " Colorscheme (put this first)
 set background=dark
-colorscheme ir_black
+colorscheme atom
 
 " color column
-highlight ColorColumn guibg=#303030
-let &colorcolumn="80"
+"highlight ColorColumn guibg=#303030
+"let &colorcolumn="80"
 
 " highlight spelling errors
 hi clear SpellBad

@@ -5,36 +5,69 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdcommenter'
+" file and code browsing
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'leshill/vim-json'
-Plug 'groenewege/vim-less'
-Plug 'djoshea/vim-matlab-fold'
-Plug 'bling/vim-airline'
-Plug 'rking/ag.vim'
-Plug 'mattn/emmet-vim'
-Plug 'Keithbsmiley/investigate.vim'
-Plug 'Townk/vim-autoclose'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'skammer/vim-css-color'
-Plug 'jpalardy/vim-slime'
-Plug 'tpope/vim-surround'
-Plug 'flazz/vim-colorschemes'
+Plug 'justinmk/vim-gtfo'
 Plug 'kien/ctrlp.vim'
-Plug 'JuliaLang/julia-vim'
-Plug 'mxw/vim-jsx'
-Plug 'moll/vim-node'
+Plug 'rking/ag.vim'
+
+" git and Github
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/vim-github-dashboard'
+
+" colors
+Plug 'flazz/vim-colorschemes'
+
+" tmux
+Plug 'jpalardy/vim-slime'
+
+" documentation
+Plug 'Keithbsmiley/investigate.vim'
+
+" javascript
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'Raimondi/delimitMate'
+Plug 'mxw/vim-jsx'
+Plug 'leshill/vim-json'
+Plug 'moll/vim-node'
+
+" HTML and CSS
+Plug 'skammer/vim-css-color'
+Plug 'mattn/emmet-vim'
+
+" editing
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Yggdroot/indentLine'
+Plug 'scrooloose/syntastic'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'godlygeek/tabular'
+
+" editor
+Plug 'bling/vim-airline'
+Plug 'ryanoasis/vim-webdevicons'
+
+" python
+Plug 'klen/python-mode'
+
+" julia
+Plug 'JuliaLang/julia-vim'
+
+" matlab
+Plug 'djoshea/vim-matlab-fold'
+
+" less
+Plug 'groenewege/vim-less'
+
+" snippets
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
+
+" autocompletion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
@@ -115,16 +148,6 @@ noremap <Leader>src :source ~/.vimrc<CR>
 
 " }}}
 
-" Git ---------------------- {{{
-
-" Enter insert mode automatically when editing git commit messages
-augroup git
-    autocmd!
-    autocmd FileType gitcommit startinsert
-augroup END
-
-" }}}
-
 " Navigation ---------------------- {{{
 
 " dealing with windows
@@ -154,13 +177,6 @@ endfunction
 
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
-
-" change to common directories
-noremap <Leader>db :cd ~/Dropbox<cr>
-noremap <Leader>doc :cd ~/Documents<cr>
-noremap <Leader>proj :cd ~/code/projects<cr>
-noremap <Leader>.. :cd ..
-noremap <Leader>cd :cd<space>
 
 " }}}
 
@@ -192,14 +208,20 @@ map <Leader>mm <Leader>c<space>
 " syntastic
 let g:syntastic_enable_signs=0
 let g:syntastic_check_on_open=1
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 
-" syntastic statusline
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+" delimitMate
+au FileType vim,html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
+"au FileType js let b:delimitMate_expand_cr = 1
+let g:delimitMate_expand_cr = 1
+
+" NERDTree
+map <Leader>n :NERDTreeToggle<CR>
+map :nt :NERDTree
+
+" open NERDTree automatically when vim starts if no file is given
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " vim-slime
 let g:slime_target = "tmux"
@@ -211,7 +233,6 @@ let g:ycm_key_list_previous_completion=[]
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 
 " dash
-nmap <silent> <leader>d <Plug>DashSearch
 nnoremap K :call investigate#Investigate()<CR>
 let g:investigate_use_dash=1
 
@@ -230,13 +251,16 @@ set macmeta
 
 " FileType-specific settings ---------------------- {{{
 
-" insert function comment line (matlab)
-noremap <Leader>func <Esc>gg4jyykPi% <Esc>ldw0
-
 augroup filetype_python
     autocmd!
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python inoremap # X#
+augroup END
+
+" Enter insert mode automatically when editing git commit messages
+augroup git
+    autocmd!
+    autocmd FileType gitcommit startinsert
 augroup END
 
 " When loading text files, wrap them and don't split up words. Automatically
@@ -299,20 +323,8 @@ noremap <space> :w<CR>
 nnoremap <Leader>w :w<CR>
 inoremap <Leader>w <ESC>:w<CR>
 
-" save when focus is lost
-"augroup focus
-    "autocmd!
-    "autocmd FocusLost * :wa
-"augroup END
-
 " copy all
 noremap <Leader>co ggvG$y
-
-" select line
-noremap <Leader>vl 0v$
-
-" copy line (to clipboard)
-noremap <Leader>cl 0v$y:call system("pbcopy", getreg("\""))<CR>
 
 " edit rest of line
 noremap <Leader>cx v$hxa
@@ -320,13 +332,6 @@ noremap <Leader>cx v$hxa
 " pasting
 noremap <Leader>p :set paste<CR><c-v><ESC>:set nopaste<CR>
 nmap <c-p> <Plug>yankstack_substitute_older_paste
-
-" copy/paste with ctrl+c and ctrl+v in OSX
-vnoremap <c-c> y:call system("pbcopy", getreg("\""))<CR>
-nnoremap <c-v> :call setreg("\"",system("pbpaste"))<CR>p
-
-" delete until previous line
-noremap <Leader>b 0whvgelxi<space><Esc>
 
 " }}}
 
@@ -376,27 +381,10 @@ augroup END
 set background=dark
 colorscheme atom
 
-" color column
-"highlight ColorColumn guibg=#303030
-"let &colorcolumn="80"
-
 " highlight spelling errors
 hi clear SpellBad
 hi SpellBad guibg=#c62323 term=reverse
 noremap <Leader>sp :set spell!<CR>
-
-" highlight bad whitespace
-"augroup coloring
-    "autocmd!
-    "autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-    "autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    "autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-"augroup END
-nnoremap <silent> <Leader>wsp :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
-
-" Make the omnicomplete text readable
-highlight PmenuSel guifg=cyan guibg=#303030
-highlight Pmenu guifg=#cccccc guibg=#303030
 
 " cursor colors
 hi Cursor guifg=cyan guibg=grey
@@ -406,7 +394,7 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 if has("gui_gtk2")
     set guifont=Ubuntu\ Mono\ 14
 elseif has("gui_macvim")
-    set guifont=Cosmic\ Sans\ Neue\ Mono\ for\ Powerline:h16
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h16
     let g:Powerline_symbols = 'fancy'
 endif
 
@@ -419,6 +407,7 @@ noremap <Leader>a zA
 
 " indent lines
 nnoremap <tab> I<tab><esc>
+vnoremap <tab> I<tab><esc>
 
 " to escape
 inoremap kj <Esc>
@@ -434,18 +423,5 @@ noremap <Leader>ls :!ls<CR>
 " Emacs-like beginning and end of line.
 inoremap <c-e> <c-o>$
 inoremap <c-a> <c-o>^
-
-" }}}
-
-"" Functions ---------------------- {{{
-
-" show if I am in paste mode
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    else
-        return ''
-    endif
-endfunction
 
 " }}}

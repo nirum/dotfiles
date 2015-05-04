@@ -1,5 +1,6 @@
 " Niru Maheswaranathan
 " ~/.vimrc file
+let os = substitute(system('uname'), "\n", "", "")
 
 " Vim Plugins ------------------------- {{{
 
@@ -11,9 +12,8 @@ Plug 'justinmk/vim-gtfo'
 Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
 
-" git and Github
+" git
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/vim-github-dashboard'
 
 " colors
 Plug 'flazz/vim-colorschemes'
@@ -107,7 +107,7 @@ set nobackup                            " no backup files
 set nowritebackup                       " only in case you don't want a backup file while editing
 set noswapfile                          " no swap files
 set autoread                            " auto read when file is changed externally
-set number                              " show line numbers
+set nonumber                            " show line numbers
 set scrolloff=10                        " scroll buffer
 set encoding=utf-8                      " file encoding
 set cmdheight=1                         " command bar height
@@ -157,11 +157,6 @@ noremap <Leader>l <C-w>l<CR>
 noremap <Leader>h <C-w>h<CR>
 noremap <Leader>x <C-w>c<CR>
 
-" move tabs with ctrl+k and ctrl+j
-noremap <c-j> :tabp<CR>
-noremap <c-k> :tabn<CR>
-
-" Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 noremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 noremap <Leader>t :tabf <C-R>=expand("%:p:h") . '/'<CR>
@@ -197,10 +192,12 @@ let g:airline_theme='powerlineish'
 " UltiSnips / vim-snippets
 let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnpsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " ctrl-p (CtrlP)
 let g:ctrlp_map = '<c-t>'
-"map <c-t> :CtrlP .<cr>
 
 " map comment commands (NERD Commenter)
 map <Leader>mm <Leader>c<space>
@@ -209,6 +206,11 @@ map <Leader>mm <Leader>c<space>
 let g:syntastic_enable_signs=0
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq = 0
+
+" python-mode (pymode)
+let g:pymode_rope = 0
+let g:pymode_lint_on_write = 0
+map <c-E> :PymodeLint<CR>
 
 " delimitMate
 au FileType vim,html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
@@ -255,12 +257,6 @@ augroup filetype_python
     autocmd!
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python inoremap # X#
-augroup END
-
-" Enter insert mode automatically when editing git commit messages
-augroup git
-    autocmd!
-    autocmd FileType gitcommit startinsert
 augroup END
 
 " When loading text files, wrap them and don't split up words. Automatically
@@ -405,13 +401,28 @@ endif
 " folding
 noremap <Leader>a zA
 
+" circular window navigation
+nnoremap <tab>   gt
+nnoremap <S-tab> gT
+
 " indent lines
-nnoremap <tab> I<tab><esc>
 vnoremap <tab> I<tab><esc>
 
 " to escape
-inoremap kj <Esc>
 inoremap jk <Esc>
+
+" qq to record, Q to replay
+nnoremap Q @q
+
+" move lines
+nnoremap <silent> <C-k> :move-2<cr>
+nnoremap <silent> <C-j> :move+<cr>
+
+" indent lines
+nnoremap <silent> <C-h> <<
+nnoremap <silent> <C-l> >>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
 " Center search matches when jumping
 noremap N Nzz
@@ -423,5 +434,23 @@ noremap <Leader>ls :!ls<CR>
 " Emacs-like beginning and end of line.
 inoremap <c-e> <c-o>$
 inoremap <c-a> <c-o>^
+
+" }}}
+
+" Generic Mappings ---------------------- {{{
+
+" change directory to the root of the git repository
+function! s:root()
+  let me = expand('%:p:h')
+  let gitd = finddir('.git', me.';')
+  if empty(gitd)
+    echo "Not in git repo"
+  else
+    let gitp = fnamemodify(gitd, ':h')
+    echo "Change directory to: ".gitp
+    execute 'lcd' gitp
+  endif
+endfunction
+command! Root call s:root()
 
 " }}}

@@ -10,7 +10,8 @@ export CLICOLOR=1
 export LC_CTYPE=en_US.UTF-8 # use unicode
 
 # edit this file
-alias erc='nvim ~/.zshrc'
+alias erc='mvim ~/.zshrc'
+alias src='source ~/.zshrc'
 
 # vim keybindings
 set -o vi
@@ -89,7 +90,7 @@ alias rs='rsync -avz'
 # other
 alias sv='sudo nvim'
 alias svim='sudo nvim'
-alias duf='du -shc *'
+alias duf='du -shc * | gsort -h'
 
 # PATH stuff
 export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin:/usr/local/go/bin:/usr/local/heroku/bin"

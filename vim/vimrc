@@ -52,6 +52,9 @@ Plug 'ryanoasis/vim-webdevicons'
 " python
 Plug 'klen/python-mode'
 
+" haskell
+Plug 'raichoo/haskell-vim'
+
 " julia
 Plug 'JuliaLang/julia-vim'
 
@@ -64,6 +67,9 @@ Plug 'groenewege/vim-less'
 " snippets
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
+
+" tabgar
+Plug 'majutsushi/tagbar'
 
 " autocompletion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -107,7 +113,7 @@ set nobackup                            " no backup files
 set nowritebackup                       " only in case you don't want a backup file while editing
 set noswapfile                          " no swap files
 set autoread                            " auto read when file is changed externally
-set nonumber                            " show line numbers
+set number                              " show line numbers
 set scrolloff=10                        " scroll buffer
 set encoding=utf-8                      " file encoding
 set cmdheight=1                         " command bar height
@@ -206,6 +212,8 @@ map <Leader>mm <Leader>c<space>
 let g:syntastic_enable_signs=0
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq = 0
+map <Leader>S :SyntasticToggleMode<CR>
+map <silent> <Leader>E :Errors<CR>
 
 " python-mode (pymode)
 let g:pymode_rope = 0
@@ -299,6 +307,30 @@ augroup web
 
     " format XML files
 	autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
+augroup END
+
+" haskell
+augroup haskell
+    autocmd!
+
+    " type inspection
+    au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
+    au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
+    au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
+
+    " browse top level definitions
+    nmap <leader>T :TagbarToggle<CR>
+    let g:tagbar_autofocus = 1
+
+    " typing `gq` converts to pointfree form
+    autocmd BufEnter *.hs set formatprg=pointfree
+
+    " Reload
+    map <silent> tu :call GHC_BrowseAll()<CR>
+
+    " Type Lookup
+    map <silent> tw :call GHC_ShowType(1)<CR>
 
 augroup END
 
@@ -415,14 +447,16 @@ inoremap jk <Esc>
 nnoremap Q @q
 
 " move lines
-nnoremap <silent> <C-k> :move-2<cr>
 nnoremap <silent> <C-j> :move+<cr>
+nnoremap <silent> <C-k> :move-2<cr>
+vnoremap <silent> <C-j> :move '>+1<cr>gv=gv
+vnoremap <silent> <C-k> :move '<-2<cr>gv=gv
 
 " indent lines
-nnoremap <silent> <C-h> <<
 nnoremap <silent> <C-l> >>
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
+nnoremap <silent> <C-h> <<
+vnoremap <silent> <C-l> >gv
+vnoremap <silent> <C-h> <gv
 
 " Center search matches when jumping
 noremap N Nzz

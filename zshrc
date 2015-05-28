@@ -26,6 +26,7 @@ alias tmn='tmux new -s'
 alias gs='git st'
 alias sg='git st'
 alias ga='git add'
+alias gu='git pull'
 
 # moving around
 alias ..='cd ..'
@@ -57,6 +58,9 @@ bindkey '^r' history-incremental-search-backward
 ## sort menu by time
 #zstyle ':completion:*:*:xdvi:*' menu yes select
 #zstyle ':completion:*:*:xdvi:*' file-sort time
+
+# vtop
+alias top="vtop --theme monokai"
 
 # suffix aliases
 alias -s py=nvim
@@ -92,9 +96,12 @@ alias sv='sudo nvim'
 alias svim='sudo nvim'
 alias duf='du -shc * | gsort -h'
 
+# editor
+export EDITOR="mvim"
+
 # PATH stuff
 export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin:/usr/local/go/bin:/usr/local/heroku/bin"
 
-export PATH=/Users/nirum/code/repositories/torch/install/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda/lib:/Users/nirum/code/repositories/torch/install/lib:$LD_LIBRARY_PATH
-export DYLD_LIBRARY_PATH=/Users/nirum/code/repositories/torch/install/lib:$DYLD_LIBRARY_PATH
+#export PATH=/Users/nirum/code/repositories/torch/install/bin:$PATH
+#export LD_LIBRARY_PATH=/usr/local/cuda/lib:/Users/nirum/code/repositories/torch/install/lib:$LD_LIBRARY_PATH
+#export DYLD_LIBRARY_PATH=/Users/nirum/code/repositories/torch/install/lib:$DYLD_LIBRARY_PATH

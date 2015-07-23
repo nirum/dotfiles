@@ -18,6 +18,7 @@ set -o vi
 
 # tmux stuff
 alias tls='tmux ls'
+alias lts='tmux ls'
 alias tsl='tmux ls'
 alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
@@ -82,9 +83,9 @@ alias v='mvim'
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
 
 # ipython
-alias ipy='ipython2 --nosep --profile=mbp'
-alias ipy3='ipython3 --nosep --profile=mbp'
-alias ipyl='ipython2 --nosep --profile=lenna'
+alias ipy='ipython2 --nosep --no-banner --profile=mbp'
+alias ipy3='ipython3 --nosep --no-banner --profile=mbp'
+alias ipyl='ipython2 --nosep --no-banner --profile=lenna'
 alias nb='ipython2 notebook --profile=mbp'
 alias nb3='ipython3 notebook --profile=mbp'
 

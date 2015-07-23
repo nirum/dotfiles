@@ -7,7 +7,6 @@ let os = substitute(system('uname'), "\n", "", "")
 call plug#begin('~/.vim/plugged')
 
 " file and code browsing
-Plug 'scrooloose/nerdtree'
 Plug 'justinmk/vim-gtfo'
 Plug 'kien/ctrlp.vim'
 Plug 'rking/ag.vim'
@@ -15,6 +14,9 @@ Plug 'rking/ag.vim'
 " git
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/gitignore'
+
+" testing
+Plug 'janko-m/vim-test'
 
 " colors
 Plug 'flazz/vim-colorschemes'
@@ -35,8 +37,9 @@ Plug 'moll/vim-node'
 " HTML and CSS
 Plug 'skammer/vim-css-color'
 Plug 'mattn/emmet-vim'
+Plug 'vim-scripts/closetag.vim'
 
-" editing
+"" editing
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
@@ -45,10 +48,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/syntastic'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'godlygeek/tabular'
-
-" editor
-Plug 'bling/vim-airline'
-Plug 'ryanoasis/vim-webdevicons'
+Plug 'Townk/vim-autoclose'
 
 " python
 Plug 'klen/python-mode'
@@ -78,6 +78,10 @@ Plug 'majutsushi/tagbar'
 " autocompletion
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'Raimondi/delimitMate'
+
+" editor
+Plug 'bling/vim-airline'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -143,6 +147,7 @@ set ignorecase
 set smartcase
 set gdefault
 
+
 " }}}
 
 " Vimscript file settings ---------------------- {{{
@@ -201,7 +206,8 @@ let g:airline_right_alt_sep = '⮃'
 let g:airline_symbols.branch = '⭠'
 let g:airline_symbols.readonly = '⭤'
 let g:airline_symbols.linenr = '⭡'
-let g:airline_theme='powerlineish'
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 1
 
 " UltiSnips / vim-snippets
 let g:UltiSnipsUsePythonVersion = 2
@@ -245,14 +251,6 @@ map <c-E> :PymodeLint<CR>
 au FileType vim,html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
 "au FileType js let b:delimitMate_expand_cr = 1
 let g:delimitMate_expand_cr = 1
-
-" NERDTree
-map <Leader>n :NERDTreeToggle<CR>
-map :nt :NERDTree
-
-" open NERDTree automatically when vim starts if no file is given
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " vim-slime
 let g:slime_target = "tmux"
@@ -439,16 +437,23 @@ hi clear SpellBad
 hi SpellBad guibg=#c62323 term=reverse
 noremap <Leader>sp :set spell!<CR>
 
+" highlight the 80th column
+set colorcolumn=80
+hi ColorColumn guibg=#2b3948
+
 " cursor colors
-hi Cursor guifg=cyan guibg=grey
+hi Cursor guifg=cyan guibg=DarkGray
 set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 
 " fonts
 if has("gui_gtk2")
     set guifont=Ubuntu\ Mono\ 14
 elseif has("gui_macvim")
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h16
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h14
     let g:Powerline_symbols = 'fancy'
+
+    set lines=80
+    set columns=150
 endif
 
 " }}}

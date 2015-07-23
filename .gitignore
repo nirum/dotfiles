@@ -1,4 +1,4 @@
 nvim/plugged/*
-nvim/plugged
 vim/plugged/*
-vim/plugged
+nvim/autoload/*
+vim/autoload/*

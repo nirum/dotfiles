@@ -254,8 +254,7 @@ let g:slime_target = "tmux"
 " (YCM) YouCompleteMe
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_key_list_select_completion=['<C-j>', '<Down>']
-"let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
-nnoremap <leader>g :YcmCompleter GoTo<CR>
+let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 
 " supertab
 let g:SuperTabDefaultCompletionType = '<C-j>'
@@ -263,7 +262,7 @@ let g:SuperTabDefaultCompletionType = '<C-j>'
 " ultisnips snippets
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnpsSnippetsDir = '~/.vim/UltiSnips'
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<C-CR>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
@@ -501,7 +500,7 @@ inoremap <c-a> <c-o>^
 
 " }}}
 
-" Generic Mappings ---------------------- {{{
+" Functions ---------------------- {{{
 
 " change directory to the root of the git repository
 function! s:root()

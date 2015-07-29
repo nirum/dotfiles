@@ -81,9 +81,6 @@ Plug 'djoshea/vim-matlab-fold'
 " less
 Plug 'groenewege/vim-less'
 
-" tabgar
-Plug 'majutsushi/tagbar'
-
 " editor
 Plug 'bling/vim-airline'
 Plug 'ryanoasis/vim-devicons'
@@ -204,13 +201,13 @@ let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;
 " vim-airline (statusline)
 let g:airline_symbols = {}
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 
@@ -446,7 +443,7 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 
 " fonts
 if has("gui_gtk2")
-    set guifont=Ubuntu\ Mono\ 14
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
 elseif has("gui_macvim")
     set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h14
     let g:Powerline_symbols = 'fancy'

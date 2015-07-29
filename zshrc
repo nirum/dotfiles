@@ -10,7 +10,7 @@ export CLICOLOR=1
 export LC_CTYPE=en_US.UTF-8 # use unicode
 
 # edit this file
-alias erc='mvim ~/.zshrc'
+alias erc='$EDITOR ~/.zshrc'
 alias src='source ~/.zshrc'
 
 # vim keybindings
@@ -50,7 +50,7 @@ bindkey '^r' history-incremental-search-backward
 alias top="vtop --theme monokai"
 
 # suffix aliases
-alias -s py=nvim
+alias -s py=$EDITOR
 alias -s pdf=open
 
 # other
@@ -64,7 +64,7 @@ alias cardinal='ssh -CY cardinal.stanford.edu'
 alias tonto='ssh -CY niru@tonto.stanford.edu'
 
 # vim
-alias v='mvim'
+alias v='$EDITOR'
 alias n='nvim'
 
 # matlab
@@ -84,7 +84,11 @@ alias rs='rsync -avz'
 alias duf='du -shc * | gsort -h'
 
 # editor
-export EDITOR="mvim"
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  export EDITOR="gvim"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  export EDITOR="mvim"
+fi
 
 # PATH stuff
 export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin:/usr/local/go/bin:/usr/local/heroku/bin:/Users/nirum/Library/Haskell/bin"

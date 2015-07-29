@@ -275,7 +275,7 @@ let g:investigate_use_dash=1
 nnoremap K :call investigate#Investigate()<CR>
 
 " yankstack
-if has("gui_running")
+if has("gui_macvim")
 	set macmeta
 end
 

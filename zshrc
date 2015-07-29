@@ -46,20 +46,6 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
-## fuzzy matching
-#zstyle ':completion:*' completer _complete _match _approximate
-#zstyle ':completion:*:match:*' original only
-#zstyle ':completion:*:approximate:*' max-errors 1 numeric
-#zstyle -e ':completion:*:approximate:*' \
-        #max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
-
-## remove trailing slashes
-#zstyle ':completion:*' squeeze-slashes true
-
-## sort menu by time
-#zstyle ':completion:*:*:xdvi:*' menu yes select
-#zstyle ':completion:*:*:xdvi:*' file-sort time
-
 # vtop
 alias top="vtop --theme monokai"
 
@@ -72,12 +58,14 @@ alias clc=clear # more cmd style alias
 alias whos='who; date'
 
 # ssh aliases
-alias lenna='ssh -CY lenna.stanford.edu'
+alias lenna='ssh lenna.stanford.edu'
+alias lennax='ssh -CY lenna.stanford.edu'
 alias cardinal='ssh -CY cardinal.stanford.edu'
 alias tonto='ssh -CY niru@tonto.stanford.edu'
 
-# neovim
+# vim
 alias v='mvim'
+alias n='nvim'
 
 # matlab
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
@@ -93,8 +81,6 @@ alias nb3='ipython3 notebook --profile=mbp'
 alias rs='rsync -avz'
 
 # other
-alias sv='sudo nvim'
-alias svim='sudo nvim'
 alias duf='du -shc * | gsort -h'
 
 # editor

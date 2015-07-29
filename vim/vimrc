@@ -6,10 +6,8 @@ let os = substitute(system('uname'), "\n", "", "")
 
 call plug#begin('~/.vim/plugged')
 
-" file and code browsing
-Plug 'justinmk/vim-gtfo'
+" navigation
 Plug 'kien/ctrlp.vim'
-Plug 'rking/ag.vim'
 
 " git
 Plug 'airblade/vim-gitgutter'
@@ -21,11 +19,40 @@ Plug 'janko-m/vim-test'
 " colors
 Plug 'flazz/vim-colorschemes'
 
-" tmux
+" send code to tmux
 Plug 'jpalardy/vim-slime'
 
 " documentation
 Plug 'Keithbsmiley/investigate.vim'
+
+" surround text easily
+Plug 'tpope/vim-surround'
+
+" easily comment code
+Plug 'scrooloose/nerdcommenter'
+
+" show vertical line indent marks
+Plug 'Yggdroot/indentLine'
+
+" automatically close quotes and parenthesis
+Plug 'Townk/vim-autoclose'
+
+" syntax checking
+Plug 'scrooloose/syntastic'
+
+" copy/paste
+Plug 'maxbrunsfeld/vim-yankstack'
+
+" code alignment
+Plug 'godlygeek/tabular'
+
+" expand visual selection region
+Plug 'terryma/vim-expand-region'
+
+" snippets and tab completion
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'sirver/ultisnips'
 
 " javascript
 Plug 'jelera/vim-javascript-syntax'
@@ -35,20 +62,9 @@ Plug 'leshill/vim-json'
 Plug 'moll/vim-node'
 
 " HTML and CSS
-Plug 'skammer/vim-css-color'
+Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/closetag.vim'
-
-"" editing
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdcommenter'
-Plug 'Yggdroot/indentLine'
-Plug 'scrooloose/syntastic'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'godlygeek/tabular'
-Plug 'Townk/vim-autoclose'
 
 " python
 Plug 'klen/python-mode'
@@ -65,19 +81,8 @@ Plug 'djoshea/vim-matlab-fold'
 " less
 Plug 'groenewege/vim-less'
 
-" expand region
-Plug 'terryma/vim-expand-region'
-
-" snippets
-Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
-
 " tabgar
 Plug 'majutsushi/tagbar'
-
-" autocompletion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-Plug 'Raimondi/delimitMate'
 
 " editor
 Plug 'bling/vim-airline'
@@ -209,13 +214,6 @@ let g:airline_symbols.linenr = '⭡'
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 
-" UltiSnips / vim-snippets
-let g:UltiSnipsUsePythonVersion = 2
-let g:UltiSnpsSnippetsDir = '~/.vim/plugged/vim-snippets/UltiSnips'
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " ctrl-p (CtrlP)
 let g:ctrlp_map = '<c-t>'
 
@@ -242,43 +240,45 @@ let g:syntastic_check_on_wq = 0
 map <Leader>S :SyntasticToggleMode<CR>
 map <silent> <Leader>E :Errors<CR>
 
+" indented line marker color
+let g:indentLine_color_gui = '#A7C0CC'
+
 " python-mode (pymode)
 let g:pymode_rope = 0
 let g:pymode_lint_on_write = 0
 map <c-E> :PymodeLint<CR>
-
-" delimitMate
-au FileType vim,html let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
-"au FileType js let b:delimitMate_expand_cr = 1
-let g:delimitMate_expand_cr = 1
 
 " vim-slime
 let g:slime_target = "tmux"
 
 " (YCM) YouCompleteMe
 let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_key_list_select_completion=['<Tab>']
-let g:ycm_key_list_previous_completion=[]
+let g:ycm_key_list_select_completion=['<C-j>', '<Down>']
+"let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 nnoremap <leader>g :YcmCompleter GoTo<CR>
+
+" supertab
+let g:SuperTabDefaultCompletionType = '<C-j>'
+
+" ultisnips snippets
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnpsSnippetsDir = '~/.vim/UltiSnips'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " expand region
 vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
+vmap <s-v> <Plug>(expand_region_shrink)
 
 " dash
-nnoremap K :call investigate#Investigate()<CR>
 let g:investigate_use_dash=1
-
-" tabularize (alignment)
-nmap <Leader>= :Tabularize /=<CR>
-nmap <Leader>% :Tabularize /%<CR>
-nmap <Leader># :Tabularize /#<CR>
-vmap <Leader>= :Tabularize /=<CR>
-vmap <Leader>% :Tabularize /%<CR>
-vmap <Leader># :Tabularize /#<CR>
+nnoremap K :call investigate#Investigate()<CR>
 
 " yankstack
-set macmeta
+if has("gui_running")
+	set macmeta
+end
 
 " }}}
 

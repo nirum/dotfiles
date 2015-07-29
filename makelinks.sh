@@ -7,9 +7,9 @@ rm ~/.vim
 ln -fs ${PWD}/vim ~/.vim
 
 echo "Linking nvim ..."
-ln -fs ${PWD}/nvim/nvimrc ~/.nvimrc
+ln -fs ${PWD}/vim/vimrc ~/.nvimrc
 rm ~/.nvim
-ln -fs ${PWD}/nvim ~/.nvim
+ln -fs ${PWD}/vim ~/.nvim
 
 echo "Linking tmux ..."
 ln -fs ${PWD}/tmux_conf ~/.tmux.conf

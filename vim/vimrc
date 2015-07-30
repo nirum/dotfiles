@@ -241,6 +241,12 @@ map <silent> <Leader>E :Errors<CR>
 let g:indentLine_color_gui = '#A7C0CC'
 
 " python-mode (pymode)
+let g:pymode_lint_todo_symbol = '✎'
+let g:pymode_lint_comment_symbol = '➯'
+let g:pymode_lint_visual_symbol = 'RR'
+let g:pymode_lint_error_symbol = '✗✗'
+let g:pymode_lint_info_symbol = 'II'
+let g:pymode_lint_pyflakes_symbol = 'FF'
 let g:pymode_rope = 0
 let g:pymode_lint_on_write = 0
 map <c-E> :PymodeLint<CR>

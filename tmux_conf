@@ -107,15 +107,6 @@ set-window-option -g window-status-current-fg brightred #orange
 set-window-option -g window-status-current-bg colour236 
 set-window-option -g window-status-current-attr bright
 
-# show host name and IP address on left side of status bar
-#set -g status-left-length 85 
-#set -g status-left "#[fg=colour235,bg=colour253]#h #S #I:#P #[fg=colour253,bg=colour235]"
-
-# show session name, window & pane number, date and time on right side of
-# status bar
-#set -g status-right-length 60
-#set -g status-right "#[fg=colour235,bg=colour253] #[fg=black,bg=colour253]%d %b %Y #[fg=green]%l:%M %p"
-
 set -g status-bg "colour0"
 set -g message-command-fg "colour7"
 set -g status-justify "left"
@@ -139,7 +130,7 @@ setw -g window-status-activity-fg "colour236"
 setw -g window-status-separator ""
 setw -g window-status-bg "colour0"
 
-set -g status-left "#[fg=colour15,bg=colour236,bold] #S #[fg=colour236,bg=colour0,nobold,nounderscore,noitalics]"
-set -g status-right "#[fg=colour25,bg=colour0,nobold,nounderscore,noitalics]#[fg=colour7,bg=colour25] %Y-%m-%d  %H:%M #[fg=colour236,bg=colour25,nobold,nounderscore,noitalics]#[fg=colour15,bg=colour236] #h "
+set -g status-left "#[fg=colour15,bg=colour236,bold] ❏ #S #[fg=colour236,bg=colour0,nobold,nounderscore,noitalics]"
+set -g status-right "#[fg=colour25,bg=colour0,nobold,nounderscore,noitalics]#[fg=colour7,bg=colour25] %Y-%m-%d  %H:%M #[fg=colour236,bg=colour25,nobold,nounderscore,noitalics]#[fg=colour15,bg=colour236] #h ❧ "
 setw -g window-status-format "#[fg=colour248,bg=colour0] #I #[fg=colour248,bg=colour0] #W "
 setw -g window-status-current-format "#[fg=colour0,bg=colour25,nobold,nounderscore,noitalics]#[fg=colour7,bg=colour25] #I #[fg=colour7,bg=colour25] #W #[fg=colour25,bg=colour0,nobold,nounderscore,noitalics]"

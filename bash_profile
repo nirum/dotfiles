@@ -89,7 +89,3 @@ PS1='\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;31m\]\h\[\033[00;34m\]{\[\033[01
 export LSCOLORS='ExGxFxdxCxDxDxBxBxExEx'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-# Added by Canopy installer on 2013-09-16
-# VIRTUAL_ENV_DISABLE_PROMPT can be set to '' to make bashprompt show that Canopy is active, otherwise 1
-VIRTUAL_ENV_DISABLE_PROMPT=1 source /Users/nirum/Library/Enthought/Canopy_64bit/User/bin/activate

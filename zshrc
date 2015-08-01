@@ -47,7 +47,7 @@ bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
 # vtop
-alias top="vtop --theme monokai"
+alias vtop="vtop --theme monokai"
 
 # suffix aliases
 alias -s py=$EDITOR
@@ -88,7 +88,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   export EDITOR="gvim"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   export EDITOR="mvim"
+  export HOMEBREW_EDITOR="vim"
+  export VISUAL="vim"
 fi
 
 # PATH stuff
-export PATH="/usr/local/sbin:/usr/local/heroku/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/texbin:/Users/nirum/.rvm/bin:/usr/local/go/bin:/usr/local/heroku/bin:/Users/nirum/Library/Haskell/bin"
+export PATH="/usr/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/local/texlive/2015basic/bin/x86_64-darwin/:/Users/nirum/Library/Haskell/bin"
+
+export LD_LIBRARY_PATH=/opt/OpenBLAS/lib:$LD_LIBRARY_PATH

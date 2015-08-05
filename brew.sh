@@ -21,6 +21,9 @@ brew install --HEAD neovim
 # node
 brew install node
 
+# tmux
+brew install tmux
+
 # Install other useful binaries.
 brew install ack
 brew install the_silver_searcher
@@ -31,6 +34,7 @@ brew install rename
 brew install speedtest_cli
 brew install ssh-copy-id
 brew install tree
+brew install fasd
 
 # Remove outdated versions from the cellar.
 brew cleanup

@@ -1,0 +1,8 @@
+# ipython scripts
+%matplotlib qt
+%load_ext autoreload
+%autoreload 2
+
+# h5py autocomplete
+import h5py
+h5py.enable_ipython_completer()

@@ -35,18 +35,24 @@ ln -fs ${PWD}/zshrc ~/.zshrc
 echo "Linking inputrc ..."
 ln -fs ${PWD}/inputrc ~/.inputrc
 
-echo "Credential helper ..."
+echo "Linking IPython profile preferences (mbp) ..."
+rm -r ~/.ipython/profile_mbp/static
+rm -r ~/.ipython/profile_mbp/startup
+ln -fs ${PWD}/ipython/static ~/.ipython/profile_mbp/static
+ln -fs ${PWD}/ipython/startup ~/.ipython/profile_mbp/startup
+
+echo "Linking matplotlibrc ..."
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-
-  git config --global credential.helper /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
-
+  ln -fs ${PWD}/ipython/matplotlibrc ~/.matplotlib/matplotlibrc
 elif [[ "$OSTYPE" == "darwin"* ]]; then
+  ln -fs ${PWD}/ipython/matplotlibrc ~/.matplotlib/matplotlibrc
+fi
 
+echo "Git SSH credential helper ..."
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  git config --global credential.helper /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+elif [[ "$OSTYPE" == "darwin"* ]]; then
   git config --global credential.helper osxkeychain
-
-  echo "Key bindings (OS X)..."
-  ln -fs ${PWD}/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
-
 fi
 
 echo "Done."

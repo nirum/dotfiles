@@ -9,6 +9,7 @@ brew update
 brew upgrade --all
 
 # Install some other useful utilities like `sponge`.
+brew install coreutils
 brew install moreutils
 
 # Install more recent versions of some OS X tools.
@@ -35,6 +36,12 @@ brew install speedtest_cli
 brew install ssh-copy-id
 brew install tree
 brew install fasd
+
+# QT graphics library
+brew install qt
+
+# exercism script
+brew install exercism
 
 # Remove outdated versions from the cellar.
 brew cleanup

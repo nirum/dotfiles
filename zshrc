@@ -88,11 +88,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   export EDITOR="gvim"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   export EDITOR="mvim"
-  export HOMEBREW_EDITOR="vim"
+  export HOMEBREW_EDITOR="mvim"
   export VISUAL="vim"
 fi
 
 # PATH stuff
 export PATH="/usr/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/local/texlive/2015basic/bin/x86_64-darwin/:/Users/nirum/Library/Haskell/bin"
-
-export LD_LIBRARY_PATH=/opt/OpenBLAS/lib:$LD_LIBRARY_PATH

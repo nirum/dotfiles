@@ -14,6 +14,9 @@ ln -fs ${PWD}/vim ~/.nvim
 echo "Installing vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+echo "Linking GHCI configuration"
+ln -fs ${PWD}/ghci.conf ~/.ghc/ghci.conf
+
 echo "Linking tmux wrapper script"
 sudo ln -fs ${PWD}/safe-reattach-to-user-namespace.sh /usr/local/bin/safe-reattach-to-user-namespace
 

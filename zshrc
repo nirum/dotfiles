@@ -71,11 +71,12 @@ alias n='nvim'
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
 
 # ipython
-alias ipy='ipython2 --nosep --no-banner --profile=mbp'
-alias ipy3='ipython3 --nosep --no-banner --profile=mbp'
-alias ipyl='ipython2 --nosep --no-banner --profile=lenna'
-alias nb='ipython2 notebook --profile=mbp'
-alias nb3='ipython3 notebook --profile=mbp'
+alias ipy='ipython3 --nosep --no-banner --profile=mbp'
+alias ipy2='ipython2 --nosep --no-banner --profile=mbp'
+alias nb='ipython3 notebook --profile=mbp'
+alias nb2='ipython2 notebook --profile=mbp'
+alias ipython='ipython3 --nosep'
+alias ipython2='ipython2 --nosep'
 
 # rsync
 alias rs='rsync -avz'

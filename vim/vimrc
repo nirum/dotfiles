@@ -200,7 +200,7 @@ let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;
 
 " vim-airline (statusline)
 let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
 
 " ctrl-p (CtrlP)
@@ -241,7 +241,7 @@ let g:pymode_lint_info_symbol = 'II'
 let g:pymode_lint_pyflakes_symbol = 'FF'
 let g:pymode_rope = 0
 let g:pymode_lint_on_write = 0
-map <c-E> :PymodeLint<CR>
+map <c-e> :PymodeLint<CR>
 
 " vim-slime
 let g:slime_target = "tmux"

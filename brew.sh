@@ -36,6 +36,7 @@ brew install speedtest_cli
 brew install ssh-copy-id
 brew install tree
 brew install fasd
+brew install terminal-notifier
 
 # QT graphics library
 brew install qt

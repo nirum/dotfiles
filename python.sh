@@ -1,5 +1,5 @@
 echo "Installing basic tools"
-pip3 install -U pip setuptools nose
+pip3 install -U pip setuptools nose pytest
 
 echo "Installing scientific python"
 pip3 install -U numpy scipy pandas scikit-learn scikit-image

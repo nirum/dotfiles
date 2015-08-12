@@ -7,8 +7,9 @@ pip3 install -U numpy scipy pandas scikit-learn scikit-image
 echo "Graphics and visualization"
 pip3 install palettable matplotlib seaborn
 
-echo "Install IPython (and dependencies)"
+echo "Install Jupyter/IPython (and dependencies)"
 pip3 install -U "ipython[all]"
+pip3 install -U jupyter
 
 echo "Installing functional tools"
 pip3 install -U toolz multipledispatch

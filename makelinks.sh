@@ -38,8 +38,10 @@ ln -fs ${PWD}/inputrc ~/.inputrc
 echo "Linking IPython profile preferences (mbp) ..."
 rm -r ~/.ipython/profile_mbp/static
 rm -r ~/.ipython/profile_mbp/startup
+rm ~/.ipython/profile_mbp/ipython_config.py
 ln -fs ${PWD}/ipython/static ~/.ipython/profile_mbp/static
 ln -fs ${PWD}/ipython/startup ~/.ipython/profile_mbp/startup
+ln -fs ${PWD}/ipython/ipython_config.py ~/.ipython/profile_mbp/ipython_config.py
 
 echo "Linking matplotlibrc ..."
 if [[ "$OSTYPE" == "linux-gnu" ]]; then

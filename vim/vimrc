@@ -239,7 +239,7 @@ let g:pymode_lint_error_symbol = '✗✗'
 let g:pymode_lint_info_symbol = 'II'
 let g:pymode_lint_pyflakes_symbol = 'FF'
 let g:pymode_rope = 0
-let g:pymode_lint_on_write = 0
+let g:pymode_lint_on_write = 1
 map <c-e> :PymodeLint<CR>
 
 " vim-slime

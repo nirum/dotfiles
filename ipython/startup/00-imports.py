@@ -1,5 +1,5 @@
 # default to floating point division
-from __future__ import print
+from __future__ import print_function
 from __future__ import division
 
 # system

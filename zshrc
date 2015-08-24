@@ -16,8 +16,9 @@ alias src='source ~/.zshrc'
 # vim keybindings
 set -o vi
 
-# ls -F
-alias lf='ls -lF'
+# system
+alias duf='du -shc * | gsort -h'
+alias lf='ls -lSFh'
 
 # tmux stuff
 alias tls='tmux ls'
@@ -83,9 +84,6 @@ alias ipython2='ipython2 --nosep'
 
 # rsync
 alias rs='rsync -avz'
-
-# other
-alias duf='du -shc * | gsort -h'
 
 # editor
 if [[ "$OSTYPE" == "linux-gnu" ]]; then

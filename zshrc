@@ -16,6 +16,9 @@ alias src='source ~/.zshrc'
 # vim keybindings
 set -o vi
 
+# ls -F
+alias lf='ls -lF'
+
 # tmux stuff
 alias tls='tmux ls'
 alias lts='tmux ls'

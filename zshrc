@@ -94,5 +94,16 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   export VISUAL="vim"
 fi
 
+# mount the SNI data storage (thanks to mwaskom@stanford.edu)
+function mount_sni() {
+    mnt=/Volumes/sni
+    if [ ! -d $mnt ] || [ `ls -l $mnt | wc -l` -eq 0 ]; then
+        mkdir -p $mnt
+        kinit nirum@stanford.edu
+        mount_smbfs //nirum@sni-storage.stanford.edu/group/baccus $mnt
+    fi
+    export SNI=$mnt/Niru
+}
+
 # PATH stuff
-export PATH="/usr/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/local/texlive/2015basic/bin/x86_64-darwin/:/Users/nirum/Library/Haskell/bin"
+export PATH="/usr/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/local/texlive/2015basic/bin/x86_64-darwin/:/Users/nirum/Library/Haskell/bin:/usr/local/opt/go/libexec/bin"

@@ -225,7 +225,7 @@ c.TerminalIPythonApp.extensions = [
 # c.TerminalInteractiveShell.term_title = False
 
 # Set the editor used by IPython (default to $EDITOR/vi/notepad).
-# c.TerminalInteractiveShell.editor = 'mvim'
+c.TerminalInteractiveShell.editor = 'nvim'
 
 # Deprecated, use PromptManager.in_template
 # c.TerminalInteractiveShell.prompt_in1 = 'In [\\#]: '

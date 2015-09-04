@@ -77,8 +77,8 @@ alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
 # ipython
 alias ipy='ipython3 --nosep --no-banner --profile=mbp'
 alias ipy2='ipython2 --nosep --no-banner --profile=mbp'
-alias nb='ipython3 notebook --profile=mbp'
-alias nb2='ipython2 notebook --profile=mbp'
+alias nb='jupyter notebook'
+alias nb2='ipython2 notebook'
 alias ipython='ipython3 --nosep'
 alias ipython2='ipython2 --nosep'
 
@@ -106,4 +106,4 @@ function mount_sni() {
 }
 
 # PATH stuff
-export PATH="/usr/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/local/texlive/2015basic/bin/x86_64-darwin/:/Users/nirum/Library/Haskell/bin:/usr/local/opt/go/libexec/bin"
+export PATH="/usr/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/local/texlive/2015basic/bin/x86_64-darwin/:/Users/nirum/Library/Haskell/bin:/Users/nirum/.cabal/bin:/usr/local/opt/go/libexec/bin"

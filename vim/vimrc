@@ -78,6 +78,10 @@ Plug 'JuliaLang/julia-vim'
 " matlab
 Plug 'djoshea/vim-matlab-fold'
 
+" latex
+"Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
+
 " less
 Plug 'groenewege/vim-less'
 

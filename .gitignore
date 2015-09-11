@@ -2,3 +2,4 @@ nvim/plugged/*
 vim/plugged/*
 nvim/autoload/*
 vim/autoload/*
+jupyter/migrated

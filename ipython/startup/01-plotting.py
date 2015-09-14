@@ -8,7 +8,7 @@ matplotlib.use('Qt4Agg')
 # seaborn options
 import seaborn as sns
 sns.set(font='sans-serif')
-sns.set_style('whitegrid')
+sns.set_style('white')
 sns.set_context('talk', font_scale=1.6)
 
 # color styles

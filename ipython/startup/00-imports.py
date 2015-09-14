@@ -12,7 +12,6 @@ import pandas as pd
 
 # utilities
 from jetpack import *
-from imp import reload
 
 # IPython references
 from IPython.core.magic import register_line_magic

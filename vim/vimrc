@@ -79,7 +79,6 @@ Plug 'JuliaLang/julia-vim'
 Plug 'djoshea/vim-matlab-fold'
 
 " latex
-"Plug 'lervag/vimtex'
 Plug 'lervag/vimtex'
 
 " less
@@ -105,7 +104,7 @@ set nocompatible                        " prevents vim from emulating vi's bugs
 set autoindent                          " automatic indenting
 set smartindent                         " smart indenting
 set tabstop=4                           " tab length (columns)
-set shiftwidth=2                        " tab length with reindent options (columns)
+set shiftwidth=4                        " tab length with reindent options (columns)
 set expandtab                           " tab inserts spaces in insert mode
 set smarttab                            " smart tabs
 set et                                  " appropriate tab spacing
@@ -139,7 +138,6 @@ set undofile                            " generates .un file so undo/redo work e
 set ttyfast                             " faster drawing
 set noesckeys                           " kills function and cursor keys
 set clipboard=unnamed                   " support the Mac OSX clipboard
-set cpo+=J                              " two-spacing after sentences
 set iskeyword-=_                        " Use _ as a word-separator
 set timeoutlen=500                      " Don't wait so long for the next keypress
 set tags=./tags;                        " Set the tag file search order
@@ -353,6 +351,9 @@ augroup haskell
     map <silent> tw :call GHC_ShowType(1)<CR>
 
 augroup END
+
+" latex
+let g:tex_flavor = 'latex'
 
 " }}}
 

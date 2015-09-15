@@ -21,6 +21,7 @@ Plug 'flazz/vim-colorschemes'
 
 " send code to tmux
 Plug 'jpalardy/vim-slime'
+Plug 'tmux-plugins/vim-tmux'
 
 " documentation
 Plug 'Keithbsmiley/investigate.vim'

@@ -24,6 +24,7 @@ brew install node
 
 # tmux
 brew install tmux
+brew install reattach-to-user-namespace
 
 # Install other useful binaries.
 brew install ack

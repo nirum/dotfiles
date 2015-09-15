@@ -12,6 +12,7 @@ export LC_CTYPE=en_US.UTF-8 # use unicode
 # edit this file
 alias erc='$EDITOR ~/.zshrc'
 alias src='source ~/.zshrc'
+alias etc='$EDITOR ~/.tmux.conf'
 
 # vim keybindings
 set -o vi

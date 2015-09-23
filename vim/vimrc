@@ -9,25 +9,11 @@ call plug#begin('~/.vim/plugged')
 " navigation
 Plug 'kien/ctrlp.vim'
 
-" git
-Plug 'airblade/vim-gitgutter'
-Plug 'vim-scripts/gitignore'
-
-" testing
-Plug 'janko-m/vim-test'
-
 " colors
 Plug 'flazz/vim-colorschemes'
 
 " send code to tmux
 Plug 'jpalardy/vim-slime'
-Plug 'tmux-plugins/vim-tmux'
-
-" documentation
-Plug 'Keithbsmiley/investigate.vim'
-
-" surround text easily
-Plug 'tpope/vim-surround'
 
 " easily comment code
 Plug 'scrooloose/nerdcommenter'
@@ -35,59 +21,26 @@ Plug 'scrooloose/nerdcommenter'
 " show vertical line indent marks
 Plug 'Yggdroot/indentLine'
 
-" automatically close quotes and parenthesis
-Plug 'Townk/vim-autoclose'
-
-" syntax checking
-Plug 'scrooloose/syntastic'
-
-" copy/paste
+" copy/paste stack
 Plug 'maxbrunsfeld/vim-yankstack'
 
-" code alignment
-Plug 'godlygeek/tabular'
-
-" expand visual selection region
-Plug 'terryma/vim-expand-region'
-
-" snippets and tab completion
-Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-Plug 'sirver/ultisnips'
-
-" javascript
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'leshill/vim-json'
-Plug 'moll/vim-node'
-
-" HTML and CSS
-Plug 'ap/vim-css-color'
-Plug 'mattn/emmet-vim'
-Plug 'vim-scripts/closetag.vim'
+" better search
+Plug 'haya14busa/incsearch.vim'
 
 " python
-Plug 'klen/python-mode'
+Plug 'klen/python-mode', { 'for': 'python' }
 
 " haskell
-Plug 'raichoo/haskell-vim'
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 
 " julia
 Plug 'JuliaLang/julia-vim'
 
-" matlab
-Plug 'djoshea/vim-matlab-fold'
-
 " latex
-Plug 'lervag/vimtex'
-
-" less
-Plug 'groenewege/vim-less'
+Plug 'lervag/vimtex', { 'for': 'latex' }
 
 " editor
 Plug 'bling/vim-airline'
-Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -152,7 +105,6 @@ set ignorecase
 set smartcase
 set gdefault
 
-
 " }}}
 
 " Vimscript file settings ---------------------- {{{
@@ -164,18 +116,10 @@ augroup END
 
 " editing and sourcing vimrc
 noremap <Leader>erc :tabf ~/.vimrc<CR>
-noremap <Leader>src :source ~/.vimrc<CR>
 
 " }}}
 
 " Navigation ---------------------- {{{
-
-" dealing with windows
-noremap <Leader>j <C-w>j<CR>
-noremap <Leader>k <C-w>k<CR>
-noremap <Leader>l <C-w>l<CR>
-noremap <Leader>h <C-w>h<CR>
-noremap <Leader>x <C-w>c<CR>
 
 " uses expression to extract path from current file's path
 noremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
@@ -183,16 +127,6 @@ noremap <Leader>t :tabf <C-R>=expand("%:p:h") . '/'<CR>
 noremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 noremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 noremap <Leader>q :q<CR>
-
-" get current director
-function! CurDir()
-    let curdir = substitute(getcwd(), '/Users/nirum/', "~/", "g")
-    return curdir
-endfunction
-
-" jumping around
-nnoremap <CR> G
-nnoremap <BS> gg
 
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
@@ -203,7 +137,7 @@ let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;
 
 " vim-airline (statusline)
 let g:airline_powerline_fonts = 1
-let g:airline_theme='molokai'
+let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 
 " ctrl-p (CtrlP)
@@ -221,15 +155,13 @@ else
     \ }
 endif
 
+" incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
 " map comment commands (NERD Commenter)
 map <Leader>mm <Leader>c<space>
-
-" syntastic
-let g:syntastic_enable_signs=0
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq = 0
-map <Leader>S :SyntasticToggleMode<CR>
-map <silent> <Leader>E :Errors<CR>
 
 " indented line marker color
 let g:indentLine_color_gui = '#A7C0CC'
@@ -242,34 +174,11 @@ let g:pymode_lint_error_symbol = '✗✗'
 let g:pymode_lint_info_symbol = 'II'
 let g:pymode_lint_pyflakes_symbol = 'FF'
 let g:pymode_rope = 0
-let g:pymode_lint_on_write = 1
+let g:pymode_lint_on_write = 0
 map <c-e> :PymodeLint<CR>
 
 " vim-slime
 let g:slime_target = "tmux"
-
-" (YCM) YouCompleteMe
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_key_list_select_completion=['<C-j>', '<Down>']
-let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
-
-" supertab
-let g:SuperTabDefaultCompletionType = '<C-j>'
-
-" ultisnips snippets
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnpsSnippetsDir = '~/.vim/UltiSnips'
-let g:UltiSnipsExpandTrigger="<C-CR>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" expand region
-vmap v <Plug>(expand_region_expand)
-vmap <s-v> <Plug>(expand_region_shrink)
-
-" dash
-let g:investigate_use_dash=1
-nnoremap K :call investigate#Investigate()<CR>
 
 " yankstack
 if has("gui_macvim")
@@ -298,10 +207,9 @@ augroup textfiles
 augroup END
 
 " fix comment auto-indenting for different languages
-autocmd FileType matlab inoremap % X%
-
-" javascript folding
-au FileType javascript call JavaScriptFold()
+augroup matlab
+    autocmd FileType matlab inoremap % X%
+augroup END
 
 augroup web
     autocmd!
@@ -317,39 +225,11 @@ augroup web
     " indentation, to make files a few bytes smaller:
 	autocmd FileType html,css set noexpandtab tabstop=2
 
-    " closetag
-    autocmd FileType html,xml,xsl source ~/.vim/scripts/closetag.vim
-    let g:closetag_html_style=1
-
     " don't wrap html
 	autocmd BufWritePre,BufRead *.html setlocal nowrap
 
     " format XML files
 	autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
-
-augroup END
-
-" haskell
-augroup haskell
-    autocmd!
-
-    " type inspection
-    au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-    au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-    au FileType haskell nnoremap <buffer> <silent> <F3> :HdevtoolsInfo<CR>
-
-    " browse top level definitions
-    nmap <leader>T :TagbarToggle<CR>
-    let g:tagbar_autofocus = 1
-
-    " typing `gq` converts to pointfree form
-    autocmd BufEnter *.hs set formatprg=pointfree
-
-    " Reload
-    map <silent> tu :call GHC_BrowseAll()<CR>
-
-    " Type Lookup
-    map <silent> tw :call GHC_ShowType(1)<CR>
 
 augroup END
 
@@ -373,14 +253,7 @@ noremap <space> :w<CR>
 nnoremap <Leader>w :w<CR>
 inoremap <Leader>w <ESC>:w<CR>
 
-" copy all
-noremap <Leader>co ggvG$y
-
-" edit rest of line
-noremap <Leader>cx v$hxa
-
 " pasting
-noremap <Leader>p :set paste<CR><c-v><ESC>:set nopaste<CR>
 nmap <c-p> <Plug>yankstack_substitute_older_paste
 
 " }}}
@@ -463,9 +336,6 @@ endif
 nnoremap <tab>   gt
 nnoremap <S-tab> gT
 
-" indent lines
-vnoremap <tab> I<tab><esc>
-
 " to escape
 inoremap jk <Esc>
 
@@ -483,13 +353,6 @@ nnoremap <silent> <C-l> >>
 nnoremap <silent> <C-h> <<
 vnoremap <silent> <C-l> >gv
 vnoremap <silent> <C-h> <gv
-
-" Center search matches when jumping
-noremap N Nzz
-noremap n nzz
-
-" common terminal commands
-noremap <Leader>ls :!ls<CR>
 
 " Emacs-like beginning and end of line.
 inoremap <c-e> <c-o>$

@@ -3,7 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 from palettable.tableau import Tableau_10
-matplotlib.use('Qt4Agg')
+plt.ion()
 
 # seaborn options
 import seaborn as sns

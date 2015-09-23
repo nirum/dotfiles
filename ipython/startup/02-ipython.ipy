@@ -1,12 +1,12 @@
 # ipython scripts
-%matplotlib qt
 %load_ext autoreload
 %autoreload 2
+%matplotlib qt
 
 # profiling
-%load_ext line_profiler
-%load_ext memory_profiler
+#%load_ext line_profiler
+#%load_ext memory_profiler
 
 # h5py autocomplete
-import h5py
-h5py.enable_ipython_completer()
+#import h5py
+#h5py.enable_ipython_completer()

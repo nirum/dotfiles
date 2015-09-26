@@ -9,6 +9,7 @@ import sys
 # numpy
 import numpy as np
 import pandas as pd
+import scipy
 
 # utilities
 from jetpack import *

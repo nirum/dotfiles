@@ -1,7 +1,5 @@
-# data analysis
-import scipy
-import scipy.stats as stats
-from scipy.linalg import eig, eigh, svd
-
-from numpy.random import rand, randn
-from numpy.linalg import norm
+# sanity
+from numpy.random import rand, randn, shuffle, choice, sample
+from numpy import arange, zeros, ones, eye, linspace
+from scipy.linalg import *
+from matplotlib.pyplot import *

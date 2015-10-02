@@ -127,14 +127,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-open'
 set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'tmux-plugins/tmux-sidebar'
 set -g @plugin 'tmux-plugins/tmux-cpu'
-
-# plugin options
-set -g @sidebar-tree-position 'right'
-set -g @sidebar-tree 'e'
-set -g @sidebar-tree-focus 'w'
-set -g @sidebar-tree-command 'tree -C'
 
 # Initialize TMUX plugin manager
 run '~/.tmux/plugins/tpm/tpm'

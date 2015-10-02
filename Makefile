@@ -57,11 +57,8 @@ python:
 	ln -fs ${PWD}/ipython/ipython_config.py ~/.ipython/profile_mbp/ipython_config.py
 	ln -fs ${PWD}/jupyter ~/.jupyter
 	echo "Linking matplotlibrc ..."
-	if [[ "$OSTYPE" == "linux-gnu" ]]; then
-		ln -fs ${PWD}/ipython/matplotlibrc ~/.matplotlib/matplotlibrc
-	elif [[ "$OSTYPE" == "darwin"* ]]; then
-		ln -fs ${PWD}/ipython/matplotlibrc ~/.matplotlib/matplotlibrc
-	fi
+	rm ~/.matplotlib/matplotlibrc
+	ln -fs ${PWD}/ipython/matplotlibrc ~/.matplotlib/matplotlibrc
 
 brew:
 	echo "Installing useful homebrew utilities"

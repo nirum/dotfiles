@@ -21,7 +21,7 @@ haskell:
 
 tmux:
 	echo "Linking tmux ..."
-	ln -fs ${PWD}/tmux_conf ~/.tmux.conf
+	ln -fs ${PWD}/tmux.conf ~/.tmux.conf
 	ln -fs ${PWD}/tmux-powerlinerc ~/.tmux-powerlinerc
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	
@@ -51,14 +51,13 @@ latex:
 python:
 	echo "Linking IPython profile preferences (mbp) ..."
 	rm -rf ~/.ipython/profile_mbp/startup
-	rm ~/.ipython/profile_mbp/ipython_config.py
 	rm -rf ~/.jupyter
 	ln -fs ${PWD}/ipython/startup ~/.ipython/profile_mbp/startup
 	ln -fs ${PWD}/ipython/ipython_config.py ~/.ipython/profile_mbp/ipython_config.py
 	ln -fs ${PWD}/jupyter ~/.jupyter
-	echo "Linking matplotlibrc ..."
-	rm ~/.matplotlib/matplotlibrc
+	echo "Linking matplotlibrc and styles..."
 	ln -fs ${PWD}/ipython/matplotlibrc ~/.matplotlib/matplotlibrc
+	ln -fs ${PWD}/ipython/albatross.mplstyle ~/.matplotlib/stylelib/albatross.mplstyle
 
 brew:
 	echo "Installing useful homebrew utilities"

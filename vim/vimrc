@@ -34,10 +34,10 @@ Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 
 " julia
-Plug 'JuliaLang/julia-vim'
+"Plug 'JuliaLang/julia-vim', {'for': 'julia'}
 
 " latex
-Plug 'lervag/vimtex', { 'for': 'latex' }
+"Plug 'lervag/vimtex', { 'for': 'latex' }
 
 " editor
 Plug 'bling/vim-airline'
@@ -167,6 +167,13 @@ map <Leader>mm <Leader>c<space>
 let g:indentLine_color_gui = '#A7C0CC'
 
 " python-mode (pymode)
+let g:pymode_python = 'python'
+let g:pymode_doc = 0
+let g:pymode_virtualenv = 0
+let g:pymode_run = 0
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let g:pymode_lint_ignore = "E501,W,E231,E265,E261,E262"
+let g:pymode_syntax_print_as_function = 1
 let g:pymode_lint_todo_symbol = '✎'
 let g:pymode_lint_comment_symbol = '➯'
 let g:pymode_lint_visual_symbol = 'RR'
@@ -234,7 +241,7 @@ augroup web
 augroup END
 
 " latex
-let g:tex_flavor = 'latex'
+"let g:tex_flavor = 'latex'
 
 " }}}
 
@@ -335,12 +342,6 @@ endif
 " circular window navigation
 nnoremap <tab>   gt
 nnoremap <S-tab> gT
-
-" to escape
-inoremap jk <Esc>
-
-" qq to record, Q to replay
-nnoremap Q @q
 
 " move lines
 nnoremap <silent> <C-j> :move+<cr>

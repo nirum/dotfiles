@@ -69,7 +69,8 @@ set noerrorbells                        " turn off error bells
 set visualbell                          " turn on visual bell
 set ruler                               " each window gets status line
 set history=500		                    " keep 500 lines of command line history
-set foldlevelstart=1                    " fold automatically
+set foldlevelstart=5                    " fold automatically
+set foldnestmax=10                      " max level of folds
 set lazyredraw                          " redraw only when we need to
 set wildmenu                            " tab completion when file browsing
 set wildignore+=*.png,*.jpg,*.pdf       " ignore certain files
@@ -144,16 +145,9 @@ let g:airline#extensions#tabline#enabled = 1
 " make ctrl-P faster in git repos
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_use_caching = 0
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-else
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-  let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-    \ }
-endif
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 " incsearch
 map /  <Plug>(incsearch-forward)
@@ -246,6 +240,9 @@ augroup END
 " }}}
 
 " Utilities ---------------------- {{{
+
+" jk is escape
+inoremap jk <esc>
 
 " add semicolon to the end of the line
 nnoremap  <Leader>j; <Esc>$a;<Esc>j;;

@@ -33,6 +33,7 @@ alias gs='git st'
 alias sg='git st'
 alias ga='git add'
 alias gu='git pull'
+alias gd='git diff'
 
 # moving around
 alias ..='cd ..'
@@ -80,8 +81,7 @@ alias ipy='ipython3 --nosep --no-banner --profile=mbp'
 alias ipy2='ipython2 --nosep --no-banner --profile=mbp'
 alias nb='jupyter notebook'
 alias nb2='ipython2 notebook'
-alias ipython='ipython3 --nosep'
-alias ipython2='ipython2 --nosep'
+alias qt="jupyter qtconsole --ConsoleWidget.font_family="Anonymous Pro" --ConsoleWidget.font_size=14 --no-confirm-exit --no-banner --paging=vsplit --style='' --stylesheet='' --editor='mvim' --JupyterQtConsoleApp.config_file='/Users/nirum/.ipython/profile_mbp/ipython_config'"
 
 # rsync
 alias rs='rsync -avz'

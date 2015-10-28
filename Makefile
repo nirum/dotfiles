@@ -36,7 +36,6 @@ git:
 		git config --global credential.helper osxkeychain
 	fi
 
-
 shell:
 	echo "Linking shell profiles ..."
 	ln -fs ${PWD}/bash_profile ~/.bash_profile
@@ -51,8 +50,10 @@ latex:
 python:
 	echo "Linking IPython profile preferences (mbp) ..."
 	rm -rf ~/.ipython/profile_mbp/startup
+	rm -rf ~/.ipython/extensions
 	rm -rf ~/.jupyter
 	ln -fs ${PWD}/ipython/startup ~/.ipython/profile_mbp/startup
+	ln -fs ${PWD}/ipython/extensions ~/.ipython/extensions
 	ln -fs ${PWD}/ipython/ipython_config.py ~/.ipython/profile_mbp/ipython_config.py
 	ln -fs ${PWD}/jupyter ~/.jupyter
 	echo "Linking matplotlibrc and styles..."

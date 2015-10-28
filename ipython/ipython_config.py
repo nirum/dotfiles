@@ -42,6 +42,7 @@ c = get_config()
 # A list of dotted module names of IPython extensions to load.
 c.InteractiveShellApp.extensions = [
     'line_profiler',
+    'memory_profiler',
 ]
 
 # Run the file referenced by the PYTHONSTARTUP environment variable at IPython
@@ -93,6 +94,7 @@ c.InteractiveShellApp.extensions = [
 # A list of dotted module names of IPython extensions to load.
 c.TerminalIPythonApp.extensions = [
     'line_profiler',
+    'memory_profiler',
 ]
 
 # Run the file referenced by the PYTHONSTARTUP environment variable at IPython
@@ -126,7 +128,7 @@ c.TerminalIPythonApp.extensions = [
 # c.TerminalIPythonApp.hide_initial_ns = True
 
 # Whether to display a banner upon starting IPython.
-# c.TerminalIPythonApp.display_banner = True
+c.TerminalIPythonApp.display_banner = False
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
@@ -215,9 +217,6 @@ c.TerminalIPythonApp.extensions = [
 #
 # c.TerminalInteractiveShell.object_info_string_level = 0
 
-# Deprecated, use PromptManager.out_template
-# c.TerminalInteractiveShell.prompt_out = 'Out[\\#]: '
-
 # auto editing of files with syntax errors.
 # c.TerminalInteractiveShell.autoedit_syntax = False
 
@@ -225,15 +224,12 @@ c.TerminalIPythonApp.extensions = [
 # c.TerminalInteractiveShell.term_title = False
 
 # Set the editor used by IPython (default to $EDITOR/vi/notepad).
-c.TerminalInteractiveShell.editor = 'nvim'
-
-# Deprecated, use PromptManager.in_template
-# c.TerminalInteractiveShell.prompt_in1 = 'In [\\#]: '
+c.TerminalInteractiveShell.editor = 'mvim'
 
 # Use colors for displaying information about objects. Because this information
 # is passed through a pager (like 'less'), and some pagers get confused with
 # color codes, this capability can be turned off.
-# c.TerminalInteractiveShell.color_info = True
+c.TerminalInteractiveShell.color_info = True
 
 # Make IPython automatically call any callable object even if you didn't type
 # explicit parentheses. For example, 'str 43' becomes 'str(43)' automatically.
@@ -241,7 +237,7 @@ c.TerminalInteractiveShell.editor = 'nvim'
 # it is not applied if there are no more arguments on the line, and '2' for
 # 'full' autocall, where all callable objects are automatically called (even if
 # no arguments are present).
-# c.TerminalInteractiveShell.autocall = 0
+c.TerminalInteractiveShell.autocall = 2
 
 # Save multi-line entries as one entry in readline history
 # c.TerminalInteractiveShell.multiline_history = True
@@ -256,7 +252,7 @@ c.TerminalInteractiveShell.editor = 'nvim'
 # c.TerminalInteractiveShell.autoindent = True
 
 # Enable magic commands to be called without the leading %.
-# c.TerminalInteractiveShell.automagic = True
+c.TerminalInteractiveShell.automagic = True
 
 # The name of the logfile to use.
 # c.TerminalInteractiveShell.logfile = ''
@@ -283,7 +279,7 @@ c.TerminalInteractiveShell.editor = 'nvim'
 # forces a full reload of modules whose code may have changed, which the default
 # reload() function does not.  When deep_reload is off, IPython will use the
 # normal reload(), but deep_reload will still be available as dreload().
-# c.TerminalInteractiveShell.deep_reload = False
+c.TerminalInteractiveShell.deep_reload = True
 
 # Number of lines of your screen, used to control printing of very long strings.
 # Strings longer than this number of lines will be sent through a pager instead
@@ -300,13 +296,20 @@ c.TerminalInteractiveShell.editor = 'nvim'
 # c.TerminalInteractiveShell.ast_transformers = []
 
 #
-# c.TerminalInteractiveShell.readline_parse_and_bind = ['tab: complete', '"\\C-l": clear-screen', 'set show-all-if-ambiguous on', '"\\C-o": tab-insert', '"\\C-r": reverse-search-history', '"\\C-s": forward-search-history', '"\\C-p": history-search-backward', '"\\C-n": history-search-forward', '"\\e[A": history-search-backward', '"\\e[B": history-search-forward', '"\\C-k": kill-line', '"\\C-u": unix-line-discard']
-
-# Deprecated, use PromptManager.justify
-# c.TerminalInteractiveShell.prompts_pad_left = True
+c.TerminalInteractiveShell.readline_parse_and_bind = ['tab: complete',
+                                                      '"\\C-l": clear-screen',
+                                                      'set show-all-if-ambiguous on',
+                                                      '"\\C-o": tab-insert',
+                                                      '"\\C-r": reverse-search-history',
+                                                      '"\\C-s": forward-search-history',
+                                                      '"\\C-k": history-search-backward',
+                                                      '"\\C-j": history-search-forward',
+                                                      '"\\e[A": history-search-backward',
+                                                      '"\\e[B": history-search-forward',
+                                                      '"\\C-u": unix-line-discard']
 
 # Set the color scheme (NoColor, Linux, or LightBG).
-# c.TerminalInteractiveShell.colors = 'LightBG'
+c.TerminalInteractiveShell.colors = 'Linux'
 
 # The part of the banner to be printed before the profile
 # c.TerminalInteractiveShell.banner1 = 'Python 3.4.3 (default, Aug  5 2015, 12:51:04) \nType "copyright", "credits" or "license" for more information.\n\nIPython 3.2.1 -- An enhanced Interactive Python.\n?         -> Introduction and overview of IPython\'s features.\n%quickref -> Quick reference.\nhelp      -> Python\'s own help system.\nobject?   -> Details about \'object\', use \'object??\' for extra details.\n'
@@ -321,25 +324,22 @@ c.TerminalInteractiveShell.editor = 'nvim'
 # Show rewritten input, e.g. for autocall.
 # c.TerminalInteractiveShell.show_rewritten_input = True
 
-# Deprecated, use PromptManager.in2_template
-# c.TerminalInteractiveShell.prompt_in2 = '   .\\D.: '
-
 #
 # c.TerminalInteractiveShell.separate_out = ''
 
 # Set to confirm when you try to exit IPython with an EOF (Control-D in Unix,
 # Control-Z/Enter in Windows). By typing 'exit' or 'quit', you can force a
 # direct exit without any confirmation.
-# c.TerminalInteractiveShell.confirm_exit = True
+c.TerminalInteractiveShell.confirm_exit = True
 
 # The part of the banner to be printed after the profile
 # c.TerminalInteractiveShell.banner2 = ''
 
 # The shell program to be used for paging.
-# c.TerminalInteractiveShell.pager = 'less'
+c.TerminalInteractiveShell.pager = 'less'
 
 # Automatically call the pdb debugger after every exception.
-# c.TerminalInteractiveShell.pdb = False
+c.TerminalInteractiveShell.pdb = True
 
 #------------------------------------------------------------------------------
 # PromptManager configuration
@@ -348,19 +348,19 @@ c.TerminalInteractiveShell.editor = 'nvim'
 # This is the primary interface for producing IPython's prompts.
 
 # If True (default), each prompt will be right-aligned with the preceding one.
-# c.PromptManager.justify = True
+c.PromptManager.justify = True
 
 # Output prompt. '\#' will be transformed to the prompt number
-# c.PromptManager.out_template = 'Out[\\#]: '
+c.PromptManager.out_template = u'{color.LightCyan} \u21AA  '
 
 # Continuation prompt.
-# c.PromptManager.in2_template = '   .\\D.: '
+c.PromptManager.in2_template = u'   \u22F1{dots} '
 
 # Input prompt.  '\#' will be transformed to the prompt number
-# c.PromptManager.in_template = 'In [\\#]: '
+c.PromptManager.in_template = u'\u2615  {color.LightCyan}({count}) '
 
 #
-# c.PromptManager.color_scheme = 'Linux'
+c.PromptManager.color_scheme = 'Linux'
 
 #------------------------------------------------------------------------------
 # HistoryManager configuration
@@ -448,7 +448,7 @@ c.TerminalInteractiveShell.editor = 'nvim'
 # PlainTextFormatter will inherit config from: BaseFormatter
 
 #
-# c.PlainTextFormatter.max_width = 79
+c.PlainTextFormatter.max_width = 120
 
 # Truncate large collections (lists, dicts, tuples, sets) to this size.
 #
@@ -471,7 +471,7 @@ c.TerminalInteractiveShell.editor = 'nvim'
 # c.PlainTextFormatter.newline = '\n'
 
 #
-# c.PlainTextFormatter.pprint = True
+c.PlainTextFormatter.pprint = True
 
 #
 # c.PlainTextFormatter.verbose = False
@@ -505,7 +505,7 @@ c.TerminalInteractiveShell.editor = 'nvim'
 # When 1: all 'magic' names (``__foo__``) will be excluded.
 #
 # When 0: nothing will be excluded.
-# c.IPCompleter.omit__names = 2
+c.IPCompleter.omit__names = 2
 
 # Instruct the completer to use __all__ for the completion
 #
@@ -514,7 +514,7 @@ c.TerminalInteractiveShell.editor = 'nvim'
 # When True: only those names in obj.__all__ will be included.
 #
 # When False [default]: the __all__ attribute is ignored
-# c.IPCompleter.limit_to__all__ = False
+c.IPCompleter.limit_to__all__ = True
 
 #------------------------------------------------------------------------------
 # ScriptMagics configuration
@@ -550,4 +550,4 @@ c.TerminalInteractiveShell.editor = 'nvim'
 
 # If True, any %store-d variables will be automatically restored when IPython
 # starts.
-# c.StoreMagics.autorestore = False
+c.StoreMagics.autorestore = True

@@ -339,7 +339,7 @@ c.TerminalInteractiveShell.confirm_exit = True
 c.TerminalInteractiveShell.pager = 'less'
 
 # Automatically call the pdb debugger after every exception.
-c.TerminalInteractiveShell.pdb = True
+c.TerminalInteractiveShell.pdb = False
 
 #------------------------------------------------------------------------------
 # PromptManager configuration

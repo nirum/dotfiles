@@ -31,6 +31,9 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
+" autocomplete
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh'}
+
 " python
 Plug 'klen/python-mode', { 'for': 'python' }
 
@@ -38,10 +41,10 @@ Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 
 " julia
-"Plug 'JuliaLang/julia-vim', {'for': 'julia'}
+Plug 'JuliaLang/julia-vim'
 
 " latex
-"Plug 'lervag/vimtex', { 'for': 'latex' }
+Plug 'lervag/vimtex'
 
 " editor
 Plug 'bling/vim-airline'

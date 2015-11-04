@@ -224,7 +224,7 @@ c.TerminalIPythonApp.display_banner = False
 # c.TerminalInteractiveShell.term_title = False
 
 # Set the editor used by IPython (default to $EDITOR/vi/notepad).
-c.TerminalInteractiveShell.editor = 'mvim'
+c.TerminalInteractiveShell.editor = 'nvim'
 
 # Use colors for displaying information about objects. Because this information
 # is passed through a pager (like 'less'), and some pagers get confused with

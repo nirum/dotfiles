@@ -297,6 +297,7 @@ c.TerminalInteractiveShell.deep_reload = False
 
 #
 c.TerminalInteractiveShell.readline_parse_and_bind = ['tab: complete',
+                                                      'set editing-mode vi',
                                                       '"\\C-l": clear-screen',
                                                       'set show-all-if-ambiguous on',
                                                       '"\\C-o": tab-insert',

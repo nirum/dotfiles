@@ -517,7 +517,7 @@ c.IPCompleter.omit__names = 2
 # When True: only those names in obj.__all__ will be included.
 #
 # When False [default]: the __all__ attribute is ignored
-c.IPCompleter.limit_to__all__ = True
+c.IPCompleter.limit_to__all__ = False
 
 #------------------------------------------------------------------------------
 # ScriptMagics configuration

@@ -298,8 +298,8 @@ c.TerminalInteractiveShell.deep_reload = False
 #
 c.TerminalInteractiveShell.readline_parse_and_bind = ['tab: complete',
                                                       'set editing-mode vi',
-                                                      '"\\C-l": clear-screen',
                                                       'set show-all-if-ambiguous on',
+                                                      '"\\C-l": clear-screen',
                                                       '"\\C-o": tab-insert',
                                                       '"\\C-r": reverse-search-history',
                                                       '"\\C-s": forward-search-history',
@@ -309,7 +309,9 @@ c.TerminalInteractiveShell.readline_parse_and_bind = ['tab: complete',
                                                       '"\\C-g": forward-word',
                                                       '"\\e[A": history-search-backward',
                                                       '"\\e[B": history-search-forward',
-                                                      '"\\C-u": unix-line-discard']
+                                                      '"\\C-u": unix-line-discard',
+                                                      '"\\C-a": beginning-of-line',
+                                                      '"\\C-e": end-of-line']
 
 # Set the color scheme (NoColor, Linux, or LightBG).
 c.TerminalInteractiveShell.colors = 'Linux'

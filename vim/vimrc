@@ -367,7 +367,7 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 if has("gui_gtk2")
     set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
 elseif has("gui_macvim")
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h14
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h16
     let g:Powerline_symbols = 'fancy'
 
     set lines=80

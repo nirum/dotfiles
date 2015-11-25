@@ -354,13 +354,13 @@ c.TerminalInteractiveShell.pdb = False
 c.PromptManager.justify = True
 
 # Output prompt. '\#' will be transformed to the prompt number
-c.PromptManager.out_template = u'{color.LightGreen}\u21AA  '
+c.PromptManager.out_template = u'{color.LightGreen}\u21AA '
 
 # Continuation prompt.
-c.PromptManager.in2_template = u'{color.LightGray}   \u205e '
+c.PromptManager.in2_template = u'{color.LightGray}  \u205e '
 
 # Input prompt.  '\#' will be transformed to the prompt number
-c.PromptManager.in_template = u'{color.LightCyan}\u238B  '
+c.PromptManager.in_template = u'{color.LightGray}\u274F '
 
 #
 c.PromptManager.color_scheme = 'Linux'

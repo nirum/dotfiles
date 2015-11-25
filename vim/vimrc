@@ -283,12 +283,13 @@ augroup END
 
 " Utilities ---------------------- {{{
 
-" jk is escape
-inoremap jk <esc>
-
 " add semicolon to the end of the line
 nnoremap  <Leader>j; <Esc>$a;<Esc>j;;
 inoremap  <Leader>j; <Esc>$a;<Esc>j;;
+
+" $ and 0 work with shift
+nnoremap 4 $
+nnoremap ) 0
 
 " }}}
 
@@ -367,7 +368,7 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 if has("gui_gtk2")
     set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
 elseif has("gui_macvim")
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h16
+    set guifont=Hack:h16
     let g:Powerline_symbols = 'fancy'
 
     set lines=80

@@ -40,6 +40,9 @@ Plug 'klen/python-mode', { 'for': 'python' }
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 
+" elm
+Plug 'lambdatoast/elm.vim'
+
 " julia
 Plug 'JuliaLang/julia-vim'
 

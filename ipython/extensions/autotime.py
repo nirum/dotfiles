@@ -33,7 +33,7 @@ class Timer(object):
             print(u'\u23F1  {}'.format(fmt(diff)))
 
 
-timer = LineWatcher()
+timer = Timer()
 
 
 def load_ipython_extension(ip):

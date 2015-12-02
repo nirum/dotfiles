@@ -66,6 +66,7 @@ alias whos='who; date'
 # ssh aliases
 alias lenna='ssh lenna.stanford.edu'
 alias lennax='ssh -CY lenna.stanford.edu'
+alias msh='mosh -6 lenna.stanford.edu'
 alias cardinal='ssh -CY cardinal.stanford.edu'
 alias tonto='ssh -CY niru@tonto.stanford.edu'
 

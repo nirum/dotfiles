@@ -16,7 +16,7 @@ class Timer(object):
         """
 
         self.start_time = 0.0
-        self.threshold = 0.1
+        self.threshold = threshold
 
     def start(self):
         """
@@ -40,7 +40,7 @@ class Timer(object):
                 print(u'\u23F1  {}'.format(fmt(diff)))
 
 
-timer = Timer()
+timer = Timer(0.1)
 
 
 def load_ipython_extension(ip):

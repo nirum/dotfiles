@@ -4,13 +4,19 @@ from IPython.core.magics.execution import _format_time as fmt
 
 
 class Timer(object):
-    """
-    Timer is a simple class to keep track of elapsed time.
+    def __init__(self, threshold):
+        """
+        Timer is a simple class to keep track of elapsed time.
 
-    """
+        Parameters
+        ----------
+        threshold : float
+        Any times below the threshold (in seconds) are not printed
 
-    def __init__(self):
+        """
+
         self.start_time = 0.0
+        self.threshold = 0.1
 
     def start(self):
         """
@@ -30,7 +36,8 @@ class Timer(object):
         if self.start_time:
             diff = perf_counter() - self.start_time
             assert diff > 0
-            print(u'\u23F1  {}'.format(fmt(diff)))
+            if diff > self.threshold:
+                print(u'\u23F1  {}'.format(fmt(diff)))
 
 
 timer = Timer()

@@ -9,5 +9,5 @@
 #%load_ext memory_profiler
 
 # h5py autocomplete
-#import h5py
-#h5py.enable_ipython_completer()
+import h5py
+h5py.enable_ipython_completer()

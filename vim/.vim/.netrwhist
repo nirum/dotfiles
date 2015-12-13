@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/usr/include/simd'
+let g:netrw_dirhist_2='/Users/nirum/research/deep-learning-demo/utils.py'
+let g:netrw_dirhist_3='/Users/nirum/experiments/analysis/analysis'

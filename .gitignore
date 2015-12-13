@@ -1,6 +1,3 @@
-nvim/plugged/*
-vim/plugged/*
-nvim/autoload/*
-vim/autoload/*
+vim/.vim/plugged/*
+vim/.vim/autoload/*
 jupyter/migrated
-.un~

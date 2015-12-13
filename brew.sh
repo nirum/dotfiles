@@ -8,6 +8,9 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade --all
 
+# stow for managing dotfiles
+brew install stow
+
 # Install some other useful utilities like `sponge`.
 brew install coreutils
 brew install moreutils
@@ -41,9 +44,6 @@ brew install terminal-notifier
 
 # QT graphics library
 brew install qt
-
-# exercism script
-brew install exercism
 
 # Remove outdated versions from the cellar.
 brew cleanup

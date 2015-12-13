@@ -3,3 +3,4 @@ vim/plugged/*
 nvim/autoload/*
 vim/autoload/*
 jupyter/migrated
+.un~

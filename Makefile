@@ -13,10 +13,6 @@ tmux:
 	stow tmux
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-bash:
-	echo "Linking bash ..."
-	stow bash
-	
 git:
 	echo "Linking git ..."
 	ln -s ${PWD}/git/.gitignore ~/.gitignore

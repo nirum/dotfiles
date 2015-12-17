@@ -46,6 +46,9 @@ Plug 'lambdatoast/elm.vim'
 " julia
 Plug 'JuliaLang/julia-vim'
 
+" emmet for html/css
+Plug 'mattn/emmet-vim'
+
 " latex
 Plug 'lervag/vimtex'
 
@@ -261,21 +264,24 @@ augroup web
     autocmd!
 
     " for CSS, also have things in braces indented:
-	autocmd FileType css set smartindent
+		autocmd FileType css set smartindent
 
     " for HTML, generally format text, but if a long line has been created
     " leave it alone when editing:
-	autocmd FileType html set formatoptions+=tl
+		autocmd FileType html set formatoptions+=tl
 
     " for both CSS and HTML, use genuine tab characters for
     " indentation, to make files a few bytes smaller:
-	autocmd FileType html,css set noexpandtab tabstop=2
+		autocmd FileType html,css set noexpandtab tabstop=2
 
     " don't wrap html
-	autocmd BufWritePre,BufRead *.html setlocal nowrap
+		autocmd BufWritePre,BufRead *.html setlocal nowrap
 
     " format XML files
-	autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+		autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
+		let g:user_emmet_install_global = 0
+		autocmd FileType html,css EmmetInstall
 
 augroup END
 

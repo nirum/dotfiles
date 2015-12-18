@@ -72,10 +72,13 @@ alias tonto='ssh -CY niru@tonto.stanford.edu'
 
 # vim
 alias v='$EDITOR'
-alias n='nvim'
 
 # matlab
-alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    alias matlab='/usr/bin/matlab -nodesktop -nosplash'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
+fi
 
 # ipython
 alias ipy='ipython3 --nosep --no-banner --profile=mbp'
@@ -89,11 +92,11 @@ alias rs='rsync -avz'
 
 # editor
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  export EDITOR="gvim"
+    export EDITOR="gvim"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  export EDITOR="mvim"
-  export HOMEBREW_EDITOR="mvim"
-  export VISUAL="vim"
+    export EDITOR="mvim"
+    export HOMEBREW_EDITOR="mvim"
+    export VISUAL="vim"
 fi
 
 # mount the SNI data storage (thanks to mwaskom@stanford.edu)
@@ -109,3 +112,7 @@ function mount_sni() {
 
 # PATH stuff
 export PATH="/usr/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X11/bin:/usr/local/git/bin:/usr/local/texlive/2015basic/bin/x86_64-darwin/:/Users/nirum/Library/Haskell/bin:/Users/nirum/.cabal/bin:/usr/local/opt/go/libexec/bin"
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    export LD_LIBRARY_PATH="/usr/local/cuda-7.5/lib64/"
+fi

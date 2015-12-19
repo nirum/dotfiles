@@ -117,8 +117,5 @@ export PATH="/usr/local/sbin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/opt/X
 # workstation specific
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     export LD_LIBRARY_PATH="/usr/local/cuda-7.5/lib64/"
-    export PATH="$HOME/.pyenv/bin:$PATH:/usr/local/cuda-7.5/bin/"
-    eval "$(pyenv virtualenv-init -)"
+    export PATH="$PATH:/usr/local/cuda-7.5/bin/"
 fi
-
-eval "$(pyenv init -)"

@@ -10,7 +10,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
 
 " colors
-Plug 'flazz/vim-colorschemes'
+Plug 'mkarmona/colorsbox'
 
 " send code to tmux
 Plug 'jpalardy/vim-slime'
@@ -358,7 +358,7 @@ augroup END
 
 " Colorscheme (put this first)
 set background=dark
-colorscheme atom
+colorscheme colorsbox-steighties
 
 " highlight spelling errors
 hi clear SpellBad
@@ -375,9 +375,9 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 
 " fonts
 if has("gui_gtk2")
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
 elseif has("gui_macvim")
-    set guifont=Hack:h16
+    set guifont=Hack:h12
     let g:Powerline_symbols = 'fancy'
 
     set lines=80

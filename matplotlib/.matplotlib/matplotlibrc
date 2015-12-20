@@ -232,8 +232,7 @@ axes.axisbelow      : True    # whether axis gridlines and ticks are below
                                    # according to the user's locale.
                                    # For example, use ',' as a decimal
                                    # separator in the fr_FR locale.
-#axes.formatter.use_mathtext : False # When True, use mathtext for scientific
-                                     # notation.
+#axes.formatter.use_mathtext : False # When True, use mathtext for scientific notation.
 #axes.unicode_minus  : True    # use unicode for the minus symbol
                                # rather than hyphen.  See
                                # http://en.wikipedia.org/wiki/Plus_and_minus_signs#Character_codes
@@ -255,7 +254,7 @@ axes.prop_cycle    : cycler('color', ['247AAD', '960618', '6A5896', '366811', 'C
 #xtick.minor.pad      : 4      # distance to the minor tick label in points
 xtick.color          : 282828      # color of the tick labels
 xtick.labelsize      : medium # fontsize of the tick labels
-xtick.direction      : out     # direction: in, out, or inout
+#xtick.direction      : out     # direction: in, out, or inout
 
 #ytick.major.size     : 4      # major tick size in points
 #ytick.minor.size     : 2      # minor tick size in points
@@ -265,7 +264,7 @@ xtick.direction      : out     # direction: in, out, or inout
 #ytick.minor.pad      : 4      # distance to the minor tick label in points
 ytick.color          : 282828      # color of the tick labels
 ytick.labelsize      : medium # fontsize of the tick labels
-ytick.direction      : out     # direction: in, out, or inout
+#ytick.direction      : out     # direction: in, out, or inout
 
 
 ### GRIDS

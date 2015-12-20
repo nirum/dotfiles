@@ -1,4 +1,5 @@
 from emoji import emojize
+from pushover import Client
 from contextlib import contextmanager
 import sys
 
@@ -7,6 +8,19 @@ def notify(title, message='', sound='default'):
     os.system(emojize("terminal-notifier -title '{}' -message '{}' -sound '{}' \
                       -activate 'com.googlecode.iterm2'"
                       .format(title, message, sound), use_aliases=True))
+
+def push(messsage, title=''):
+    """
+    Send a notification via pushover
+
+    Parameters
+    ----------
+    message : string
+
+    title : string, optional
+
+    """
+    Client().send_message(pem(message), title=pem(title))
 
 def pem(message):
     """

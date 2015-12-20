@@ -2,8 +2,9 @@
 %load_ext autoreload
 %load_ext autotime
 %autoreload 2
-#%matplotlib qt
 
-# h5py autocomplete
-#import h5py
-#h5py.enable_ipython_completer()
+if os.uname().sysname == 'Darwin':
+    %matplotlib qt
+
+    # h5py autocomplete
+    h5py.enable_ipython_completer()

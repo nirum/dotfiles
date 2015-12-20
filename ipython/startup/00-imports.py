@@ -6,13 +6,17 @@ from __future__ import division
 import os
 import sys
 
-# numpy
+# numpy and friends
 import numpy as np
 import pandas as pd
 import scipy
+import h5py
 
 # utilities
 from jetpack import *
+import pyret.filtertools as ft
+import pyret.visualizations as viz
+from pyret.spiketools import binspikes, estfr
 
 # IPython references
 from IPython.core.magic import register_line_magic

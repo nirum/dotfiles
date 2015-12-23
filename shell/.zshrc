@@ -3,6 +3,9 @@
 
 source ~/.zprezto/init.zsh
 
+# temporary directory
+export TMPDIR=/tmp
+
 # fasd options
 eval "$(fasd --init auto)"
 export TERM=xterm-256color

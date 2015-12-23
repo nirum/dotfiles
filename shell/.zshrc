@@ -21,7 +21,6 @@ alias etc='$EDITOR ~/.tmux.conf'
 set -o vi
 
 # system
-alias duf='du -shc * | gsort -h'
 alias lf='ls -lSFh'
 
 # tmux stuff
@@ -97,10 +96,12 @@ alias rs='rsync -avz'
 # editor
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     export EDITOR="gvim"
+    alias duf='du -shc * | sort -h'
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     export EDITOR="mvim"
     export HOMEBREW_EDITOR="mvim"
     export VISUAL="vim"
+    alias duf='du -shc * | gsort -h'
 fi
 
 # mount the SNI data storage (thanks to mwaskom@stanford.edu)

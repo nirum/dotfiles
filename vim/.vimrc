@@ -32,10 +32,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " autocomplete
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
 
 " python
 Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'ehamberg/vim-cute-python', { 'for': 'python' }
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -48,9 +49,6 @@ Plug 'JuliaLang/julia-vim'
 
 " emmet for html/css
 Plug 'mattn/emmet-vim'
-
-" latex
-Plug 'lervag/vimtex'
 
 " editor
 Plug 'bling/vim-airline'

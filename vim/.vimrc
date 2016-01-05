@@ -356,7 +356,18 @@ augroup END
 
 " Colorscheme (put this first)
 set background=dark
-colorscheme colorsbox-steighties
+
+" fonts
+if has("gui_gtk2")
+    colorscheme ir_black
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
+elseif has("gui_macvim")
+    colorscheme colorsbox-steighties
+    set guifont=Hack:h14
+    let g:Powerline_symbols = 'fancy'
+    set lines=80
+    set columns=150
+endif
 
 " highlight spelling errors
 hi clear SpellBad
@@ -370,17 +381,6 @@ hi ColorColumn guibg=#2b3948
 " cursor colors
 hi Cursor guifg=cyan guibg=DarkGray
 set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
-
-" fonts
-if has("gui_gtk2")
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
-elseif has("gui_macvim")
-    set guifont=Hack:h14
-    let g:Powerline_symbols = 'fancy'
-
-    set lines=80
-    set columns=150
-endif
 
 " }}}
 

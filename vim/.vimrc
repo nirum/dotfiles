@@ -32,7 +32,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " autocomplete
-Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+"Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
 
 " python
 Plug 'klen/python-mode', { 'for': 'python' }
@@ -240,6 +240,10 @@ augroup filetype_python
     autocmd!
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python inoremap # X#
+
+    " python-mode jumping
+    nmap <c-d> ]]
+    nmap <c-u> [[
 augroup END
 
 " When loading text files, wrap them and don't split up words. Automatically

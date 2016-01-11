@@ -1,22 +1,25 @@
 from __future__ import print_function
 from time import perf_counter
 from IPython.core.magics.execution import _format_time as fmt
+import os
 
 
 class Timer(object):
-    def __init__(self, threshold):
+    def __init__(self, thresholds=(0.1, 10.0)):
         """
         Timer is a simple class to keep track of elapsed time.
 
         Parameters
         ----------
-        threshold : float
-        Any times below the threshold (in seconds) are not printed
+        thresholds : float
+            Any times below the first threshold (in seconds) are not printed
+            Times greater than the second threshold are shown as a desktop notification
 
         """
 
         self.start_time = 0.0
-        self.threshold = threshold
+        self.theta_print = thresholds[0]
+        self.theta_display = thresholds[1]
 
     def start(self):
         """
@@ -36,11 +39,17 @@ class Timer(object):
         if self.start_time:
             diff = perf_counter() - self.start_time
             assert diff > 0
-            if diff > self.threshold:
+
+            # print to terminal if greater than the first threshold
+            if diff > self.theta_print:
                 print(u'\u23F1  {}'.format(fmt(diff)))
 
+            if diff > self.theta_display:
+                cmd = u"terminal-notifier -message '\u23F1 {}' -title 'Complete \u2714'".format(fmt(diff))
+                os.system(cmd)
 
-timer = Timer(0.1)
+
+timer = Timer()
 
 
 def load_ipython_extension(ip):

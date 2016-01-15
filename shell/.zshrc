@@ -4,7 +4,7 @@
 source ~/.zprezto/init.zsh
 
 # temporary directory
-export TMPDIR=/tmp
+#export TMPDIR=/tmp
 
 # fasd options
 eval "$(fasd --init auto)"
@@ -117,8 +117,14 @@ function mount_sni() {
 
 # setup PATHs
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    export LD_LIBRARY_PATH="/usr/local/cuda-7.5/lib64/"
-    export PATH="$PATH:/usr/local/cuda-7.5/bin/"
+     
+    # set up LD_LIBRARY_PATH (cuda and Intel MKL libraries)
+    export LD_LIBRARY_PATH="/usr/local/cuda-7.5/lib64/:/opt/intel/mkl/lib/intel64/:/opt/intel/lib/intel64/"
+
+    # set up path
+    export PATH="/usr/local/cuda-7.5/bin:$PATH"
+    export PATH="/opt/intel/bin:$PATH"
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH="$PATH:/usr/local/texlive/2015basic/bin/x86_64-darwin:/Users/nirum/.cabal/bin:/usr/local/opt/go/libexec/bin"
 fi

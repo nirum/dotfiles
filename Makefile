@@ -40,7 +40,8 @@ python:
 
 brew:
 	echo "Installing useful homebrew utilities"
-	./brew.sh
+	brew tap homebrew/bundle
+	brew bundle
 
 pip:
 	echo "Installing useful python modules"

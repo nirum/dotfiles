@@ -6,11 +6,19 @@ let os = substitute(system('uname'), "\n", "", "")
 
 call plug#begin('~/.vim/plugged')
 
+" Unix commands
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-unimpaired'
+
 " navigation
 Plug 'kien/ctrlp.vim'
 
+" the silver searcher (ag)
+Plug 'rking/ag.vim'
+
 " colors
 Plug 'mkarmona/colorsbox'
+Plug 'altercation/vim-colors-solarized'
 
 " send code to tmux
 Plug 'jpalardy/vim-slime'
@@ -28,18 +36,37 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'haya14busa/incsearch.vim'
 
 " git
+Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " autocomplete
-"Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+
+" snippets
+Plug 'SirVer/ultisnips'
+
+" surround
+Plug 'tpope/vim-surround'
+
+" syntax checker (syntastic)
+Plug 'scrooloose/syntastic'
+
+" distraction free writing (goyo)
+Plug 'junegunn/goyo.vim'
+
+" thesaurus
+Plug 'beloglazov/vim-online-thesaurus'
+
+" LaTeX
+Plug 'lervag/vimtex'
 
 " python
-Plug 'klen/python-mode', { 'for': 'python' }
-Plug 'ehamberg/vim-cute-python', { 'for': 'python' }
+Plug 'nirum/vim-cute-python', { 'for': 'python' }
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
+Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 
 " elm
 Plug 'lambdatoast/elm.vim'
@@ -47,8 +74,11 @@ Plug 'lambdatoast/elm.vim'
 " julia
 Plug 'JuliaLang/julia-vim'
 
-" emmet for html/css
+" web
+Plug 'othree/html5.vim'
+Plug 'othree/yajs.vim'
 Plug 'mattn/emmet-vim'
+Plug 'leshill/vim-json'
 
 " editor
 Plug 'bling/vim-airline'
@@ -86,13 +116,13 @@ set lazyredraw                          " redraw only when we need to
 set wildmenu                            " tab completion when file browsing
 set wildignore+=*.png,*.jpg,*.pdf       " ignore certain files
 set title                               " set vim title
-set nohls                               " no highlights on search
+set hls                                 " highlights on search
 set incsearch                           " search as you type
 set nobackup                            " no backup files
 set nowritebackup                       " only in case you don't want a backup file while editing
 set noswapfile                          " no swap files
 set autoread                            " auto read when file is changed externally
-set number                              " show line numbers
+set nonumber                            " don't show line numbers
 set scrolloff=10                        " scroll buffer
 set encoding=utf-8                      " file encoding
 set cmdheight=1                         " command bar height
@@ -116,6 +146,9 @@ set whichwrap+=<,>,h,l
 set ignorecase
 set smartcase
 set gdefault
+
+" create a new folder by default
+map <Leader>nf :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " }}}
 
@@ -146,6 +179,20 @@ let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;
 " }}}
 
 " Plugins ---------------------- {{{
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+
+" thesaurus
+nnoremap <LocalLeader>t :OnlineThesaurusCurrentWord<CR>
+
+" YouCompleteMe
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_min_num_identifier_candidate_chars = 0
+let g:ycm_auto_trigger = 1
 
 " vim-airline (statusline)
 let g:airline_powerline_fonts = 1
@@ -188,10 +235,16 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
+" fast grep with ag
+set grepprg=ag\ --nogroup\ --nocolor
+
 " incsearch
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+" clear highlights after searching
+nnoremap <CR> :nohlsearch<CR>
 
 " map comment commands (NERD Commenter)
 map <Leader>mm <Leader>c<space>
@@ -199,32 +252,25 @@ map <Leader>mm <Leader>c<space>
 " indented line marker color
 let g:indentLine_color_gui = '#A7C0CC'
 
-" python-mode (pymode)
-let g:pymode_python = 'python'
-let g:pymode_doc = 0
-let g:pymode_virtualenv = 0
-let g:pymode_run = 0
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_lint_ignore = "E501,W,E231,E265,E261,E262"
-let g:pymode_syntax_print_as_function = 1
-let g:pymode_lint_todo_symbol = '✎'
-let g:pymode_lint_comment_symbol = '☞'
-let g:pymode_lint_visual_symbol = 'RR'
-let g:pymode_lint_error_symbol = 'XX'
-let g:pymode_lint_info_symbol = 'II'
-let g:pymode_lint_pyflakes_symbol = 'FF'
-let g:pymode_rope = 0
-let g:pymode_lint_on_write = 0
-map <c-e> :PymodeLint<CR>
-
 " vim-slime
 let g:slime_target = "tmux"
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_error_symbol = "!"
+let g:syntastic_warning_symbol = "?"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
 " git-gutter
 nnoremap <leader>g :GitGutterToggle<CR>
-let g:gitgutter_enabled = 0
-let g:gitgutter_sign_modified = '❧'
-let g:gitgutter_sign_added = '✚'
+let g:gitgutter_enabled = 1
+let g:gitgutter_sign_modified =  'm'
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_removed = '-'
 let g:gitgutter_map_keys = 0
 
 " yankstack
@@ -237,13 +283,20 @@ end
 " FileType-specific settings ---------------------- {{{
 
 augroup filetype_python
+
     autocmd!
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python inoremap # X#
 
-    " python-mode jumping
-    nmap <c-d> ]]
-    nmap <c-u> [[
+    " syntastic - use python3
+    let g:syntastic_python_python_exec = 'python3'
+    "let g:syntastic_python_flake8_exe = 'python3 -m flake8'
+    "let g:syntastic_python_flake8_args = ['-m', 'flake8']
+
+    " syntastic (syntax)
+    "let g:syntastic_python_checkers=['flake8']
+    "let g:syntastic_python_flake8_args='--ignore=E501,E225'
+
 augroup END
 
 " When loading text files, wrap them and don't split up words. Automatically
@@ -313,13 +366,13 @@ inoremap <Leader>w <ESC>:w<CR>
 
 " pasting
 nmap <c-p> <Plug>yankstack_substitute_older_paste
+"map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 
 " }}}
 
 " Abbreviations and Typos ---------------------- {{{
 
 " prose typos
-iabbrev @@      nirum@stanford.edu
 iabbrev adn     and
 iabbrev tehn    then
 iabbrev waht    what
@@ -339,35 +392,21 @@ if has("user_commands")
     command! -bang Qa qa<bang>
 endif
 
-" TeX
-augroup TeX
-    autocmd!
-    autocmd FileType tex iabbrev <buffer> alpha   \alpha
-    autocmd FileType tex iabbrev <buffer> beta    \beta
-    autocmd FileType tex iabbrev <buffer> delta   \delta
-    autocmd FileType tex iabbrev <buffer> gamma   \gamma
-    autocmd FileType tex iabbrev <buffer> eta     \eta
-    autocmd FileType tex iabbrev <buffer> epsilon \epsilon
-
-    " surround with $
-    autocmd FileType tex nnoremap 44 i$<Esc>ea$<Esc>
-    autocmd FileType tex nnoremap 77 i&<Esc>ea&<Esc>
-augroup END
-
 " }}}
 
 " Highlights, colors and themes ---------------------- {{{
 
 " Colorscheme (put this first)
 set background=dark
+map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " fonts
 if has("gui_gtk2")
     colorscheme ir_black
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 14
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 16
 elseif has("gui_macvim")
     colorscheme colorsbox-steighties
-    set guifont=Hack:h14
+    set guifont=Hack:h16
     let g:Powerline_symbols = 'fancy'
     set lines=80
     set columns=150
@@ -406,9 +445,9 @@ nnoremap <silent> <C-h> <<
 vnoremap <silent> <C-l> >gv
 vnoremap <silent> <C-h> <gv
 
-" Emacs-like beginning and end of line.
-inoremap <c-e> <c-o>$
-inoremap <c-a> <c-o>^
+" folding
+nnoremap f za
+nnoremap F zM
 
 " }}}
 

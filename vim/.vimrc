@@ -32,18 +32,19 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'haya14busa/incsearch.vim'
 
 " git
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" autocomplete
-Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+" autocompletion (jedi-vim)
+Plug 'davidhalter/jedi-vim'
+
+" supertab (more useful behavior for <Tab>)
+Plug 'ervandew/supertab'
 
 " snippets
 Plug 'SirVer/ultisnips'
 
-" syntax checker (syntastic)
-Plug 'scrooloose/syntastic'
+" syntax checker (khuno)
+Plug 'alfredodeza/khuno.vim'
 
 " distraction free writing (goyo)
 Plug 'junegunn/goyo.vim'
@@ -83,7 +84,7 @@ syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 let mapleader = ";"       " map leader
 
-let g:SuperTabDefaultCompletionType = "context"
+set ofu=syntaxcomplete#Complete         " omnicomplete
 set nocompatible                        " prevents vim from emulating vi's bugs
 set autoindent                          " automatic indenting
 set smartindent                         " smart indenting
@@ -176,9 +177,11 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 nnoremap <LocalLeader>t :OnlineThesaurusCurrentWord<CR>
 
 " YouCompleteMe
-let g:ycm_min_num_of_chars_for_completion = 3
-let g:ycm_min_num_identifier_candidate_chars = 0
-let g:ycm_auto_trigger = 1
+"let g:ycm_min_num_of_chars_for_completion = 3
+"let g:ycm_min_num_identifier_candidate_chars = 0
+"let g:ycm_auto_trigger = 1
+
+" jedi-vim
 
 " vim-airline (statusline)
 let g:airline_powerline_fonts = 1
@@ -241,15 +244,21 @@ let g:indentLine_color_gui = '#A7C0CC'
 " vim-slime
 let g:slime_target = "tmux"
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_error_symbol = "!"
-let g:syntastic_warning_symbol = "?"
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+" khuno
+"leg g:khuno_ignore="E501"
+set statusline=%#ErrorMsg#                   " set the highlight to error
+set statusline+=%{khuno#Status('FUU')}%*     " are there any errors? FUU!
+set statusline+=%*                           " switch back to normal status color
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_error_symbol = "!"
+"let g:syntastic_warning_symbol = "?"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 1
 
 " git-gutter
 nnoremap <leader>g :GitGutterToggle<CR>
@@ -276,12 +285,8 @@ augroup filetype_python
 
     " syntastic - use python3
     let g:syntastic_python_python_exec = 'python3'
-    "let g:syntastic_python_flake8_exe = 'python3 -m flake8'
-    "let g:syntastic_python_flake8_args = ['-m', 'flake8']
-
-    " syntastic (syntax)
-    "let g:syntastic_python_checkers=['flake8']
-    "let g:syntastic_python_flake8_args='--ignore=E501,E225'
+    let g:syntastic_python_checkers=['flake8']
+    let g:syntastic_python_flake8_args='--ignore=E501,E225'
 
 augroup END
 
@@ -396,9 +401,8 @@ elseif has("gui_macvim")
 endif
 
 " highlight spelling errors
-hi clear SpellBad
-hi SpellBad guibg=#c62323 term=reverse
-noremap <Leader>sp :set spell!<CR>
+"hi SpellBad ctermfg=#c62323 cterm=underline
+"noremap <Leader>sp :set spell!<CR>
 
 " highlight the 80th column
 set colorcolumn=80

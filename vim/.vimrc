@@ -6,10 +6,6 @@ let os = substitute(system('uname'), "\n", "", "")
 
 call plug#begin('~/.vim/plugged')
 
-" Unix commands
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-unimpaired'
-
 " navigation
 Plug 'kien/ctrlp.vim'
 
@@ -46,9 +42,6 @@ Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
 " snippets
 Plug 'SirVer/ultisnips'
 
-" surround
-Plug 'tpope/vim-surround'
-
 " syntax checker (syntastic)
 Plug 'scrooloose/syntastic'
 
@@ -67,9 +60,6 @@ Plug 'nirum/vim-cute-python', { 'for': 'python' }
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
-
-" elm
-Plug 'lambdatoast/elm.vim'
 
 " julia
 Plug 'JuliaLang/julia-vim'
@@ -93,7 +83,6 @@ syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 let mapleader = ";"       " map leader
 
-set ofu=syntaxcomplete#Complete         " omnicomplete
 let g:SuperTabDefaultCompletionType = "context"
 set nocompatible                        " prevents vim from emulating vi's bugs
 set autoindent                          " automatic indenting
@@ -146,9 +135,6 @@ set whichwrap+=<,>,h,l
 set ignorecase
 set smartcase
 set gdefault
-
-" create a new folder by default
-map <Leader>nf :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " }}}
 
@@ -339,9 +325,6 @@ augroup web
 		autocmd FileType html,css EmmetInstall
 
 augroup END
-
-" latex
-"let g:tex_flavor = 'latex'
 
 " }}}
 

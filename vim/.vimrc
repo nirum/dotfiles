@@ -43,8 +43,8 @@ Plug 'ervandew/supertab'
 " snippets
 Plug 'SirVer/ultisnips'
 
-" syntax checker (khuno)
-Plug 'alfredodeza/khuno.vim'
+" syntax checker (syntastic)
+Plug 'scrooloose/syntastic'
 
 " distraction free writing (goyo)
 Plug 'junegunn/goyo.vim'
@@ -176,12 +176,10 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 " thesaurus
 nnoremap <LocalLeader>t :OnlineThesaurusCurrentWord<CR>
 
-" YouCompleteMe
-"let g:ycm_min_num_of_chars_for_completion = 3
-"let g:ycm_min_num_identifier_candidate_chars = 0
-"let g:ycm_auto_trigger = 1
-
-" jedi-vim
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabMappingForward = "<s-tab>"
+let g:SuperTabMappingBackward = "<tab>"
 
 " vim-airline (statusline)
 let g:airline_powerline_fonts = 1
@@ -244,21 +242,17 @@ let g:indentLine_color_gui = '#A7C0CC'
 " vim-slime
 let g:slime_target = "tmux"
 
-" khuno
-"leg g:khuno_ignore="E501"
-set statusline=%#ErrorMsg#                   " set the highlight to error
-set statusline+=%{khuno#Status('FUU')}%*     " are there any errors? FUU!
-set statusline+=%*                           " switch back to normal status color
-
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_error_symbol = "!"
-"let g:syntastic_warning_symbol = "?"
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 1
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_error_symbol = "!"
+let g:syntastic_warning_symbol = "?"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_loc_list_height = 5
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 
 " git-gutter
 nnoremap <leader>g :GitGutterToggle<CR>

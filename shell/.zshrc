@@ -22,6 +22,7 @@ set -o vi
 
 # system
 alias lf='ls -lSFh'
+alias s='ls'
 
 # tmux stuff
 alias tls='tmux ls'
@@ -63,7 +64,7 @@ alias -s pdf=open
 
 # other
 alias clc=clear # more cmd style alias
-alias whos='who; date'
+alias whos='pwd; date'
 
 # ssh aliases
 alias lenna='ssh lenna.stanford.edu'

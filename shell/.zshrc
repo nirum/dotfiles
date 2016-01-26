@@ -37,6 +37,7 @@ alias sg='git st'
 alias ga='git add'
 alias gu='git pull'
 alias gd='git diff'
+alias gl='git lg'
 
 # moving around
 alias ..='cd ..'
@@ -92,6 +93,9 @@ alias qt="jupyter qtconsole --ConsoleWidget.font_family="Anonymous Pro" --Consol
 
 # rsync
 alias rs='rsync -avz'
+
+# go
+export GOPATH=$HOME/code/go
 
 # system specific settings
 if [[ "$OSTYPE" == "linux-gnu" ]]; then

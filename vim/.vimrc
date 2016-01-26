@@ -242,6 +242,9 @@ let g:indentLine_color_gui = '#A7C0CC'
 " vim-slime
 let g:slime_target = "tmux"
 
+" vimtex
+let g:vimtex_fold_enabled=1
+
 " syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -261,6 +264,8 @@ let g:gitgutter_sign_modified =  'm'
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_map_keys = 0
+let g:gitgutter_eager = 0
+let g:gitgutter_realtime = 0
 
 " yankstack
 if has("gui_macvim")

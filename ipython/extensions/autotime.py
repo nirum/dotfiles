@@ -45,8 +45,9 @@ class Timer(object):
                 print(u'\u23F1  {}'.format(fmt(diff)))
 
             if diff > self.theta_display:
-                cmd = u"terminal-notifier -appIcon https://www.python.org/static/apple-touch-icon-144x144-precomposed.png -sound Submarine -message '\u23F1 {}' -title 'Complete \u2714'".format(fmt(diff))
-                os.system(cmd)
+                if os.uname().nodename == 'mbp':
+                    cmd = u"terminal-notifier -appIcon https://www.python.org/static/apple-touch-icon-144x144-precomposed.png -sound Submarine -message '\u23F1 {}' -title 'Complete \u2714'".format(fmt(diff))
+                    os.system(cmd)
 
 
 timer = Timer()

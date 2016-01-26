@@ -95,7 +95,7 @@ alias rs='rsync -avz'
 
 # system specific settings
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    export EDITOR="vim"
+    export EDITOR="nvim"
     alias duf='du -shc * | sort -h'
     alias pi='sudo -H pip3.5 install -U'
     alias print='lpr'

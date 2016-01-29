@@ -20,9 +20,13 @@ alias etc='$EDITOR ~/.tmux.conf'
 # vim keybindings
 set -o vi
 
+# editor
+alias v='$EDITOR'
+
 # system
 alias lf='ls -lSFh'
 alias s='ls'
+alias les='pygmentize'
 
 # tmux stuff
 alias tls='tmux ls'
@@ -74,8 +78,30 @@ alias msh='mosh -6 lenna.stanford.edu'
 alias cardinal='ssh -CY cardinal.stanford.edu'
 alias tonto='ssh -CY niru@tonto.stanford.edu'
 
-# vim
-alias v='$EDITOR'
+# jump to a recent directory using fasd
+j() {
+    local dir="$(fasd -ld "$@")"
+    [[ -d "$dir" ]] && pushd "$dir"
+}
+
+# jump to a directory, interactively chosen
+jj() {
+    local dir
+    dir=$(fasd -Rdl |\
+        sed "s:$HOME:~:" |\
+        fzf --no-sort +m -q "$*" |\
+        sed "s:~:$HOME:")\
+    && pushd "$dir"
+}
+
+# jump to the directory with a specific file
+jf() {
+    local file
+    local dir
+    file=$(fzf +m -q "$1")\
+        && dir=$(dirname "$file")
+    [ -d "$dir" ] && pushd "$dir"
+}
 
 # matlab
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
@@ -141,3 +167,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH="/usr/local/texlive/2015basic/bin/x86_64-darwin:/Users/nirum/.cabal/bin:/usr/local/opt/go/libexec/bin:/opt/intel/bin:$PATH"
 
 fi
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

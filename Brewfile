@@ -27,6 +27,7 @@ brew 'speedtest_cli'
 brew 'ssh-copy-id'
 brew 'tree'
 brew 'fasd'
+brew 'fzf'
 brew 'terminal-notifier'
 
 # QT graphics library

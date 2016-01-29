@@ -54,6 +54,7 @@ Plug 'beloglazov/vim-online-thesaurus'
 
 " LaTeX
 Plug 'lervag/vimtex'
+Plug 'matze/vim-tex-fold'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }

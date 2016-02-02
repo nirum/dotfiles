@@ -73,7 +73,8 @@ Plug 'mattn/emmet-vim'
 Plug 'leshill/vim-json'
 
 " editor
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 

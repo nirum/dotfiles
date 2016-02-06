@@ -171,8 +171,8 @@ let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-e>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " thesaurus
@@ -180,8 +180,6 @@ nnoremap <LocalLeader>t :OnlineThesaurusCurrentWord<CR>
 
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabMappingForward = "<s-tab>"
-let g:SuperTabMappingBackward = "<tab>"
 
 " vim-airline (statusline)
 let g:airline_powerline_fonts = 1

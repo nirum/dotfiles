@@ -37,6 +37,10 @@ brew 'qt'
 brew 'python3'
 brew 'python'
 
+# just for fun
+brew 'archey'
+brew 'cowsay'
+
 # apps
 brew 'caskroom/cask/brew-cask'
 cask 'iterm2'

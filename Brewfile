@@ -4,6 +4,7 @@ brew 'stow'
 # Install some other useful utilities like `sponge`.
 brew 'coreutils'
 brew 'moreutils'
+brew 'htop'
 
 # Install more recent versions of some OS X tools.
 brew 'macvim' --override-system-vim

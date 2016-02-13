@@ -134,6 +134,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     export HOMEBREW_EDITOR="mvim"
     export VISUAL="vim"
     alias duf='du -shc * | gsort -h'
+    alias spot='spotify'
 fi
 
 # mount the SNI data storage (thanks to mwaskom@stanford.edu)

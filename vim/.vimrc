@@ -66,6 +66,9 @@ Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 " julia
 Plug 'JuliaLang/julia-vim'
 
+" javascript
+Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
+
 " web
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
@@ -179,7 +182,11 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 nnoremap <LocalLeader>t :OnlineThesaurusCurrentWord<CR>
 
 " supertab
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+" jedi-vim
+let g:jedi#popup_select_first = 1
+let g:jedi#popup_on_dot = 0
 
 " vim-airline (statusline)
 let g:airline_powerline_fonts = 1
@@ -285,7 +292,7 @@ augroup filetype_python
     " syntastic - use python3
     let g:syntastic_python_python_exec = 'python3'
     let g:syntastic_python_checkers=['flake8']
-    let g:syntastic_python_flake8_args='--ignore=E501,E225'
+    let g:syntastic_python_flake8_args='--ignore=E501,E225,E731'
 
 augroup END
 
@@ -353,7 +360,6 @@ inoremap <Leader>w <ESC>:w<CR>
 
 " pasting
 nmap <c-p> <Plug>yankstack_substitute_older_paste
-"map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 
 " }}}
 
@@ -398,10 +404,6 @@ elseif has("gui_macvim")
     set lines=80
     set columns=150
 endif
-
-" highlight spelling errors
-"hi SpellBad ctermfg=#c62323 cterm=underline
-"noremap <Leader>sp :set spell!<CR>
 
 " highlight the 80th column
 set colorcolumn=80
@@ -452,5 +454,15 @@ function! s:root()
   endif
 endfunction
 command! Root call s:root()
+
+" Toggle conceal level
+function! g:ToggleConceal()
+    if(&conceallevel)
+      setlocal conceallevel=0
+    else
+      setlocal conceallevel=1
+    endif
+endfunc
+command! Cute call g:ToggleConceal()
 
 " }}}

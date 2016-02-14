@@ -1,1 +1,1 @@
-/home/nirum/.vimrc
+../.vimrc

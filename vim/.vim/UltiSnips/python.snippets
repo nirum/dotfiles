@@ -236,8 +236,7 @@ endglobal
 ########################################
 
 snippet class "class with docstrings" b
-class ${1:MyClass}(${2:object}):
-
+class ${1:MyClass}:
 	`!p snip.rv = triple_quotes(snip)`${3:Docstring for $1. }`!p snip.rv = triple_quotes(snip)`
 
 	def __init__(self$4):
@@ -252,7 +251,6 @@ if args:
 	snip.rv += '\n' + snip.mkline('', indent='')
 	snip += '{0}'.format(triple_quotes(snip))
 
-write_init_body(args, t[2], snip)
 `
 		$0
 endsnippet

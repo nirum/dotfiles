@@ -433,6 +433,9 @@ nnoremap <silent> <C-h> <<
 vnoremap <silent> <C-l> >gv
 vnoremap <silent> <C-h> <gv
 
+" undo after ctrl-c
+inoremap <C-c> <C-c>u
+
 " folding
 nnoremap f za
 nnoremap F zM
@@ -464,5 +467,11 @@ function! g:ToggleConceal()
     endif
 endfunc
 command! Cute call g:ToggleConceal()
+
+" removes trailing whitespace
+function! g:RemoveTrailingWhitespace()
+    silent! execute ':%s/\s\+$//e'
+endfunc
+command! Whitespace call g:RemoveTrailingWhitespace()
 
 " }}}

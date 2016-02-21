@@ -166,6 +166,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     # set up path
     export PATH="/usr/local/texlive/2015basic/bin/x86_64-darwin:/Users/nirum/.cabal/bin:/usr/local/opt/go/libexec/bin:/opt/intel/bin:$PATH"
+    export PATH=$PATH:"/usr/local/opt/go/libexc/bin"
 
 fi
 

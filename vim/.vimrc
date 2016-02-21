@@ -15,6 +15,8 @@ Plug 'rking/ag.vim'
 " colors
 Plug 'mkarmona/colorsbox'
 Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
+Plug 'herrbischoff/cobalt2.vim'
 
 " send code to tmux
 Plug 'jpalardy/vim-slime'
@@ -200,12 +202,12 @@ endfunction
 call airline#parts#define_raw('filename', '%<%f')
 call airline#parts#define_function('modified', 'Modified')
 
-let g:airline_section_z = airline#section#create(['hunks', 'branch'])
-let g:airline_section_b = airline#section#create_left(['filename'])
-let g:airline_section_c = airline#section#create([''])
-let g:airline_section_gutter = airline#section#create(['modified', '%='])
-let g:airline_section_x = airline#section#create_right([''])
-let g:airline_section_y = airline#section#create_right(['%c'])
+"let g:airline_section_z = airline#section#create(['hunks', 'branch'])
+"let g:airline_section_b = airline#section#create_left(['filename'])
+"let g:airline_section_c = airline#section#create([''])
+"let g:airline_section_gutter = airline#section#create(['modified', '%='])
+"let g:airline_section_x = airline#section#create_right([''])
+"let g:airline_section_y = airline#section#create_right(['%c'])
 
 let g:airline_mode_map = {
   \ '__' : '-',
@@ -398,11 +400,13 @@ if has("gui_gtk2")
     colorscheme ir_black
     set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 16
 elseif has("gui_macvim")
-    colorscheme colorsbox-steighties
+    colorscheme base16-monokai
     set guifont=Hack:h16
     let g:Powerline_symbols = 'fancy'
     set lines=80
     set columns=150
+else
+    colorscheme base16-monokai
 endif
 
 " highlight the 80th column

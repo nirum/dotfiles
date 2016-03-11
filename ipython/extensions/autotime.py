@@ -1,7 +1,12 @@
 from __future__ import print_function
-from time import perf_counter
 from IPython.core.magics.execution import _format_time as fmt
 import os
+
+# import perf_counter on py3, alias to time on py2
+try:
+    from time import perf_counter
+except ImportError:
+    from time import time as perf_counter
 
 
 class Timer(object):

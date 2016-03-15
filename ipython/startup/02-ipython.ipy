@@ -3,7 +3,7 @@
 %load_ext autotime
 %autoreload 2
 
-if os.uname().sysname == 'Darwin':
+if os.uname()[0] == 'Darwin':
     %matplotlib qt
 
     # h5py autocomplete

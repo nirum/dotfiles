@@ -4,3 +4,6 @@ from numpy import arange, zeros, ones, eye, linspace, pi, inf, nan, cov, array, 
 from scipy.linalg import *
 from scipy.stats import kurtosis, skew, zscore
 from matplotlib.pyplot import *
+
+# other useful imports
+from collections import defaultdict, deque, namedtuple

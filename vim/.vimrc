@@ -43,6 +43,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
 
 " snippets
+Plug 'justinj/vim-react-snippets'
 Plug 'SirVer/ultisnips'
 
 " syntax checker (syntastic)
@@ -68,14 +69,14 @@ Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 " julia
 Plug 'JuliaLang/julia-vim'
 
-" javascript
-Plug 'marijnh/tern_for_vim', { 'for': 'javascript' }
-
 " web
 Plug 'othree/html5.vim'
 Plug 'othree/yajs.vim'
 Plug 'mattn/emmet-vim'
 Plug 'leshill/vim-json'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
 
 " editor
 Plug 'vim-airline/vim-airline-themes'
@@ -202,12 +203,8 @@ endfunction
 call airline#parts#define_raw('filename', '%<%f')
 call airline#parts#define_function('modified', 'Modified')
 
-"let g:airline_section_z = airline#section#create(['hunks', 'branch'])
-"let g:airline_section_b = airline#section#create_left(['filename'])
-"let g:airline_section_c = airline#section#create([''])
-"let g:airline_section_gutter = airline#section#create(['modified', '%='])
-"let g:airline_section_x = airline#section#create_right([''])
-"let g:airline_section_y = airline#section#create_right(['%c'])
+" React (jsx)
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 let g:airline_mode_map = {
   \ '__' : '-',
@@ -230,6 +227,7 @@ let g:ctrlp_use_caching = 0
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 
 " fast grep with ag
 set grepprg=ag\ --nogroup\ --nocolor
@@ -238,6 +236,11 @@ set grepprg=ag\ --nogroup\ --nocolor
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " clear highlights after searching
 nnoremap <CR> :nohlsearch<CR>
@@ -335,7 +338,10 @@ augroup web
 		autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
 		let g:user_emmet_install_global = 0
-		autocmd FileType html,css EmmetInstall
+		autocmd FileType html,css,js,jsx EmmetInstall
+
+		" syntastic
+		let g:syntastic_javascript_checkers = ['eslint']
 
 augroup END
 

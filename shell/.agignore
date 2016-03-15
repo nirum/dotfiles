@@ -1,0 +1,11 @@
+vendor/
+vim/bundle/
+node_modules/
+bower_components/
+.bundle/
+.sass-cache/
+*.jpg
+*.gif
+*.png
+*.ico
+*.log

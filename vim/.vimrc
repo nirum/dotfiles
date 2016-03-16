@@ -6,6 +6,9 @@ let os = substitute(system('uname'), "\n", "", "")
 
 call plug#begin('~/.vim/plugged')
 
+" start-up screen
+Plug 'mhinz/vim-startify'
+
 " navigation
 Plug 'kien/ctrlp.vim'
 
@@ -36,9 +39,6 @@ Plug 'haya14busa/incsearch.vim'
 " git
 Plug 'airblade/vim-gitgutter'
 
-" autocompletion (jedi-vim)
-Plug 'davidhalter/jedi-vim'
-
 " supertab (more useful behavior for <Tab>)
 Plug 'ervandew/supertab'
 
@@ -61,6 +61,7 @@ Plug 'matze/vim-tex-fold'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
+Plug 'davidhalter/jedi-vim'
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }

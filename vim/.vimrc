@@ -193,7 +193,7 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " jedi-vim
 let g:jedi#popup_select_first = 1
-let g:jedi#popup_on_dot = 0
+let g:jedi#popup_on_dot = 1
 
 " vim-airline (statusline)
 let g:airline_powerline_fonts = 1

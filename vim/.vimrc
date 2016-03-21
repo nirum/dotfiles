@@ -9,6 +9,9 @@ call plug#begin('~/.vim/plugged')
 " start-up screen
 Plug 'mhinz/vim-startify'
 
+" emoji
+Plug 'junegunn/vim-emoji'
+
 " navigation
 Plug 'kien/ctrlp.vim'
 
@@ -252,6 +255,9 @@ map <Leader>mm <Leader>c<space>
 " indented line marker color
 let g:indentLine_color_gui = '#A7C0CC'
 
+" emoji
+set completefunc=emoji#complete
+
 " vim-slime
 let g:slime_target = "tmux"
 
@@ -484,5 +490,11 @@ function! g:RemoveTrailingWhitespace()
     silent! execute ':%s/\s\+$//e'
 endfunc
 command! Whitespace call g:RemoveTrailingWhitespace()
+
+" emojify
+function! g:Emojify()
+    silent! execute ':%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g'
+endfunc
+command! Emojify call g:Emojify()
 
 " }}}

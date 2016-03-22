@@ -111,6 +111,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # ipython
+alias pig='python3 -W ignore'
 alias ipy='ipython3 --nosep --no-banner --profile=mbp'
 alias ipy2='ipython2 --nosep --no-banner --profile=mbp'
 alias nb='jupyter notebook'
@@ -125,7 +126,7 @@ export GOPATH=$HOME/code/go
 
 # system specific settings
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    export EDITOR="nvim"
+    export EDITOR="vim"
     alias duf='du -shc * | sort -h'
     alias pi='sudo -H pip3.5 install -U'
     alias print='lpr'
@@ -157,6 +158,13 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # set up path
     export PATH="/usr/local/cuda-7.5/bin:$PATH"
     export PATH="/opt/intel/bin:$PATH"
+
+    # npm
+    export PATH="/home/nirum/.npm-global/bin:$PATH"
+
+    # temperature
+    alias cputemp="sensors | sed -rn 's/^.* \\+([0-9]+)\\.[0-9].C .*/\\1/p'"
+    alias gputemp="nvidia-smi -q -d temperature | sed -rn 's/^.*GPU Current.*: ([0-9]+).*/\\1/p'"
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 

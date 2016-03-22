@@ -79,8 +79,8 @@ Plug 'othree/yajs.vim'
 Plug 'mattn/emmet-vim'
 Plug 'leshill/vim-json'
 Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " editor
 Plug 'vim-airline/vim-airline-themes'
@@ -300,6 +300,7 @@ augroup filetype_python
     autocmd!
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python inoremap # X#
+    au BufRead,BufNewFile *.ipy set filetype=python
 
     " syntastic - use python3
     let g:syntastic_python_python_exec = 'python3'
@@ -328,27 +329,27 @@ augroup web
     autocmd!
 
     " for CSS, also have things in braces indented:
-		autocmd FileType css set smartindent
+	autocmd FileType css setl smartindent
 
     " for HTML, generally format text, but if a long line has been created
     " leave it alone when editing:
-		autocmd FileType html set formatoptions+=tl
+	autocmd FileType html setl formatoptions+=tl
 
     " for both CSS and HTML, use genuine tab characters for
     " indentation, to make files a few bytes smaller:
-		autocmd FileType html,css set noexpandtab tabstop=2
+	autocmd FileType html,css,js,javascript.jsx setl noexpandtab tabstop=2 shiftwidth=2
 
     " don't wrap html
-		autocmd BufWritePre,BufRead *.html setlocal nowrap
+	autocmd BufWritePre,BufRead *.html setlocal nowrap
 
     " format XML files
-		autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+	autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
-		let g:user_emmet_install_global = 0
-		autocmd FileType html,css,js,jsx EmmetInstall
+	let g:user_emmet_install_global = 0
+	autocmd FileType html,css,js,javascript.jsx EmmetInstall
 
-		" syntastic
-		let g:syntastic_javascript_checkers = ['eslint']
+	" syntastic
+	let g:syntastic_javascript_checkers = ['eslint']
 
 augroup END
 

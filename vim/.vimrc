@@ -294,7 +294,8 @@ let g:gitgutter_realtime = 0
 
 " yankstack
 if has("gui_macvim")
-	set macmeta
+    set macmeta
+    nmap <c-p> <Plug>yankstack_substitute_older_paste
 end
 
 " }}}
@@ -380,9 +381,6 @@ noremap <space> :w<CR>
 nnoremap <Leader>w :w<CR>
 inoremap <Leader>w <ESC>:w<CR>
 
-" pasting
-nmap <c-p> <Plug>yankstack_substitute_older_paste
-
 " }}}
 
 " Abbreviations and Typos ---------------------- {{{
@@ -414,19 +412,16 @@ endif
 " Colorscheme (put this first)
 set background=dark
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+colorscheme base16-monokai
 
 " fonts
 if has("gui_gtk2")
-    colorscheme ir_black
     set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 16
 elseif has("gui_macvim")
-    colorscheme base16-monokai
     set guifont=Hack:h16
     let g:Powerline_symbols = 'fancy'
     set lines=80
     set columns=150
-else
-    colorscheme base16-monokai
 endif
 
 " highlight the 80th column

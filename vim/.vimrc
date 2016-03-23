@@ -97,6 +97,7 @@ filetype plugin indent on " Enable filetype-specific indenting and plugins
 let mapleader = ";"       " map leader
 
 set ofu=syntaxcomplete#Complete         " omnicomplete
+set foldmethod=indent                   " sets the fold method to use indentation
 set nocompatible                        " prevents vim from emulating vi's bugs
 set autoindent                          " automatic indenting
 set smartindent                         " smart indenting
@@ -206,6 +207,11 @@ endfunction
 
 call airline#parts#define_raw('filename', '%<%f')
 call airline#parts#define_function('modified', 'Modified')
+
+" startify
+let g:startify_files_number = 20
+let g:startify_change_to_vcs_root = 1
+let g:startify_custom_indices = ['a', 's', 'd', 'f', 'f', 'g', 'h', 'j', 'k', 'l', ';']
 
 " React (jsx)
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files

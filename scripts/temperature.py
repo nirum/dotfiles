@@ -9,13 +9,18 @@ def get_df(filename):
     return df.set_index(pd.to_datetime(df.index, unit='s').tz_localize('utc').tz_convert('US/Pacific'))
 
 
-def main():
+def main(window_size):
     filename = '/Users/nirum/Dropbox/temperature.log'
     df = get_df(filename)
-    df.plot()
+
+    if window_size > 0:
+        df.rolling(window_size).mean().plot()
+    else:
+        df.plot()
+
     nospines()
     return df
 
 
 if __name__ == "__main__":
-    df = main()
+    df = main(0)

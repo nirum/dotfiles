@@ -166,6 +166,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias cputemp="sensors | sed -rn 's/^.* \\+([0-9]+)\\.[0-9].C .*/\\1/p'"
     alias gputemp="nvidia-smi -q -d temperature | sed -rn 's/^.*GPU Current.*: ([0-9]+).*/\\1/p'"
 
+    #export PATH="$PATH:/home/nirum/miniconda3/bin"
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     # set up LD_LIBRARY_PATH (Intel MKL libraries)

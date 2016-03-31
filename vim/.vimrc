@@ -65,8 +65,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'keith/investigate.vim'
 
 " LaTeX
-"Plug 'lervag/vimtex'
-"Plug 'matze/vim-tex-fold'
+Plug 'lervag/vimtex'
+Plug 'matze/vim-tex-fold'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
@@ -78,14 +78,9 @@ Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 " julia
 Plug 'JuliaLang/julia-vim'
 
-" web
-"Plug 'othree/html5.vim'
-"Plug 'othree/yajs.vim'
-"Plug 'mattn/emmet-vim'
-"Plug 'leshill/vim-json'
-"Plug 'Glench/Vim-Jinja2-Syntax'
-"Plug 'pangloss/vim-javascript'
-"Plug 'mxw/vim-jsx'
+" javascript
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " editor
 Plug 'vim-airline/vim-airline-themes'
@@ -134,6 +129,7 @@ set iskeyword-=_                        " Use _ as a word-separator
 set timeoutlen=500                      " Don't wait so long for the next keypress
 set ignorecase                          " ignore case while searching
 set smartcase                           " case sensitive if the search text contains a capital letter
+set clipboard=unnamed                   " clipboard support in OS X
 
 " }}}
 
@@ -204,61 +200,32 @@ let g:neomake_error_sign = {
   \ 'texthl': 'ErrorMsg',
   \ }
 
+" latex
+let g:tex_flavor='latex'
+
 " }}}
 
 " FileType-specific settings ---------------------- {{{
 
 augroup filetype_vim
-    autocmd!
-    autocmd FileType vim,zsh setlocal foldmethod=marker
+  autocmd!
+  autocmd FileType vim,zsh setlocal foldmethod=marker
 augroup END
 
 augroup filetype_python
-    autocmd!
-    au BufRead,BufNewFile *.ipy set filetype=python
-    autocmd FileType python inoremap # X#
-    autocmd FileType python setlocal softtabstop=4
-    autocmd FileType python setlocal shiftwidth=4
+  autocmd!
+  au BufRead,BufNewFile *.ipy set filetype=python
+  autocmd FileType python inoremap # X#
+  autocmd FileType python setlocal softtabstop=4
+  autocmd FileType python setlocal shiftwidth=4
 augroup END
 
-" When loading text files, wrap them and don't split up words. Automatically
-" save new text files.
+" When loading text files, wrap them and don't split up words
 augroup textfiles
-    autocmd!
-    autocmd BufNewFile,BufRead *.txt setlocal wrap
-    autocmd BufNewFile,BufRead *.txt setlocal lbr
-    autocmd BufNewFile *.txt write
-    autocmd BufNewFile *.md  write
-    autocmd BufNewFile *.mkd write
+  autocmd!
+  autocmd BufNewFile,BufRead *.txt setlocal wrap
+  autocmd BufNewFile,BufRead *.txt setlocal lbr
 augroup END
-
-" augroup web
-"     autocmd!
-"
-"     " for CSS, also have things in braces indented:
-" 	autocmd FileType css setl smartindent
-"
-"     " for HTML, generally format text, but if a long line has been created
-"     " leave it alone when editing:
-" 	autocmd FileType html setl formatoptions+=tl
-"
-"     " for both CSS and HTML, use genuine tab characters for
-"     " indentation, to make files a few bytes smaller:
-" 	autocmd FileType html,css,js,javascript.jsx setl noexpandtab tabstop=2 shiftwidth=2
-"
-"     " don't wrap html
-" 	autocmd BufWritePre,BufRead *.html setlocal nowrap
-"
-"     " format XML files
-" 	autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
-"
-" 	let g:user_emmet_install_global = 0
-" 	autocmd FileType html,css,js,javascript.jsx EmmetInstall
-"
-" 	" syntastic
-" 	let g:syntastic_javascript_checkers = ['eslint']
-
-" augroup END
 
 " }}}
 

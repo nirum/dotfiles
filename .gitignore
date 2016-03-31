@@ -1,4 +1,7 @@
-vim/.vim/plugged/*
-vim/.vim/autoload/*
+vim/.vim/plugged
+vim/.vim/autoload
 vim/.vim/.netrwhist
+vim/.vim/backup
+vim/.vim/undo
+vim/.vim/swp
 jupyter/migrated

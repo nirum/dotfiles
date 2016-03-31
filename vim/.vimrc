@@ -1,6 +1,5 @@
 " Niru Maheswaranathan
 " ~/.vimrc file
-let os = substitute(system('uname'), "\n", "", "")
 
 " Vim Plugins ------------------------- {{{
 
@@ -9,32 +8,40 @@ call plug#begin('~/.vim/plugged')
 " start-up screen
 Plug 'mhinz/vim-startify'
 
-" emoji
-Plug 'junegunn/vim-emoji'
-
 " navigation
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " the silver searcher (ag)
 Plug 'rking/ag.vim'
+Plug 'Chun-Yang/vim-action-ag'
 
-" colors
-Plug 'mkarmona/colorsbox'
-Plug 'altercation/vim-colors-solarized'
+" splits (gS) or joins (gJ) multiple lines
+Plug 'AndrewRadev/splitjoin.vim'
+
+" colors and themes
 Plug 'chriskempson/base16-vim'
-Plug 'herrbischoff/cobalt2.vim'
 
-" send code to tmux
-Plug 'jpalardy/vim-slime'
+" Text object plug-ins motion for function arguments
+Plug 'vim-scripts/argtextobj.vim'
 
-" easily comment code
-Plug 'scrooloose/nerdcommenter'
+" motions for commenting text: g>c, g<c, gc{motion}
+Plug 'tomtom/tcomment_vim'
+
+" verb to change or modify surrounding quotes/tags/etc (ys, ds, cs)
+Plug 'tpope/vim-surround'
+
+" lets the '.' repeat more commands
+Plug 'tpope/vim-repeat'
+
+" git wrapper
+Plug 'tpope/vim-fugitive'
+
+" motions for blocks of indented text: [-, [+, [=, ]-, ]+, ]=
+Plug 'jeetsukumaran/vim-indentwise'
+Plug 'michaeljsmith/vim-indent-object'
 
 " show vertical line indent marks
 Plug 'Yggdroot/indentLine'
-
-" copy/paste stack
-Plug 'maxbrunsfeld/vim-yankstack'
 
 " better search
 Plug 'haya14busa/incsearch.vim'
@@ -42,29 +49,27 @@ Plug 'haya14busa/incsearch.vim'
 " git
 Plug 'airblade/vim-gitgutter'
 
-" supertab (more useful behavior for <Tab>)
-Plug 'ervandew/supertab'
+" youcompleteme
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
 " snippets
-Plug 'justinj/vim-react-snippets'
 Plug 'SirVer/ultisnips'
 
 " syntax checker (syntastic)
-Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 
 " distraction free writing (goyo)
 Plug 'junegunn/goyo.vim'
 
-" thesaurus
-Plug 'beloglazov/vim-online-thesaurus'
+" look up reference material (Dash)
+Plug 'keith/investigate.vim'
 
 " LaTeX
-Plug 'lervag/vimtex'
-Plug 'matze/vim-tex-fold'
+"Plug 'lervag/vimtex'
+"Plug 'matze/vim-tex-fold'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
-Plug 'davidhalter/jedi-vim'
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -74,13 +79,13 @@ Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 Plug 'JuliaLang/julia-vim'
 
 " web
-Plug 'othree/html5.vim'
-Plug 'othree/yajs.vim'
-Plug 'mattn/emmet-vim'
-Plug 'leshill/vim-json'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+"Plug 'othree/html5.vim'
+"Plug 'othree/yajs.vim'
+"Plug 'mattn/emmet-vim'
+"Plug 'leshill/vim-json'
+"Plug 'Glench/Vim-Jinja2-Syntax'
+"Plug 'pangloss/vim-javascript'
+"Plug 'mxw/vim-jsx'
 
 " editor
 Plug 'vim-airline/vim-airline-themes'
@@ -96,146 +101,71 @@ syntax on                 " Enable syntax highlighting
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 let mapleader = ";"       " map leader
 
-set ofu=syntaxcomplete#Complete         " omnicomplete
 set foldmethod=indent                   " sets the fold method to use indentation
+set foldlevelstart=5                    " fold automatically
 set nocompatible                        " prevents vim from emulating vi's bugs
-set autoindent                          " automatic indenting
-set smartindent                         " smart indenting
-set tabstop=4                           " tab length (columns)
-set shiftwidth=4                        " tab length with reindent options (columns)
+set smartindent                         " smart indenting on new lines
 set expandtab                           " tab inserts spaces in insert mode
-set smarttab                            " smart tabs
-set et                                  " appropriate tab spacing
-set showmatch                           " match brackets
-set guioptions-=T                       " turn off gui toolbar
-set guioptions-=m                       " turn off gui menu
+set shiftwidth=2                        " tab length with reindent options (columns)
+set softtabstop=2                       " tab length (columns)
+set encoding=utf-8                      " file encoding
 set noerrorbells                        " turn off error bells
 set visualbell                          " turn on visual bell
 set ruler                               " each window gets status line
-set history=500		                    " keep 500 lines of command line history
-set foldlevelstart=5                    " fold automatically
-set foldnestmax=10                      " max level of folds
-set lazyredraw                          " redraw only when we need to
+set history=1000		                " keep 1000 lines of command line history
 set wildmenu                            " tab completion when file browsing
 set wildignore+=*.png,*.jpg,*.pdf       " ignore certain files
-set title                               " set vim title
-set hls                                 " highlights on search
 set incsearch                           " search as you type
-set nobackup                            " no backup files
-set nowritebackup                       " only in case you don't want a backup file while editing
-set noswapfile                          " no swap files
-set autoread                            " auto read when file is changed externally
-set nonumber                            " don't show line numbers
-set scrolloff=10                        " scroll buffer
-set encoding=utf-8                      " file encoding
-set cmdheight=1                         " command bar height
-set laststatus=2                        " always show the status line
-set formatoptions-=or                   " Don't add the comment prefix when I hit enter or o/O on a comment line.
-set showcmd		                        " display incomplete commands
-set gdefault                            " assume the /g flag on :s substitutions to replace all matches in a line
+set hlsearch                            " turn on search highlighting
+set backup                              " backup files
 set undofile                            " generates .un file so undo/redo work even after saving
-set ttyfast                             " faster drawing
+set directory=~/.vim/swp//              " sets the swap directory
+set undodir=~/.vim/undo//               " sets the undo directory
+set backupdir=~/.vim/backup//           " sets the backup directory
+set autoread                            " auto read when file is changed externally
+set relativenumber                      " show relative line numbers
+set laststatus=2                        " always show the status line
+set formatoptions-=or                   " Don't add a comment when I hit enter or o/O on a comment line
+set formatoptions+=j                    " remove comment when joining lines
+set showcmd		                " display incomplete commands
+set gdefault                            " assume the /g flag on :s substitutions
 set noesckeys                           " kills function and cursor keys
-set clipboard=unnamed                   " support the Mac OSX clipboard
 set iskeyword-=_                        " Use _ as a word-separator
 set timeoutlen=500                      " Don't wait so long for the next keypress
-set tags=./tags;                        " Set the tag file search order
-
-" backspace config
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" ignore case when searching, set default to replace on all lines
-set ignorecase
-set smartcase
-set gdefault
-
-" }}}
-
-" Vimscript file settings ---------------------- {{{
-
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim,zsh setlocal foldmethod=marker
-augroup END
-
-" editing and sourcing vimrc
-noremap <Leader>erc :tabf ~/.vimrc<CR>
-
-" }}}
-
-" Navigation ---------------------- {{{
-
-" uses expression to extract path from current file's path
-noremap <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-noremap <Leader>t :tabf <C-R>=expand("%:p:h") . '/'<CR>
-noremap <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
-noremap <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
-noremap <Leader>q :q<CR>
-
-" Fuzzy finder: ignore stuff that can't be opened, and generated files
-let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+set ignorecase                          " ignore case while searching
+set smartcase                           " case sensitive if the search text contains a capital letter
 
 " }}}
 
 " Plugins ---------------------- {{{
-
-" ultisnips
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsSnippetDirectories=["UltiSnips"]
-
-" thesaurus
-nnoremap <LocalLeader>t :OnlineThesaurusCurrentWord<CR>
-
-" supertab
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-
-" jedi-vim
-let g:jedi#popup_select_first = 1
-let g:jedi#popup_on_dot = 1
 
 " vim-airline (statusline)
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
 
-function! Modified()
-    return &modified ? " +" : ''
-endfunction
+" ultisnips
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
-call airline#parts#define_raw('filename', '%<%f')
-call airline#parts#define_function('modified', 'Modified')
+" YouCompleteMe
+let g:ycm_min_num_of_chars_for_completion = 2
+
+" investigate / Dash
+let g:investigate_use_dash = 1
+nnoremap K :call investigate#Investigate('n')<CR>
+vnoremap K :call investigate#Investigate('n')<CR>
 
 " startify
-let g:startify_files_number = 20
+let g:startify_custom_header = startify#fortune#quote()
 let g:startify_change_to_vcs_root = 1
-let g:startify_custom_indices = ['a', 's', 'd', 'f', 'f', 'g', 'h', 'j', 'k', 'l', ';']
-
-" React (jsx)
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-
-let g:airline_mode_map = {
-  \ '__' : '-',
-  \ 'n'  : 'N',
-  \ 'i'  : 'I',
-  \ 'R'  : 'R',
-  \ 'v'  : 'V',
-  \ 'V'  : 'V-L',
-  \ 'c'  : 'C',
-  \ '' : 'V-B',
-  \ 's'  : 'S',
-  \ 'S'  : 'S-L',
-  \ '' : 'S-B',
-  \ }
+let g:startify_skiplist = ['.git/*']
 
 " ctrl-p (CtrlP)
-" make ctrl-P faster in git repos
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_use_caching = 0
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 
@@ -243,77 +173,52 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|sv
 set grepprg=ag\ --nogroup\ --nocolor
 
 " incsearch
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-" Search mappings: These will make it so that going to the next one in a
-" search will center on the line it's found in.
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-" clear highlights after searching
-nnoremap <CR> :nohlsearch<CR>
-
-" map comment commands (NERD Commenter)
-map <Leader>mm <Leader>c<space>
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 " indented line marker color
 let g:indentLine_color_gui = '#A7C0CC'
 
-" emoji
-set completefunc=emoji#complete
-
-" vim-slime
-let g:slime_target = "tmux"
-
-" vimtex
-let g:vimtex_fold_enabled=1
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_error_symbol = "!"
-let g:syntastic_warning_symbol = "?"
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_loc_list_height = 5
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
 " git-gutter
-nnoremap <leader>g :GitGutterToggle<CR>
 let g:gitgutter_enabled = 1
 let g:gitgutter_sign_modified =  'm'
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_map_keys = 0
-let g:gitgutter_eager = 0
+let g:gitgutter_eager = 1
 let g:gitgutter_realtime = 0
 
-" yankstack
-if has("gui_macvim")
-    set macmeta
-    nmap <c-p> <Plug>yankstack_substitute_older_paste
-end
+" neomake
+autocmd! BufWritePost * Neomake
+let g:neomake_warning_sign = {
+  \ 'text': 'W',
+  \ 'texthl': 'WarningMsg',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': 'E',
+  \ 'texthl': 'ErrorMsg',
+  \ }
 
 " }}}
 
 " FileType-specific settings ---------------------- {{{
 
-augroup filetype_python
-
+augroup filetype_vim
     autocmd!
-    autocmd FileType python setlocal foldmethod=indent
-    autocmd FileType python inoremap # X#
+    autocmd FileType vim,zsh setlocal foldmethod=marker
+augroup END
+
+augroup filetype_python
+    autocmd!
     au BufRead,BufNewFile *.ipy set filetype=python
-
-    " syntastic - use python3
-    let g:syntastic_python_python_exec = 'python3'
-    let g:syntastic_python_checkers=['flake8']
-    let g:syntastic_python_flake8_args='--ignore=E501,E225,E731'
-
+    autocmd FileType python inoremap # X#
+    autocmd FileType python setlocal softtabstop=4
+    autocmd FileType python setlocal shiftwidth=4
 augroup END
 
 " When loading text files, wrap them and don't split up words. Automatically
@@ -327,59 +232,33 @@ augroup textfiles
     autocmd BufNewFile *.mkd write
 augroup END
 
-" fix comment auto-indenting for different languages
-augroup matlab
-    autocmd FileType matlab inoremap % X%
-augroup END
+" augroup web
+"     autocmd!
+"
+"     " for CSS, also have things in braces indented:
+" 	autocmd FileType css setl smartindent
+"
+"     " for HTML, generally format text, but if a long line has been created
+"     " leave it alone when editing:
+" 	autocmd FileType html setl formatoptions+=tl
+"
+"     " for both CSS and HTML, use genuine tab characters for
+"     " indentation, to make files a few bytes smaller:
+" 	autocmd FileType html,css,js,javascript.jsx setl noexpandtab tabstop=2 shiftwidth=2
+"
+"     " don't wrap html
+" 	autocmd BufWritePre,BufRead *.html setlocal nowrap
+"
+"     " format XML files
+" 	autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+"
+" 	let g:user_emmet_install_global = 0
+" 	autocmd FileType html,css,js,javascript.jsx EmmetInstall
+"
+" 	" syntastic
+" 	let g:syntastic_javascript_checkers = ['eslint']
 
-augroup web
-    autocmd!
-
-    " for CSS, also have things in braces indented:
-	autocmd FileType css setl smartindent
-
-    " for HTML, generally format text, but if a long line has been created
-    " leave it alone when editing:
-	autocmd FileType html setl formatoptions+=tl
-
-    " for both CSS and HTML, use genuine tab characters for
-    " indentation, to make files a few bytes smaller:
-	autocmd FileType html,css,js,javascript.jsx setl noexpandtab tabstop=2 shiftwidth=2
-
-    " don't wrap html
-	autocmd BufWritePre,BufRead *.html setlocal nowrap
-
-    " format XML files
-	autocmd FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
-
-	let g:user_emmet_install_global = 0
-	autocmd FileType html,css,js,javascript.jsx EmmetInstall
-
-	" syntastic
-	let g:syntastic_javascript_checkers = ['eslint']
-
-augroup END
-
-" }}}
-
-" Utilities ---------------------- {{{
-
-" add semicolon to the end of the line
-nnoremap  <Leader>j; <Esc>$a;<Esc>j;;
-inoremap  <Leader>j; <Esc>$a;<Esc>j;;
-
-" $ and 0 work with shift
-nnoremap 4 $
-nnoremap ) 0
-
-" }}}
-
-" Save/Copy/Paste ---------------------- {{{
-
-" to save
-noremap <space> :w<CR>
-nnoremap <Leader>w :w<CR>
-inoremap <Leader>w <ESC>:w<CR>
+" augroup END
 
 " }}}
 
@@ -391,19 +270,6 @@ iabbrev tehn    then
 iabbrev waht    what
 iabbrev teh     the
 iabbrev nriu    niru
-
-" command typos
-if has("user_commands")
-    command! -bang -nargs=? -complete=file E e<bang> <args>
-    command! -bang -nargs=? -complete=file W w<bang> <args>
-    command! -bang -nargs=? -complete=file Wq wq<bang> <args>
-    command! -bang -nargs=? -complete=file WQ wq<bang> <args>
-    command! -bang Wa wa<bang>
-    command! -bang WA wa<bang>
-    command! -bang Q q<bang>
-    command! -bang QA qa<bang>
-    command! -bang Qa qa<bang>
-endif
 
 " }}}
 
@@ -419,14 +285,11 @@ if has("gui_gtk2")
     set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 16
 elseif has("gui_macvim")
     set guifont=Hack:h16
-    let g:Powerline_symbols = 'fancy'
-    set lines=80
-    set columns=150
 endif
 
 " highlight the 80th column
-set colorcolumn=80
-hi ColorColumn guibg=#2b3948
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+autocmd FileType python,js match OverLength /\%81v.\+/
 
 " cursor colors
 hi Cursor guifg=cyan guibg=DarkGray
@@ -440,24 +303,20 @@ set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
 nnoremap <tab>   gt
 nnoremap <S-tab> gT
 
-" move lines
-nnoremap <silent> <C-j> :move+<cr>
-nnoremap <silent> <C-k> :move-2<cr>
-vnoremap <silent> <C-j> :move '>+1<cr>gv=gv
-vnoremap <silent> <C-k> :move '<-2<cr>gv=gv
-
-" indent lines
-nnoremap <silent> <C-l> >>
-nnoremap <silent> <C-h> <<
-vnoremap <silent> <C-l> >gv
-vnoremap <silent> <C-h> <gv
-
 " undo after ctrl-c
 inoremap <C-c> <C-c>u
 
-" folding
-nnoremap f za
-nnoremap F zM
+" never go into ex mode
+noremap Q :q<CR>
+
+" beginning and end of line
+nnoremap <C-h> ^
+nnoremap <C-l> $
+nnoremap <C-j> j
+nnoremap <C-k> k
+
+" clear highlighting
+nnoremap <Space> :noh<CR>
 
 " }}}
 
@@ -492,11 +351,5 @@ function! g:RemoveTrailingWhitespace()
     silent! execute ':%s/\s\+$//e'
 endfunc
 command! Whitespace call g:RemoveTrailingWhitespace()
-
-" emojify
-function! g:Emojify()
-    silent! execute ':%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g'
-endfunc
-command! Emojify call g:Emojify()
 
 " }}}

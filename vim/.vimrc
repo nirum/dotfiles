@@ -21,6 +21,9 @@ Plug 'AndrewRadev/splitjoin.vim'
 " colors and themes
 Plug 'chriskempson/base16-vim'
 
+" custom text objects
+Plug 'kana/vim-textobj-user'
+
 " Text object plug-ins motion for function arguments
 Plug 'vim-scripts/argtextobj.vim'
 
@@ -49,8 +52,11 @@ Plug 'haya14busa/incsearch.vim'
 " git
 Plug 'airblade/vim-gitgutter'
 
-" youcompleteme
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+" tags
+Plug 'majutsushi/tagbar'
+
+" neocomplete
+Plug 'Shougo/neocomplete.vim'
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -61,8 +67,8 @@ Plug 'benekastah/neomake'
 " distraction free writing (goyo)
 Plug 'junegunn/goyo.vim'
 
-" look up reference material (Dash)
-Plug 'keith/investigate.vim'
+" quickscope
+Plug 'unblevable/quick-scope'
 
 " LaTeX
 Plug 'lervag/vimtex'
@@ -70,6 +76,7 @@ Plug 'matze/vim-tex-fold'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
+Plug 'bps/vim-textobj-python', { 'for': 'python' }
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -92,9 +99,10 @@ call plug#end()
 
 " Basic Settings ---------------------- {{{
 
-syntax on                 " Enable syntax highlighting
-filetype plugin indent on " Enable filetype-specific indenting and plugins
-let mapleader = ";"       " map leader
+syntax on                               " Enable syntax highlighting
+filetype plugin indent on               " Enable filetype-specific indenting and plugins
+nnoremap <SPACE> <Nop>
+let mapleader = "\<Space>"              " use the spacebar as my leader
 
 set foldmethod=indent                   " sets the fold method to use indentation
 set foldlevelstart=5                    " fold automatically
@@ -107,7 +115,7 @@ set encoding=utf-8                      " file encoding
 set noerrorbells                        " turn off error bells
 set visualbell                          " turn on visual bell
 set ruler                               " each window gets status line
-set history=1000		                " keep 1000 lines of command line history
+set history=1000		        " keep 1000 lines of command line history
 set wildmenu                            " tab completion when file browsing
 set wildignore+=*.png,*.jpg,*.pdf       " ignore certain files
 set incsearch                           " search as you type
@@ -119,17 +127,29 @@ set undodir=~/.vim/undo//               " sets the undo directory
 set backupdir=~/.vim/backup//           " sets the backup directory
 set autoread                            " auto read when file is changed externally
 set relativenumber                      " show relative line numbers
+set number                              " also show the actual line number of the current line
 set laststatus=2                        " always show the status line
 set formatoptions-=or                   " Don't add a comment when I hit enter or o/O on a comment line
 set formatoptions+=j                    " remove comment when joining lines
 set showcmd		                " display incomplete commands
 set gdefault                            " assume the /g flag on :s substitutions
 set noesckeys                           " kills function and cursor keys
-set iskeyword-=_                        " Use _ as a word-separator
+" set iskeyword-=_                        " Use _ as a word-separator
 set timeoutlen=500                      " Don't wait so long for the next keypress
 set ignorecase                          " ignore case while searching
 set smartcase                           " case sensitive if the search text contains a capital letter
 set clipboard=unnamed                   " clipboard support in OS X
+
+" }}}
+
+" Leader commands -------------- {{{
+
+" Tags
+nnoremap <leader>. :CtrlPTag<CR>
+nnoremap <silent> <leader>b :TagbarToggle<CR>
+
+" clear whitespace
+nnoremap <leader>w :Whitespace<CR>
 
 " }}}
 
@@ -139,6 +159,7 @@ set clipboard=unnamed                   " clipboard support in OS X
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_z = airline#section#create_right(['%3p%%', '%c'])
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-e>"
@@ -146,13 +167,14 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
-" YouCompleteMe
-let g:ycm_min_num_of_chars_for_completion = 2
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+" let g:neocomplete#force_omni_input_patterns.python =
+  " \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 
-" investigate / Dash
-let g:investigate_use_dash = 1
-nnoremap K :call investigate#Investigate('n')<CR>
-vnoremap K :call investigate#Investigate('n')<CR>
+" quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " startify
 let g:startify_custom_header = startify#fortune#quote()
@@ -214,7 +236,7 @@ augroup END
 
 augroup filetype_python
   autocmd!
-  au BufRead,BufNewFile *.ipy set filetype=python
+  autocmd BufRead,BufNewFile *.ipy set filetype=python
   autocmd FileType python inoremap # X#
   autocmd FileType python setlocal softtabstop=4
   autocmd FileType python setlocal shiftwidth=4
@@ -245,18 +267,23 @@ iabbrev nriu    niru
 " Colorscheme (put this first)
 set background=dark
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-colorscheme base16-monokai
+colorscheme Tomorrow-Night-Eighties
 
 " fonts
 if has("gui_gtk2")
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 16
+  set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 16
+  colorscheme base16-monokai
 elseif has("gui_macvim")
-    set guifont=Hack:h16
+  set guifont=Hack:h16
+  colorscheme base16-monokai
 endif
 
 " highlight the 80th column
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-autocmd FileType python,js match OverLength /\%81v.\+/
+augroup highlighting
+  autocmd!
+  autocmd FileType python,js match OverLength /\%81v.\+/
+augroup END
 
 " cursor colors
 hi Cursor guifg=cyan guibg=DarkGray
@@ -276,14 +303,11 @@ inoremap <C-c> <C-c>u
 " never go into ex mode
 noremap Q :q<CR>
 
-" beginning and end of line
-nnoremap <C-h> ^
-nnoremap <C-l> $
-nnoremap <C-j> j
-nnoremap <C-k> k
-
 " clear highlighting
-nnoremap <Space> :noh<CR>
+nnoremap <Esc> :noh<CR>
+
+" source
+nnoremap <leader>so :source $MYVIMRC<CR>
 
 " }}}
 

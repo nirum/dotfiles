@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo ".osx.sh — https://mths.be/osx"
+
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
@@ -7,10 +9,10 @@
 echo "General UI/UX"
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "mbp"
-sudo scutil --set HostName "mbp"
-sudo scutil --set LocalHostName "mbp"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "mbp"
+sudo scutil --set ComputerName "nirumbp"
+sudo scutil --set HostName "nirumbp"
+sudo scutil --set LocalHostName "nirumbp"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "nirumbp"
 
 # Increase window resize speed for Cocoa applications
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
@@ -40,9 +42,6 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
-# Pretty git log
-git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
@@ -294,6 +293,9 @@ echo "Activity Monitor"
 # Show the main window when launching Activity Monitor
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 
+# Visualize CPU usage in the Activity Monitor Dock icon
+defaults write com.apple.ActivityMonitor IconType -int 5
+
 # Show all processes in Activity Monitor
 defaults write com.apple.ActivityMonitor ShowCategory -int 0
 
@@ -328,3 +330,12 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
+
+###############################################################################
+# Tweetbot.app                                                                #
+###############################################################################
+
+echo "Tweetbot"
+
+# Bypass the annoyingly slow t.co URL shortener
+defaults write com.tapbots.TweetbotMac OpenURLsDirectly -bool true

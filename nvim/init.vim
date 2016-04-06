@@ -12,53 +12,64 @@
 call plug#begin('~/.vim/plugged')
 
 " start-up screen
+" {{{
 Plug 'mhinz/vim-startify'
+let g:startify_custom_header = startify#fortune#quote()
+let g:startify_change_to_vcs_root=1
+let g:startify_skiplist = ['.git/*']
+" }}}
 
-" navigation
+" FZF
+" {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" nnoremap <silent> <c-t> :Files<cr>
+fun! s:fzf_root()
+  let path = finddir(".git", expand("%:p:h").";")
+  return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
+endfun
+nnoremap <silent> <c-t> :exe 'Files ' . <SID>fzf_root()<CR>
+" }}}
 
 " the silver searcher (ag) and a gag verb
 Plug 'rking/ag.vim'
 Plug 'Chun-Yang/vim-action-ag'
 
-" splits (gS) or joins (gJ) multiple lines
-" Plug 'AndrewRadev/splitjoin.vim'
-
-" colors and themes
-Plug 'mhartington/oceanic-next'
-
-" custom text objects
-" Plug 'kana/vim-textobj-user'
-
-" Text object plug-ins motion for function arguments
-" Plug 'vim-scripts/argtextobj.vim'
-
 " motions for commenting text: g>c, g<c, gc{motion}
+" {{{
 Plug 'tomtom/tcomment_vim'
+" comment shortcuts
+" <Leader>__ :Tcomment
+" <Leader>_p :Tcomment inner paragraph
+" <c--><c--> :Tcomment
+" }}}
 
-" verb to change or modify surrounding quotes/tags/etc (ys, ds, cs)
-Plug 'tpope/vim-surround'
-
-" lets the '.' repeat more commands
-Plug 'tpope/vim-repeat'
-
-" working with git and GitHub
+" git and GitHub
+" {{{
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/github-complete.vim'
 Plug 'airblade/vim-gitgutter'
+let g:github_complete_enable_neocomplete=1
+let g:gitgutter_enabled = 1
+let g:gitgutter_sign_modified =  'm'
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_map_keys = 0
+let g:gitgutter_eager = 1
+let g:gitgutter_realtime = 0
+" }}}
 
-" motions for blocks of indented text: [-, [+, [=, ]-, ]+, ]=
-" Plug 'jeetsukumaran/vim-indentwise'
-" Plug 'michaeljsmith/vim-indent-object'
-
-Plug 'scrooloose/nerdtree'
-
-" show vertical line indent marks
-Plug 'Yggdroot/indentLine'
-
-" better search
+" incsearch
+" {{{
 Plug 'haya14busa/incsearch.vim'
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+" }}}
 
 " tags
 " {{{
@@ -69,10 +80,10 @@ nnoremap <silent> <leader>t :TagbarToggle<CR>
 " }}}
 
 " autocompletion
+" {{{
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi'
-" {{{
 
 let g:deoplete#enable_at_startup=1
 let deoplete#sources#jedi#show_docstring=0
@@ -82,35 +93,68 @@ let deoplete#sources#jedi#show_docstring=0
 
 " Manually trigger tag autocomplete
 " inoremap <silent> <expr> <C-]> utils#manualTagComplete()
-
 " }}}
 
 " snippets
 " Plug 'SirVer/ultisnips'
+" let g:UltiSnipsExpandTrigger="<c-e>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsSnippetDirectories=["ultisnips"]
 
-" syntax checker (syntastic)
+" syntax checker (neomake)
+" {{{
 Plug 'benekastah/neomake'
-
-" distraction free writing (goyo)
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+autocmd! BufWritePost * Neomake
+let g:neomake_airline = 1
+let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
+let g:neomake_warning_sign = { 'text': ':(', 'texthl': 'WarningSign' }
+" }}}
 
 " quickscope (underline matches for f/t/F/T navigation)
+" {{{
 Plug 'unblevable/quick-scope'
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" }}}
+
+" sugar
+" {{{
+" colorschemes
+Plug 'mhartington/oceanic-next'
 
 " gui-goodness
 Plug 'ryanoasis/vim-devicons'
 
+" show vertical line indent marks
+Plug 'Yggdroot/indentLine'
+let g:indentLine_color_gui = '#87C0CC'
+
+" weakness
+Plug 'scrooloose/nerdtree'
+" }}}
+
 " editing
+" {{{
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+
+" autoclose
 Plug 'cohama/lexima.vim'
+" Plug ''Raimondi/delimitMate', {'on_ft': ['javascript', 'typescript', 'css', 'scss']})
+
+" distraction free writing (goyo)
+Plug 'junegunn/goyo.vim'
+" }}}
 
 " tmux
+" {{{
 Plug 'christoomey/vim-tmux-navigator'
+" Plug 'tmux-plugins/vim-tmux'
+" Plug 'tmux-plugins/vim-tmux-focus-events'
+" }}}
 
-" LaTeX
-" Plug 'lervag/vimtex'
-" Plug 'matze/vim-tex-fold'
-
+" language support
+" {{{
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
 
@@ -121,6 +165,11 @@ Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 " julia
 Plug 'JuliaLang/julia-vim'
 
+" LaTeX
+" Plug 'lervag/vimtex'
+" Plug 'matze/vim-tex-fold'
+" let g:tex_flavor='latex'
+
 " javascript
 " Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 " Plug 'mxw/vim-jsx'
@@ -128,27 +177,20 @@ Plug 'JuliaLang/julia-vim'
 " web design
 Plug 'valloric/MatchTagAlways', {'for': 'html'}
 Plug 'ap/vim-css-color'
-
 " Plug 'mattn/emmet-vim', {'for': 'html'}
 
-  " call dein#add('elzr/vim-json', {'on_ft': 'json'})
-  " call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
-  "
-  " call dein#add('Raimondi/delimitMate', {'on_ft': ['javascript', 'typescript', 'css', 'scss']})
+" Plug 'elzr/vim-json', {'on_ft': 'json'}
+" Plug 'tpope/vim-markdown', {'on_ft': 'markdown'}
 
+" }}}
 
-"   call dein#add('AndrewRadev/switch.vim')
-"   call dein#add('christoomey/vim-tmux-navigator')
-"   call dein#add('tmux-plugins/vim-tmux')
-"   call dein#add('tmux-plugins/vim-tmux-focus-events')
-"
-"   mattn/emmet-vim
-"   mattn/gist-vim
-"   vim-scripts/Syntax-Range
-"   zchee/deoplete-jedi
-
-" editor
+" vim-airline (statusline)
+" {{{
 Plug 'vim-airline/vim-airline'
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+let g:airline_theme='oceanicnext'
+" }}}
 
 call plug#end()
 
@@ -233,91 +275,6 @@ vmap > >gv
 
 " }}}
 
-" Plugin Settings -------------- {{{
-
-" vim-airline (statusline)
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1
-let g:airline_theme='oceanicnext'
-
-" github autocompletion
-let g:github_complete_enable_neocomplete=1
-
-" ultisnips
-" let g:UltiSnipsExpandTrigger="<c-e>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" let g:UltiSnipsSnippetDirectories=["ultisnips"]
-
-" autocmd FileType python setlocal omnifunc=jedi#completions
-" let g:jedi#completions_enabled = 0
-" let g:jedi#auto_vim_configuration = 0
-" let g:neocomplete#force_omni_input_patterns.python =
-  " \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-
-" quickscope
-" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-" startify
-let g:startify_custom_header = startify#fortune#quote()
-let g:startify_change_to_vcs_root=1
-let g:startify_skiplist = ['.git/*']
-
-" fzf
-nnoremap <silent> <c-t> :Files<cr>
-
-fun! s:fzf_root()
-  let path = finddir(".git", expand("%:p:h").";")
-  return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
-endfun
-
-nnoremap <silent> <Leader>ff :exe 'Files ' . <SID>fzf_root()<CR>
-
-
-" fast grep with ag
-set grepprg=ag\ --nogroup\ --nocolor
-
-" comment visual selection
-vnoremap <c-/> :TComment<cr>
-
-" incsearch
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
-" indented line marker color
-let g:indentLine_color_gui = '#87C0CC'
-
-" git-gutter
-let g:gitgutter_enabled = 1
-let g:gitgutter_sign_modified =  'm'
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_map_keys = 0
-let g:gitgutter_eager = 1
-let g:gitgutter_realtime = 0
-
-" neomake
-" {{{
-autocmd! BufWritePost * Neomake
-let g:neomake_airline = 1
-let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
-let g:neomake_warning_sign = { 'text': ':(', 'texthl': 'WarningSign' }
-" }}}
-
-" map <F4> :lopen<CR>
-map <leader>rm :Neomake<CR>
-" }}}
-
-" latex
-" let g:tex_flavor='latex'
-
-" }}}
-
 " FileType-specific settings ---------------------- {{{
 
 augroup filetype_vim
@@ -325,13 +282,13 @@ augroup filetype_vim
   autocmd FileType vim,zsh setlocal foldmethod=marker
 augroup END
 
-" augroup filetype_python
-  " autocmd!
-  " autocmd BufRead,BufNewFile *.ipy set filetype=python
-  " autocmd FileType python inoremap # X#
-  " autocmd FileType python setlocal softtabstop=4
-  " autocmd FileType python setlocal shiftwidth=4
-" augroup END
+augroup filetype_python
+  autocmd!
+  autocmd BufRead,BufNewFile *.ipy set filetype=python
+  autocmd FileType python inoremap # X#
+  autocmd FileType python setlocal softtabstop=4
+  autocmd FileType python setlocal shiftwidth=4
+augroup END
 
 " When loading text files, wrap them and don't split up words
 augroup textfiles
@@ -339,10 +296,9 @@ augroup textfiles
   autocmd BufNewFile,BufRead *.txt setlocal wrap
   autocmd BufNewFile,BufRead *.txt setlocal lbr
 
-  " set spelling
-  autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
-  autocmd BufRead,BufNewFile *.md hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
-
+  " set spelling (need to fix this)
+  " autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
+  " autocmd BufRead,BufNewFile *.md hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
 augroup END
 
 " }}}
@@ -360,13 +316,13 @@ iabbrev nriu    niru
 
 " Highlights, colors and themes ---------------------- {{{
 
-" Colorscheme (put this first)
+" colorscheme
 set background=dark
-map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+map <Leader>bg :let &background = (&background == "dark"? "light" : "dark")<CR>
 colorscheme OceanicNext
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
 
-" highlight the 80th column
+" highlight past the 80th column
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 augroup highlighting
   autocmd!

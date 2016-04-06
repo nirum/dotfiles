@@ -17,11 +17,14 @@ brew 'wget'
 brew 'tmux'
 brew 'reattach-to-user-namespace'
 
-# Install other useful binaries.
+# code
+brew 'ctags'
 brew 'ack'
 brew 'the_silver_searcher'
 brew 'git'
 brew 'git-lfs'
+
+# Install other useful binaries.
 brew 'imagemagick --with-webp'
 brew 'rename'
 brew 'speedtest_cli'

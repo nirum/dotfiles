@@ -65,9 +65,6 @@ sudo chflags uchg /private/var/vm/sleepimage
 # Disable the sudden motion sensor as it’s not useful for SSDs
 sudo pmset -a sms 0
 
-# Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0
-
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
@@ -334,8 +331,6 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 ###############################################################################
 # Tweetbot.app                                                                #
 ###############################################################################
-
-echo "Tweetbot"
 
 # Bypass the annoyingly slow t.co URL shortener
 defaults write com.tapbots.TweetbotMac OpenURLsDirectly -bool true

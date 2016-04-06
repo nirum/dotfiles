@@ -22,6 +22,8 @@ set -o vi
 
 # editor
 alias v='$EDITOR'
+alias profilevim="mvim --cmd 'profile start vimrc.profile' --cmd 'profile! file ~/.vimrc'"
+alias nv="NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim"
 
 # system
 alias lf='ls -lSFh'
@@ -69,7 +71,7 @@ alias -s pdf=open
 
 # other
 alias clc=clear # more cmd style alias
-alias whos='pwd; date'
+alias whos='archey; pwd; date'
 
 # ssh aliases
 alias lenna='ssh lenna.stanford.edu'
@@ -124,18 +126,31 @@ alias rs='rsync -avz'
 # go
 export GOPATH=$HOME/code/go
 
-# system specific settings
+# system specific aliases
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    export EDITOR="vim"
+
+    export EDITOR="nvim"
     alias duf='du -shc * | sort -h'
     alias pi='sudo -H pip3.5 install -U'
     alias print='lpr'
+
+    # temperature
+    alias cputemp="sensors | sed -rn 's/^.* \\+([0-9]+)\\.[0-9].C .*/\\1/p'"
+    alias gputemp="nvidia-smi -q -d temperature | sed -rn 's/^.*GPU Current.*: ([0-9]+).*/\\1/p'"
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    export EDITOR="mvim"
-    export HOMEBREW_EDITOR="mvim"
-    export VISUAL="vim"
+
+    export EDITOR="nvim"
+    export HOMEBREW_EDITOR="nvim"
+    export VISUAL="nvim"
     alias duf='du -shc * | gsort -h'
     alias spot='spotify'
+
+    # dash
+    function dash() {
+        open "dash://$*"
+    }
+
 fi
 
 # mount the SNI data storage (thanks to mwaskom@stanford.edu)
@@ -162,10 +177,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # npm
     export PATH="/home/nirum/.npm-global/bin:$PATH"
 
-    # temperature
-    alias cputemp="sensors | sed -rn 's/^.* \\+([0-9]+)\\.[0-9].C .*/\\1/p'"
-    alias gputemp="nvidia-smi -q -d temperature | sed -rn 's/^.*GPU Current.*: ([0-9]+).*/\\1/p'"
-
     #export PATH="$PATH:/home/nirum/miniconda3/bin"
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
@@ -180,11 +191,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     # miniconda
     #export PATH=/Users/nirum/miniconda3/bin:$PATH
-
-    # dash
-    function dash() {
-        open "dash://$*"
-    }
 
 fi
 

@@ -1,7 +1,13 @@
-" Niru Maheswaranathan
-" ~/.vimrc file
+"        _
+" __   _(_)_ __ ___  _ __ ___
+" \ \ / / | '_ ` _ \| '__/ __|
+"  \ V /| | | | | | | | | (__
+"   \_/ |_|_| |_| |_|_|  \___|
+"
+" Author: Niru Maheswaranathan
+" Website: https://github.com/nirum/dotfiles
 
-" Vim Plugins ------------------------- {{{
+" Plugins ------------------------- {{{
 
 call plug#begin('~/.vim/plugged')
 
@@ -20,6 +26,10 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " colors and themes
 Plug 'chriskempson/base16-vim'
+Plug 'mhartington/oceanic-next'
+
+" tmux
+Plug 'christoomey/vim-tmux-navigator'
 
 " custom text objects
 Plug 'kana/vim-textobj-user'
@@ -90,7 +100,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 " editor
-Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
 
 call plug#end()
@@ -122,9 +131,9 @@ set incsearch                           " search as you type
 set hlsearch                            " turn on search highlighting
 set backup                              " backup files
 set undofile                            " generates .un file so undo/redo work even after saving
-set directory=~/.vim/swp//              " sets the swap directory
-set undodir=~/.vim/undo//               " sets the undo directory
-set backupdir=~/.vim/backup//           " sets the backup directory
+set directory=~/.vim-swp//              " sets the swap directory
+set undodir=~/.vim-undo//               " sets the undo directory
+set backupdir=~/.vim-backup//           " sets the backup directory
 set autoread                            " auto read when file is changed externally
 set relativenumber                      " show relative line numbers
 set number                              " also show the actual line number of the current line
@@ -156,10 +165,9 @@ nnoremap <leader>w :Whitespace<CR>
 " Plugins ---------------------- {{{
 
 " vim-airline (statusline)
-let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_section_z = airline#section#create_right(['%3p%%', '%c'])
+let g:airline_powerline_fonts = 1
+let g:airline_theme='oceanicnext'
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-e>"
@@ -267,15 +275,15 @@ iabbrev nriu    niru
 " Colorscheme (put this first)
 set background=dark
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-colorscheme Tomorrow-Night-Eighties
+colorscheme OceanicNext
 
 " fonts
 if has("gui_gtk2")
-  set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 16
-  colorscheme base16-monokai
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 16
+  colorscheme OceanicNext
 elseif has("gui_macvim")
-  set guifont=Hack:h16
-  colorscheme base16-monokai
+  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
+  colorscheme OceanicNext
 endif
 
 " highlight the 80th column

@@ -140,6 +140,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias cputemp="sensors | sed -rn 's/^.* \\+([0-9]+)\\.[0-9].C .*/\\1/p'"
     alias gputemp="nvidia-smi -q -d temperature | sed -rn 's/^.*GPU Current.*: ([0-9]+).*/\\1/p'"
 
+    # mount SNI server
+    alias mount_db="sshfs nirum@sni-vcs-baccus.stanford.edu:/share/baccus/deep-retina/database ~/database"
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     export HOMEBREW_EDITOR="nvim"

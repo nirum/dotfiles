@@ -11,14 +11,6 @@
 
 call plug#begin('~/.vim/plugged')
 
-" start-up screen
-" {{{
-Plug 'mhinz/vim-startify'
-let g:startify_custom_header = startify#fortune#quote()
-let g:startify_change_to_vcs_root=1
-let g:startify_skiplist = ['.git/*']
-" }}}
-
 " FZF
 " {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -87,13 +79,13 @@ Plug 'davidhalter/jedi'
 
 let g:deoplete#enable_at_startup=1
 let deoplete#sources#jedi#show_docstring=0
+" let g:deoplete#disable_auto_complete = 1
 
 " Insert <TAB> or select next match
 " inoremap <silent> <expr> <Tab> utils#tabComplete()
 
 " Manually trigger tag autocomplete
 " inoremap <silent> <expr> <C-]> utils#manualTagComplete()
-" }}}
 
 " snippets
 " Plug 'SirVer/ultisnips'
@@ -101,6 +93,11 @@ let deoplete#sources#jedi#show_docstring=0
 " let g:UltiSnipsJumpForwardTrigger="<tab>"
 " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " let g:UltiSnipsSnippetDirectories=["ultisnips"]
+" inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" }}}
 
 " syntax checker (neomake)
 " {{{
@@ -117,22 +114,6 @@ Plug 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " }}}
 
-" sugar
-" {{{
-" colorschemes
-Plug 'mhartington/oceanic-next'
-
-" gui-goodness
-Plug 'ryanoasis/vim-devicons'
-
-" show vertical line indent marks
-Plug 'Yggdroot/indentLine'
-let g:indentLine_color_gui = '#87C0CC'
-
-" weakness
-Plug 'scrooloose/nerdtree'
-" }}}
-
 " editing
 " {{{
 Plug 'tpope/vim-surround'
@@ -140,7 +121,6 @@ Plug 'tpope/vim-repeat'
 
 " autoclose
 Plug 'cohama/lexima.vim'
-" Plug ''Raimondi/delimitMate', {'on_ft': ['javascript', 'typescript', 'css', 'scss']})
 
 " distraction free writing (goyo)
 Plug 'junegunn/goyo.vim'
@@ -149,8 +129,7 @@ Plug 'junegunn/goyo.vim'
 " tmux
 " {{{
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'tmux-plugins/vim-tmux'
-" Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'wellle/tmux-complete.vim'
 " }}}
 
 " language support
@@ -190,6 +169,25 @@ Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 let g:airline_theme='oceanicnext'
+" }}}
+
+" sugar
+" {{{
+" start screen
+Plug 'mhinz/vim-startify'
+
+" colorschemes
+Plug 'mhartington/oceanic-next'
+
+" gui-goodness
+Plug 'ryanoasis/vim-devicons'
+
+" show vertical line indent marks
+Plug 'Yggdroot/indentLine'
+let g:indentLine_color_gui = '#87C0CC'
+
+" weakness
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 " }}}
 
 call plug#end()
@@ -280,6 +278,7 @@ vmap > >gv
 augroup filetype_vim
   autocmd!
   autocmd FileType vim,zsh setlocal foldmethod=marker
+  autocmd BufWritePost .vimrc so $MYVIMRC
 augroup END
 
 augroup filetype_python
@@ -322,6 +321,11 @@ map <Leader>bg :let &background = (&background == "dark"? "light" : "dark")<CR>
 colorscheme OceanicNext
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
 
+" startify settings
+let g:startify_custom_header = startify#fortune#quote()
+let g:startify_change_to_vcs_root=1
+let g:startify_skiplist = ['.git/*']
+
 " highlight past the 80th column
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 augroup highlighting
@@ -362,5 +366,8 @@ function! g:RemoveTrailingWhitespace()
     silent! execute ':%s/\s\+$//e'
 endfunc
 command! Whitespace call g:RemoveTrailingWhitespace()
+
+" update vim-plug
+command! PU PlugUpdate | PlugUpgrade
 
 " }}}

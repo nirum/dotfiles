@@ -3,6 +3,9 @@
 
 source ~/.zprezto/init.zsh
 
+# neovim is my default editor
+export EDITOR="nvim"
+
 # temporary directory
 export TMPDIR=/tmp
 
@@ -129,7 +132,6 @@ export GOPATH=$HOME/code/go
 # system specific aliases
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
-    export EDITOR="nvim"
     alias duf='du -shc * | sort -h'
     alias pi='sudo -H pip3.5 install -U'
     alias print='lpr'
@@ -140,7 +142,6 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
-    export EDITOR="nvim"
     export HOMEBREW_EDITOR="nvim"
     export VISUAL="nvim"
     alias duf='du -shc * | gsort -h'

@@ -27,13 +27,12 @@ nnoremap <silent> <c-t> :exe 'Files ' . <SID>fzf_root()<CR>
 Plug 'rking/ag.vim'
 Plug 'Chun-Yang/vim-action-ag'
 
-" motions for commenting text: g>c, g<c, gc{motion}
+" documentation
 " {{{
-Plug 'tomtom/tcomment_vim'
-" comment shortcuts
-" <Leader>__ :Tcomment
-" <Leader>_p :Tcomment inner paragraph
-" <c--><c--> :Tcomment
+Plug 'keith/investigate.vim'
+let g:investigate_use_dash=1
+nnoremap <leader>K :call investigate#Investigate('n')<CR>
+vnoremap <leader>K :call investigate#Investigate('v')<CR>
 " }}}
 
 " git and GitHub
@@ -105,7 +104,8 @@ Plug 'benekastah/neomake'
 autocmd! BufWritePost * Neomake
 let g:neomake_airline = 1
 let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
-let g:neomake_warning_sign = { 'text': ':(', 'texthl': 'WarningSign' }
+let g:neomake_warning_sign = { 'text': 'ϟ', 'texthl': 'WarningSign' }
+let g:neomake_python_enabled_makers = ['flake8']
 " }}}
 
 " quickscope (underline matches for f/t/F/T navigation)
@@ -121,6 +121,9 @@ Plug 'tpope/vim-repeat'
 
 " autoclose
 Plug 'cohama/lexima.vim'
+
+" comments
+Plug 'tomtom/tcomment_vim'
 
 " distraction free writing (goyo)
 Plug 'junegunn/goyo.vim'
@@ -184,7 +187,8 @@ Plug 'ryanoasis/vim-devicons'
 
 " show vertical line indent marks
 Plug 'Yggdroot/indentLine'
-let g:indentLine_color_gui = '#87C0CC'
+let g:indentLine_color_gui = '#4F5B66'
+let g:indentLine_char = '┊'
 
 " weakness
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
@@ -264,12 +268,19 @@ nnoremap <leader>src :source $MYVIMRC<CR>
 nnoremap ; :
 nnoremap : ;
 
-" autocomplete files using <c-f> in insert mode
-inoremap <c-f> <c-x><c-f>
-
 " Align blocks of text and keep them selected
 vmap < <gv
 vmap > >gv
+
+" Folding
+nnoremap <leader>a za
+nnoremap <leader>A zA
+nnoremap <leader>o zo
+nnoremap <leader>O zO
+nnoremap <leader>c zc
+nnoremap <leader>C zC
+nnoremap <leader>m zM
+nnoremap <leader>M zM
 
 " }}}
 
@@ -326,11 +337,11 @@ let g:startify_custom_header = startify#fortune#quote()
 let g:startify_change_to_vcs_root=1
 let g:startify_skiplist = ['.git/*']
 
-" highlight past the 80th column
+" highlight past the 100th column
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 augroup highlighting
   autocmd!
-  autocmd FileType python,js match OverLength /\%81v.\+/
+  autocmd FileType python,js match OverLength /\%101v.\+/
 augroup END
 
 " }}}

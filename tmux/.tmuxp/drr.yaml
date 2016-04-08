@@ -10,7 +10,7 @@ windows:
       - shell_command:
         - nvim
         focus: true
-      - whos
+      - shell_command: ipy
   - window_name: browser
     start_directory: ~/research/deep-retina-results/
     panes:

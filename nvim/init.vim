@@ -9,104 +9,53 @@
 
 " Plugins ------------------------- {{{
 
+" automatically install vim plug if necessary
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " FZF
-" {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" nnoremap <silent> <c-t> :Files<cr>
-fun! s:fzf_root()
-  let path = finddir(".git", expand("%:p:h").";")
-  return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
-endfun
-nnoremap <silent> <c-t> :exe 'Files ' . <SID>fzf_root()<CR>
-" }}}
 
 " the silver searcher (ag) and a gag verb
 Plug 'rking/ag.vim'
 Plug 'Chun-Yang/vim-action-ag'
 
 " documentation
-" {{{
 Plug 'keith/investigate.vim'
-let g:investigate_use_dash=1
-nnoremap <leader>K :call investigate#Investigate('n')<CR>
-vnoremap <leader>K :call investigate#Investigate('v')<CR>
-" }}}
 
 " git and GitHub
-" {{{
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/github-complete.vim'
 Plug 'airblade/vim-gitgutter'
-let g:github_complete_enable_neocomplete=1
-let g:gitgutter_enabled = 1
-let g:gitgutter_sign_modified =  'm'
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_map_keys = 0
-let g:gitgutter_eager = 1
-let g:gitgutter_realtime = 0
-" }}}
 
 " incsearch
-" {{{
 Plug 'haya14busa/incsearch.vim'
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-" }}}
 
 " tags
-" {{{
 Plug 'fntlnz/atags.vim'
 Plug 'majutsushi/tagbar'
-map <Leader>g :call atags#generate()<cr>
-nnoremap <silent> <leader>t :TagbarToggle<CR>
-" }}}
 
 " autocompletion
-" {{{
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi'
 
-let g:deoplete#enable_at_startup=1
-let deoplete#sources#jedi#show_docstring=1
-let g:deoplete#auto_complete_start_length=3
-let g:deoplete#disable_auto_complete = 0
-
 " snippets
 Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetDirectories=["ultisnips"]
-" }}}
 
 " syntax checker (neomake)
-" {{{
 Plug 'benekastah/neomake'
-autocmd! BufWritePost * Neomake
-let g:neomake_airline = 1
-let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
-let g:neomake_warning_sign = { 'text': 'ϟ', 'texthl': 'WarningSign' }
-let g:neomake_python_enabled_makers = ['flake8']
-" }}}
 
 " quickscope (underline matches for f/t/F/T navigation)
-" {{{
 Plug 'unblevable/quick-scope'
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-" }}}
 
 " editing
-" {{{
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
@@ -116,16 +65,11 @@ Plug 'tomtom/tcomment_vim'
 
 " distraction free writing (goyo)
 Plug 'junegunn/goyo.vim'
-" }}}
 
 " tmux
-" {{{
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'wellle/tmux-complete.vim'
-" }}}
 
-" language support
-" {{{
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
 
@@ -145,26 +89,18 @@ Plug 'JuliaLang/julia-vim'
 " Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 " Plug 'mxw/vim-jsx'
 
-" web design
+" web
 Plug 'valloric/MatchTagAlways', {'for': 'html'}
 Plug 'ap/vim-css-color'
 " Plug 'mattn/emmet-vim', {'for': 'html'}
 
+" other
 " Plug 'elzr/vim-json', {'on_ft': 'json'}
 " Plug 'tpope/vim-markdown', {'on_ft': 'markdown'}
 
-" }}}
-
 " vim-airline (statusline)
-" {{{
 Plug 'vim-airline/vim-airline'
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1
-let g:airline_theme='oceanicnext'
-" }}}
 
-" sugar
-" {{{
 " start screen
 Plug 'mhinz/vim-startify'
 
@@ -176,19 +112,15 @@ Plug 'ryanoasis/vim-devicons'
 
 " show vertical line indent marks
 Plug 'Yggdroot/indentLine'
-let g:indentLine_color_gui = '#4F5B66'
-let g:indentLine_char = '┊'
 
 " weakness
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
-" }}}
 
 call plug#end()
 
 " }}}
 
 " Basic Settings ---------------------- {{{
-
 syntax on                               " Enable syntax highlighting
 filetype plugin indent on               " Enable filetype-specific indenting and plugins
 nnoremap <SPACE> <nop>
@@ -217,9 +149,78 @@ set gdefault ignorecase smartcase
 
 " clipboard support in OS X
 set clipboard=unnamed
-
 " }}}
 
+" Plugin settings ----------------------- {{{
+
+" FZF
+fun! s:fzf_root()
+  let path = finddir(".git", expand("%:p:h").";")
+  return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
+endfun
+nnoremap <silent> <c-t> :exe 'Files ' . <SID>fzf_root()<CR>
+
+" Investigate
+let g:investigate_use_dash=1
+nnoremap <leader>K :call investigate#Investigate('n')<CR>
+vnoremap <leader>K :call investigate#Investigate('v')<CR>
+
+" git and github
+let g:github_complete_enable_neocomplete=1
+let g:gitgutter_enabled = 1
+let g:gitgutter_sign_modified =  '±'
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_map_keys = 0
+let g:gitgutter_eager = 1
+let g:gitgutter_realtime = 0
+
+" incsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+" tags (atags and tagbar)
+map <Leader>g :call atags#generate()<cr>
+nnoremap <silent> <leader>t :TagbarToggle<CR>
+
+" autocompletion (deoplete)
+let g:deoplete#enable_at_startup=1
+let deoplete#sources#jedi#show_docstring=1
+let g:deoplete#auto_complete_start_length=3
+let g:deoplete#disable_auto_complete = 0
+
+" snippets (ultisnips)
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-e>"
+let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
+let g:UltiSnipsSnippetDirectories=["ultisnips"]
+
+" syntax checking (neomake)
+autocmd! BufWritePost * Neomake
+let g:neomake_airline = 1
+let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
+let g:neomake_warning_sign = { 'text': 'ϟ', 'texthl': 'WarningSign' }
+let g:neomake_python_enabled_makers = ['flake8']
+
+" quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" airline preferences
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+let g:airline_theme='oceanicnext'
+
+" indentline
+let g:indentLine_color_gui = '#4F5B66'
+let g:indentLine_char = '┊'
+
+" }}}
+"
 " Generic Mappings ---------------------- {{{
 
 " I need to come up with a better mapping for Q ...
@@ -242,6 +243,18 @@ nnoremap <Esc> :noh<CR>
 nnoremap J 5j
 nnoremap K 5k
 
+" reduce having to type shift for commands
+nnoremap ; :
+nnoremap : ;
+
+" swap " and ' for easier registers
+nnoremap " '
+nnoremap ' "
+
+" Align blocks of text and keep them selected
+vmap < <gv
+vmap > >gv
+
 " }}}
 
 " Leader commands -------------- {{{
@@ -252,14 +265,6 @@ nnoremap <leader>w :Whitespace<CR>
 " edit and source $MYVIMRC
 nnoremap <leader>erc :tabf $MYVIMRC<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
-
-" reduce having to type shift for commands
-nnoremap ; :
-nnoremap : ;
-
-" Align blocks of text and keep them selected
-vmap < <gv
-vmap > >gv
 
 " Folding
 nnoremap <leader>a za

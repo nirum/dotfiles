@@ -9,7 +9,7 @@ haskell:
 	stow haskell -t ~/.ghc
 
 tmux:
-	echo "Linking tmux ..."
+	echo "Linking tmux and tmuxp ..."
 	stow tmux
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 

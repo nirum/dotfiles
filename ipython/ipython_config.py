@@ -224,7 +224,7 @@ c.TerminalIPythonApp.display_banner = False
 # c.TerminalInteractiveShell.term_title = False
 
 # Set the editor used by IPython (default to $EDITOR/vi/notepad).
-c.TerminalInteractiveShell.editor = 'vim'
+c.TerminalInteractiveShell.editor = '$EDITOR'
 
 # Use colors for displaying information about objects. Because this information
 # is passed through a pager (like 'less'), and some pagers get confused with
@@ -314,9 +314,6 @@ c.TerminalInteractiveShell.readline_parse_and_bind = ['tab: complete',
 # Set the color scheme (NoColor, Linux, or LightBG).
 c.TerminalInteractiveShell.colors = 'Linux'
 
-# The part of the banner to be printed before the profile
-# c.TerminalInteractiveShell.banner1 = 'Python 3.4.3 (default, Aug  5 2015, 12:51:04) \nType "copyright", "credits" or "license" for more information.\n\nIPython 3.2.1 -- An enhanced Interactive Python.\n?         -> Introduction and overview of IPython\'s features.\n%quickref -> Quick reference.\nhelp      -> Python\'s own help system.\nobject?   -> Details about \'object\', use \'object??\' for extra details.\n'
-
 # 'all', 'last', 'last_expr' or 'none', specifying which nodes should be run
 # interactively (displaying output from expressions).
 # c.TerminalInteractiveShell.ast_node_interactivity = 'last_expr'
@@ -357,12 +354,11 @@ c.PromptManager.justify = True
 c.PromptManager.out_template = u'{color.LightGreen}\u21AA '
 
 # Continuation prompt.
-c.PromptManager.in2_template = u'{color.LightGray}  \u205e '
+c.PromptManager.in2_template = u'{color.LightBlue}  \u2502 '
 
 # Input prompt.  '\#' will be transformed to the prompt number
-c.PromptManager.in_template = u'{color.LightGray}\u274F '
+c.PromptManager.in_template = u'{color.LightGray}\u23E3 '
 
-#
 c.PromptManager.color_scheme = 'Linux'
 
 #------------------------------------------------------------------------------

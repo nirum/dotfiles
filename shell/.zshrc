@@ -47,6 +47,7 @@ alias ga='git add'
 alias gu='git pull'
 alias gd='git diff'
 alias gl='git lg'
+alias gba='git branch -a'
 
 # moving around
 alias ..='cd ..'

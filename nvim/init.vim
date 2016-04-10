@@ -77,25 +77,16 @@ Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi'
 
 let g:deoplete#enable_at_startup=1
-let deoplete#sources#jedi#show_docstring=0
-" let g:deoplete#disable_auto_complete = 1
-
-" Insert <TAB> or select next match
-" inoremap <silent> <expr> <Tab> utils#tabComplete()
-
-" Manually trigger tag autocomplete
-" inoremap <silent> <expr> <C-]> utils#manualTagComplete()
+let deoplete#sources#jedi#show_docstring=1
+let g:deoplete#auto_complete_start_length=3
+let g:deoplete#disable_auto_complete = 0
 
 " snippets
-" Plug 'SirVer/ultisnips'
-" let g:UltiSnipsExpandTrigger="<c-e>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" let g:UltiSnipsSnippetDirectories=["ultisnips"]
-" inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-e>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetDirectories=["ultisnips"]
 " }}}
 
 " syntax checker (neomake)
@@ -118,9 +109,7 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " {{{
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-
-" autoclose
-Plug 'cohama/lexima.vim'
+Plug 'tpope/vim-unimpaired'
 
 " comments
 Plug 'tomtom/tcomment_vim'
@@ -321,6 +310,7 @@ iabbrev tehn    then
 iabbrev waht    what
 iabbrev teh     the
 iabbrev nriu    niru
+iabbrev rnage   range
 
 " }}}
 
@@ -374,9 +364,12 @@ command! Cute call g:ToggleConceal()
 
 " removes trailing whitespace
 function! g:RemoveTrailingWhitespace()
+    let l = line(".")
+    let c = col(".")
     silent! execute ':%s/\s\+$//e'
+    call cursor(l, c)
 endfunc
-command! Whitespace call g:RemoveTrailingWhitespace()
+command! Wsp call g:RemoveTrailingWhitespace()
 
 " update vim-plug
 command! PU PlugUpdate | PlugUpgrade

@@ -162,8 +162,8 @@ nnoremap <silent> <c-t> :exe 'Files ' . <SID>fzf_root()<CR>
 
 " Investigate
 let g:investigate_use_dash=1
-nnoremap <leader>K :call investigate#Investigate('n')<CR>
-vnoremap <leader>K :call investigate#Investigate('v')<CR>
+nnoremap <leader>k :call investigate#Investigate('n')<CR>
+vnoremap <leader>k :call investigate#Investigate('v')<CR>
 
 " git and github
 let g:github_complete_enable_neocomplete=1

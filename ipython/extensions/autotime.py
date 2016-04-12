@@ -40,7 +40,7 @@ class Timer(object):
             if diff > self.theta_print:
                 print(u'\u23F1  {}'.format(fmt(diff)))
 
-            if diff > self.theta_display and os.uname().nodename == 'nirumbp':
+            if diff > self.theta_display and os.uname().sysname == 'Darwin':
                 os.system(NOTIFICATION_MSG.format(fmt(diff)))
 
 

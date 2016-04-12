@@ -185,7 +185,7 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 " tags (atags and tagbar)
-map <Leader>g :call atags#generate()<cr>
+nnoremap <leader>g :call atags#generate()<cr>
 nnoremap <silent> <leader>t :TagbarToggle<CR>
 
 " autocompletion (deoplete)
@@ -238,10 +238,6 @@ inoremap <c-d> <esc>ddi
 
 " clear highlighting
 nnoremap <Esc> :noh<CR>
-
-" navigation
-nnoremap J 5j
-nnoremap K 5k
 
 " reduce having to type shift for commands
 nnoremap ; :

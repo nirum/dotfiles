@@ -1,10 +1,10 @@
-# ipython scripts
+# ipython extensions
 %load_ext autoreload
 %load_ext autotime
+%load_ext loggerhead
 %autoreload 2
 
+# osx specific
 if os.uname()[0] == 'Darwin':
     %matplotlib qt
-
-    # h5py autocomplete
     h5py.enable_ipython_completer()

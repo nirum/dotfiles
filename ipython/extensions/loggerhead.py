@@ -4,13 +4,26 @@ import os
 LOGDIR = os.path.expanduser('~/logs/ipython')
 IGNORE = {
     'exact': ('ls', 'pwd', 'whos'),
-    'start': ('plt', 'cd', 'print', '%'),
-    'end': (),
+    'start': ('plt', 'cd', 'print', 'mkdir', '!', '%', 'close'),
+    'end': ('shape', '?'),
 }
+VERSION = '0.0.1'
+DEBUG = False
 
 
 def isvalid(code):
-    """Determines if the code fragment should be logged or not"""
+    """Determines if the code fragment should be logged or not
+
+    Parameters
+    ----------
+    code : str
+        A code snippet
+
+    Returns
+    -------
+    valid : bool
+        Whether or not this code snippet should be logged to the log file
+    """
     if code in IGNORE['exact']:
         return False
 
@@ -43,8 +56,11 @@ class Loggerhead:
         # make the file if necessary
         if not os.path.exists(self.fullpath):
             with open(self.fullpath, 'x') as f:
-                lines = [time.strftime('%B %d, %Y'), os.uname().sysname, '\n']
+                lines = [time.strftime('%B %d, %Y'), os.uname().sysname, VERSION]
                 f.write('\n'.join(lines))
+
+        # entry message
+        print('Logging history to {}'.format(self.fullpath))
 
     def start(self):
         pass
@@ -56,8 +72,13 @@ class Loggerhead:
 
         if isvalid(code):
             with open(self.fullpath, 'a') as f:
-                print('Logging [{}] {}'.format(line, code))
-                f.write('\n' + code)
+
+                # debug
+                if DEBUG:
+                    print('Logging [{}] {}'.format(line, code))
+
+                # write to the log file
+                f.write('\n# {}\n{}'.format(time.strftime('%I:%M:%S %p'), code))
 
 
 def load_ipython_extension(ip):

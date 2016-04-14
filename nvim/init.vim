@@ -66,6 +66,10 @@ Plug 'tomtom/tcomment_vim'
 " distraction free writing (goyo)
 Plug 'junegunn/goyo.vim'
 
+" custom text objects (nouns)
+Plug 'kana/vim-textobj-user'
+Plug 'bps/vim-textobj-python'
+
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'wellle/tmux-complete.vim'
@@ -287,6 +291,7 @@ augroup filetype_python
   autocmd BufRead,BufNewFile *.ipy set filetype=python
   autocmd FileType python inoremap # X#
   autocmd FileType python setlocal softtabstop=4
+  autocmd FileType python setlocal tabstop=4
   autocmd FileType python setlocal shiftwidth=4
 augroup END
 

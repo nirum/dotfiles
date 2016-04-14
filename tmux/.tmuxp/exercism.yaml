@@ -1,0 +1,13 @@
+session_name: exercism
+start_directory: ~/code/exercism/
+windows:
+  - window_name: exercism
+    focus: true
+    layout: main-vertical
+    options:
+      main-pane-width: 100
+    panes:
+      - shell_command:
+        - nvim
+        focus: true
+      - shell_command: nvim

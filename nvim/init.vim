@@ -324,7 +324,6 @@ iabbrev rnage   range
 
 " colorscheme
 set background=dark
-map <Leader>bg :let &background = (&background == "dark"? "light" : "dark")<CR>
 colorscheme OceanicNext
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
 

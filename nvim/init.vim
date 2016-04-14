@@ -47,7 +47,8 @@ Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi'
 
 " snippets
-Plug 'SirVer/ultisnips'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 " syntax checker (neomake)
 Plug 'benekastah/neomake'
@@ -198,11 +199,10 @@ let deoplete#sources#jedi#show_docstring=1
 let g:deoplete#auto_complete_start_length=3
 let g:deoplete#disable_auto_complete = 0
 
-" snippets (ultisnips)
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-e>"
-let g:UltiSnipsJumpBackwardTrigger="<s-c-e>"
-let g:UltiSnipsSnippetDirectories=["ultisnips"]
+" snippets (neosnippet)
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " syntax checking (neomake)
 autocmd! BufWritePost * Neomake

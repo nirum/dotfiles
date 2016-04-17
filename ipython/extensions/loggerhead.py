@@ -7,7 +7,7 @@ IGNORE = {
     'start': ('plt', 'cd', 'print', 'mkdir', '!', '%', 'close'),
     'end': ('shape', '?'),
 }
-VERSION = '0.0.1'
+VERSION = '0.0.2'
 DEBUG = False
 
 
@@ -50,13 +50,15 @@ class Loggerhead:
             print('Creating directory for {}'.format(self.folder))
             os.makedirs(os.path.join(LOGDIR, self.folder))
 
-        self.filename = time.strftime('%d.%A.log')
+        self.filename = '{}.{}.log'.format(time.strftime('%d.%A'), os.uname().sysname)
         self.fullpath = os.path.join(LOGDIR, self.folder, self.filename)
 
         # make the file if necessary
         if not os.path.exists(self.fullpath):
             with open(self.fullpath, 'x') as f:
-                lines = [time.strftime('%B %d, %Y'), os.uname().sysname, VERSION]
+                lines = [time.strftime('%B %d, %Y'),
+                         os.uname().sysname,
+                         'Loggerhead v'.format(VERSION)]
                 f.write('\n'.join(lines))
 
         # entry message

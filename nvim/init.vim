@@ -97,7 +97,7 @@ Plug 'JuliaLang/julia-vim'
 " web
 Plug 'valloric/MatchTagAlways', {'for': 'html'}
 Plug 'ap/vim-css-color'
-" Plug 'mattn/emmet-vim', {'for': 'html'}
+Plug 'mattn/emmet-vim', {'for': 'html'}
 
 " other
 " Plug 'elzr/vim-json', {'on_ft': 'json'}
@@ -152,8 +152,12 @@ set noesckeys timeoutlen=500
 " searching
 set gdefault ignorecase smartcase
 
+" don't update the screen during macros
+set lazyredraw
+
 " clipboard support in OS X
 set clipboard=unnamed
+
 " }}}
 
 " Plugin settings ----------------------- {{{
@@ -224,7 +228,7 @@ let g:indentLine_color_gui = '#4F5B66'
 let g:indentLine_char = '┊'
 
 " }}}
-"
+
 " Generic Mappings ---------------------- {{{
 
 " I need to come up with a better mapping for Q ...
@@ -254,6 +258,26 @@ nnoremap ' "
 " Align blocks of text and keep them selected
 vmap < <gv
 vmap > >gv
+
+" ToggleMovement depending on location
+function! ToggleMovement(firstOp, thenOp)
+  let pos = getpos('.')
+  execute "normal! " . a:firstOp
+  if pos == getpos('.')
+    execute "normal! " . a:thenOp
+  endif
+endfunction
+
+" The original carat 0 swap
+nnoremap <silent> 0 :call ToggleMovement('^', '0')<CR>
+
+" How about H and L
+nnoremap <silent> H :call ToggleMovement('H', 'L')<CR>
+nnoremap <silent> L :call ToggleMovement('L', 'H')<CR>
+
+" How about G and gg
+nnoremap <silent> G :call ToggleMovement('G', 'gg')<CR>
+nnoremap <silent> gg :call ToggleMovement('gg', 'G')<CR>
 
 " }}}
 

@@ -58,7 +58,7 @@ class Loggerhead:
             with open(self.fullpath, 'x') as f:
                 lines = [time.strftime('%B %d, %Y'),
                          os.uname().sysname,
-                         'Loggerhead v'.format(VERSION)]
+                         'Loggerhead v{}'.format(VERSION)]
                 f.write('\n'.join(lines))
 
         # entry message

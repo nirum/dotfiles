@@ -1,10 +1,11 @@
 # stow for managing dotfiles
 brew 'stow'
 
-# Install some other useful utilities like `sponge`.
+# bash utilities
 brew 'coreutils'
 brew 'moreutils'
 brew 'htop'
+brew 'distribution'
 
 # Install more recent versions of some OS X tools.
 brew 'macvim' --override-system-vim

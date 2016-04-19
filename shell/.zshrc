@@ -127,6 +127,9 @@ alias qt="jupyter qtconsole --ConsoleWidget.font_family="Anonymous Pro" --Consol
 # rsync
 alias rs='rsync -avz'
 
+# display a bar chart of the files in the directory
+wcl() { (for file in "$@"; do; wc -l "$file"; done;) | distribution --graph=vk --char=ba | sort -n }
+
 # go
 export GOPATH=$HOME/code/go
 

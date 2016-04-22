@@ -67,6 +67,7 @@ Plug 'bps/vim-textobj-python'
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'wellle/tmux-complete.vim'
+Plug 'epeli/slimux'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
@@ -187,6 +188,7 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 " tags (atags and tagbar)
+autocmd! BufWritePost * call atags#generate()
 nnoremap <leader>g :call atags#generate()<cr>
 nnoremap <silent> <leader>t :TagbarToggle<CR>
 
@@ -197,9 +199,10 @@ let g:deoplete#auto_complete_start_length=3
 let g:deoplete#disable_auto_complete = 0
 
 " snippets (neosnippet)
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+let g:neosnippet#snippets_directory="~/.config/nvim/snippets"
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " syntax checking (neomake)
 autocmd! BufWritePost * Neomake
@@ -207,6 +210,12 @@ let g:neomake_airline = 1
 let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
 let g:neomake_warning_sign = { 'text': 'ϟ', 'texthl': 'WarningSign' }
 let g:neomake_python_enabled_makers = ['flake8']
+
+" tmux (slime / slimux)
+nnoremap <leader>l :SlimuxREPLSendLine<CR>
+nnoremap <leader>s :SlimuxREPLSendParagraph<CR>
+vnoremap <leader>s :SlimuxREPLSendSelection<CR>
+nnoremap <leader>v :SlimuxREPLConfigure<CR>
 
 " quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -252,6 +261,9 @@ nnoremap ' "
 vmap < <gv
 vmap > >gv
 
+" insert an underline
+inoremap <C-u> <CR><Esc>kyyp^v$r-o
+
 " ToggleMovement depending on location
 function! ToggleMovement(firstOp, thenOp)
   let pos = getpos('.')
@@ -277,7 +289,7 @@ nnoremap <silent> gg :call ToggleMovement('gg', 'G')<CR>
 " Leader commands -------------- {{{
 
 " clear whitespace
-nnoremap <leader>w :Whitespace<CR>
+nnoremap <leader>w :Wsp<CR>
 
 " edit and source $MYVIMRC
 nnoremap <leader>erc :tabf $MYVIMRC<CR>

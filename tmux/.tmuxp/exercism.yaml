@@ -9,6 +9,6 @@ windows:
   - nvim
   - nvim
   - focus: 'true'
-    shell_command: Python
+    shell_command: ipython --nosep
   start_directory: /Users/nirum/code/exercism
   window_name: exercism

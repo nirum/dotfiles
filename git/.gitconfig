@@ -3,12 +3,10 @@
   email=nirum@stanford.edu
 
 [alias]
-  cm=commit -m
+  cm=commit
   st=status -s
-  a=add *
   lg=log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  ignore=config --global core.excludesfile ~/.gitignore
-  d=difftool
+  amend=commit --amend
 
 [diff]
   tool=vimdiff

@@ -57,7 +57,7 @@ toolbar      : toolbar2   # None | toolbar2  ("classic" is deprecated)
 ### LINES
 # See http://matplotlib.org/api/artist_api.html#module-matplotlib.lines for more
 # information on line properties.
-lines.linewidth   : 2.0     # line width in points
+# lines.linewidth   : 2.0     # line width in points
 #lines.linestyle   : -       # solid line
 #lines.color       : blue    # has no affect on plot(); see axes.color_cycle
 #lines.marker      : None    # the default marker
@@ -67,17 +67,17 @@ lines.linewidth   : 2.0     # line width in points
 #lines.dash_capstyle : butt          # butt|round|projecting
 #lines.solid_joinstyle : miter       # miter|round|bevel
 #lines.solid_capstyle : projecting   # butt|round|projecting
-lines.antialiased : True         # render lines in antialised (no jaggies)
+# lines.antialiased : True         # render lines in antialised (no jaggies)
 
 ### PATCHES
 # Patches are graphical objects that fill 2D space, like polygons or
 # circles.  See
 # http://matplotlib.org/api/artist_api.html#module-matplotlib.patches
 # information on patch properties
-patch.linewidth        : 0.5     # edge width in points
-patch.facecolor        : blue
-patch.edgecolor        : eeeeee
-patch.antialiased      : True
+# patch.linewidth        : 0.5     # edge width in points
+# patch.facecolor        : blue
+# patch.edgecolor        : eeeeee
+# patch.antialiased      : True
 
 ### FONT
 #
@@ -114,19 +114,19 @@ patch.antialiased      : True
 # The font.size property is the default font size for text, given in pts.
 # 12pt is the standard value.
 #
-font.family         : sans-serif
-font.style          : normal
-font.variant        : normal
-font.weight         : light
-font.stretch        : semi-condensed
+# font.family         : sans-serif
+# font.style          : normal
+# font.variant        : normal
+# font.weight         : light
+# font.stretch        : semi-condensed
 
 # note that font.size controls default text sizes.  To configure
 # special text sizes tick labels, axes, labels, title, etc, see the rc
 # settings for axes and ticks. Special text sizes can be defined
 # relative to font.size, using the following values: xx-small, x-small,
 # small, medium, large, x-large, xx-large, larger, or smaller
-font.size           : 18.0
-font.sans-serif     : Helvetica Neue, Helvetica, Lato, sans-serif
+# font.size           : 18.0
+# font.sans-serif     : Helvetica Neue, Helvetica, Lato, sans-serif
 #font.serif          : Times New Roman, Times, Bitstream Vera Serif, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Palatino, Charter, serif
 #font.monospace       : Monaco, Andale Mono, Nimbus Mono L, Courier New, Courier, Fixed, Terminal, monospace
 #font.cursive        : Apple Chancery, Textile, Zapf Chancery, Sand, cursive
@@ -137,10 +137,10 @@ font.sans-serif     : Helvetica Neue, Helvetica, Lato, sans-serif
 # http://matplotlib.org/api/artist_api.html#module-matplotlib.text for more
 # information on text properties
 
-text.color          : 222222
+# text.color          : 222222
 
 ### LaTeX customizations. See http://www.scipy.org/Wiki/Cookbook/Matplotlib/UsingTex
-text.usetex         : False    # use latex for all text handling. The following fonts
+# text.usetex         : False    # use latex for all text handling. The following fonts
                               # are supported through the usual rc parameter settings:
                               # new century schoolbook, bookman, times, palatino,
                               # zapf chancery, charter, serif, sans-serif, helvetica,
@@ -180,7 +180,7 @@ text.usetex         : False    # use latex for all text handling. The following 
                        #             or the autohinter if none is available.
                        # For backward compatibility, this value may also be
                        # True === 'auto' or False === 'none'.
-text.hinting_factor : 8 # Specifies the amount of softness for hinting in the
+# text.hinting_factor : 8 # Specifies the amount of softness for hinting in the
                          # horizontal direction.  A value of 1 will hint to full
                          # pixels.  A value of 2 will hint to half pixels etc.
 
@@ -198,7 +198,7 @@ text.hinting_factor : 8 # Specifies the amount of softness for hinting in the
 #mathtext.it  : serif:italic
 #mathtext.bf  : serif:bold
 #mathtext.sf  : sans
-mathtext.fontset : cm # Should be 'cm' (Computer Modern), 'stix',
+# mathtext.fontset : cm # Should be 'cm' (Computer Modern), 'stix',
                        # 'stixsans' or 'custom'
 #mathtext.fallback_to_cm : True  # When True, use symbols from the Computer Modern
                                  # fonts when a symbol can not be found in one of
@@ -214,15 +214,15 @@ mathtext.fontset : cm # Should be 'cm' (Computer Modern), 'stix',
 # default fontsizes for ticklabels, and so on.  See
 # http://matplotlib.org/api/axes_api.html#module-matplotlib.axes
 #axes.hold           : True    # whether to clear the axes by default on
-axes.facecolor      : FFFFFF   # axes background color
-axes.edgecolor      : 282828   # axes edge color
+# axes.facecolor      : FFFFFF   # axes background color
+# axes.edgecolor      : 282828   # axes edge color
 #axes.linewidth      : 1.0     # edge linewidth
-axes.grid           : False   # display grid or not
-axes.titlesize      : x-large   # fontsize of the axes title
-axes.labelsize      : large  # fontsize of the x any y labels
-axes.labelweight    : normal  # weight of the x and y labels
-axes.labelcolor     : 282828
-axes.axisbelow      : True    # whether axis gridlines and ticks are below
+# axes.grid           : False   # display grid or not
+# axes.titlesize      : x-large   # fontsize of the axes title
+# axes.labelsize      : large  # fontsize of the x any y labels
+# axes.labelweight    : normal  # weight of the x and y labels
+# axes.labelcolor     : 282828
+# axes.axisbelow      : True    # whether axis gridlines and ticks are below
                               # the axes elements (lines, text, etc)
 #axes.formatter.limits : -7, 7 # use scientific notation if log10
                                # of the axis range is smaller than the
@@ -235,7 +235,7 @@ axes.axisbelow      : True    # whether axis gridlines and ticks are below
 #axes.unicode_minus  : True    # use unicode for the minus symbol
                                # rather than hyphen.  See
                                # http://en.wikipedia.org/wiki/Plus_and_minus_signs#Character_codes
-axes.prop_cycle    : cycler('color', ['247AAD', '960618', '6A5896', '366811', 'C54E00', 'BC6997', '46A4D9', '008E63', 'E0D432', '0062A2'])  # color cycle for plot lines
+# axes.prop_cycle    : cycler('color', ['247AAD', '960618', '6A5896', '366811', 'C54E00', 'BC6997', '46A4D9', '008E63', 'E0D432', '0062A2'])  # color cycle for plot lines
                                             # as list of string colorspecs:
                                             # single letter, long name, or
                                             # web-style hex
@@ -251,8 +251,8 @@ axes.prop_cycle    : cycler('color', ['247AAD', '960618', '6A5896', '366811', 'C
 #xtick.minor.width    : 0.5    # minor tick width in points
 #xtick.major.pad      : 4      # distance to major tick label in points
 #xtick.minor.pad      : 4      # distance to the minor tick label in points
-xtick.color          : 282828      # color of the tick labels
-xtick.labelsize      : medium # fontsize of the tick labels
+# xtick.color          : 282828      # color of the tick labels
+# xtick.labelsize      : medium # fontsize of the tick labels
 #xtick.direction      : out     # direction: in, out, or inout
 
 #ytick.major.size     : 4      # major tick size in points
@@ -261,19 +261,19 @@ xtick.labelsize      : medium # fontsize of the tick labels
 #ytick.minor.width    : 0.5    # minor tick width in points
 #ytick.major.pad      : 4      # distance to major tick label in points
 #ytick.minor.pad      : 4      # distance to the minor tick label in points
-ytick.color          : 282828      # color of the tick labels
-ytick.labelsize      : medium # fontsize of the tick labels
+# ytick.color          : 282828      # color of the tick labels
+# ytick.labelsize      : medium # fontsize of the tick labels
 #ytick.direction      : out     # direction: in, out, or inout
 
 
 ### GRIDS
-grid.color       :   555555  # grid color
-grid.linestyle   :   :       # dotted
-grid.linewidth   :   0.5     # in points
-grid.alpha       :   0.6     # transparency, between 0.0 and 1.0
+# grid.color       :   555555  # grid color
+# grid.linestyle   :   :       # dotted
+# grid.linewidth   :   0.5     # in points
+# grid.alpha       :   0.6     # transparency, between 0.0 and 1.0
 
 ### Legend
-legend.fancybox      : True  # if True, use a rounded box for the
+# legend.fancybox      : True  # if True, use a rounded box for the
                                # legend, else a rectangle
 #legend.isaxes        : True
 #legend.numpoints     : 2      # the number of points in the legend line
@@ -292,15 +292,15 @@ legend.fancybox      : True  # if True, use a rounded box for the
 #legend.axespad       : 0.02   # deprecated; the border between the axes and legend edge
 #legend.borderaxespad : 0.5   # the border between the axes and legend edge in fraction of fontsize
 #legend.columnspacing : 2.    # the border between the axes and legend edge in fraction of fontsize
-legend.shadow        : False
-legend.frameon       : True   # whether or not to draw a frame around legend
+# legend.shadow        : False
+# legend.frameon       : True   # whether or not to draw a frame around legend
 
 ### FIGURE
 # See http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure
-figure.figsize   : 12, 8    # figure size in inches
+# figure.figsize   : 12, 8    # figure size in inches
 #figure.dpi       : 100     # figure dots per inch
-figure.facecolor : FFFFFF    # figure facecolor; 0.75 is scalar gray
-figure.edgecolor : white   # figure edgecolor
+# figure.facecolor : FFFFFF    # figure facecolor; 0.75 is scalar gray
+# figure.edgecolor : white   # figure edgecolor
 #figure.autolayout : False  # When True, automatically adjust subplot
                             # parameters to make the plot fit the figure
 
@@ -314,10 +314,10 @@ figure.edgecolor : white   # figure edgecolor
 #figure.subplot.hspace  : 0.2    # the amount of height reserved for white space between subplots
 
 ### IMAGES
-image.aspect : auto             # equal | auto | a number
-image.interpolation  : none  # see help(imshow) for options
-image.cmap   : gray               # gray | jet etc...
-image.lut    : 512               # the size of the colormap lookup table
+# image.aspect : auto             # equal | auto | a number
+# image.interpolation  : none  # see help(imshow) for options
+# image.cmap   : gray               # gray | jet etc...
+# image.lut    : 512               # the size of the colormap lookup table
 #image.origin : upper             # lower | upper
 #image.resample  : False
 
@@ -348,10 +348,10 @@ image.lut    : 512               # the size of the colormap lookup table
 # the default savefig params can be different from the display params
 # Eg, you may want a higher resolution, or to make the figure
 # background white
-savefig.dpi        : 300      # figure dots per inch
-savefig.facecolor  : white    # figure facecolor when saving
-savefig.edgecolor  : white    # figure edgecolor when saving
-savefig.format     : png      # png, ps, pdf, svg
+# savefig.dpi        : 300      # figure dots per inch
+# savefig.facecolor  : white    # figure facecolor when saving
+# savefig.edgecolor  : white    # figure edgecolor when saving
+# savefig.format     : png      # png, ps, pdf, svg
 #savefig.bbox       : standard # 'tight' or 'standard'.
 #savefig.pad_inches : 0.1      # Padding to be used when bbox is set to 'tight'
 

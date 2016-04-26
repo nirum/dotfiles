@@ -19,6 +19,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'Chun-Yang/vim-action-ag'
 
+" visualize the undo tree
+Plug 'sjl/gundo.vim'
+
 " documentation
 Plug 'keith/investigate.vim'
 
@@ -296,6 +299,9 @@ nnoremap <leader>w :Wsp<CR>
 " edit and source $MYVIMRC
 nnoremap <leader>erc :tabf $MYVIMRC<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
+
+" undo
+nnoremap <leader>u :GundoToggle<CR>
 
 " Folding
 nnoremap <leader>a za

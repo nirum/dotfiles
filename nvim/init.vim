@@ -105,6 +105,8 @@ Plug 'mhinz/vim-startify'
 
 " colorschemes
 Plug 'mhartington/oceanic-next'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'chriskempson/base16-vim'
 
 " gui-goodness
 Plug 'ryanoasis/vim-devicons'

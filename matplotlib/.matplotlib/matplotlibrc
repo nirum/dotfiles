@@ -126,12 +126,11 @@ font.stretch        : semi-condensed
 # relative to font.size, using the following values: xx-small, x-small,
 # small, medium, large, x-large, xx-large, larger, or smaller
 font.size           : 18.0
-font.sans-serif     : Helvetica Neue, Helvetica, Bitstream Vera Sans, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
+font.sans-serif     : Helvetica Neue, Helvetica, Lato, sans-serif
 #font.serif          : Times New Roman, Times, Bitstream Vera Serif, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Palatino, Charter, serif
 #font.monospace       : Monaco, Andale Mono, Nimbus Mono L, Courier New, Courier, Fixed, Terminal, monospace
 #font.cursive        : Apple Chancery, Textile, Zapf Chancery, Sand, cursive
 #font.fantasy        : Comic Sans MS, Chicago, Charcoal, Impact, Western, fantasy
-
 
 ### TEXT
 # text properties used by text.Text.  See

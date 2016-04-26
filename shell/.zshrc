@@ -177,11 +177,12 @@ function mount_sni() {
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     # set up LD_LIBRARY_PATH (cuda and Intel MKL libraries)
-    export LD_LIBRARY_PATH="/usr/local/cuda-7.5/lib64:/opt/intel/mkl/lib/intel64:/opt/intel/lib/intel64"
+    # export LD_LIBRARY_PATH="/usr/local/cuda-7.5/lib64:/opt/intel/mkl/lib/intel64:/opt/intel/lib/intel64"
+    export LD_LIBRARY_PATH="/usr/local/cuda-7.5/lib64"
 
     # set up path
     export PATH="/usr/local/cuda-7.5/bin:$PATH"
-    export PATH="/opt/intel/bin:$PATH"
+    # export PATH="/opt/intel/bin:$PATH"
 
     # npm
     export PATH="/home/nirum/.npm-global/bin:$PATH"

@@ -129,7 +129,7 @@ alias qt="jupyter qtconsole --ConsoleWidget.font_family="Anonymous Pro" --Consol
 alias rs='rsync -avz'
 
 # clean up conda and update all packages
-alias cup='conda clean -pity; conda update -all'
+alias cup='conda clean -pity; conda update --all'
 
 # display a bar chart of the files in the directory
 wcl() { (for file in "$@"; do; wc -l "$file"; done;) | distribution --graph=vk --char=ba | sort -n }

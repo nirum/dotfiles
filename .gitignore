@@ -6,3 +6,4 @@ nvim/.init.vim-rplugin~
 nvim/autoload
 fontList.*
 *.cache
+__pycache__

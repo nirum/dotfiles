@@ -11,7 +11,7 @@ patch.facecolor : blue
 patch.edgecolor : black
 patch.antialiased : True
 
-font.family : serif
+font.family : sans-serif
 font.style : normal
 font.variant : normal
 font.weight : medium
@@ -19,7 +19,8 @@ font.stretch : normal
 
 font.size : 18.0
 font.serif : Neuton, Playfair Display, Alegreya, Lora, Times New Roman
-font.sans-serif : Roboto, Alegreya Sans, Archivo Narrow, Helvetica, Arial Narrow, PT Sans
+# font.sans-serif : Roboto, Alegreya Sans, Archivo Narrow, Helvetica, Arial Narrow, PT Sans
+font.sans-serif : Archivo Narrow, Helvetica, Arial Narrow, PT Sans
 
 axes.hold : True
 axes.facecolor : white

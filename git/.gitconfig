@@ -20,7 +20,7 @@
   tool=vimdiff
 
 [credential]
-  helper=osxkeychain
+  helper = cache
 
 [push]
   default=simple

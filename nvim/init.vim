@@ -67,6 +67,7 @@ Plug 'junegunn/goyo.vim'
 " custom text objects (nouns)
 Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
+Plug 'thinca/vim-textobj-function-javascript'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -272,28 +273,8 @@ nnoremap ' "
 vmap < <gv
 vmap > >gv
 
-" insert an underline
+" insert an underline below the current line
 inoremap <C-u> <CR><Esc>kyyp^v$r-o
-
-" ToggleMovement depending on location
-function! ToggleMovement(firstOp, thenOp)
-  let pos = getpos('.')
-  execute "normal! " . a:firstOp
-  if pos == getpos('.')
-    execute "normal! " . a:thenOp
-  endif
-endfunction
-
-" The original carat 0 swap
-nnoremap <silent> 0 :call ToggleMovement('^', '0')<CR>
-
-" How about H and L
-nnoremap <silent> H :call ToggleMovement('H', 'L')<CR>
-nnoremap <silent> L :call ToggleMovement('L', 'H')<CR>
-
-" How about G and gg
-nnoremap <silent> G :call ToggleMovement('G', 'gg')<CR>
-nnoremap <silent> gg :call ToggleMovement('gg', 'G')<CR>
 
 " }}}
 

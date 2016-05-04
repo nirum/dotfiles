@@ -40,7 +40,7 @@ Plug 'majutsushi/tagbar'
 " autocompletion
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
-Plug 'davidhalter/jedi'
+Plug 'Shougo/echodoc.vim'
 
 " snippets
 Plug 'Shougo/neosnippet'
@@ -56,6 +56,7 @@ Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+Plug 'chrisbra/unicode.vim'
 
 " comments
 Plug 'tomtom/tcomment_vim'
@@ -146,13 +147,15 @@ set relativenumber number
 
 " editing
 set noesckeys timeoutlen=500
-" set iskeyword-=_
 
 " searching
 set gdefault ignorecase smartcase
 
 " don't update the screen during macros
 set lazyredraw
+
+" cmdheight >= 2 for echodoc support
+set cmdheight=2
 
 " clipboard support in OS X
 set clipboard=unnamed
@@ -200,8 +203,11 @@ nnoremap <silent> <leader>t :TagbarToggle<CR>
 " autocompletion (deoplete)
 let g:deoplete#enable_at_startup=1
 let deoplete#sources#jedi#show_docstring=1
-let g:deoplete#auto_complete_start_length=3
-let g:deoplete#disable_auto_complete = 0
+let g:deoplete#auto_complete_start_length=2
+let g:deoplete#disable_auto_complete=0
+
+" echodoc (shows documentation in the cmd window)
+let g:echodoc_enable_at_startup=1
 
 " snippets (neosnippet)
 let g:neosnippet#snippets_directory="~/.config/nvim/snippets"

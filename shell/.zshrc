@@ -1,7 +1,10 @@
 # Niru Maheswaranathan
 # ~/.zshrc file
-
 source ~/.zprezto/init.zsh
+
+# specify autocompletion settings
+zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
+zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|log|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
 
 # neovim is my default editor
 export EDITOR="nvim"
@@ -22,11 +25,14 @@ alias etc='$EDITOR ~/.tmux.conf'
 
 # vim keybindings
 set -o vi
+zstyle ':prezto:module:editor' key-bindings 'vi'
+
+# dot explansion (.... to ../..)
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # editor
-alias v='$EDITOR'
-alias profilevim="mvim --cmd 'profile start vimrc.profile' --cmd 'profile! file ~/.vimrc'"
-alias nv="NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim"
+alias v='nvim'
+alias profilevim="$EDITOR --cmd 'profile start vimrc.profile' --cmd 'profile! file ~/.vimrc'"
 
 # system
 alias lf='ls -lSFh'

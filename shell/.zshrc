@@ -201,16 +201,17 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
-    # set up LD_LIBRARY_PATH (Intel MKL libraries)
-    export LD_LIBRARY_PATH="/opt/intel/mkl/lib:/opt/intel/lib"
-    export DYLD_LIBRARY_PATH="/opt/intel/mkl/lib:/opt/intel/lib"
+    # texlive
+    export PATH="/usr/local/texlive/2015basic/bin/x86_64-darwin:$PATH"
 
-    # set up path
-    export PATH="/usr/local/texlive/2015basic/bin/x86_64-darwin:/Users/nirum/.cabal/bin:/usr/local/opt/go/libexec/bin:/opt/intel/bin:$PATH"
-    export PATH=$PATH:"/usr/local/opt/go/libexc/bin"
+    # cabal
+    export PATH="/Users/nirum/.cabal/bin:$PATH"
+
+    # go
+    export PATH="/usr/local/opt/go/libexc/bin:$PATH"
 
     # miniconda
-    #export PATH=/Users/nirum/miniconda3/bin:$PATH
+    export PATH="/Users/nirum/miniconda3/bin:$PATH"
 
 fi
 

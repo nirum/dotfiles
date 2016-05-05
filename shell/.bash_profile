@@ -8,7 +8,7 @@ alias erc='mvim ~/.bash_profile'
 alias src='source ~/.bash_profile'
 
 # vim keybindings
-#set -o vi
+set -o vi
 
 # GCC
 GCC_INCLUDE_DIR=/usr/include/
@@ -52,7 +52,7 @@ alias whos='who; echo ""; mem;'
 # functions
 function cdl { cd $1; ls;}
 
-## fasd aliases
+# fasd aliases
 alias j='fasd_cd -d' # use j to jump between folders
 alias e='f -e mvim' # quick opening files with vim
 
@@ -69,23 +69,21 @@ alias gp='git push'
 alias gu='git pull'
 alias gb='git branch'
 
-## MATLAB
+# MATLAB
 alias matlab='/Applications/Matlab.app/bin/matlab -nodesktop -nosplash'
 
-## useful things
+# useful things
 bind 'set show-all-if-ambiguous on' # show autocomplete options after first tab
 complete -d cd rmdir # only show folders for cd or rmdir
 export GREP_OPTIONS='--color=auto' # automatically color grep output
 
-## latex templates
+# latex templates
 alias cpt='cp ~/.templates/latex/* .'
 
-## django
+# django
 alias rs='python manage.py runserver'
 
-## colored ls output
+# colored ls output
 HOST=`hostname -s`
 PS1='\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;31m\]\h\[\033[00;34m\]{\[\033[01;34m\]\w\[\033[00;34m\]}\[\033[01;32m\]:\[\033[00m\] '
 export LSCOLORS='ExGxFxdxCxDxDxBxBxExEx'
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

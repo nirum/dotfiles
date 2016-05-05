@@ -167,6 +167,9 @@ set lazyredraw
 " cmdheight >= 2 for echodoc support
 set cmdheight=2
 
+" smooth sidescrolling
+set sidescroll=1
+
 " clipboard support in OS X
 set clipboard=unnamed
 
@@ -277,6 +280,9 @@ nnoremap : ;
 " swap " and ' for easier registers
 nnoremap " '
 nnoremap ' "
+
+" yank without jank
+vnoremap <expr>y "my\"" . v:register . "y`y"
 
 " Align blocks of text and keep them selected
 vmap < <gv

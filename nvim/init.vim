@@ -58,6 +58,15 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'chrisbra/unicode.vim'
 
+" create new directories if necessary when creating a new file
+Plug 'duggiefresh/vim-easydir'
+
+" trims trailing whitespace on save
+Plug 'derekprior/vim-trimmer'
+
+" system copy/paste with cp
+Plug 'christoomey/vim-system-copy'
+
 " comments
 Plug 'tomtom/tcomment_vim'
 

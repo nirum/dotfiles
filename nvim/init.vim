@@ -40,7 +40,7 @@ Plug 'majutsushi/tagbar'
 " autocompletion
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/echodoc.vim'
 
 " snippets
 Plug 'Shougo/neosnippet'
@@ -52,17 +52,15 @@ Plug 'benekastah/neomake'
 " quickscope (underline matches for f/t/F/T navigation)
 Plug 'unblevable/quick-scope'
 
+Plug 'justinmk/vim-sneak'
+
 " editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
-Plug 'chrisbra/unicode.vim'
 
 " create new directories if necessary when creating a new file
 Plug 'duggiefresh/vim-easydir'
-
-" trims trailing whitespace on save
-Plug 'derekprior/vim-trimmer'
 
 " system copy/paste with cp
 Plug 'christoomey/vim-system-copy'
@@ -90,13 +88,8 @@ Plug 'nirum/vim-cute-python', { 'for': 'python' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 
-" julia
-Plug 'JuliaLang/julia-vim'
-
 " LaTeX
 " Plug 'lervag/vimtex'
-" Plug 'matze/vim-tex-fold'
-" let g:tex_flavor='latex'
 
 " javascript
 " Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -113,23 +106,20 @@ Plug 'mattn/emmet-vim', {'for': 'html'}
 
 " vim-airline (statusline)
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " start screen
 Plug 'mhinz/vim-startify'
 
-" colorschemes
-Plug 'mhartington/oceanic-next'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
+" base16 colorschemes
 Plug 'chriskempson/base16-vim'
 
 " gui-goodness
 Plug 'ryanoasis/vim-devicons'
+Plug 'chrisbra/unicode.vim'
 
 " show vertical line indent marks
 Plug 'Yggdroot/indentLine'
-
-" weakness
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 
 call plug#end()
 
@@ -142,8 +132,14 @@ nnoremap <SPACE> <nop>
 let mapleader = "\<Space>"              " use the spacebar as my leader
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+" 24-bit color!
+if has('termguicolors')
+  set termguicolors
+endif
+
 " use indentation for folding
-set foldmethod=indent foldlevelstart=5
+set foldmethod=indent
+set foldlevelstart=1
 
 " tabs and indenting
 set tabstop=2 shiftwidth=2 expandtab smartindent
@@ -165,7 +161,7 @@ set gdefault ignorecase smartcase
 set lazyredraw
 
 " cmdheight >= 2 for echodoc support
-set cmdheight=2
+" set cmdheight=2
 
 " smooth sidescrolling
 set sidescroll=1
@@ -220,7 +216,7 @@ let g:deoplete#auto_complete_start_length=2
 let g:deoplete#disable_auto_complete=0
 
 " echodoc (shows documentation in the cmd window)
-let g:echodoc_enable_at_startup=1
+" let g:echodoc_enable_at_startup=1
 
 " snippets (neosnippet)
 let g:neosnippet#snippets_directory="~/.config/nvim/snippets"
@@ -247,7 +243,11 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " airline preferences
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
-let g:airline_theme='oceanicnext'
+let g:airline_theme='base16'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 " indentline
 let g:indentLine_color_gui = '#4F5B66'
@@ -284,10 +284,6 @@ nnoremap ' "
 " yank without jank
 vnoremap <expr>y "my\"" . v:register . "y`y"
 
-" Align blocks of text and keep them selected
-vmap < <gv
-vmap > >gv
-
 " insert an underline below the current line
 inoremap <C-u> <CR><Esc>kyyp^v$r-o
 
@@ -310,10 +306,13 @@ nnoremap <leader>a za
 nnoremap <leader>A zA
 nnoremap <leader>o zo
 nnoremap <leader>O zO
-nnoremap <leader>c zc
-nnoremap <leader>C zC
-nnoremap <leader>m zM
-nnoremap <leader>M zM
+" nnoremap <leader>c zc
+" nnoremap <leader>C zC
+" nnoremap <leader>m zM
+" nnoremap <leader>M zM
+
+" commenting
+nmap <leader>c gcc
 
 " }}}
 
@@ -363,7 +362,7 @@ iabbrev rnage   range
 
 " colorscheme
 set background=dark
-colorscheme OceanicNext
+colorscheme base16-ocean
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
 
 " startify settings
@@ -372,7 +371,7 @@ let g:startify_change_to_vcs_root=1
 let g:startify_skiplist = ['.git/*']
 
 " highlight past the 100th column
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight OverLength ctermbg=red ctermfg=white guibg=#A97070
 augroup highlighting
   autocmd!
   autocmd FileType python,js match OverLength /\%101v.\+/

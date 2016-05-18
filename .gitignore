@@ -8,3 +8,4 @@ nvim/.netrwhist
 fontList.*
 *.cache
 __pycache__
+tags

@@ -16,7 +16,6 @@ brew 'wget'
 
 # tmux
 brew 'tmux'
-brew 'reattach-to-user-namespace'
 
 # code
 brew 'ctags'

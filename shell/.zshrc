@@ -9,9 +9,6 @@ zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|s
 # neovim is my default editor
 export EDITOR="nvim"
 
-# temporary directory
-export TMPDIR=/tmp
-
 # fasd options
 eval "$(fasd --init auto)"
 export TERM=xterm-256color
@@ -32,7 +29,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # editor
 alias v='nvim'
-alias profilevim="$EDITOR --cmd 'profile start vimrc.profile' --cmd 'profile! file ~/.vimrc'"
+alias profilevim="$EDITOR --cmd 'profile start editor.profile' --cmd 'profile! file ~/.vimrc'"
 
 # system
 alias lf='ls -lSFh'
@@ -137,6 +134,9 @@ alias rs='rsync -avz'
 # clean up conda and update all packages
 alias cup='conda clean -pity; conda update --all'
 
+# brew
+alias bup='brew update; brew upgrade --all; brew cleanup'
+
 # display a bar chart of the files in the directory
 wcl() { (for file in "$@"; do; wc -l "$file"; done;) | distribution --graph=vk --char=ba | sort -n }
 
@@ -217,3 +217,8 @@ fi
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#
+# Other
+#
+source $HOME/.zsh/colors

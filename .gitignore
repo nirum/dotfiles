@@ -9,3 +9,4 @@ fontList.*
 *.cache
 __pycache__
 *.pyc
+tags

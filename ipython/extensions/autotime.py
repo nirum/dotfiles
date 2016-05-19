@@ -40,8 +40,9 @@ class Timer(object):
             if diff > self.theta_print:
                 print(u'\u23F1  {}'.format(fmt(diff)))
 
-            if diff > self.theta_display and os.uname().sysname == 'Darwin':
-                os.system(NOTIFICATION_MSG.format(fmt(diff)))
+            # currently broken, terminal-notifier is hanging for some reasno
+            # if diff > self.theta_display and os.uname().sysname == 'Darwin':
+                # os.system(NOTIFICATION_MSG.format(fmt(diff)))
 
 
 def load_ipython_extension(ip):

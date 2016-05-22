@@ -1,8 +1,8 @@
-"        _
-" __   _(_)_ __ ___  _ __ ___
-" \ \ / / | '_ ` _ \| '__/ __|
-"  \ V /| | | | | | | | | (__
-"   \_/ |_|_| |_| |_|_|  \___|
+"         _
+"  __   _(_)_ __ ___  _ __ ___
+"  \ \ / / | '_ ` _ \| '__/ __|
+"   \ V /| | | | | | | | | (__
+"    \_/ |_|_| |_| |_|_|  \___|
 "
 " Author: Niru Maheswaranathan
 " Website: https://github.com/nirum/dotfiles
@@ -11,192 +11,188 @@
 
 call plug#begin('~/.vim/plugged')
 
-" start-up screen
-Plug 'mhinz/vim-startify'
+" FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-" navigation
-Plug 'ctrlpvim/ctrlp.vim'
-
-" the silver searcher (ag)
+" the silver searcher (ag) and a gag verb
 Plug 'rking/ag.vim'
 Plug 'Chun-Yang/vim-action-ag'
 
-" splits (gS) or joins (gJ) multiple lines
-Plug 'AndrewRadev/splitjoin.vim'
+" visualize the undo tree
+Plug 'sjl/gundo.vim'
 
-" colors and themes
-Plug 'chriskempson/base16-vim'
-Plug 'mhartington/oceanic-next'
+" documentation
+Plug 'keith/investigate.vim'
 
-" tmux
-Plug 'christoomey/vim-tmux-navigator'
-
-" custom text objects
-Plug 'kana/vim-textobj-user'
-
-" Text object plug-ins motion for function arguments
-Plug 'vim-scripts/argtextobj.vim'
-
-" motions for commenting text: g>c, g<c, gc{motion}
-Plug 'tomtom/tcomment_vim'
-
-" verb to change or modify surrounding quotes/tags/etc (ys, ds, cs)
-Plug 'tpope/vim-surround'
-
-" lets the '.' repeat more commands
-Plug 'tpope/vim-repeat'
-
-" git wrapper
+" git and GitHub
 Plug 'tpope/vim-fugitive'
-
-" motions for blocks of indented text: [-, [+, [=, ]-, ]+, ]=
-Plug 'jeetsukumaran/vim-indentwise'
-Plug 'michaeljsmith/vim-indent-object'
-
-" show vertical line indent marks
-Plug 'Yggdroot/indentLine'
-
-" better search
-Plug 'haya14busa/incsearch.vim'
-
-" git
+Plug 'rhysd/github-complete.vim'
 Plug 'airblade/vim-gitgutter'
 
+" incsearch
+Plug 'haya14busa/incsearch.vim'
+
 " tags
+Plug 'fntlnz/atags.vim'
 Plug 'majutsushi/tagbar'
 
-" neocomplete
-Plug 'Shougo/neocomplete.vim'
+" autocompletion
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'zchee/deoplete-jedi'
+" Plug 'Shougo/echodoc.vim'
 
 " snippets
-Plug 'SirVer/ultisnips'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
-" syntax checker (syntastic)
+" syntax checker (neomake)
 Plug 'benekastah/neomake'
+
+" quickscope (underline matches for f/t/F/T navigation)
+Plug 'unblevable/quick-scope'
+
+Plug 'justinmk/vim-sneak'
+
+" editing
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+
+" create new directories if necessary when creating a new file
+Plug 'duggiefresh/vim-easydir'
+
+" system copy/paste with cp
+Plug 'christoomey/vim-system-copy'
+
+" comments
+Plug 'tomtom/tcomment_vim'
 
 " distraction free writing (goyo)
 Plug 'junegunn/goyo.vim'
 
-" quickscope
-Plug 'unblevable/quick-scope'
+" custom text objects (nouns)
+Plug 'kana/vim-textobj-user'
+Plug 'bps/vim-textobj-python'
+Plug 'thinca/vim-textobj-function-javascript'
 
-" LaTeX
-Plug 'lervag/vimtex'
-Plug 'matze/vim-tex-fold'
+" tmux
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'wellle/tmux-complete.vim'
+Plug 'epeli/slimux'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
-Plug 'bps/vim-textobj-python', { 'for': 'python' }
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 
-" julia
-Plug 'JuliaLang/julia-vim'
+" LaTeX
+" Plug 'lervag/vimtex'
 
 " javascript
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+" Plug 'mxw/vim-jsx'
 
-" editor
+" web
+Plug 'valloric/MatchTagAlways', {'for': 'html'}
+Plug 'ap/vim-css-color'
+Plug 'mattn/emmet-vim', {'for': 'html'}
+
+" other
+" Plug 'elzr/vim-json', {'on_ft': 'json'}
+" Plug 'tpope/vim-markdown', {'on_ft': 'markdown'}
+
+" vim-airline (statusline)
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" start screen
+Plug 'mhinz/vim-startify'
+
+" base16 colorschemes
+Plug 'chriskempson/base16-vim'
+
+" gui-goodness
+Plug 'ryanoasis/vim-devicons'
+Plug 'chrisbra/unicode.vim'
+
+" show vertical line indent marks
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
 " }}}
 
 " Basic Settings ---------------------- {{{
-
 syntax on                               " Enable syntax highlighting
 filetype plugin indent on               " Enable filetype-specific indenting and plugins
-nnoremap <SPACE> <Nop>
+nnoremap <SPACE> <nop>
 let mapleader = "\<Space>"              " use the spacebar as my leader
 
-set foldmethod=indent                   " sets the fold method to use indentation
-set foldlevelstart=5                    " fold automatically
-set nocompatible                        " prevents vim from emulating vi's bugs
-set smartindent                         " smart indenting on new lines
-set expandtab                           " tab inserts spaces in insert mode
-set shiftwidth=2                        " tab length with reindent options (columns)
-set softtabstop=2                       " tab length (columns)
-set encoding=utf-8                      " file encoding
-set noerrorbells                        " turn off error bells
-set visualbell                          " turn on visual bell
-set ruler                               " each window gets status line
-set history=1000		        " keep 1000 lines of command line history
-set wildmenu                            " tab completion when file browsing
-set wildignore+=*.png,*.jpg,*.pdf       " ignore certain files
-set incsearch                           " search as you type
-set hlsearch                            " turn on search highlighting
-set backup                              " backup files
-set undofile                            " generates .un file so undo/redo work even after saving
-set directory=~/.vim-swp//              " sets the swap directory
-set undodir=~/.vim-undo//               " sets the undo directory
-set backupdir=~/.vim-backup//           " sets the backup directory
-set autoread                            " auto read when file is changed externally
-set relativenumber                      " show relative line numbers
-set number                              " also show the actual line number of the current line
-set laststatus=2                        " always show the status line
-set formatoptions-=or                   " Don't add a comment when I hit enter or o/O on a comment line
-set formatoptions+=j                    " remove comment when joining lines
-set showcmd		                " display incomplete commands
-set gdefault                            " assume the /g flag on :s substitutions
-set noesckeys                           " kills function and cursor keys
-" set iskeyword-=_                        " Use _ as a word-separator
-set timeoutlen=500                      " Don't wait so long for the next keypress
-set ignorecase                          " ignore case while searching
-set smartcase                           " case sensitive if the search text contains a capital letter
-set clipboard=unnamed                   " clipboard support in OS X
+" 24-bit color!
+if has('termguicolors')
+  set termguicolors
+endif
+
+" use indentation for folding
+set foldmethod=indent
+set foldlevelstart=1
+
+" tabs and indenting
+set tabstop=2 shiftwidth=2 expandtab smartindent
+
+" backup and swap files
+set backup undofile
+set directory=~/.vim-swp// undodir=~/.vim-undo// backupdir=~/.vim-backup//
+
+" show relative line numbers + the absolute number for the current line
+set relativenumber number
+
+" editing
+set noesckeys timeoutlen=500
+
+" searching
+set gdefault ignorecase smartcase
+
+" don't update the screen during macros
+set lazyredraw
+
+" cmdheight >= 2 for echodoc support
+" set cmdheight=2
+
+" smooth sidescrolling
+set sidescroll=1
+
+" clipboard support in OS X
+set clipboard=unnamed
 
 " }}}
 
-" Leader commands -------------- {{{
+" Plugin settings ----------------------- {{{
 
-" Tags
-nnoremap <leader>. :CtrlPTag<CR>
-nnoremap <silent> <leader>b :TagbarToggle<CR>
+" FZF
+fun! s:fzf_root()
+  let path = finddir(".git", expand("%:p:h").";")
+  return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
+endfun
+nnoremap <silent> <c-t> :exe 'Files ' . <SID>fzf_root()<CR>
 
-" clear whitespace
-nnoremap <leader>w :Whitespace<CR>
+" Investigate
+let g:investigate_use_dash=1
+nnoremap <leader>k :call investigate#Investigate('n')<CR>
+vnoremap <leader>k :call investigate#Investigate('v')<CR>
 
-" }}}
-
-" Plugins ---------------------- {{{
-
-" vim-airline (statusline)
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='oceanicnext'
-
-" ultisnips
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetDirectories=["ultisnips"]
-
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-" let g:neocomplete#force_omni_input_patterns.python =
-  " \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-
-" quickscope
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-" startify
-let g:startify_custom_header = startify#fortune#quote()
-let g:startify_change_to_vcs_root = 1
-let g:startify_skiplist = ['.git/*']
-
-" ctrl-p (CtrlP)
-let g:ctrlp_map = '<c-t>'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
-
-" fast grep with ag
-set grepprg=ag\ --nogroup\ --nocolor
+" git and github
+let g:github_complete_enable_neocomplete=1
+let g:gitgutter_enabled = 1
+let g:gitgutter_sign_modified =  '±'
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_map_keys = 0
+let g:gitgutter_eager = 1
+let g:gitgutter_realtime = 0
 
 " incsearch
 let g:incsearch#auto_nohlsearch = 1
@@ -207,31 +203,115 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-" indented line marker color
-let g:indentLine_color_gui = '#A7C0CC'
+" tags (atags and tagbar)
+autocmd! BufWritePost * call atags#generate()
+nnoremap <leader>g :call atags#generate()<cr>
+nnoremap <silent> <leader>t :TagbarToggle<CR>
 
-" git-gutter
-let g:gitgutter_enabled = 1
-let g:gitgutter_sign_modified =  'm'
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_map_keys = 0
-let g:gitgutter_eager = 1
-let g:gitgutter_realtime = 0
+" autocompletion (deoplete)
+" let g:deoplete#enable_at_startup=1
+" let deoplete#sources#jedi#show_docstring=1
+" let g:deoplete#auto_complete_start_length=2
+" let g:deoplete#disable_auto_complete=0
 
-" neomake
+" echodoc (shows documentation in the cmd window)
+" let g:echodoc_enable_at_startup=1
+
+" snippets (neosnippet)
+let g:neosnippet#snippets_directory="~/.config/nvim/snippets"
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+
+" syntax checking (neomake)
 autocmd! BufWritePost * Neomake
-let g:neomake_warning_sign = {
-  \ 'text': 'W',
-  \ 'texthl': 'WarningMsg',
-  \ }
-let g:neomake_error_sign = {
-  \ 'text': 'E',
-  \ 'texthl': 'ErrorMsg',
-  \ }
+let g:neomake_airline = 1
+let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
+let g:neomake_warning_sign = { 'text': 'ϟ', 'texthl': 'WarningSign' }
+let g:neomake_python_enabled_makers = ['flake8']
 
-" latex
-let g:tex_flavor='latex'
+" tmux (slime / slimux)
+nnoremap <leader>l :SlimuxREPLSendLine<CR>
+nnoremap <leader>s :SlimuxREPLSendParagraph<CR>
+vnoremap <leader>s :SlimuxREPLSendSelection<CR>
+nnoremap <leader>v :SlimuxREPLConfigure<CR>
+
+" quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" airline preferences
+let g:airline#extensions#tabline#enabled=1
+let g:airline_powerline_fonts=1
+let g:airline_theme='base16'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+
+" indentline
+let g:indentLine_color_gui = '#4F5B66'
+let g:indentLine_char = '┊'
+
+" }}}
+
+" Generic Mappings ---------------------- {{{
+
+" I need to come up with a better mapping for Q ...
+nnoremap Q <nop>
+
+" circular window navigation
+nnoremap <tab>   gt
+nnoremap <S-tab> gT
+
+" undo after ctrl-c
+inoremap <c-c> <c-c>u
+
+" exit insert, dd line, enter insert
+inoremap <c-d> <esc>ddi
+
+" clear highlighting
+nnoremap <Esc> :noh<CR>
+
+" reduce having to type shift for commands
+nnoremap ; :
+nnoremap : ;
+
+" swap " and ' for easier registers
+nnoremap " '
+nnoremap ' "
+
+" yank without jank
+vnoremap <expr>y "my\"" . v:register . "y`y"
+
+" insert an underline below the current line
+inoremap <C-u> <CR><Esc>kyyp^v$r-o
+
+" }}}
+
+" Leader commands -------------- {{{
+
+" clear whitespace
+nnoremap <leader>w :Wsp<CR>
+
+" edit and source $MYVIMRC
+nnoremap <leader>erc :tabf $MYVIMRC<CR>
+nnoremap <leader>src :source $MYVIMRC<CR>
+
+" undo
+nnoremap <leader>u :GundoToggle<CR>
+
+" Folding
+nnoremap <leader>a za
+nnoremap <leader>A zA
+nnoremap <leader>o zo
+nnoremap <leader>O zO
+" nnoremap <leader>c zc
+" nnoremap <leader>C zC
+" nnoremap <leader>m zM
+" nnoremap <leader>M zM
+
+" commenting
+nmap <leader>c gcc
 
 " }}}
 
@@ -240,6 +320,7 @@ let g:tex_flavor='latex'
 augroup filetype_vim
   autocmd!
   autocmd FileType vim,zsh setlocal foldmethod=marker
+  autocmd BufWritePost .vimrc so $MYVIMRC
 augroup END
 
 augroup filetype_python
@@ -247,6 +328,7 @@ augroup filetype_python
   autocmd BufRead,BufNewFile *.ipy set filetype=python
   autocmd FileType python inoremap # X#
   autocmd FileType python setlocal softtabstop=4
+  autocmd FileType python setlocal tabstop=4
   autocmd FileType python setlocal shiftwidth=4
 augroup END
 
@@ -255,6 +337,10 @@ augroup textfiles
   autocmd!
   autocmd BufNewFile,BufRead *.txt setlocal wrap
   autocmd BufNewFile,BufRead *.txt setlocal lbr
+
+  " set spelling (need to fix this)
+  " autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
+  " autocmd BufRead,BufNewFile *.md hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
 augroup END
 
 " }}}
@@ -267,55 +353,28 @@ iabbrev tehn    then
 iabbrev waht    what
 iabbrev teh     the
 iabbrev nriu    niru
+iabbrev rnage   range
 
 " }}}
 
 " Highlights, colors and themes ---------------------- {{{
 
-" Colorscheme (put this first)
+" colorscheme
 set background=dark
-map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-colorscheme OceanicNext
+colorscheme base16-ocean
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
 
-" fonts
-if has("gui_gtk2")
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 16
-  colorscheme OceanicNext
-elseif has("gui_macvim")
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
-  colorscheme OceanicNext
-endif
+" startify settings
+let g:startify_custom_header = startify#fortune#quote()
+let g:startify_change_to_vcs_root=1
+let g:startify_skiplist = ['.git/*']
 
-" highlight the 80th column
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" highlight past the 100th column
+highlight OverLength ctermbg=red ctermfg=white guibg=#A97070
 augroup highlighting
   autocmd!
-  autocmd FileType python,js match OverLength /\%81v.\+/
+  autocmd FileType python,js match OverLength /\%101v.\+/
 augroup END
-
-" cursor colors
-hi Cursor guifg=cyan guibg=DarkGray
-set guicursor=n-c-v:ver100-blinkwait500-blinkon300-blinkoff200-Cursor
-
-" }}}
-
-" Generic Mappings ---------------------- {{{
-
-" circular window navigation
-nnoremap <tab>   gt
-nnoremap <S-tab> gT
-
-" undo after ctrl-c
-inoremap <C-c> <C-c>u
-
-" never go into ex mode
-noremap Q :q<CR>
-
-" clear highlighting
-nnoremap <Esc> :noh<CR>
-
-" source
-nnoremap <leader>so :source $MYVIMRC<CR>
 
 " }}}
 
@@ -347,8 +406,14 @@ command! Cute call g:ToggleConceal()
 
 " removes trailing whitespace
 function! g:RemoveTrailingWhitespace()
+    let l = line(".")
+    let c = col(".")
     silent! execute ':%s/\s\+$//e'
+    call cursor(l, c)
 endfunc
-command! Whitespace call g:RemoveTrailingWhitespace()
+command! Wsp call g:RemoveTrailingWhitespace()
+
+" update vim-plug
+command! PU PlugUpdate | PlugUpgrade
 
 " }}}

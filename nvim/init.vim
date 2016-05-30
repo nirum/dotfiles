@@ -15,10 +15,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" the silver searcher (ag) and a gag verb
-Plug 'rking/ag.vim'
-Plug 'Chun-Yang/vim-action-ag'
-
 " visualize the undo tree
 Plug 'sjl/gundo.vim'
 
@@ -27,11 +23,12 @@ Plug 'keith/investigate.vim'
 
 " git and GitHub
 Plug 'tpope/vim-fugitive'
-Plug 'rhysd/github-complete.vim'
+Plug'rhysd/github-complete.vim'
 Plug 'airblade/vim-gitgutter'
 
-" incsearch
+" search
 Plug 'haya14busa/incsearch.vim'
+Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }
 
 " tags
 Plug 'fntlnz/atags.vim'
@@ -40,7 +37,7 @@ Plug 'majutsushi/tagbar'
 " autocompletion
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
-" Plug 'Shougo/echodoc.vim'
+Plug 'Shougo/echodoc.vim'
 
 " snippets
 Plug 'Shougo/neosnippet'
@@ -51,13 +48,13 @@ Plug 'benekastah/neomake'
 
 " quickscope (underline matches for f/t/F/T navigation)
 Plug 'unblevable/quick-scope'
-
 Plug 'justinmk/vim-sneak'
 
 " editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+Plug 'terryma/vim-multiple-cursors'
 
 " create new directories if necessary when creating a new file
 Plug 'duggiefresh/vim-easydir'
@@ -68,18 +65,22 @@ Plug 'christoomey/vim-system-copy'
 " comments
 Plug 'tomtom/tcomment_vim'
 
-" distraction free writing (goyo)
+" for writing prose
 Plug 'junegunn/goyo.vim'
+Plug 'reedes/vim-wordy'
+Plug 'reedes/vim-lexical'
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-textobj-sentence'
 
 " custom text objects (nouns)
-Plug 'kana/vim-textobj-user'
-Plug 'bps/vim-textobj-python'
-Plug 'thinca/vim-textobj-function-javascript'
+" Plug'kana/vim-textobj-user'
+" Plug'bps/vim-textobj-python'
+" Plug'thinca/vim-textobj-function-javascript'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'wellle/tmux-complete.vim'
-Plug 'epeli/slimux'
+" Plug'epeli/slimux'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
@@ -89,7 +90,7 @@ Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 
 " LaTeX
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'tex' }
 
 " javascript
 " Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -101,8 +102,8 @@ Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim', {'for': 'html'}
 
 " other
-" Plug 'elzr/vim-json', {'on_ft': 'json'}
-" Plug 'tpope/vim-markdown', {'on_ft': 'markdown'}
+" Plug 'elzr/vim-json', { 'for': 'json' }
+" Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 
 " vim-airline (statusline)
 Plug 'vim-airline/vim-airline'
@@ -117,15 +118,20 @@ Plug 'chriskempson/base16-vim'
 " gui-goodness
 Plug 'ryanoasis/vim-devicons'
 Plug 'chrisbra/unicode.vim'
+Plug 'reedes/vim-thematic'
 
 " show vertical line indent marks
 Plug 'Yggdroot/indentLine'
+
+" vim-wiki
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
 " }}}
 
 " Basic Settings ---------------------- {{{
+set nocompatible
 syntax on                               " Enable syntax highlighting
 filetype plugin indent on               " Enable filetype-specific indenting and plugins
 nnoremap <SPACE> <nop>
@@ -139,7 +145,6 @@ endif
 
 " use indentation for folding
 set foldmethod=indent
-set foldlevelstart=1
 
 " tabs and indenting
 set tabstop=2 shiftwidth=2 expandtab smartindent
@@ -161,7 +166,7 @@ set gdefault ignorecase smartcase
 set lazyredraw
 
 " cmdheight >= 2 for echodoc support
-" set cmdheight=2
+set cmdheight=2
 
 " smooth sidescrolling
 set sidescroll=1
@@ -336,12 +341,9 @@ augroup END
 " When loading text files, wrap them and don't split up words
 augroup textfiles
   autocmd!
-  autocmd BufNewFile,BufRead *.txt setlocal wrap
-  autocmd BufNewFile,BufRead *.txt setlocal lbr
-
-  " set spelling (need to fix this)
-  " autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
-  " autocmd BufRead,BufNewFile *.md hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
+  autocmd FileType markdown,mkd,text call pencil#init()
+                                 \ | call lexical#init()
+                                 \ | call textobj#sentence#init()
 augroup END
 
 " }}}
@@ -397,22 +399,28 @@ command! Root call s:root()
 
 " Toggle conceal level
 function! g:ToggleConceal()
-    if(&conceallevel)
-      setlocal conceallevel=0
-    else
-      setlocal conceallevel=1
-    endif
+  if(&conceallevel)
+    setlocal conceallevel=0
+  else
+    setlocal conceallevel=1
+  endif
 endfunc
 command! Cute call g:ToggleConceal()
 
 " removes trailing whitespace
 function! g:RemoveTrailingWhitespace()
-    let l = line(".")
-    let c = col(".")
-    silent! execute ':%s/\s\+$//e'
-    call cursor(l, c)
+  let l = line(".")
+  let c = col(".")
+  silent! execute ':%s/\s\+$//e'
+  call cursor(l, c)
 endfunc
 command! Wsp call g:RemoveTrailingWhitespace()
+
+" splits sentences onto newlines
+function! g:SplitSentences()
+  silent! execute ':%s/\.\|?/&\r/'
+endfunc
+command! SplitSentences call g:SplitSentences()
 
 " update vim-plug
 command! PU PlugUpdate | PlugUpgrade

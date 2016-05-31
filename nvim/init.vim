@@ -23,7 +23,7 @@ Plug 'keith/investigate.vim'
 
 " git and GitHub
 Plug 'tpope/vim-fugitive'
-Plug'rhysd/github-complete.vim'
+Plug 'rhysd/github-complete.vim'
 Plug 'airblade/vim-gitgutter'
 
 " search
@@ -73,14 +73,14 @@ Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-textobj-sentence'
 
 " custom text objects (nouns)
-" Plug'kana/vim-textobj-user'
-" Plug'bps/vim-textobj-python'
-" Plug'thinca/vim-textobj-function-javascript'
+Plug 'kana/vim-textobj-user'
+Plug 'bps/vim-textobj-python'
+Plug 'thinca/vim-textobj-function-javascript'
 
 " tmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'wellle/tmux-complete.vim'
-" Plug'epeli/slimux'
+Plug 'epeli/slimux'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
@@ -93,8 +93,8 @@ Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
 
 " javascript
-" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-" Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 
 " web
 Plug 'valloric/MatchTagAlways', {'for': 'html'}
@@ -102,8 +102,8 @@ Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim', {'for': 'html'}
 
 " other
-" Plug 'elzr/vim-json', { 'for': 'json' }
-" Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'elzr/vim-json', { 'for': 'json' }
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 
 " vim-airline (statusline)
 Plug 'vim-airline/vim-airline'
@@ -145,6 +145,7 @@ endif
 
 " use indentation for folding
 set foldmethod=indent
+set foldlevelstart=4
 
 " tabs and indenting
 set tabstop=2 shiftwidth=2 expandtab smartindent

@@ -52,6 +52,8 @@ alias gp='git push'
 alias gd='git diff'
 alias gl='git lg'
 alias gba='git branch -a'
+alias gr='git remote'
+alias grv='git remote -v'
 
 # moving around
 alias ..='cd ..'
@@ -197,7 +199,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     export PATH="/home/nirum/.npm-global/bin:$PATH"
 
     # anaconda / miniconda for python
-    export PATH="/home/nirum/miniconda3/bin:$PATH"
+    export PATH="/home/nirum/anaconda/bin:$PATH"
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 
@@ -210,8 +212,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     # go
     export PATH="/usr/local/opt/go/libexc/bin:$PATH"
 
-    # miniconda
-    export PATH="/Users/nirum/miniconda3/bin:$PATH"
+    # anaconda
+    export PATH="/Users/nirum/anaconda/bin:$PATH"
 
 fi
 

@@ -87,3 +87,9 @@ alias rs='python manage.py runserver'
 HOST=`hostname -s`
 PS1='\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;31m\]\h\[\033[00;34m\]{\[\033[01;34m\]\w\[\033[00;34m\]}\[\033[01;32m\]:\[\033[00m\] '
 export LSCOLORS='ExGxFxdxCxDxDxBxBxExEx'
+
+# added by Anaconda3 4.0.0 installer
+export PATH="/Users/nirum/anaconda/bin:$PATH"
+
+# added by Anaconda3 4.0.0 installer
+export PATH="/Users/nirum/anaconda/bin:$PATH"

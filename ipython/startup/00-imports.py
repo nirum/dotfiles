@@ -17,6 +17,7 @@ from jetpack import *
 import pyret.filtertools as ft
 import pyret.visualizations as viz
 from pyret.spiketools import binspikes, estfr
+from bunch import Bunch
 
 # IPython references
 from IPython.core.magic import register_line_magic

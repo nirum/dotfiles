@@ -115,6 +115,9 @@ jf() {
     [ -d "$dir" ] && pushd "$dir"
 }
 
+# julia
+alias julia='/Applications/Julia-0.5.app/Contents/Resources/julia/bin/julia'
+
 # matlab
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias matlab='/usr/bin/matlab -nodesktop -nosplash'
@@ -134,7 +137,7 @@ alias qt="jupyter qtconsole --ConsoleWidget.font_family="Anonymous Pro" --Consol
 alias rs='rsync -avz'
 
 # clean up conda and update all packages
-alias cup='conda clean -pity; conda update --all'
+alias cup='conda update --all; conda clean -pity'
 
 # brew
 alias bup='brew update; brew upgrade --all; brew cleanup'

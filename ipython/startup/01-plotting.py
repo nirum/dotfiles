@@ -5,4 +5,4 @@ import matplotlib.cm as cm
 plt.ion()
 
 # style
-plt.style.use('albatross')
+plt.style.use(['albatross'])

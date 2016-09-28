@@ -55,6 +55,9 @@ alias gba='git branch -a'
 alias gr='git remote'
 alias grv='git remote -v'
 
+# bash utilities
+function bak { cp "${1}"{,.bak} }   # create a backup of a file
+
 # moving around
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -211,6 +214,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
     # cabal
     export PATH="/Users/nirum/.cabal/bin:$PATH"
+
+    # gopath
+    export PATH="/Users/nirum/code/go/bin:$PATH"
 
     # go
     export PATH="/usr/local/opt/go/libexc/bin:$PATH"

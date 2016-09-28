@@ -222,7 +222,7 @@ let g:deoplete#auto_complete_start_length=2
 let g:deoplete#disable_auto_complete=0
 
 " echodoc (shows documentation in the cmd window)
-" let g:echodoc_enable_at_startup=1
+let g:echodoc_enable_at_startup=1
 
 " snippets (neosnippet)
 let g:neosnippet#snippets_directory="~/.config/nvim/snippets"

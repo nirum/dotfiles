@@ -1,3 +1,6 @@
+from IPython.terminal.prompts import Prompts, Token
+import os
+
 # Configuration file for ipython.
 c = get_config()
 
@@ -15,10 +18,10 @@ c = get_config()
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'osx',
 # 'pyglet', 'qt', 'qt5', 'tk', 'wx').
-c.InteractiveShellApp.gui = 'qt5'
+c.InteractiveShellApp.gui = 'osx'
 
 # Configure matplotlib for interactive use with the default matplotlib backend.
-c.TerminalIPythonApp.matplotlib = 'qt5'
+c.TerminalIPythonApp.matplotlib = 'osx'
 
 # Whether to display a banner upon starting IPython.
 c.TerminalIPythonApp.display_banner = True
@@ -27,11 +30,11 @@ c.InteractiveShell.banner2 = 'banner2'
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
-c.TerminalIPythonApp.pylab = 'qt'
+#c.TerminalIPythonApp.pylab = 'osx'
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'osx',
 # 'pyglet', 'qt', 'qt5', 'tk', 'wx').
-c.TerminalIPythonApp.gui = 'qt'
+c.TerminalIPythonApp.gui = 'osx'
 
 # Set the size of the output cache. The default is 1000
 c.TerminalInteractiveShell.cache_size = 5000
@@ -84,6 +87,18 @@ c.StoreMagics.autorestore = True
 # PromptManager configuration
 # ---------------------------
 
+c.TerminalInteractiveShell.true_color = True
+
+
+# class CustomPrompt(Prompts):
+
+    # def in_prompt_tokens(self, cli=None):
+        # return [(Token, os.getcwd()), (Token.Prompt, u'{color.LightGray}▢ ')]
+
+
+# c.prompts = CustomPrompt(c)
+
+
 # c.TerminalInteractiveShell.prompts_class =
 
 # This is the primary interface for producing IPython's prompts.
@@ -92,12 +107,13 @@ c.StoreMagics.autorestore = True
 # c.PromptManager.justify = True
 
 # Output prompt. '\#' will be transformed to the prompt number
+# c.InteractiveShell.prompt_out = u'{color.LightGreen}\u21AA '
 # c.PromptManager.out_template = u'{color.LightGreen}\u21AA '
 
 # Continuation prompt.
 # c.PromptManager.in2_template = u'{color.LightBlue}  \u2502 '
 
 # Input prompt.  '\#' will be transformed to the prompt number
-# c.PromptManager.in_template = u'{color.LightGray}▢ '
+# c.PromptManager.in_template = 
 
 # c.PromptManager.color_scheme = 'Linux'

@@ -1,4 +1,4 @@
-"         _
+
 "  __   _(_)_ __ ___  _ __ ___
 "  \ \ / / | '_ ` _ \| '__/ __|
 "   \ V /| | | | | | | | | (__
@@ -15,20 +15,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" visualize the undo tree
-Plug 'sjl/gundo.vim'
-
-" documentation
-Plug 'keith/investigate.vim'
-
 " git and GitHub
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/github-complete.vim'
 Plug 'airblade/vim-gitgutter'
 
-" search
+" search highlighhting
 Plug 'haya14busa/incsearch.vim'
-Plug 'dyng/ctrlsf.vim', { 'on': 'CtrlSF' }
 
 " tags
 Plug 'fntlnz/atags.vim'
@@ -54,13 +47,9 @@ Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
-Plug 'terryma/vim-multiple-cursors'
 
 " create new directories if necessary when creating a new file
 Plug 'duggiefresh/vim-easydir'
-
-" system copy/paste with cp
-Plug 'christoomey/vim-system-copy'
 
 " comments
 Plug 'tomtom/tcomment_vim'
@@ -120,18 +109,11 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'chrisbra/unicode.vim'
 Plug 'reedes/vim-thematic'
 
-" show vertical line indent marks
-Plug 'Yggdroot/indentLine'
-
-" vim-wiki
-Plug 'vimwiki/vimwiki'
-
 call plug#end()
 
 " }}}
 
 " Basic Settings ---------------------- {{{
-set nocompatible
 syntax on                               " Enable syntax highlighting
 filetype plugin indent on               " Enable filetype-specific indenting and plugins
 nnoremap <SPACE> <nop>
@@ -173,7 +155,7 @@ set cmdheight=2
 set sidescroll=1
 
 " clipboard support in OS X
-set clipboard=unnamed
+" set clipboard+=unnamedplus
 
 " }}}
 
@@ -254,10 +236,6 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-
-" indentline
-let g:indentLine_color_gui = '#4F5B66'
-let g:indentLine_char = '┊'
 
 " }}}
 

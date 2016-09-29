@@ -181,7 +181,7 @@ fi
 
 # mount the SNI data storage (thanks to mwaskom@stanford.edu)
 function mount_sni() {
-    mnt=/Volumes/sni
+    mnt=/Users/nirum/sni
     if [ ! -d $mnt ] || [ `ls -l $mnt | wc -l` -eq 0 ]; then
         mkdir -p $mnt
         kinit nirum@stanford.edu

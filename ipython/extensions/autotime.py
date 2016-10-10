@@ -1,7 +1,7 @@
 from __future__ import print_function
 from IPython.core.magics.execution import _format_time as fmt
 import os
-NOTIFICATION_MSG=u"terminal-notifier -appIcon https://www.python.org/static/apple-touch-icon-144x144-precomposed.png -sound Submarine -message '\u23F1 {}' -title 'Complete \u2714'"
+NOTIFICATION_MSG = u"terminal-notifier -appIcon https://www.python.org/static/apple-touch-icon-144x144-precomposed.png -sound Submarine -message '\u23F1 {}' -title 'Complete \u2714'"
 
 try:
     from time import perf_counter
@@ -41,8 +41,8 @@ class Timer(object):
                 print(u'\u23F1  {}'.format(fmt(diff)))
 
             # currently broken, terminal-notifier is hanging for some reasno
-            # if diff > self.theta_display and os.uname().sysname == 'Darwin':
-                # os.system(NOTIFICATION_MSG.format(fmt(diff)))
+            if diff > self.theta_display and os.uname().sysname == 'Darwin':
+                os.system(NOTIFICATION_MSG.format(fmt(diff)))
 
 
 def load_ipython_extension(ip):

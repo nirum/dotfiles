@@ -369,11 +369,11 @@ let g:startify_custom_header = startify#fortune#quote()
 let g:startify_change_to_vcs_root=1
 let g:startify_skiplist = ['.git/*']
 
-" highlight past the 100th column
+" highlight past the 80th column
 highlight OverLength ctermbg=red ctermfg=white guibg=#A97070
 augroup highlighting
   autocmd!
-  autocmd FileType python,js match OverLength /\%101v.\+/
+  autocmd FileType python,js match OverLength /\%81v.\+/
 augroup END
 
 " }}}

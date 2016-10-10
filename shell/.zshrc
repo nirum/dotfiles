@@ -143,7 +143,7 @@ alias rs='rsync -avz'
 alias cup='conda update --all; conda clean -pity'
 
 # brew
-alias bup='brew update; brew upgrade --all; brew cleanup'
+alias bup='brew update; brew upgrade; brew cleanup'
 
 # display a bar chart of the files in the directory
 wcl() { (for file in "$@"; do; wc -l "$file"; done;) | distribution --graph=vk --char=ba | sort -n }

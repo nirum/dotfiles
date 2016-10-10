@@ -1,4 +1,4 @@
-
+"         _
 "  __   _(_)_ __ ___  _ __ ___
 "  \ \ / / | '_ ` _ \| '__/ __|
 "   \ V /| | | | | | | | | (__
@@ -25,7 +25,7 @@ Plug 'haya14busa/incsearch.vim'
 
 " tags
 Plug 'fntlnz/atags.vim'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 
 " autocompletion
 Plug 'Shougo/deoplete.nvim'
@@ -41,7 +41,9 @@ Plug 'benekastah/neomake'
 
 " quickscope (underline matches for f/t/F/T navigation)
 Plug 'unblevable/quick-scope'
-Plug 'justinmk/vim-sneak'
+
+" jump to s{char}{char}
+" Plug 'justinmk/vim-sneak'
 
 " editing
 Plug 'tpope/vim-surround'
@@ -55,11 +57,11 @@ Plug 'duggiefresh/vim-easydir'
 Plug 'tomtom/tcomment_vim'
 
 " for writing prose
-Plug 'junegunn/goyo.vim'
-Plug 'reedes/vim-wordy'
-Plug 'reedes/vim-lexical'
-Plug 'reedes/vim-pencil'
-Plug 'reedes/vim-textobj-sentence'
+" Plug 'junegunn/goyo.vim'
+" Plug 'reedes/vim-wordy'
+" Plug 'reedes/vim-lexical'
+" Plug 'reedes/vim-pencil'
+" Plug 'reedes/vim-textobj-sentence'
 
 " custom text objects (nouns)
 Plug 'kana/vim-textobj-user'
@@ -67,9 +69,9 @@ Plug 'bps/vim-textobj-python'
 Plug 'thinca/vim-textobj-function-javascript'
 
 " tmux
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'wellle/tmux-complete.vim'
-Plug 'epeli/slimux'
+" Plug 'christoomey/vim-tmux-navigator'
+" Plug 'wellle/tmux-complete.vim'
+" Plug 'epeli/slimux'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
@@ -155,7 +157,17 @@ set cmdheight=2
 set sidescroll=1
 
 " clipboard support in OS X
-" set clipboard+=unnamedplus
+set clipboard+=unnamed
+" copy to clipboard
+" vnoremap <leader>y "+y
+" nnoremap <leader>Y "+yg_
+" nnoremap <leader>y "+y
+
+" paste to clipboard
+" nnoremap <leader>p "+p
+" nnoremap <leader>P "+P
+" vnoremap <leader>p "+p
+" vnoremap <leader>P "+P
 
 " }}}
 
@@ -318,12 +330,12 @@ augroup filetype_python
 augroup END
 
 " When loading text files, wrap them and don't split up words
-augroup textfiles
-  autocmd!
-  autocmd FileType markdown,mkd,text call pencil#init()
-                                 \ | call lexical#init()
-                                 \ | call textobj#sentence#init()
-augroup END
+" augroup textfiles
+  " autocmd!
+  " autocmd FileType markdown,mkd,text call pencil#init()
+                                 " \ | call lexical#init()
+                                 " \ | call textobj#sentence#init()
+" augroup END
 
 " }}}
 

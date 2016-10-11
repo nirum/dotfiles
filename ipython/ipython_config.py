@@ -1,5 +1,4 @@
 from IPython.terminal.prompts import Prompts, Token
-import os
 
 # Configuration file for ipython.
 c = get_config()
@@ -24,13 +23,11 @@ c.InteractiveShellApp.gui = 'osx'
 c.TerminalIPythonApp.matplotlib = 'osx'
 
 # Whether to display a banner upon starting IPython.
-c.TerminalIPythonApp.display_banner = True
-c.InteractiveShell.banner1 = 'banner1'
-c.InteractiveShell.banner2 = 'banner2'
+c.TerminalIPythonApp.display_banner = False
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
-#c.TerminalIPythonApp.pylab = 'osx'
+c.TerminalIPythonApp.pylab = 'osx'
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'osx',
 # 'pyglet', 'qt', 'qt5', 'tk', 'wx').
@@ -83,37 +80,27 @@ c.IPCompleter.limit_to__all__ = False
 # If True, any %store-d variables will be automatically restored when IPython starts.
 c.StoreMagics.autorestore = True
 
-# ---------------------------
-# PromptManager configuration
-# ---------------------------
+# --------------------
+# Prompt configuration
+# --------------------
 
 c.TerminalInteractiveShell.true_color = True
 
+class MyPrompt(Prompts):
 
-# class CustomPrompt(Prompts):
+    def in_prompt_tokens(self, cli=None):
+        return [(Token.Prompt, u'\u2207 ')]
 
-    # def in_prompt_tokens(self, cli=None):
-        # return [(Token, os.getcwd()), (Token.Prompt, u'{color.LightGray}▢ ')]
+    def out_prompt_tokens(self):
+        return [(Token.OutPrompt, u'\u21AA ')]
 
+    def rewrite_prompt_tokens(self):
+        width = self._width()
+        return [(Token.Prompt, (' ' * (width - 2)) + '\u21A3 ')]
 
-# c.prompts = CustomPrompt(c)
+    def continuation_prompt_tokens(self, cli=None, width=None):
+        if width is None:
+            width = self._width()
+        return [(Token.Prompt, (' ' * (width - 2)) + u'\u2502 ')]
 
-
-# c.TerminalInteractiveShell.prompts_class =
-
-# This is the primary interface for producing IPython's prompts.
-
-# If True (default), each prompt will be right-aligned with the preceding one.
-# c.PromptManager.justify = True
-
-# Output prompt. '\#' will be transformed to the prompt number
-# c.InteractiveShell.prompt_out = u'{color.LightGreen}\u21AA '
-# c.PromptManager.out_template = u'{color.LightGreen}\u21AA '
-
-# Continuation prompt.
-# c.PromptManager.in2_template = u'{color.LightBlue}  \u2502 '
-
-# Input prompt.  '\#' will be transformed to the prompt number
-# c.PromptManager.in_template = 
-
-# c.PromptManager.color_scheme = 'Linux'
+c.TerminalInteractiveShell.prompts_class = MyPrompt

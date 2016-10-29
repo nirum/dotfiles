@@ -27,20 +27,19 @@ Plug 'airblade/vim-gitgutter'
 " proper search highlighhting
 Plug 'haya14busa/incsearch.vim'
 
-" tags ###
+" tags
 Plug 'fntlnz/atags.vim'
-" Plug 'majutsushi/tagbar'
 
-" autocompletion###
-Plug 'Shougo/deoplete.nvim'
+" autocompletion
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/echodoc.vim'
 
 " snippets###
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
-" syntax checker (neomake)###
+" syntax checker (neomake)
 Plug 'benekastah/neomake'
 
 " quickscope (underline matches for f/t/F/T navigation)
@@ -57,13 +56,6 @@ Plug 'tpope/vim-repeat'
 
 " add or remove comments easily
 Plug 'tomtom/tcomment_vim'
-
-" for writing prose
-" Plug 'junegunn/goyo.vim'
-" Plug 'reedes/vim-wordy'
-" Plug 'reedes/vim-lexical'
-" Plug 'reedes/vim-pencil'
-" Plug 'reedes/vim-textobj-sentence'
 
 " support for custom text objects (nouns)
 Plug 'kana/vim-textobj-user'
@@ -91,7 +83,6 @@ Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim', {'for': 'html'}
 
 " other
-Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 
 " vim-airline (statusline)
@@ -144,8 +135,8 @@ set noesckeys timeoutlen=500
 " searching
 set gdefault ignorecase smartcase
 
-" don't update the screen during macros
-set lazyredraw
+" update the screen
+set nolazyredraw
 
 " cmdheight >= 2 for echodoc support
 set cmdheight=2
@@ -155,16 +146,6 @@ set sidescroll=1
 
 " clipboard support in OS X
 set clipboard+=unnamed
-" copy to clipboard
-" vnoremap <leader>y "+y
-" nnoremap <leader>Y "+yg_
-" nnoremap <leader>y "+y
-
-" paste to clipboard
-" nnoremap <leader>p "+p
-" nnoremap <leader>P "+P
-" vnoremap <leader>p "+p
-" vnoremap <leader>P "+P
 
 " }}}
 
@@ -201,32 +182,25 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-" tags (atags and tagbar)
+" tags (atags)
 autocmd! BufWritePost * call atags#generate()
 nnoremap <leader>g :call atags#generate()<cr>
-nnoremap <silent> <leader>t :TagbarToggle<CR>
 
 " autocompletion (deoplete)
 let g:deoplete#enable_at_startup=1
 let deoplete#sources#jedi#show_docstring=1
-let g:deoplete#auto_complete_start_length=2
+let g:deoplete#auto_complete_start_length=1
 let g:deoplete#disable_auto_complete=0
 
 " echodoc (shows documentation in the cmd window)
 let g:echodoc_enable_at_startup=1
-
-" snippets (neosnippet)
-let g:neosnippet#snippets_directory="~/.config/nvim/snippets"
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " syntax checking (neomake)
 autocmd! BufWritePost * Neomake
 let g:neomake_airline = 1
 let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
 let g:neomake_warning_sign = { 'text': 'ϟ', 'texthl': 'WarningSign' }
-let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_enabled_makers = ['flake8', 'pep8']
 
 " quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -315,14 +289,6 @@ augroup filetype_python
   autocmd FileType python setlocal tabstop=4
   autocmd FileType python setlocal shiftwidth=4
 augroup END
-
-" When loading text files, wrap them and don't split up words
-" augroup textfiles
-  " autocmd!
-  " autocmd FileType markdown,mkd,text call pencil#init()
-                                 " \ | call lexical#init()
-                                 " \ | call textobj#sentence#init()
-" augroup END
 
 " }}}
 

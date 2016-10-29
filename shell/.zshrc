@@ -20,6 +20,15 @@ alias erc='$EDITOR ~/.zshrc'
 alias src='source ~/.zshrc'
 alias etc='$EDITOR ~/.tmux.conf'
 
+alias cp='nocorrect cp'
+alias ln='nocorrect ln'
+alias mv='nocorrect mv'
+alias rm='nocorrect rm'
+alias cpi="${aliases[cp]:-cp} -i"
+alias lni="${aliases[ln]:-ln} -i"
+alias mvi="${aliases[mv]:-mv} -i"
+alias rmi="${aliases[rm]:-rm} -i"
+
 # vim keybindings
 set -o vi
 zstyle ':prezto:module:editor' key-bindings 'vi'

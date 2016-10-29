@@ -20,7 +20,6 @@ class Timer(object):
             Any times below the first threshold (in seconds) are not printed
             Times greater than the second threshold are shown as a desktop notification
         """
-
         self.start_time = 0.0
         self.theta_print = thresholds[0]
         self.theta_display = thresholds[1]
@@ -34,7 +33,6 @@ class Timer(object):
 
         if self.start_time:
             diff = perf_counter() - self.start_time
-            assert diff > 0
 
             # print to terminal if greater than the first threshold
             if diff > self.theta_print:

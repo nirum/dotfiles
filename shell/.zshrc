@@ -38,6 +38,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # editor
 alias v='nvim'
+alias vf='nvim $(fzf)'
 alias profilevim="$EDITOR --cmd 'profile start editor.profile' --cmd 'profile! file ~/.vimrc'"
 
 # system

@@ -11,49 +11,51 @@
 
 call plug#begin('~/.vim/plugged')
 
-" FZF
+" FZF fuzzy file finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" git and GitHub
+" adds git commands (Gstatus, Gcommit, Gdiff)
 Plug 'tpope/vim-fugitive'
+
+" username, repo, and issue completion in commit messages
 Plug 'rhysd/github-complete.vim'
+
+" adds +/- symbols to the gutter for modified files
 Plug 'airblade/vim-gitgutter'
 
-" search highlighhting
+" proper search highlighhting
 Plug 'haya14busa/incsearch.vim'
 
-" tags
+" tags ###
 Plug 'fntlnz/atags.vim'
 " Plug 'majutsushi/tagbar'
 
-" autocompletion
+" autocompletion###
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/echodoc.vim'
 
-" snippets
+" snippets###
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
-" syntax checker (neomake)
+" syntax checker (neomake)###
 Plug 'benekastah/neomake'
 
 " quickscope (underline matches for f/t/F/T navigation)
 Plug 'unblevable/quick-scope'
 
-" jump to s{char}{char}
-" Plug 'justinmk/vim-sneak'
-
-" editing
+" ys, cs, and ds surround operators
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+
+" adds a bunch of [] mappings
 Plug 'tpope/vim-unimpaired'
 
-" create new directories if necessary when creating a new file
-Plug 'duggiefresh/vim-easydir'
+" adds repeat (.) abilities for surround, unimpaired
+Plug 'tpope/vim-repeat'
 
-" comments
+" add or remove comments easily
 Plug 'tomtom/tcomment_vim'
 
 " for writing prose
@@ -63,15 +65,11 @@ Plug 'tomtom/tcomment_vim'
 " Plug 'reedes/vim-pencil'
 " Plug 'reedes/vim-textobj-sentence'
 
-" custom text objects (nouns)
+" support for custom text objects (nouns)
 Plug 'kana/vim-textobj-user'
-Plug 'bps/vim-textobj-python'
-Plug 'thinca/vim-textobj-function-javascript'
 
-" tmux
-" Plug 'christoomey/vim-tmux-navigator'
-" Plug 'wellle/tmux-complete.vim'
-" Plug 'epeli/slimux'
+" python text objects and motions (af, if, ac, ic, ]pf, ]pc)
+Plug 'bps/vim-textobj-python'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
@@ -109,7 +107,6 @@ Plug 'chriskempson/base16-vim'
 " gui-goodness
 Plug 'ryanoasis/vim-devicons'
 Plug 'chrisbra/unicode.vim'
-Plug 'reedes/vim-thematic'
 
 call plug#end()
 
@@ -231,12 +228,6 @@ let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
 let g:neomake_warning_sign = { 'text': 'ϟ', 'texthl': 'WarningSign' }
 let g:neomake_python_enabled_makers = ['flake8']
 
-" tmux (slime / slimux)
-nnoremap <leader>l :SlimuxREPLSendLine<CR>
-nnoremap <leader>s :SlimuxREPLSendParagraph<CR>
-vnoremap <leader>s :SlimuxREPLSendSelection<CR>
-nnoremap <leader>v :SlimuxREPLConfigure<CR>
-
 " quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
@@ -302,10 +293,6 @@ nnoremap <leader>a za
 nnoremap <leader>A zA
 nnoremap <leader>o zo
 nnoremap <leader>O zO
-" nnoremap <leader>c zc
-" nnoremap <leader>C zC
-" nnoremap <leader>m zM
-" nnoremap <leader>M zM
 
 " commenting
 nmap <leader>c gcc

@@ -33,7 +33,6 @@ Plug 'fntlnz/atags.vim'
 " autocompletion
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/echodoc.vim'
 
 " snippets
 Plug 'SirVer/ultisnips'
@@ -138,8 +137,8 @@ set gdefault ignorecase smartcase
 " update the screen
 set nolazyredraw
 
-" cmdheight >= 2 for echodoc support
-set cmdheight=2
+" command window height
+set cmdheight=1
 
 " smooth sidescrolling
 set sidescroll=1
@@ -197,9 +196,6 @@ inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" echodoc (shows documentation in the cmd window)
-let g:echodoc_enable_at_startup=1
 
 " syntax checking (neomake)
 autocmd! BufWritePost * Neomake

@@ -35,9 +35,9 @@ Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/echodoc.vim'
 
-" snippets###
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
+" snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " syntax checker (neomake)
 Plug 'benekastah/neomake'
@@ -189,8 +189,14 @@ nnoremap <leader>g :call atags#generate()<cr>
 " autocompletion (deoplete)
 let g:deoplete#enable_at_startup=1
 let deoplete#sources#jedi#show_docstring=1
-let g:deoplete#auto_complete_start_length=1
+let g:deoplete#auto_complete_start_length=2
 let g:deoplete#disable_auto_complete=0
+
+" deoplete tab-complete
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " echodoc (shows documentation in the cmd window)
 let g:echodoc_enable_at_startup=1
@@ -200,7 +206,8 @@ autocmd! BufWritePost * Neomake
 let g:neomake_airline = 1
 let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
 let g:neomake_warning_sign = { 'text': 'ϟ', 'texthl': 'WarningSign' }
-let g:neomake_python_enabled_makers = ['flake8', 'pep8']
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_flake8_maker = {'args': ['--ignore=E226,E231']}
 
 " quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

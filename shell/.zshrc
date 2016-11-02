@@ -215,7 +215,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     export PATH="/home/nirum/.npm-global/bin:$PATH"
 
     # anaconda / miniconda for python
-    export PATH="/home/nirum/anaconda/bin:$PATH"
+    export PATH="/home/nirum/miniconda3/bin:$PATH"
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 

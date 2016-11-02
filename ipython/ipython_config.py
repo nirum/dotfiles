@@ -17,21 +17,21 @@ c = get_config()
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'osx',
 # 'pyglet', 'qt', 'qt5', 'tk', 'wx').
-c.InteractiveShellApp.gui = 'osx'
+c.InteractiveShellApp.gui = 'tk'
 
 # Configure matplotlib for interactive use with the default matplotlib backend.
-c.TerminalIPythonApp.matplotlib = 'osx'
+c.TerminalIPythonApp.matplotlib = 'tk'
 
 # Whether to display a banner upon starting IPython.
 c.TerminalIPythonApp.display_banner = False
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
-c.TerminalIPythonApp.pylab = 'osx'
+c.TerminalIPythonApp.pylab = 'tk'
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'osx',
 # 'pyglet', 'qt', 'qt5', 'tk', 'wx').
-c.TerminalIPythonApp.gui = 'osx'
+c.TerminalIPythonApp.gui = 'tk'
 
 # Set the size of the output cache. The default is 1000
 c.TerminalInteractiveShell.cache_size = 5000

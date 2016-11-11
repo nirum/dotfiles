@@ -88,9 +88,6 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" start screen
-Plug 'mhinz/vim-startify'
-
 " base16 colorschemes
 Plug 'chriskempson/base16-vim'
 
@@ -313,11 +310,6 @@ iabbrev rnage   range
 set background=dark
 colorscheme base16-ocean
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
-
-" startify settings
-let g:startify_custom_header = startify#fortune#quote()
-let g:startify_change_to_vcs_root=1
-let g:startify_skiplist = ['.git/*']
 
 " highlight past the 100th column
 highlight OverLength ctermbg=red ctermfg=white guibg=#A97070

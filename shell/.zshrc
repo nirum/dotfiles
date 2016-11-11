@@ -95,6 +95,7 @@ alias -s pdf=open
 # other
 alias clc=clear # more cmd style alias
 alias whos='archey; pwd; date'
+alias ccat='pygmentize -g'
 
 # ssh aliases
 alias lenna='ssh lenna.stanford.edu'

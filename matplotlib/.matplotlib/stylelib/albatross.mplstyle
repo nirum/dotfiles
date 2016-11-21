@@ -20,22 +20,23 @@ font.stretch : normal
 font.size : 18.0
 font.serif : Neuton, Playfair Display, Alegreya, Lora, Times New Roman
 font.sans-serif : Archivo Narrow, Helvetica, Arial Narrow, PT Sans
+font.monospace : Source Code Pro, Courier, Computer Modern Typewriter<Paste>
 
 axes.hold : True
 axes.facecolor : white
 axes.edgecolor : 222222
 axes.linewidth : 2.0
 axes.grid : False
-axes.titlesize : 32
-axes.labelsize : 22
+axes.titlesize : 24
+axes.labelsize : 18
 axes.axisbelow : True
 # axes.prop_cycle : cm.Set3
-axes.prop_cycle : cycler('color', ['247AAD', '960618', '6A5896', '366811', 'C54E00', 'BC6997', '46A4D9', '008E63', 'E0D432', '0062A2'])  # color cycle for plot lines
+axes.prop_cycle : cycler('color', ['5DA5DA', 'FAA43A', '60BD68', 'F17CB0', 'B2912F', 'B276B2', 'DECF3F', 'F15854', '4D4D4D'])  # color cycle for plot lines
 
 xtick.direction : out
 ytick.direction : out
-xtick.labelsize : 24
-ytick.labelsize : 24
+xtick.labelsize : 18
+ytick.labelsize : 18
 xtick.major.size : 10
 xtick.major.width : 2.0
 xtick.minor.size : 5
@@ -54,8 +55,10 @@ grid.alpha : 0.5
 
 legend.frameon : True
 legend.fancybox : True
+legend.fontsize : 16
 
-#figure.dpi : 300
+figure.figsize : 8.05, 5
+figure.dpi : 150
 figure.facecolor : white
 figure.edgecolor : white
 

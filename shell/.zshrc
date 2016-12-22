@@ -175,7 +175,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias gputemp="nvidia-smi -q -d temperature | sed -rn 's/^.*GPU Current.*: ([0-9]+).*/\\1/p'"
 
     # mount SNI server
-    alias mount_db="sshfs nirum@sni-vcs-baccus.stanford.edu:/share/baccus/deep-retina/database ~/database"
+    alias mount_db="sshfs nirum@sni-vcs-baccus.stanford.edu:/share/baccus ~/sni"
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 

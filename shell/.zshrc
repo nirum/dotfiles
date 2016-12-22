@@ -142,6 +142,7 @@ fi
 # ipython
 alias pig='python3 -W ignore'
 alias ipy='ipython3 --nosep --no-banner --profile=mbp'
+alias iyp='ipython3 --nosep --no-banner --profile=mbp'
 alias ipy2='ipython2 --nosep --no-banner --profile=mbp'
 alias nb='jupyter notebook'
 alias nb2='ipython2 notebook'

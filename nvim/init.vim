@@ -27,6 +27,9 @@ Plug 'airblade/vim-gitgutter'
 " proper search highlighhting
 Plug 'haya14busa/incsearch.vim'
 
+" find and replace
+Plug 'brooth/far.vim'
+
 " tags
 Plug 'fntlnz/atags.vim'
 
@@ -94,6 +97,9 @@ Plug 'chriskempson/base16-vim'
 " gui-goodness
 Plug 'ryanoasis/vim-devicons'
 Plug 'chrisbra/unicode.vim'
+
+" vimwiki
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -213,6 +219,13 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+
+" vim-surround shortcuts
+nnoremap ) ysiw)
+nnoremap ( ysiw)
+
+" vimwiki
+let g:vimwiki_list = [{'path': '~/logs/wiki/', 'path_html': '~/logs/wiki/_html/', 'template_path': '~/logs/wiki/_html/template', 'template_default': 'default', 'template_ext': '.htm'}]
 
 " }}}
 
@@ -354,6 +367,8 @@ function! g:RemoveTrailingWhitespace()
   call cursor(l, c)
 endfunc
 command! Wsp call g:RemoveTrailingWhitespace()
+autocmd BufWritePre *.py :call <SID>AutoStripWhitespaces()
+autocmd BufWritePre *.js :call <SID>AutoStripWhitespaces()
 
 " splits sentences onto newlines
 function! g:SplitSentences()
@@ -363,5 +378,17 @@ command! SplitSentences call g:SplitSentences()
 
 " update vim-plug
 command! PU PlugUpdate | PlugUpgrade
+
+" automatically create directories on save
+fun! <SID>AutoMakeDirectory()
+
+	let s:directory = expand("<afile>:p:h")
+
+	if !isdirectory(s:directory)
+		call mkdir(s:directory, "p")
+	endif
+
+endfun
+autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
 
 " }}}

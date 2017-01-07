@@ -1,0 +1,55 @@
+{
+  // navigation
+	"n"	= "nextMessage:";
+	"p"	= "previousMessage:";
+	"j" = "nextThread:";
+	"k" = "previousThread:";
+ 	"N"	= "moveDownAndModifySelection:";
+	"P"	= "moveUpAndModifySelection:";
+	"J"	= "moveDownAndModifySelection:";
+	"K"	= "moveUpAndModifySelection:";
+  "0" = "rootOfThread:";
+	"$" = "lastOfThread:";
+
+  // writing
+	"c"	= "newMessage:";
+	"r"	= "replySender:";
+	"R"	= "replyAll:";
+	"f"	= "forwardMessage:";
+	"@\U000A" = "send:"; // ⌘+return
+	"@\U000D" = "send:"; // ⌘+enter
+
+  // filtering
+	"a"	= "archive:";
+	"!"	= "moveToJunk:";
+	"s"	= "toggleFlag:";
+	"m"	= "moveToMailbox:";
+  "M" = "moveThreadToMailbox:";
+	"i"	= ( "moveToMailbox:", "/Archive/Important" );
+	"I"	= ( "moveThreadToMailbox:", "/Archive/Important" );
+  "d" = "deleteMessage:";
+  "D" = ( "moveThreadToMailbox:", "TRASH" );
+
+	// other
+  "o" = "expandThread:";
+  "O" = "collapseThread:";
+	"e"	= "expandAll:";
+	"E"	= "collapseAll:";
+	"u"	= "undo:";
+	"z"	= "redo:";
+	"*" = "selectAll:";
+	"A" = "selectAll:";
+	"/"	= "searchAllMessages:";
+
+	// Combo keys
+	"g" = {
+		"A" = ( "goToMailbox:", "ALL_MESSAGES" );
+		"a" = ( "goToMailbox:", "ARCHIVE" );
+		"s" = ( "goToMailbox:", "FLAGGED" );
+		"d" = ( "goToMailbox:", "DRAFTS" );
+		"t" = ( "goToMailbox:", "TRASH" );
+		"g" = "goToMailbox:";
+		"i" = ( "goToMailbox:", "INBOX" );
+		"o" = ( "goToMailbox:", "SENT" );
+	};
+}

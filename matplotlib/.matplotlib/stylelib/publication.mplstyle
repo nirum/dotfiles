@@ -14,12 +14,12 @@ patch.antialiased : True
 font.family : sans-serif
 font.style : normal
 font.variant : normal
-font.weight : medium
+font.weight : normal
 font.stretch : normal
 
 font.size : 12.0
 font.serif : Neuton, Playfair Display, Alegreya, Lora, Times New Roman
-font.sans-serif : Helvetica Neue, Helvetica, Archivo Narrow, Arial Narrow, PT Sans
+font.sans-serif : Helvetica, Helvetica Neue, Arial Narrow, PT Sans
 font.monospace : Source Code Pro, Courier, Computer Modern Typewriter<Paste>
 
 axes.hold : True

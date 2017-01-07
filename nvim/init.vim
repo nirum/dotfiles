@@ -30,6 +30,9 @@ Plug 'haya14busa/incsearch.vim'
 " find and replace
 Plug 'brooth/far.vim'
 
+" multichange
+Plug 'AndrewRadev/multichange.vim'
+
 " tags
 Plug 'fntlnz/atags.vim'
 
@@ -367,8 +370,8 @@ function! g:RemoveTrailingWhitespace()
   call cursor(l, c)
 endfunc
 command! Wsp call g:RemoveTrailingWhitespace()
-autocmd BufWritePre *.py :call <SID>AutoStripWhitespaces()
-autocmd BufWritePre *.js :call <SID>AutoStripWhitespaces()
+" autocmd BufWritePre *.py :call <SID>AutoStripWhitespaces()
+" autocmd BufWritePre *.js :call <SID>AutoStripWhitespaces()
 
 " splits sentences onto newlines
 function! g:SplitSentences()

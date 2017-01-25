@@ -1,6 +1,3 @@
-interactive : True
-timezone : US/Pacific
-
 lines.linewidth : 2.5
 lines.markeredgewidth : 0.5
 lines.markersize : 15
@@ -22,7 +19,6 @@ font.serif : Neuton, Playfair Display, Alegreya, Lora, Times New Roman
 font.sans-serif : Archivo Narrow, Helvetica, Arial Narrow, PT Sans
 font.monospace : Source Code Pro, Courier, Computer Modern Typewriter<Paste>
 
-axes.hold : True
 axes.facecolor : white
 axes.edgecolor : 222222
 axes.linewidth : 2.0

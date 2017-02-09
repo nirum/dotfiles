@@ -11,25 +11,6 @@
 
 call plug#begin('~/.vim/plugged')
 
-" FZF
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-" the silver searcher (ag) and a gag verb
-Plug 'rking/ag.vim'
-Plug 'Chun-Yang/vim-action-ag'
-
-" visualize the undo tree
-Plug 'sjl/gundo.vim'
-
-" documentation
-Plug 'keith/investigate.vim'
-
-" git and GitHub
-Plug 'tpope/vim-fugitive'
-Plug 'rhysd/github-complete.vim'
-Plug 'airblade/vim-gitgutter'
-
 " incsearch
 Plug 'haya14busa/incsearch.vim'
 
@@ -37,30 +18,13 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'fntlnz/atags.vim'
 Plug 'majutsushi/tagbar'
 
-" autocompletion
-" Plug 'Shougo/deoplete.nvim'
-" Plug 'zchee/deoplete-jedi'
-" Plug 'Shougo/echodoc.vim'
-
-" snippets
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-
-" syntax checker (neomake)
-Plug 'benekastah/neomake'
-
 " quickscope (underline matches for f/t/F/T navigation)
 Plug 'unblevable/quick-scope'
-
-Plug 'justinmk/vim-sneak'
 
 " editing
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
-
-" create new directories if necessary when creating a new file
-Plug 'duggiefresh/vim-easydir'
 
 " system copy/paste with cp
 Plug 'christoomey/vim-system-copy'
@@ -68,18 +32,10 @@ Plug 'christoomey/vim-system-copy'
 " comments
 Plug 'tomtom/tcomment_vim'
 
-" distraction free writing (goyo)
-Plug 'junegunn/goyo.vim'
-
 " custom text objects (nouns)
 Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
 Plug 'thinca/vim-textobj-function-javascript'
-
-" tmux
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'wellle/tmux-complete.vim'
-Plug 'epeli/slimux'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
@@ -88,28 +44,9 @@ Plug 'nirum/vim-cute-python', { 'for': 'python' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 
-" LaTeX
-" Plug 'lervag/vimtex'
-
-" javascript
-" Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-" Plug 'mxw/vim-jsx'
-
-" web
-Plug 'valloric/MatchTagAlways', {'for': 'html'}
-Plug 'ap/vim-css-color'
-Plug 'mattn/emmet-vim', {'for': 'html'}
-
-" other
-" Plug 'elzr/vim-json', {'on_ft': 'json'}
-" Plug 'tpope/vim-markdown', {'on_ft': 'markdown'}
-
 " vim-airline (statusline)
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" start screen
-Plug 'mhinz/vim-startify'
 
 " base16 colorschemes
 Plug 'chriskempson/base16-vim'
@@ -172,28 +109,6 @@ set clipboard=unnamed
 
 " Plugin settings ----------------------- {{{
 
-" FZF
-fun! s:fzf_root()
-  let path = finddir(".git", expand("%:p:h").";")
-  return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
-endfun
-nnoremap <silent> <c-t> :exe 'Files ' . <SID>fzf_root()<CR>
-
-" Investigate
-let g:investigate_use_dash=1
-nnoremap <leader>k :call investigate#Investigate('n')<CR>
-vnoremap <leader>k :call investigate#Investigate('v')<CR>
-
-" git and github
-let g:github_complete_enable_neocomplete=1
-let g:gitgutter_enabled = 1
-let g:gitgutter_sign_modified =  '±'
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_map_keys = 0
-let g:gitgutter_eager = 1
-let g:gitgutter_realtime = 0
-
 " incsearch
 let g:incsearch#auto_nohlsearch = 1
 map n  <Plug>(incsearch-nohl-n)
@@ -202,39 +117,6 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
-
-" tags (atags and tagbar)
-autocmd! BufWritePost * call atags#generate()
-nnoremap <leader>g :call atags#generate()<cr>
-nnoremap <silent> <leader>t :TagbarToggle<CR>
-
-" autocompletion (deoplete)
-" let g:deoplete#enable_at_startup=1
-" let deoplete#sources#jedi#show_docstring=1
-" let g:deoplete#auto_complete_start_length=2
-" let g:deoplete#disable_auto_complete=0
-
-" echodoc (shows documentation in the cmd window)
-" let g:echodoc_enable_at_startup=1
-
-" snippets (neosnippet)
-let g:neosnippet#snippets_directory="~/.config/nvim/snippets"
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" syntax checking (neomake)
-autocmd! BufWritePost * Neomake
-let g:neomake_airline = 1
-let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
-let g:neomake_warning_sign = { 'text': 'ϟ', 'texthl': 'WarningSign' }
-let g:neomake_python_enabled_makers = ['flake8']
-
-" tmux (slime / slimux)
-nnoremap <leader>l :SlimuxREPLSendLine<CR>
-nnoremap <leader>s :SlimuxREPLSendParagraph<CR>
-vnoremap <leader>s :SlimuxREPLSendSelection<CR>
-nnoremap <leader>v :SlimuxREPLConfigure<CR>
 
 " quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -363,11 +245,6 @@ iabbrev rnage   range
 set background=dark
 colorscheme base16-ocean
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
-
-" startify settings
-let g:startify_custom_header = startify#fortune#quote()
-let g:startify_change_to_vcs_root=1
-let g:startify_skiplist = ['.git/*']
 
 " highlight past the 80th column
 highlight OverLength ctermbg=red ctermfg=white guibg=#A97070

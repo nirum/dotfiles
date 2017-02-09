@@ -5,7 +5,7 @@
 # perform expansions
 setopt prompt_subst
 
-ZSH_THEME_GIT_PROMPT_CLEAN=" \uf00c"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY=" \uf0e7"
 ZSH_THEME_GIT_PROMPT_PREFIX="(\ue725 "
 ZSH_THEME_GIT_PROMPT_SUFFIX=")"
@@ -27,7 +27,7 @@ function x11 {
 # displays the hostname if not nirumbp
 function remote_host {
   if [ $(hostname) != nirumbp ]; then
-    echo "$(echo -e "\uf1eb") $(hostname) $(x11)"
+    echo "$(x11) $(hostname) "
   fi
 }
 
@@ -50,14 +50,13 @@ function _seg() {
 }
 
 # prompt components
-local prompt_char="%(?:$(_seg $(os_logo) white):$(_seg $(os_logo) red))"
-local user='%(!.%F{red}.%F{cyan})%n%f'
-local host='%F{green}%M%f'
+local host="$(_seg "$(remote_host)" yellow)"
 local directory="$(_seg "$(echo -e "\uf124") %1~" green)"
 local git_status="$(_seg "$(git_prompt_info)" blue)"
+local prompt_char="%(?:$(_seg $(os_logo) white):$(_seg $(os_logo) red))"
 
 # prompt
-PROMPT='${directory} ${git_status} ${prompt_char} '
+PROMPT='${host}${directory} $(_seg "$(git_prompt_info)" blue) ${prompt_char} '
 
 # Right-justified prompt
 RPROMPT=''

@@ -13,36 +13,26 @@
 # -----------
 export ZPLUG_HOME=/usr/local/opt/zplug
 export EMOJI_CLI_KEYBIND="^e"
-source $ZPLUG_HOME/init.zsh
+source $ZPLUG_HOME/init.zsh       # 60 ms
 
 # emoji
-zplug "b4b4r07/emoji-cli"
-zplug "b4b4r07/enhancd", use:init.sh
-
-# file navigation
-zplug "Vifon/deer," use:deer
+zplug "b4b4r07/emoji-cli"       # 5 ms
 
 # run `ls` and `git status` on cd
-zplug "nirum/smart-cd"
+zplug "nirum/smart-cd"          # 10 ms
 
-# prezto
+# prezto (60 ms)
 zplug "modules/completion", from:prezto
 zplug "modules/history", from:prezto
 zplug "modules/git", from:prezto
 zplug "modules/homebrew", from:prezto
+
+# zsh-users (30 ms)
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
 # source plugins and add commands to $PATH
-zplug load
+zplug load        # (300 ms)
 
 
 # -----------------
@@ -67,11 +57,8 @@ export TERM=xterm-256color
 export CLICOLOR=1
 export LC_CTYPE=en_US.UTF-8
 
-# base16 colorschemes
-source $HOME/.zsh/colors.zsh
-
 # custom prompt
-source $HOME/.zsh/prompt.zsh
+source $HOME/.zsh/prompt.zsh  # slow (50 ms)
 
 
 # -------------
@@ -82,7 +69,7 @@ source $HOME/.zsh/prompt.zsh
 export EDITOR="nvim"
 
 # fasd options
-eval "$(fasd --init auto)"
+eval "$(fasd --init auto)"    # slow (60 ms)
 alias j='fasd_cd -d'     # cd, same functionality as j in autojump
 alias jj='fasd_cd -d -i' # cd with interactive selection
 
@@ -108,6 +95,7 @@ alias profilevim="$EDITOR --cmd 'profile start editor.profile' --cmd 'profile! f
 
 # system
 alias lf='ls -lSFh'
+alias la='ls -a'
 alias s='ls'
 alias les='pygmentize'
 
@@ -261,9 +249,4 @@ fi
 # --------------
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# set up deer
-autoload -U deer
-zle -N deer
-bindkey '^f' deer
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh    # 5 ms

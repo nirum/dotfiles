@@ -1,25 +1,97 @@
-# Niru Maheswaranathan
-# ~/.zshrc file
-source ~/.zprezto/init.zsh
+#           _              
+#          | |             
+#   _______| |__  _ __ ___ 
+#  |_  / __| '_ \| '__/ __|
+#   / /\__ \ | | | | | (__ 
+#  /___|___/_| |_|_|  \___|
+#                          
+# Author: Niru Maheswaranathan
+# Website: https://github.com/nirum/dotfiles
+
+# -----------
+# -- zplug --
+# -----------
+export ZPLUG_HOME=/usr/local/opt/zplug
+export EMOJI_CLI_KEYBIND="^e"
+source $ZPLUG_HOME/init.zsh
+
+# emoji
+zplug "b4b4r07/emoji-cli"
+zplug "b4b4r07/enhancd", use:init.sh
+
+# file navigation
+zplug "Vifon/deer," use:deer
+
+# run `ls` and `git status` on cd
+zplug "nirum/smart-cd"
+
+# prezto
+zplug "modules/completion", from:prezto
+zplug "modules/history", from:prezto
+zplug "modules/git", from:prezto
+zplug "modules/homebrew", from:prezto
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting"
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# source plugins and add commands to $PATH
+zplug load
+
+
+# -----------------
+# -- ZSH Options --
+# -----------------
+setopt auto_cd              # if a command is invalid and the name of a directory, cd to that directory
+setopt append_history       # zsh sessions will append their history list to the history file
+setopt extended_history     # save each command's beginning timestamp and duration to the history file
+setopt correct              # correct mistyped commands
 
 # specify autocompletion settings
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
-zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|log|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
+zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
+
+
+# -----------------------
+# -- Prompt and colors --
+# -----------------------
+
+# colors and unicode
+export TERM=xterm-256color
+export CLICOLOR=1
+export LC_CTYPE=en_US.UTF-8
+
+# base16 colorschemes
+source $HOME/.zsh/colors.zsh
+
+# custom prompt
+source $HOME/.zsh/prompt.zsh
+
+
+# -------------
+# -- Aliases --
+# -------------
 
 # neovim is my default editor
 export EDITOR="nvim"
 
 # fasd options
 eval "$(fasd --init auto)"
-export TERM=xterm-256color
-export CLICOLOR=1
-export LC_CTYPE=en_US.UTF-8 # use unicode
+alias j='fasd_cd -d'     # cd, same functionality as j in autojump
+alias jj='fasd_cd -d -i' # cd with interactive selection
 
 # edit this file
 alias erc='$EDITOR ~/.zshrc'
 alias src='source ~/.zshrc'
 alias etc='$EDITOR ~/.tmux.conf'
 
+# 
 alias cp='nocorrect cp'
 alias ln='nocorrect ln'
 alias mv='nocorrect mv'
@@ -28,13 +100,6 @@ alias cpi="${aliases[cp]:-cp} -i"
 alias lni="${aliases[ln]:-ln} -i"
 alias mvi="${aliases[mv]:-mv} -i"
 alias rmi="${aliases[rm]:-rm} -i"
-
-# vim keybindings
-set -o vi
-zstyle ':prezto:module:editor' key-bindings 'vi'
-
-# dot explansion (.... to ../..)
-zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # editor
 alias v='nvim'
@@ -72,9 +137,6 @@ function bak { cp "${1}"{,.bak} }   # create a backup of a file
 alias ..='cd ..'
 alias ...='cd ../..'
 
-# grep coloring
-export GREP_OPTIONS='--color=auto' # automatically color grep output
-
 # key bindings
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
@@ -84,9 +146,6 @@ bindkey '^j' down-history
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
-
-# vtop
-alias vtop="vtop --theme monokai"
 
 # suffix aliases
 alias -s py=$EDITOR
@@ -103,31 +162,6 @@ alias msh='mosh -6 lenna.stanford.edu'
 alias cardinal='ssh -CY cardinal.stanford.edu'
 alias tonto='ssh -CY niru@tonto.stanford.edu'
 
-# jump to a recent directory using fasd
-j() {
-    local dir="$(fasd -ld "$@")"
-    [[ -d "$dir" ]] && pushd "$dir"
-}
-
-# jump to a directory, interactively chosen
-jj() {
-    local dir
-    dir=$(fasd -Rdl |\
-        sed "s:$HOME:~:" |\
-        fzf --no-sort +m -q "$*" |\
-        sed "s:~:$HOME:")\
-    && pushd "$dir"
-}
-
-# jump to the directory with a specific file
-jf() {
-    local file
-    local dir
-    file=$(fzf +m -q "$1")\
-        && dir=$(dirname "$file")
-    [ -d "$dir" ] && pushd "$dir"
-}
-
 # julia
 alias julia='/Applications/Julia-0.5.app/Contents/Resources/julia/bin/julia'
 
@@ -142,13 +176,7 @@ fi
 alias pig='python3 -W ignore'
 alias ipy='ipython3 --nosep --no-banner --profile=mbp'
 alias iyp='ipython3 --nosep --no-banner --profile=mbp'
-alias ipy2='ipython2 --nosep --no-banner --profile=mbp'
 alias nb='jupyter notebook'
-alias nb2='ipython2 notebook'
-alias qt="jupyter qtconsole --ConsoleWidget.font_family="Anonymous Pro" --ConsoleWidget.font_size=14 --no-confirm-exit --no-banner --paging=vsplit --style='' --stylesheet='' --editor='mvim' --JupyterQtConsoleApp.config_file='/Users/nirum/.ipython/profile_mbp/ipython_config'"
-
-# rsync
-alias rs='rsync -avz'
 
 # clean up conda and update all packages
 alias cup='conda update --all; conda clean -pity'
@@ -156,13 +184,10 @@ alias cup='conda update --all; conda clean -pity'
 # brew
 alias bup='brew update; brew upgrade; brew cleanup'
 
-# display a bar chart of the files in the directory
-wcl() { (for file in "$@"; do; wc -l "$file"; done;) | distribution --graph=vk --char=ba | sort -n }
-
 # go
 export GOPATH=$HOME/code/go
 
-# system specific aliases
+# system specific aliases and paths
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     alias duf='du -shc * | sort -h'
@@ -176,36 +201,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # mount SNI server
     alias mount_db="sshfs nirum@sni-vcs-baccus.stanford.edu:/share/baccus ~/sni"
 
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-
-    export HOMEBREW_EDITOR="nvim"
-    export VISUAL="nvim"
-    alias duf='du -shc * | gsort -h'
-    alias spot='spotify'
-
-    # dash
-    function dash() {
-        open "dash://$*"
-    }
-
-fi
-
-# mount the SNI data storage (thanks to mwaskom@stanford.edu)
-function mount_sni() {
-    mnt=/Users/nirum/sni
-    if [ ! -d $mnt ] || [ `ls -l $mnt | wc -l` -eq 0 ]; then
-        mkdir -p $mnt
-        kinit nirum@stanford.edu
-        mount_smbfs //nirum@sni-storage.stanford.edu/group/baccus $mnt
-    fi
-    export SNI=$mnt/Niru
-}
-
-# setup PATHs
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-
     # set up LD_LIBRARY_PATH (cuda and Intel MKL libraries)
-    # export LD_LIBRARY_PATH="/usr/local/cuda-7.5/lib64:/opt/intel/mkl/lib/intel64:/opt/intel/lib/intel64"
     export LD_LIBRARY_PATH="/usr/local/cuda-7.5/lib64"
 
     # set up path
@@ -218,7 +214,29 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # anaconda / miniconda for python
     export PATH="/home/nirum/miniconda3/bin:$PATH"
 
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
+
+    export HOMEBREW_EDITOR="nvim"
+    export VISUAL="nvim"
+    alias duf='du -shc * | gsort -h'
+    alias spot='spotify'
+
+    # dash
+    function dash() {
+        open "dash://$*"
+    }
+
+    # mount the SNI data storage (thanks to mwaskom@stanford.edu)
+    function mount_sni() {
+        mnt=/Users/nirum/sni
+        if [ ! -d $mnt ] || [ `ls -l $mnt | wc -l` -eq 0 ]; then
+            mkdir -p $mnt
+            kinit nirum@stanford.edu
+            mount_smbfs //nirum@sni-storage.stanford.edu/group/baccus $mnt
+        fi
+        export SNI=$mnt/Niru
+    }
 
     # texlive
     export PATH="/usr/local/texlive/2015basic/bin/x86_64-darwin:$PATH"
@@ -237,10 +255,15 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
 fi
 
+
+# --------------
+# -- Finalize --
+# --------------
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#
-# Other
-#
-source $HOME/.zsh/colors
+# set up deer
+autoload -U deer
+zle -N deer
+bindkey '^f' deer

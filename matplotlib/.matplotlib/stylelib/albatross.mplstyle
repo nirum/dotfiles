@@ -11,7 +11,7 @@ patch.antialiased : True
 font.family : sans-serif
 font.style : normal
 font.variant : normal
-font.weight : medium
+font.weight : normal
 font.stretch : normal
 
 font.size : 18.0

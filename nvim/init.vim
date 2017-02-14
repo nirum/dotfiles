@@ -44,14 +44,18 @@ Plug 'zchee/deoplete-jedi'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-" syntax checker (neomake)
-Plug 'benekastah/neomake'
+" auto format
+Plug 'Chiel92/vim-autoformat'
+
+" syntax checker
+Plug 'w0rp/ale'
 
 " quickscope (underline matches for f/t/F/T navigation)
 Plug 'unblevable/quick-scope'
 
 " ys, cs, and ds surround operators
 Plug 'tpope/vim-surround'
+Plug 'wellle/targets.vim'
 
 " adds a bunch of [] mappings
 Plug 'tpope/vim-unimpaired'
@@ -70,6 +74,8 @@ Plug 'bps/vim-textobj-python'
 
 " python
 Plug 'nirum/vim-cute-python', { 'for': 'python' }
+Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
+Plug 'fisadev/vim-isort', { 'for': 'python' }
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
@@ -188,8 +194,8 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 " tags (atags)
-autocmd! BufWritePost * call atags#generate()
-nnoremap <leader>g :call atags#generate()<cr>
+" autocmd! BufWritePost * call atags#generate()
+" nnoremap <leader>g :call atags#generate()<cr>
 
 " autocompletion (deoplete)
 let g:deoplete#enable_at_startup=1
@@ -203,13 +209,19 @@ let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-" syntax checking (neomake)
-autocmd! BufWritePost * Neomake
-let g:neomake_airline = 1
-let g:neomake_error_sign = { 'text': '✘', 'texthl': 'ErrorSign' }
-let g:neomake_warning_sign = { 'text': 'ϟ', 'texthl': 'WarningSign' }
-let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_python_flake8_maker = {'args': ['--ignore=E226,E231']}
+" syntax (ale)
+let g:ale_sign_column_always=1
+let g:ale_sign_error='>>'
+let g:ale_sign_warning='--'
+" (statusline) %{ALEGetStatusLine()}
+" let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+" error messages
+" let g:ale_echo_msg_error_str = 'E'
+" let g:ale_echo_msg_warning_str = 'W'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_python_mypy_options = '--ignore-missing-imports'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -218,10 +230,7 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 let g:airline_theme='base16'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+let g:airline_section_z = airline#section#create_right(['%l', '%c', '%{ALEGetStatusLine()}'])
 
 " vim-surround shortcuts
 nnoremap ) ysiw)
@@ -264,6 +273,12 @@ vnoremap <expr>y "my\"" . v:register . "y`y"
 " insert an underline below the current line
 inoremap <C-u> <CR><Esc>kyyp^v$r-o
 
+" scrolloff
+set scrolloff=5
+
+" no startup message
+set shortmess+=I
+
 " }}}
 
 " Leader commands -------------- {{{
@@ -287,6 +302,10 @@ nnoremap <leader>O zO
 " commenting
 nmap <leader>c gcc
 
+" split to the bottom and right
+set splitbelow
+set splitright
+
 " }}}
 
 " FileType-specific settings ---------------------- {{{
@@ -295,6 +314,8 @@ augroup filetype_vim
   autocmd!
   autocmd FileType vim,zsh setlocal foldmethod=marker
   autocmd BufWritePost .vimrc so $MYVIMRC
+  autocmd FileType vim setlocal fo-=c fo-=o
+  autocmd FileType zsh setlocal fo-=c fo-=o
 augroup END
 
 augroup filetype_python
@@ -317,6 +338,18 @@ iabbrev waht    what
 iabbrev teh     the
 iabbrev nriu    niru
 iabbrev rnage   range
+
+if has("user_commands")
+    command! -bang -nargs=? -complete=file E e<bang> <args>
+    command! -bang -nargs=? -complete=file W w<bang> <args>
+    command! -bang -nargs=? -complete=file Wq wq<bang> <args>
+    command! -bang -nargs=? -complete=file WQ wq<bang> <args>
+    command! -bang Wa wa<bang>
+    command! -bang WA wa<bang>
+    command! -bang Q q<bang>
+    command! -bang QA qa<bang>
+    command! -bang Qa qa<bang>
+endif
 
 " }}}
 

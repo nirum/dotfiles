@@ -97,6 +97,7 @@ alias profilevim="$EDITOR --cmd 'profile start editor.profile' --cmd 'profile! f
 alias lf='ls -lSFh'
 alias la='ls -a'
 alias s='ls'
+alias sl='ls'
 alias les='pygmentize'
 
 # tmux stuff
@@ -165,6 +166,7 @@ alias pig='python3 -W ignore'
 alias ipy='ipython3 --nosep --no-banner --profile=mbp'
 alias iyp='ipython3 --nosep --no-banner --profile=mbp'
 alias nb='jupyter notebook'
+alias pag='pip list | ag'
 
 # clean up conda and update all packages
 alias cup='conda update --all; conda clean -pity'

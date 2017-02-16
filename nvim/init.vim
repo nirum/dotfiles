@@ -35,6 +35,7 @@ Plug 'AndrewRadev/multichange.vim'
 
 " tags
 Plug 'fntlnz/atags.vim'
+Plug 'majutsushi/tagbar'
 
 " autocompletion
 Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
@@ -193,9 +194,9 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-" tags (atags)
+" tags (atags/tagbar)
 " autocmd! BufWritePost * call atags#generate()
-" nnoremap <leader>g :call atags#generate()<cr>
+nnoremap <leader>g :call atags#generate()<cr>
 
 " autocompletion (deoplete)
 let g:deoplete#enable_at_startup=1

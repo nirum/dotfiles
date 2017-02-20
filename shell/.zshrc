@@ -15,9 +15,6 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 export EMOJI_CLI_KEYBIND="^e"
 source $ZPLUG_HOME/init.zsh       # 60 ms
 
-# emoji
-zplug "b4b4r07/emoji-cli"       # 5 ms
-
 # run `ls` and `git status` on cd
 zplug "nirum/smart-cd"          # 10 ms
 

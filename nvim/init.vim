@@ -38,12 +38,12 @@ Plug 'fntlnz/atags.vim'
 Plug 'majutsushi/tagbar'
 
 " autocompletion
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'zchee/deoplete-jedi'
+" Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+" Plug 'zchee/deoplete-jedi'
 
 " snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 " auto format
 Plug 'Chiel92/vim-autoformat'
@@ -199,16 +199,16 @@ map g# <Plug>(incsearch-nohl-g#)
 nnoremap <leader>g :call atags#generate()<cr>
 
 " autocompletion (deoplete)
-let g:deoplete#enable_at_startup=1
-let deoplete#sources#jedi#show_docstring=1
-let g:deoplete#auto_complete_start_length=2
-let g:deoplete#disable_auto_complete=0
+" let g:deoplete#enable_at_startup=1
+" let deoplete#sources#jedi#show_docstring=1
+" let g:deoplete#auto_complete_start_length=2
+" let g:deoplete#disable_auto_complete=0
 
 " deoplete tab-complete
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" let g:UltiSnipsExpandTrigger="<c-e>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " syntax (ale)
 let g:ale_sign_column_always=1

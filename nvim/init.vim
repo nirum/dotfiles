@@ -38,12 +38,13 @@ Plug 'fntlnz/atags.vim'
 Plug 'majutsushi/tagbar'
 
 " autocompletion
+Plug 'roxma/nvim-completion-manager'
 " Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 " Plug 'zchee/deoplete-jedi'
 
 " snippets
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " auto format
 Plug 'Chiel92/vim-autoformat'
@@ -198,17 +199,19 @@ map g# <Plug>(incsearch-nohl-g#)
 " autocmd! BufWritePost * call atags#generate()
 nnoremap <leader>g :call atags#generate()<cr>
 
-" autocompletion (deoplete)
-" let g:deoplete#enable_at_startup=1
-" let deoplete#sources#jedi#show_docstring=1
-" let g:deoplete#auto_complete_start_length=2
-" let g:deoplete#disable_auto_complete=0
+" autocompletion (nvim-completion-manager) and ultisnips
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <buffer> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
-" deoplete tab-complete
-" inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" let g:UltiSnipsExpandTrigger="<c-e>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" ultisnips
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" optional mapping provided by NCM. If you press `<c-u>` and nothing has been
+" typed, it will popup a list of snippets available
+inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 
 " syntax (ale)
 let g:ale_sign_column_always=1
@@ -270,9 +273,6 @@ nnoremap ' "
 
 " yank without jank
 vnoremap <expr>y "my\"" . v:register . "y`y"
-
-" insert an underline below the current line
-inoremap <C-u> <CR><Esc>kyyp^v$r-o
 
 " scrolloff
 set scrolloff=5
@@ -419,11 +419,11 @@ command! PU PlugUpdate | PlugUpgrade
 " automatically create directories on save
 fun! <SID>AutoMakeDirectory()
 
-	let s:directory = expand("<afile>:p:h")
+  let s:directory = expand("<afile>:p:h")
 
-	if !isdirectory(s:directory)
-		call mkdir(s:directory, "p")
-	endif
+  if !isdirectory(s:directory)
+    call mkdir(s:directory, "p")
+  endif
 
 endfun
 autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()

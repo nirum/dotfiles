@@ -20,7 +20,7 @@ font.sans-serif : Archivo Narrow, Helvetica, Arial Narrow, PT Sans
 font.monospace : Source Code Pro, Courier, Computer Modern Typewriter<Paste>
 
 axes.facecolor : white
-axes.edgecolor : 222222
+axes.edgecolor : 444444
 axes.linewidth : 2.0
 axes.grid : False
 axes.titlesize : 24
@@ -37,12 +37,12 @@ xtick.major.size : 10
 xtick.major.width : 2.0
 xtick.minor.size : 5
 xtick.minor.width : 2.0
-xtick.color : 222222
+xtick.color : 444444
 ytick.major.size : 10
 ytick.major.width : 2.0
 ytick.minor.size : 5
 ytick.minor.width : 2.0
-ytick.color : 222222
+ytick.color : 444444
 
 grid.color : gray
 grid.linestyle : dotted

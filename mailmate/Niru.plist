@@ -1,9 +1,9 @@
 {
   // navigation
-	"n"	= "nextMessage:";
-	"p"	= "previousMessage:";
-	"j" = "nextThread:";
-	"k" = "previousThread:";
+	"j"	= "nextMessage:";
+	"k"	= "previousMessage:";
+	"n" = "nextThread:";
+	"p" = "previousThread:";
  	"N"	= "moveDownAndModifySelection:";
 	"P"	= "moveUpAndModifySelection:";
 	"J"	= "moveDownAndModifySelection:";

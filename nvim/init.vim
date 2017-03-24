@@ -39,8 +39,9 @@ Plug 'majutsushi/tagbar'
 
 " autocompletion
 Plug 'roxma/nvim-completion-manager'
-" Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-" Plug 'zchee/deoplete-jedi'
+
+" writing
+Plug 'junegunn/goyo.vim'
 
 " snippets
 Plug 'SirVer/ultisnips'

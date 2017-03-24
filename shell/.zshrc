@@ -164,6 +164,8 @@ alias ipy='ipython3 --nosep --no-banner --profile=mbp'
 alias iyp='ipython3 --nosep --no-banner --profile=mbp'
 alias nb='jupyter notebook'
 alias pag='pip list | ag'
+alias vizdom='python -m visdom.server'
+alias visdom='python -m visdom.server'
 
 # clean up conda and update all packages
 alias cup='conda update --all; conda clean -pity'

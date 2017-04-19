@@ -75,7 +75,8 @@ alias erc='$EDITOR ~/.zshrc'
 alias src='source ~/.zshrc'
 alias etc='$EDITOR ~/.tmux.conf'
 
-# 
+# system
+alias o='open .'
 alias cp='nocorrect cp'
 alias ln='nocorrect ln'
 alias mv='nocorrect mv'
@@ -105,6 +106,9 @@ alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
 
 # git
+alias git='hub'
+alias gc='git clone'
+alias gcm='git commit -m'
 alias gs='git st'
 alias sg='git st'
 alias ga='git add'
@@ -228,7 +232,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     }
 
     # texlive
-    export PATH="/usr/local/texlive/2015basic/bin/x86_64-darwin:$PATH"
+    export PATH="/usr/local/texlive/2016/bin/x86_64-darwin:$PATH"
 
     # cabal
     export PATH="/Users/nirum/.cabal/bin:$PATH"
@@ -240,7 +244,13 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH="/usr/local/opt/go/libexc/bin:$PATH"
 
     # anaconda
-    export PATH="/Users/nirum/anaconda/bin:$PATH"
+    export PATH="/Users/nirum/miniconda3/bin:$PATH"
+
+    # CUDA
+    export CUDA_HOME="/usr/local/cuda"
+    export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:/usr/local/cuda/extras/CUPTI/lib"
+    export LD_LIBRARY_PATH="/usr/local/cuda/lib"
+    export PATH="/usr/local/cuda/bin:/usr/local/cuda/lib:/usr/local/cuda/extras/CUPTI/lib:$PATH"
 
 fi
 

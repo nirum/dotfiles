@@ -11,3 +11,4 @@ from functools import partial
 from collections import defaultdict, deque, namedtuple
 from tqdm import trange, tqdm
 from os.path import join, expanduser
+from moviepy.editor import VideoClip

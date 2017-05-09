@@ -18,6 +18,9 @@ source $ZPLUG_HOME/init.zsh       # 60 ms
 # run `ls` and `git status` on cd
 zplug "nirum/smart-cd"          # 10 ms
 
+# oh-m-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh
+
 # prezto (60 ms)
 zplug "modules/completion", from:prezto
 zplug "modules/history", from:prezto
@@ -39,6 +42,10 @@ setopt auto_cd              # if a command is invalid and the name of a director
 setopt append_history       # zsh sessions will append their history list to the history file
 setopt extended_history     # save each command's beginning timestamp and duration to the history file
 setopt correct              # correct mistyped commands
+
+# make search up and down work, so partially type and hit up/down to find relevant stuff
+bindkey '^[[A' up-line-or-search                                                
+bindkey '^[[B' down-line-or-search
 
 # specify autocompletion settings
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'

@@ -27,16 +27,6 @@ Plug 'airblade/vim-gitgutter'
 " proper search highlighhting
 Plug 'haya14busa/incsearch.vim'
 
-" find and replace
-Plug 'brooth/far.vim'
-
-" multichange
-Plug 'AndrewRadev/multichange.vim'
-
-" tags
-Plug 'fntlnz/atags.vim'
-Plug 'majutsushi/tagbar'
-
 " autocompletion
 Plug 'roxma/nvim-completion-manager'
 
@@ -58,7 +48,7 @@ Plug 'unblevable/quick-scope'
 
 " ys, cs, and ds surround operators
 Plug 'tpope/vim-surround'
-Plug 'wellle/targets.vim'
+" Plug 'wellle/targets.vim'
 
 " adds a bunch of [] mappings
 Plug 'tpope/vim-unimpaired'
@@ -99,15 +89,10 @@ Plug 'mattn/emmet-vim', {'for': 'html'}
 " other
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 
-" vim-airline (statusline)
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " base16 colorschemes
 Plug 'chriskempson/base16-vim'
 
 " gui-goodness
-Plug 'ryanoasis/vim-devicons'
 Plug 'chrisbra/unicode.vim'
 
 " vimwiki
@@ -144,7 +129,7 @@ set directory=~/.vim-swp// undodir=~/.vim-undo// backupdir=~/.vim-backup//
 set relativenumber number
 
 " editing
-set noesckeys timeoutlen=500
+" set noesckeys timeoutlen=500
 
 " searching
 set gdefault ignorecase smartcase
@@ -219,7 +204,7 @@ let g:ale_sign_column_always=1
 let g:ale_sign_error='>>'
 let g:ale_sign_warning='--'
 " (statusline) %{ALEGetStatusLine()}
-" let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 " error messages
 " let g:ale_echo_msg_error_str = 'E'
 " let g:ale_echo_msg_warning_str = 'W'
@@ -231,18 +216,33 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-" airline preferences
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1
-let g:airline_theme='base16'
-let g:airline_section_z = airline#section#create_right(['%l', '%c', '%{ALEGetStatusLine()}'])
-
 " vim-surround shortcuts
 nnoremap ) ysiw)
 nnoremap ( ysiw)
 
 " vimwiki
 let g:vimwiki_list = [{'path': '~/logs/wiki/', 'path_html': '~/logs/wiki/_html/', 'template_path': '~/logs/wiki/_html/template', 'template_default': 'default', 'template_ext': '.htm'}]
+
+" }}}
+
+" Statusline ---------------------------- {{{
+
+" Statusline
+set statusline=
+set statusline+=%(%{'help'!=&filetype?bufnr('%'):''}\ \ %)
+set statusline+=%< " Where to truncate line
+set statusline+=%f " Path to the file in the buffer, as typed or relative to current directory
+set statusline+=%{&modified?'\ +':''}
+set statusline+=%{&readonly?'\ ':''}
+set statusline+=\ %1*
+set statusline+=%= " Separation point between left and right aligned items.
+set statusline+=\ %{''!=#&filetype?&filetype:'none'}
+set statusline+=%(\ %{(&bomb\|\|'^$\|utf-8'!~#&fileencoding?'\ '.&fileencoding.(&bomb?'-bom':''):'')
+  \.('unix'!=#&fileformat?'\ '.&fileformat:'')}%)
+set statusline+=%{ALEGetStatusLine()}
+set statusline+=\ %*
+set statusline+=\ %l  " line number
+set statusline+=\ %2v " virtual column number
 
 " }}}
 

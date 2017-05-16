@@ -66,13 +66,13 @@ Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
 
 " python
-Plug 'nirum/vim-cute-python', { 'for': 'python' }
+" Plug 'nirum/vim-cute-python', { 'for': 'python' }
 Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
+" Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 
 " LaTeX
 Plug 'lervag/vimtex', { 'for': 'tex' }
@@ -360,7 +360,7 @@ endif
 " colorscheme
 set background=dark
 colorscheme base16-ocean
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
+" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
 
 " highlight past the 100th column
 highlight OverLength ctermbg=red ctermfg=white guibg=#A97070

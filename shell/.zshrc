@@ -43,10 +43,6 @@ setopt append_history       # zsh sessions will append their history list to the
 setopt extended_history     # save each command's beginning timestamp and duration to the history file
 setopt correct              # correct mistyped commands
 
-# make search up and down work, so partially type and hit up/down to find relevant stuff
-bindkey '^[[A' up-line-or-search                                                
-bindkey '^[[B' down-line-or-search
-
 # specify autocompletion settings
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
 zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
@@ -133,8 +129,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 # key bindings
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-forward
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
 bindkey -v
 bindkey '^k' up-history
 bindkey '^j' down-history

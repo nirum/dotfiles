@@ -203,6 +203,7 @@ inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ult
 let g:ale_sign_column_always=1
 let g:ale_sign_error='>>'
 let g:ale_sign_warning='--'
+
 " (statusline) %{ALEGetStatusLine()}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 " error messages

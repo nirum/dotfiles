@@ -7,6 +7,13 @@
   st=status -s
   lg=log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   amend=commit --amend
+  stats=shortlog -sn
+  words=diff --word-diff
+  recent=for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
+  overview=log --all --since='2 weeks' --oneline --no-merges
+  recap=log --all --oneline --no-merges --author=nirum@stanford.edu
+  today=log --since=00:00:00 --all --no-merges --oneline --author=nirum@stanford.edu
+  graph=log --graph --all --decorate --stat --date=iso
 
 [diff]
   tool=vimdiff

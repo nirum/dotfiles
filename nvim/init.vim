@@ -66,13 +66,13 @@ Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
 
 " python
-" Plug 'nirum/vim-cute-python', { 'for': 'python' }
+Plug 'nirum/vim-cute-python', { 'for': 'python' }
 Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-" Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
+Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
 
 " LaTeX
 Plug 'lervag/vimtex', { 'for': 'tex' }
@@ -128,9 +128,6 @@ set directory=~/.vim-swp// undodir=~/.vim-undo// backupdir=~/.vim-backup//
 " show relative line numbers + the absolute number for the current line
 set relativenumber number
 
-" editing
-" set noesckeys timeoutlen=500
-
 " searching
 set gdefault ignorecase smartcase
 
@@ -181,10 +178,6 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-" tags (atags/tagbar)
-" autocmd! BufWritePost * call atags#generate()
-nnoremap <leader>g :call atags#generate()<cr>
-
 " autocompletion (nvim-completion-manager) and ultisnips
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -203,6 +196,7 @@ inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ult
 let g:ale_sign_column_always=1
 let g:ale_sign_error='>>'
 let g:ale_sign_warning='--'
+let g:ale_linters = {'python': ['flake8,mypy']}
 
 " (statusline) %{ALEGetStatusLine()}
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
@@ -286,21 +280,9 @@ set shortmess+=I
 
 " Leader commands -------------- {{{
 
-" clear whitespace
-nnoremap <leader>w :Wsp<CR>
-
 " edit and source $MYVIMRC
 nnoremap <leader>erc :tabf $MYVIMRC<CR>
 nnoremap <leader>src :source $MYVIMRC<CR>
-
-" undo
-nnoremap <leader>u :GundoToggle<CR>
-
-" Folding
-nnoremap <leader>a za
-nnoremap <leader>A zA
-nnoremap <leader>o zo
-nnoremap <leader>O zO
 
 " commenting
 nmap <leader>c gcc
@@ -361,7 +343,6 @@ endif
 " colorscheme
 set background=dark
 colorscheme base16-ocean
-" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h16
 
 " highlight past the 100th column
 highlight OverLength ctermbg=red ctermfg=white guibg=#A97070
@@ -406,28 +387,20 @@ function! g:RemoveTrailingWhitespace()
   call cursor(l, c)
 endfunc
 command! Wsp call g:RemoveTrailingWhitespace()
-" autocmd BufWritePre *.py :call <SID>AutoStripWhitespaces()
-" autocmd BufWritePre *.js :call <SID>AutoStripWhitespaces()
-
-" splits sentences onto newlines
-function! g:SplitSentences()
-  silent! execute ':%s/\.\|?/&\r/'
-endfunc
-command! SplitSentences call g:SplitSentences()
-
-" update vim-plug
-command! PU PlugUpdate | PlugUpgrade
+" augroup stripwhitespace
+  " autocmd BufWritePre *.py :call <SID>AutoStripWhitespaces()
+  " autocmd BufWritePre *.js :call <SID>AutoStripWhitespaces()
+" augroup END
 
 " automatically create directories on save
 fun! <SID>AutoMakeDirectory()
-
   let s:directory = expand("<afile>:p:h")
-
   if !isdirectory(s:directory)
     call mkdir(s:directory, "p")
   endif
-
 endfun
-autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
+" augroup automakedir
+  " autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
+" augroup END
 
 " }}}

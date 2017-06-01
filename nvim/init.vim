@@ -18,9 +18,6 @@ Plug 'junegunn/fzf.vim'
 " adds git commands (Gstatus, Gcommit, Gdiff)
 Plug 'tpope/vim-fugitive'
 
-" username, repo, and issue completion in commit messages
-Plug 'rhysd/github-complete.vim'
-
 " adds +/- symbols to the gutter for modified files
 Plug 'airblade/vim-gitgutter'
 
@@ -48,7 +45,7 @@ Plug 'unblevable/quick-scope'
 
 " ys, cs, and ds surround operators
 Plug 'tpope/vim-surround'
-" Plug 'wellle/targets.vim'
+Plug 'wellle/targets.vim'
 
 " adds a bunch of [] mappings
 Plug 'tpope/vim-unimpaired'
@@ -58,6 +55,9 @@ Plug 'tpope/vim-repeat'
 
 " add or remove comments easily
 Plug 'tomtom/tcomment_vim'
+
+" easily rename variables
+Plug 'wincent/scalpel'
 
 " support for custom text objects (nouns)
 Plug 'kana/vim-textobj-user'
@@ -154,19 +154,13 @@ fun! s:fzf_root()
 endfun
 nnoremap <silent> <c-t> :exe 'Files ' . <SID>fzf_root()<CR>
 
-" Investigate
-let g:investigate_use_dash=1
-nnoremap <leader>k :call investigate#Investigate('n')<CR>
-vnoremap <leader>k :call investigate#Investigate('v')<CR>
-
 " git and github
-let g:github_complete_enable_neocomplete=1
 let g:gitgutter_enabled = 1
 let g:gitgutter_sign_modified =  '±'
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_map_keys = 0
-let g:gitgutter_eager = 1
+let g:gitgutter_eager = 0
 let g:gitgutter_realtime = 0
 
 " incsearch
@@ -190,20 +184,19 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " optional mapping provided by NCM. If you press `<c-u>` and nothing has been
 " typed, it will popup a list of snippets available
-inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+nnoremap <silent> <leader>e <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+inoremap <silent> <leader>e <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+
+" scalpel
+nmap <Leader>r <Plug>(Scalpel)
 
 " syntax (ale)
 let g:ale_sign_column_always=1
-let g:ale_sign_error='>>'
-let g:ale_sign_warning='--'
-let g:ale_linters = {'python': ['flake8,mypy']}
+let g:ale_sign_error='✘'
+let g:ale_sign_warning='⚑'
 
 " (statusline) %{ALEGetStatusLine()}
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-" error messages
-" let g:ale_echo_msg_error_str = 'E'
-" let g:ale_echo_msg_warning_str = 'W'
-" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_statusline_format = ['✘ %d', '⚑ %d', '✔ ok']
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -222,29 +215,68 @@ let g:vimwiki_list = [{'path': '~/logs/wiki/', 'path_html': '~/logs/wiki/_html/'
 
 " Statusline ---------------------------- {{{
 
-" Statusline
+function! GitInfo()
+  let git = fugitive#head()
+  if git != ''
+    return ' '.git
+  else
+    return ''
+  endfunction
+
+let g:currentmode={
+    \ 'n'  : 'N ',
+    \ 'no' : 'N·Operator Pending ',
+    \ 'v'  : 'V ',
+    \ 'V'  : 'V·Line ',
+    \ '^V' : 'V·Block ',
+    \ 's'  : 'Select ',
+    \ 'S'  : 'S·Line ',
+    \ '^S' : 'S·Block ',
+    \ 'i'  : 'I ',
+    \ 'R'  : 'R ',
+    \ 'Rv' : 'V·Replace ',
+    \ 'c'  : 'Command ',
+    \ 'cv' : 'Vim Ex ',
+    \ 'ce' : 'Ex ',
+    \ 'r'  : 'Prompt ',
+    \ 'rm' : 'More ',
+    \ 'r?' : 'Confirm ',
+    \ '!'  : 'Shell ',
+    \ 't'  : 'Terminal '
+    \}
+
+set noshowmode
+set laststatus=2
 set statusline=
-set statusline+=%(%{'help'!=&filetype?bufnr('%'):''}\ \ %)
-set statusline+=%< " Where to truncate line
-set statusline+=%f " Path to the file in the buffer, as typed or relative to current directory
-set statusline+=%{&modified?'\ +':''}
-set statusline+=%{&readonly?'\ ':''}
-set statusline+=\ %1*
+set statusline+=\ %{toupper(g:currentmode[mode()])}
+set statusline+=\┃
+set statusline+=\ %{GitInfo()}
+" set statusline+=%{&modified?'\ \ ±':''}
+" set statusline+=\ 
+set statusline+=\ \┃
+set statusline+=\ %<%F\ %{&readonly?'\ ':''}         " File+path
+set statusline+=%1*
 set statusline+=%= " Separation point between left and right aligned items.
-set statusline+=\ %{''!=#&filetype?&filetype:'none'}
-set statusline+=%(\ %{(&bomb\|\|'^$\|utf-8'!~#&fileencoding?'\ '.&fileencoding.(&bomb?'-bom':''):'')
-  \.('unix'!=#&fileformat?'\ '.&fileformat:'')}%)
+set statusline+=%*\ 
 set statusline+=%{ALEGetStatusLine()}
-set statusline+=\ %*
-set statusline+=\ %l  " line number
-set statusline+=\ %2v " virtual column number
+set statusline+=\ \┃
+set statusline+=\ 𝓁\ %2l\ 𝒄\ %2v
+
+" }}}
+
+" Status Colors: {{{
+
+highlight User1 ctermfg=blue  guifg=#268bd2  ctermbg=red guibg=#fdf6e3
+highlight User2 ctermfg=red guifg=#d33682  ctermbg=7  guibg=#eee8d5
+highlight User3 ctermfg=green  guifg=#719e07  ctermbg=7  guibg=#eee8d5
+highlight User4 ctermfg=cyan  guifg=#2aa198  ctermbg=red  guibg=#eee8d5
 
 " }}}
 
 " Generic Mappings ---------------------- {{{
 
-" I need to come up with a better mapping for Q ...
-nnoremap Q <nop>
+" apply the q register with Q
+nnoremap Q @q
 
 " circular window navigation
 nnoremap <tab>   gt

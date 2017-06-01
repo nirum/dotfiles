@@ -257,7 +257,7 @@ set statusline+=\ %*%3*%<%F\ %{&readonly?'\ ':''}
 set statusline+=%= " Separation point between left and right aligned items.
 set statusline+=%6*%{ALEGetStatusLine()}\ 
 set statusline+=%2*
-set statusline+=%1*\ 𝓁\ %2l\ ┃\ 𝒄\ %2v%*
+set statusline+=%1*\ 𝓁\ %l\ 𝒄\ %v%*
 
 " }}}
 

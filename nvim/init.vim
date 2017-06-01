@@ -248,28 +248,16 @@ let g:currentmode={
 set noshowmode
 set laststatus=2
 set statusline=
-set statusline+=\ %{toupper(g:currentmode[mode()])}
-set statusline+=\┃
-set statusline+=\ %{GitInfo()}
+set statusline+=%1*\ %{toupper(g:currentmode[mode()])}
+set statusline+=\ %{GitInfo()}%*
 " set statusline+=%{&modified?'\ \ ±':''}
 " set statusline+=\ 
-set statusline+=\ \┃
-set statusline+=\ %<%F\ %{&readonly?'\ ':''}         " File+path
-set statusline+=%1*
+set statusline+=%2*
+set statusline+=\ %*%3*%<%F\ %{&readonly?'\ ':''}
 set statusline+=%= " Separation point between left and right aligned items.
-set statusline+=%*\ 
-set statusline+=%{ALEGetStatusLine()}
-set statusline+=\ \┃
-set statusline+=\ 𝓁\ %2l\ 𝒄\ %2v
-
-" }}}
-
-" Status Colors: {{{
-
-highlight User1 ctermfg=blue  guifg=#268bd2  ctermbg=red guibg=#fdf6e3
-highlight User2 ctermfg=red guifg=#d33682  ctermbg=7  guibg=#eee8d5
-highlight User3 ctermfg=green  guifg=#719e07  ctermbg=7  guibg=#eee8d5
-highlight User4 ctermfg=cyan  guifg=#2aa198  ctermbg=red  guibg=#eee8d5
+set statusline+=%6*%{ALEGetStatusLine()}\ 
+set statusline+=%2*
+set statusline+=%1*\ 𝓁\ %2l\ ┃\ 𝒄\ %2v%*
 
 " }}}
 
@@ -382,6 +370,14 @@ augroup highlighting
   autocmd!
   autocmd FileType python,js match OverLength /\%101v.\+/
 augroup END
+
+" statusline colors
+highlight User1 guifg=White guibg=#268bd2
+highlight User2 guifg=#268bd2
+highlight User3 guifg=Grey
+highlight User4 guifg=Green
+highlight User5 guifg=Red
+highlight User6 guifg=Yellow
 
 " }}}
 

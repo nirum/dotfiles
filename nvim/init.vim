@@ -93,6 +93,7 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'chriskempson/base16-vim'
 
 " gui-goodness
+Plug 'ryanoasis/vim-devicons'
 Plug 'chrisbra/unicode.vim'
 
 " vimwiki
@@ -132,7 +133,7 @@ set relativenumber number
 set gdefault ignorecase smartcase
 
 " update the screen
-set nolazyredraw
+set lazyredraw
 
 " command window height
 set cmdheight=1
@@ -218,46 +219,45 @@ let g:vimwiki_list = [{'path': '~/logs/wiki/', 'path_html': '~/logs/wiki/_html/'
 function! GitInfo()
   let git = fugitive#head()
   if git != ''
-    return ' '.git
+    return ' '.git.' '
   else
     return ''
-  endfunction
+endfunction
 
-let g:currentmode={
-    \ 'n'  : 'N ',
-    \ 'no' : 'N·Operator Pending ',
-    \ 'v'  : 'V ',
-    \ 'V'  : 'V·Line ',
-    \ '^V' : 'V·Block ',
-    \ 's'  : 'Select ',
-    \ 'S'  : 'S·Line ',
-    \ '^S' : 'S·Block ',
-    \ 'i'  : 'I ',
-    \ 'R'  : 'R ',
-    \ 'Rv' : 'V·Replace ',
-    \ 'c'  : 'Command ',
-    \ 'cv' : 'Vim Ex ',
-    \ 'ce' : 'Ex ',
-    \ 'r'  : 'Prompt ',
-    \ 'rm' : 'More ',
-    \ 'r?' : 'Confirm ',
-    \ '!'  : 'Shell ',
-    \ 't'  : 'Terminal '
-    \}
+" statusline symbols
+let g:symbols={
+      \ 'left_sep' : "\ue0b0",
+      \ 'left_alt_sep': "\ue0b1",
+      \ 'right_sep': "\ue0b2",
+      \ 'right_alt_sep': "\ue0b3"
+      \}
 
-set noshowmode
+" Set up the colors for the status bar
+function! SetStatusLineColorScheme()
+    " Basic color presets
+    exec 'hi User1 guifg=#eff1f5 guibg=#268bd2'
+    exec 'hi User2 guifg=#268bd2'
+    exec 'hi User3 guifg=#dfe1e8 gui=bold'
+    exec 'hi User4 guifg=#dfe1e8 guibg=#2b303b'
+  endfunc
+
+let g:symbols={
+      \ 'left_sep' : "\ue0b0",
+      \ 'left_alt_sep': "\ue0b1",
+      \ 'right_sep': "\ue0b2",
+      \ 'right_alt_sep': "\ue0b3"
+      \}
+
+" set noshowmode
 set laststatus=2
 set statusline=
-set statusline+=%1*\ %{toupper(g:currentmode[mode()])}
-set statusline+=\ %{GitInfo()}%*
-" set statusline+=%{&modified?'\ \ ±':''}
-" set statusline+=\ 
-set statusline+=%2*
-set statusline+=\ %*%3*%<%F\ %{&readonly?'\ ':''}
+set statusline+=%1*\ %{GitInfo()}%*
+set statusline+=%2*%{g:symbols['left_sep']}
+set statusline+=\ %*%4*%<%F\ %{&readonly?'\ ':''}
 set statusline+=%= " Separation point between left and right aligned items.
-set statusline+=%6*%{ALEGetStatusLine()}\ 
-set statusline+=%2*
-set statusline+=%1*\ 𝓁\ %l\ 𝒄\ %v%*
+set statusline+=%3*%{ALEGetStatusLine()}\ 
+set statusline+=%2*%{g:symbols['right_sep']}
+set statusline+=%1*\ %{WebDevIconsGetFileTypeSymbol()}\ 𝓁\ %l\ 𝒄\ %v%*
 
 " }}}
 
@@ -372,12 +372,16 @@ augroup highlighting
 augroup END
 
 " statusline colors
-highlight User1 guifg=White guibg=#268bd2
-highlight User2 guifg=#268bd2
-highlight User3 guifg=Grey
-highlight User4 guifg=Green
-highlight User5 guifg=Red
-highlight User6 guifg=Yellow
+hi User1 guifg=#eff1f5 guibg=#268bd2
+hi User2 guifg=#268bd2
+hi User3 guifg=#dfe1e8 gui=bold
+hi User4 guifg=#dfe1e8 guibg=#2b303b
+augroup statusline
+  au InsertEnter * highlight User1 guifg=#2b303b guibg=#ebcb8b
+  au InsertEnter * highlight User2 guifg=#ebcb8b
+  au InsertLeave * highlight User1 guifg=#eff1f5 guibg=#268bd2
+  au InsertLeave * highlight User2 guifg=#268bd2
+augroup END
 
 " }}}
 

@@ -186,7 +186,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " optional mapping provided by NCM. If you press `<c-u>` and nothing has been
 " typed, it will popup a list of snippets available
 nnoremap <silent> <leader>e <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-inoremap <silent> <leader>e <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 
 " scalpel
 nmap <Leader>r <Plug>(Scalpel)

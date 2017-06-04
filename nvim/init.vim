@@ -12,7 +12,7 @@
 call plug#begin('~/.vim/plugged')
 
 " FZF fuzzy file finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 
 " adds git commands (Gstatus, Gcommit, Gdiff)
@@ -66,20 +66,21 @@ Plug 'kana/vim-textobj-user'
 Plug 'bps/vim-textobj-python'
 
 " python
-Plug 'nirum/vim-cute-python', { 'for': 'python' }
-Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
-Plug 'fisadev/vim-isort', { 'for': 'python' }
+Plug 'nirum/vim-cute-python', {'for': 'python'}
+Plug 'alfredodeza/pytest.vim', {'for': 'python'}
+Plug 'fisadev/vim-isort', {'for': 'python'}
 
 " haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'Twinside/vim-haskellConceal', { 'for': 'haskell' }
+Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
+Plug 'Twinside/vim-haskellConceal', {'for': 'haskell'}
 
 " LaTeX
-Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'lervag/vimtex', {'for': 'tex'}
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 
 " javascript
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'mxw/vim-jsx', {'for': 'javascript'}
 
 " web
 Plug 'valloric/MatchTagAlways', {'for': 'html'}
@@ -87,7 +88,7 @@ Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim', {'for': 'html'}
 
 " other
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'tpope/vim-markdown', {'for': 'markdown'}
 
 " base16 colorschemes
 Plug 'chriskempson/base16-vim'
@@ -207,6 +208,10 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " vim-surround shortcuts
 nnoremap ) ysiw)
 nnoremap ( ysiw)
+
+" latex and tex conceal
+let g:tex_conceal="abdgm"
+let g:tex_flavor = "latex"
 
 " vimwiki
 let g:vimwiki_list = [{'path': '~/logs/wiki/', 'path_html': '~/logs/wiki/_html/', 'template_path': '~/logs/wiki/_html/template', 'template_default': 'default', 'template_ext': '.htm'}]
@@ -329,6 +334,11 @@ augroup filetype_python
   autocmd FileType python setlocal softtabstop=4
   autocmd FileType python setlocal tabstop=4
   autocmd FileType python setlocal shiftwidth=4
+augroup END
+
+augroup filetype_tex
+  autocmd!
+  autocmd FileType tex setlocal conceallevel=2
 augroup END
 
 " }}}

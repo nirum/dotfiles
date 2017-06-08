@@ -132,8 +132,8 @@ alias ...='cd ../..'
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 bindkey -v
-bindkey '^k' up-history
-bindkey '^j' down-history
+bindkey '^k' history-beginning-search-backward
+bindkey '^j' history-beginning-search-forward
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward

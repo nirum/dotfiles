@@ -27,13 +27,6 @@ Plug 'haya14busa/incsearch.vim'
 " autocompletion
 Plug 'roxma/nvim-completion-manager'
 
-" writing
-Plug 'junegunn/goyo.vim'
-
-" snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
 " auto format
 Plug 'Chiel92/vim-autoformat'
 
@@ -55,9 +48,6 @@ Plug 'tpope/vim-repeat'
 
 " add or remove comments easily
 Plug 'tomtom/tcomment_vim'
-
-" easily rename variables
-Plug 'wincent/scalpel'
 
 " support for custom text objects (nouns)
 Plug 'kana/vim-textobj-user'
@@ -386,6 +376,7 @@ hi User2 guifg=#268bd2
 hi User3 guifg=#dfe1e8 gui=bold
 hi User4 guifg=#dfe1e8 guibg=#2b303b
 augroup statusline
+  autocmd!
   au InsertEnter * highlight User1 guifg=#2b303b guibg=#ebcb8b
   au InsertEnter * highlight User2 guifg=#ebcb8b
   au InsertLeave * highlight User1 guifg=#eff1f5 guibg=#268bd2
@@ -428,10 +419,11 @@ function! g:RemoveTrailingWhitespace()
   call cursor(l, c)
 endfunc
 command! Wsp call g:RemoveTrailingWhitespace()
-" augroup stripwhitespace
-  " autocmd BufWritePre *.py :call <SID>AutoStripWhitespaces()
-  " autocmd BufWritePre *.js :call <SID>AutoStripWhitespaces()
-" augroup END
+augroup stripwhitespace
+  autocmd!
+  autocmd BufWritePre *.py :call <SID>AutoStripWhitespaces()
+  autocmd BufWritePre *.js :call <SID>AutoStripWhitespaces()
+augroup END
 
 " automatically create directories on save
 fun! <SID>AutoMakeDirectory()
@@ -440,8 +432,9 @@ fun! <SID>AutoMakeDirectory()
     call mkdir(s:directory, "p")
   endif
 endfun
-" augroup automakedir
-  " autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
-" augroup END
+augroup automakedir
+  autocmd!
+  autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
+augroup END
 
 " }}}

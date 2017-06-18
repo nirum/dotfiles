@@ -419,22 +419,5 @@ function! g:RemoveTrailingWhitespace()
   call cursor(l, c)
 endfunc
 command! Wsp call g:RemoveTrailingWhitespace()
-augroup stripwhitespace
-  autocmd!
-  autocmd BufWritePre *.py :call <SID>AutoStripWhitespaces()
-  autocmd BufWritePre *.js :call <SID>AutoStripWhitespaces()
-augroup END
-
-" automatically create directories on save
-fun! <SID>AutoMakeDirectory()
-  let s:directory = expand("<afile>:p:h")
-  if !isdirectory(s:directory)
-    call mkdir(s:directory, "p")
-  endif
-endfun
-augroup automakedir
-  autocmd!
-  autocmd BufWritePre,FileWritePre * :call <SID>AutoMakeDirectory()
-augroup END
 
 " }}}

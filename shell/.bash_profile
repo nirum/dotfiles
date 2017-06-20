@@ -93,3 +93,6 @@ export PATH="/Users/nirum/anaconda/bin:$PATH"
 
 # added by Anaconda3 4.0.0 installer
 export PATH="/Users/nirum/anaconda/bin:$PATH"
+
+# added by Miniconda3 4.3.21 installer
+export PATH="/Users/nirum/miniconda3/bin:$PATH"

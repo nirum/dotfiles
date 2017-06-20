@@ -1,4 +1,4 @@
-all: vim haskell tmux git shell latex python
+all: brew vim haskell tmux git shell latex
 
 vim:
 	echo "Linking vim ..."
@@ -28,8 +28,6 @@ latex:
 
 python:
 	echo "Linking IPython profile preferences (mbp) ..."
-	rm -rf ~/.ipython/profile_mbp/startup
-	rm -rf ~/.ipython/extensions
 	ln -fs ${PWD}/ipython/startup ~/.ipython/profile_mbp/startup
 	ln -fs ${PWD}/ipython/extensions ~/.ipython/extensions
 	ln -fs ${PWD}/ipython/ipython_config.py ~/.ipython/profile_mbp/ipython_config.py
@@ -42,7 +40,3 @@ brew:
 	echo "Installing useful homebrew utilities"
 	brew tap homebrew/bundle
 	brew bundle
-
-pip:
-	echo "Installing useful python modules"
-	./python.sh

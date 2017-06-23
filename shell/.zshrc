@@ -15,6 +15,7 @@ export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 # prezto
+zplug "modules/completion", from:prezto
 zplug "modules/history", from:prezto
 zplug "modules/git", from:prezto
 

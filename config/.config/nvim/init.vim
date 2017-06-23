@@ -215,7 +215,7 @@ function! GitInfo()
   if git != ''
     return ' '.git.' '
   else
-    return ''
+    return '      '
 endfunction
 
 " statusline symbols
@@ -245,9 +245,9 @@ let g:symbols={
 " set noshowmode
 set laststatus=2
 set statusline=
-set statusline+=%1*\ %{GitInfo()}
-set statusline+=\ %<%F\ %{&readonly?'\ ':''}%*
+set statusline+=%1*\ %{GitInfo()}%*
 set statusline+=%2*%{g:symbols['left_sep']}
+set statusline+=\ %*%4*%<%F\ %{&readonly?'\ ':''}
 set statusline+=%= " Separation point between left and right aligned items.
 set statusline+=%2*%{g:symbols['right_sep']}
 set statusline+=%1*\ %{ALEGetStatusLine()}\ 

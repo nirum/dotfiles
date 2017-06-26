@@ -28,13 +28,13 @@ text.usetex : False
 mathtext.default : regular
 
 axes.facecolor : white
-axes.edgecolor : 222222
+axes.edgecolor : 444444
 axes.linewidth : 1.0
 axes.grid : False
 axes.titlesize : 20
 axes.labelsize : 14
 axes.labelweight : normal
-axes.labelcolor : 222222
+axes.labelcolor : 444444
 axes.axisbelow : True
 axes.formatter.use_mathtext : True
 axes.prop_cycle : cycler('color', ['5DA5DA', 'FAA43A', '60BD68', 'F17CB0', 'B2912F', 'B276B2', 'DECF3F', 'F15854', '4D4D4D'])
@@ -50,12 +50,12 @@ xtick.major.size : 5
 xtick.major.width : 1.0
 xtick.minor.size : 2.5
 xtick.minor.width : 1.0
-xtick.color : 222222
+xtick.color : 444444
 ytick.major.size : 5
 ytick.major.width : 1.0
 ytick.minor.size : 2.5
 ytick.minor.width : 1.0
-ytick.color : 222222
+ytick.color : 444444
 
 grid.color : 0.7
 grid.linestyle : dotted

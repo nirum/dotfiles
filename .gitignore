@@ -10,3 +10,4 @@ fontList.*
 __pycache__
 *.pyc
 tags
+.mypy_cache

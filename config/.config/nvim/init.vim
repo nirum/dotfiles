@@ -49,6 +49,9 @@ Plug 'tpope/vim-repeat'
 " add or remove comments easily
 Plug 'tomtom/tcomment_vim'
 
+" tags (gutentag)
+Plug 'ludovicchabant/vim-gutentags'
+
 " support for custom text objects (nouns)
 Plug 'kana/vim-textobj-user'
 
@@ -196,8 +199,8 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " vim-surround shortcuts
-nnoremap ) ysiw)
-nnoremap ( ysiw)
+nmap ) ysiw)
+nmap ( ysiw)
 
 " latex and tex conceal
 let g:tex_conceal="abdgm"
@@ -215,7 +218,7 @@ function! GitInfo()
   if git != ''
     return ' '.git.' '
   else
-    return '      '
+    return '     '
 endfunction
 
 " statusline symbols

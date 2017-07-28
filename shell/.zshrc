@@ -91,7 +91,8 @@ alias lf='ls -lSFh'
 alias la='ls -a'
 alias s='ls'
 alias sl='ls'
-alias les='pygmentize'
+alias pyg='pygmentize'
+alias def='ag def -A 8 -B 2 -s --stats'
 
 # tmux stuff
 alias tls='tmux ls'
@@ -140,6 +141,7 @@ alias ccat='pygmentize -g'
 # ssh aliases
 alias lenna='ssh lenna.stanford.edu'
 alias lennax='ssh -CY lenna.stanford.edu'
+alias lane='ssh -CY niru@lmcintosh.stanford.edu'
 alias cardinal='ssh -CY cardinal.stanford.edu'
 
 # ipython
@@ -172,7 +174,7 @@ function mount_sni() {
 }
 
 # texlive
-export PATH="/usr/local/texlive/2016/bin/x86_64-darwin:$PATH"
+export PATH="/usr/local/texlive/2017/bin/x86_64-darwin:$PATH"
 
 # cabal
 export PATH="/Users/nirum/.cabal/bin:$PATH"

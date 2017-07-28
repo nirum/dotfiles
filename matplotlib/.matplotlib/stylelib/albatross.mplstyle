@@ -31,7 +31,7 @@ axes.facecolor : white
 axes.edgecolor : 444444
 axes.linewidth : 1.0
 axes.grid : False
-axes.titlesize : 20
+axes.titlesize : 14
 axes.labelsize : 14
 axes.labelweight : normal
 axes.labelcolor : 444444

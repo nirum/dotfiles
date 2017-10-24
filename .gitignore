@@ -5,6 +5,7 @@ jupyter/migrated
 nvim/.init.vim-rplugin~
 nvim/autoload
 nvim/.netrwhist
+config/.config/nvim/spell
 fontList.*
 *.cache
 __pycache__

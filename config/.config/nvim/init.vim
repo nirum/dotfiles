@@ -49,6 +49,9 @@ Plug 'tpope/vim-repeat'
 " add or remove comments easily
 Plug 'tomtom/tcomment_vim'
 
+" LanguageClient
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+
 " tags (gutentag)
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -62,6 +65,7 @@ Plug 'bps/vim-textobj-python'
 Plug 'nirum/vim-cute-python', {'for': 'python'}
 Plug 'alfredodeza/pytest.vim', {'for': 'python'}
 Plug 'fisadev/vim-isort', {'for': 'python'}
+Plug 'prakashdanish/vimport', {'for': 'python'}
 
 " haskell
 Plug 'neovimhaskell/haskell-vim', {'for': 'haskell'}
@@ -80,11 +84,15 @@ Plug 'valloric/MatchTagAlways', {'for': 'html'}
 Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim', {'for': 'html'}
 
+" color picker (:Pick)
+Plug 'DougBeney/pickachu'
+
 " other
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 
 " base16 colorschemes
 Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 
 " gui-goodness
 Plug 'ryanoasis/vim-devicons'
@@ -148,6 +156,13 @@ fun! s:fzf_root()
   return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
 endfun
 nnoremap <silent> <c-t> :exe 'Files ' . <SID>fzf_root()<CR>
+
+" LanguageClient
+let g:LanguageClient_serverCommands = { }
+let g:LanguageClient_autoStart = 1
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " git and github
 let g:gitgutter_enabled = 1
@@ -253,7 +268,8 @@ set statusline+=%2*%{g:symbols['left_sep']}
 set statusline+=\ %*%4*%<%F\ %{&readonly?'\ ':''}
 set statusline+=%= " Separation point between left and right aligned items.
 set statusline+=%2*%{g:symbols['right_sep']}
-set statusline+=%1*\ %{ALEGetStatusLine()}\ 
+"set statusline+=%1*\ %{ALEGetStatusLine()}\ 
+set statusline+=%1*\ 
 set statusline+=\ %{WebDevIconsGetFileTypeSymbol()}\ 𝓁\ %l\ 𝒄\ %v%*
 
 " }}}
@@ -364,7 +380,8 @@ endif
 
 " colorscheme
 set background=dark
-colorscheme base16-ocean
+"colorscheme base16-ocean
+colorscheme gruvbox
 
 " highlight past the 100th column
 highlight OverLength ctermbg=red ctermfg=white guibg=#A97070

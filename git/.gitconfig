@@ -1,6 +1,6 @@
 [user]
   name=Niru Maheswaranathan
-  email=nirum@stanford.edu
+  email=niru@fastmail.com
 
 [alias]
   cm=commit
@@ -41,3 +41,4 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process

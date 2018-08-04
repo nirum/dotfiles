@@ -3,6 +3,10 @@
     "nbserver_extensions": {
       "jupyterlab": true,
       "jupyter_nbextensions_configurator": true
-    }
+    },
+    "server_extensions": [
+      "jupyter_nbextensions_configurator"
+    ],
+    "password": "sha1:16b4eb2049c5:d4bc692ba0ad28892d895d0423779c7e1b6767f4"
   }
 }

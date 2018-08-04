@@ -101,6 +101,11 @@ alias tsl='tmux ls'
 alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
 
+# task warrior
+alias t='task'
+alias ta='task add'
+alias tl='task list'
+
 # git
 alias gcm='git commit -m'
 alias gs='git st'
@@ -110,6 +115,7 @@ alias gu='git pull'
 alias gp='git push'
 alias gd='git diff'
 alias gl='git lg'
+alias gb='git branch'
 alias gba='git branch -a'
 alias gr='git remote'
 alias grv='git remote -v'

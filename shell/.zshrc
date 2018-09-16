@@ -32,7 +32,7 @@ zplug load
 # -----------------
 setopt auto_cd              # if a command is invalid and the name of a directory, cd to that directory
 setopt append_history       # zsh sessions will append their history list to the history file
-setopt extended_history     # save each command's beginning timestamp and duration to the history file
+setopt extended_history     # save each commands timestamp and duration to the history file
 setopt correct              # correct mistyped commands
 
 # specify autocompletion settings
@@ -105,6 +105,9 @@ alias tmn='tmux new -s'
 alias t='task'
 alias ta='task add'
 alias tl='task list'
+
+# disk usage
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
 # git
 alias gcm='git commit -m'

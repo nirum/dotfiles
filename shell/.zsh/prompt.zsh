@@ -53,7 +53,7 @@ function _seg() {
 local host="$(_seg "$(remote_host)" yellow)"
 local directory="$(_seg %1~ white)"
 local git_status="$(_seg "$(git_prompt_info)" blue)"
-local prompt_char="%(?:$(_seg "\uFF04" white):$(_seg "\uFF04" red))"
+local prompt_char="%(?:$(_seg "\uFF04 " white):$(_seg "\uFF04 " red))"
 
 # prompt
 PROMPT='${host}${directory}$(_seg "$(git_prompt_info)" blue)${prompt_char}'

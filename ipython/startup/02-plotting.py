@@ -1,6 +1,6 @@
 # matplotlib backend
 import matplotlib
-matplotlib.use('MacOSX')
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 plt.ion()

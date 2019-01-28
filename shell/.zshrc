@@ -202,6 +202,12 @@ export PATH="/usr/local/cuda/bin:/usr/local/cuda/lib:/usr/local/cuda/extras/CUPT
 # -- Finalize --
 # --------------
 
+# Base16 Shell (slow)
+#BASE16_SHELL="$HOME/.config/base16-shell/"
+#[ -n "$PS1" ] && \
+#  [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+#    eval "$("$BASE16_SHELL/profile_helper.sh")"
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

@@ -62,28 +62,29 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # By default, we have inssert mode shown on the right
-export RPROMPT="%{$fg[yellow]%}[INSERT]%{$reset_color%}"
+export RPROMPT=''
+#export RPROMPT="%{$fg[yellow]%}[INSERT]%{$reset_color%}"
 
 # Callback for vim mode change
-function zle-keymap-select () {
-  if [ $KEYMAP = vicmd ]; then
+#function zle-keymap-select () {
+#  if [ $KEYMAP = vicmd ]; then
     # Command mode
-    export RPROMPT="%{$fg[blue]%}[NORMAL]%{$reset_color%}"
-  else
+#    export RPROMPT="%{$fg[blue]%}[NORMAL]%{$reset_color%}"
+#  else
     # Insert mode
-    export RPROMPT="%{$fg[yellow]%}[INSERT]%{$reset_color%}"
-  fi
+#    export RPROMPT="%{$fg[yellow]%}[INSERT]%{$reset_color%}"
+#  fi
 
   # Refresh prompt
-  zle reset-prompt
-}
-function zle-line-init () {
+#  zle reset-prompt
+#}
+#function zle-line-init () {
   # Insert mode
-  export RPROMPT="%{$fg[yellow]%}[INSERT]%{$reset_color%}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-zle -N zle-line-init
+#  export RPROMPT="%{$fg[yellow]%}[INSERT]%{$reset_color%}"
+#  zle reset-prompt
+#}
+#zle -N zle-keymap-select
+#zle -N zle-line-init
 
 # -------------
 # -- Aliases --

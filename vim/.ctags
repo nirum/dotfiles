@@ -1,4 +1,0 @@
---python-kinds=-i
---exclude=build
---exclude=dist
---exclude=docs

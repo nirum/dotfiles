@@ -15,17 +15,15 @@ call plug#begin('~/.vim/plugged')
 "Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
 "lug 'junegunn/fzf.vim'
 
-" adds git commands (Gstatus, Gcommit, Gdiff)
-Plug 'tpope/vim-fugitive'
+" Generic
+Plug 'haya14busa/incsearch.vim'   " proper search highlighhting
 
-" adds +/- symbols to the gutter for modified files
-Plug 'airblade/vim-gitgutter'
+" Version control
+Plug 'tpope/vim-fugitive'         " adds git commands (Gstatus, Gcommit, Gdiff)
+Plug 'airblade/vim-gitgutter'     " adds +/- symbols to the gutter for modified files
 
-" proper search highlighhting
-Plug 'haya14busa/incsearch.vim'
-
-" tabnine autocompletion
-Plug 'zxqfl/tabnine-vim'
+" Autocompletion (CoC)
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " autocompletion
 " Plug 'roxma/nvim-completion-manager'

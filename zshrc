@@ -8,24 +8,6 @@
 # Author: Niru Maheswaranathan
 # Website: https://github.com/nirum/dotfiles
 
-# -----------
-# -- zplug --
-# -----------
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
-# prezto
-zplug "modules/completion", from:prezto
-zplug "modules/history", from:prezto
-zplug "modules/git", from:prezto
-
-# zsh-users
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting"
-
-# source plugins and add commands to $PATH
-zplug load
-
 # -----------------
 # -- ZSH Options --
 # -----------------
@@ -33,10 +15,6 @@ setopt auto_cd              # if a command is invalid and the name of a director
 setopt append_history       # zsh sessions will append their history list to the history file
 setopt extended_history     # save each commands timestamp and duration to the history file
 setopt correct              # correct mistyped commands
-
-# specify autocompletion settings
-zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
-zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
 
 # -----------------------
 # -- Prompt and colors --
@@ -49,11 +27,7 @@ export LC_CTYPE=en_US.UTF-8
 
 # custom prompt
 source $HOME/.zsh/prompt.zsh
-
-# ---------
-# -- VIM --
-# ---------
-zmodload zsh/zle
+export RPROMPT=''
 
 # Use vim keybindings
 bindkey -v
@@ -61,62 +35,18 @@ bindkey -v
 # Reduce delay when entering vim
 export KEYTIMEOUT=1
 
-# By default, we have inssert mode shown on the right
-export RPROMPT=''
-#export RPROMPT="%{$fg[yellow]%}[INSERT]%{$reset_color%}"
-
-# Callback for vim mode change
-#function zle-keymap-select () {
-#  if [ $KEYMAP = vicmd ]; then
-    # Command mode
-#    export RPROMPT="%{$fg[blue]%}[NORMAL]%{$reset_color%}"
-#  else
-    # Insert mode
-#    export RPROMPT="%{$fg[yellow]%}[INSERT]%{$reset_color%}"
-#  fi
-
-  # Refresh prompt
-#  zle reset-prompt
-#}
-#function zle-line-init () {
-  # Insert mode
-#  export RPROMPT="%{$fg[yellow]%}[INSERT]%{$reset_color%}"
-#  zle reset-prompt
-#}
-#zle -N zle-keymap-select
-#zle -N zle-line-init
+# editor
+export EDITOR="nvim"
+alias v='nvim'
 
 # -------------
 # -- Aliases --
 # -------------
 
-# neovim is my default editor
-export EDITOR="nvim"
-
-# fasd options
-eval "$(fasd --init auto)"
-alias j='fasd_cd -d'     # cd, same functionality as j in autojump
-alias jj='fasd_cd -d -i' # cd with interactive selection
-
 # edit this file
 alias erc='$EDITOR ~/.zshrc'
 alias src='source ~/.zshrc'
 alias etc='$EDITOR ~/.tmux.conf'
-
-# system
-alias o='open .'
-alias cp='nocorrect cp'
-alias ln='nocorrect ln'
-alias mv='nocorrect mv'
-alias rm='nocorrect rm'
-alias cpi="${aliases[cp]:-cp} -i"
-alias lni="${aliases[ln]:-ln} -i"
-alias mvi="${aliases[mv]:-mv} -i"
-alias rmi="${aliases[rm]:-rm} -i"
-
-# editor
-alias v='nvim'
-alias vf='nvim $(fzf)'
 
 # system
 alias lf='ls -lSFh'
@@ -162,36 +92,13 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
-# suffix aliases
-alias -s py=$EDITOR
-alias -s pdf=open
-
-# ssh aliases
-alias ruse='ssh nirum@198.74.50.117'
-
 # ipython
 alias ipy='ipython3 --nosep --no-banner --profile=mbp'
 alias iyp='ipython3 --nosep --no-banner --profile=mbp'
-alias nb='jupyter notebook'
-alias pag='pip list | ag'
 
-# clean up conda and update all packages
-alias cup='conda update --all; conda clean -pity'
-
-# brew
-alias bup='brew update; brew upgrade; brew cleanup'
-
-# system specific aliases and paths
-export HOMEBREW_EDITOR="nvim"
-export VISUAL="nvim"
-
-# texlive
+# Paths
 export PATH="/usr/local/texlive/2017/bin/x86_64-darwin:$PATH"
-
-# cabal
 export PATH="/Users/nirum/.cabal/bin:$PATH"
-
-# anaconda
 export PATH="/Users/nirum/miniconda3/bin:$PATH"
 
 # CUDA

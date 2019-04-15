@@ -15,33 +15,6 @@ ZSH_THEME_GIT_COMMITS_AHEAD_SUFFIX="\uf0ee"
 ZSH_THEME_GIT_COMMITS_BEHIND_PREFIX=""
 ZSH_THEME_GIT_COMMITS_BEHIND_SUFFIX="\uf0ed"
 
-# is x11 running?
-function x11 {
-  if [[ -n "$DISPLAY" ]]; then
-    echo -e "\uf108"
-  else
-    echo -e "\uf11c"
-  fi
-}
-
-# displays the hostname if not nirumbp
-function remote_host {
-  if [ $(hostname) != nirumbp ]; then
-    echo "$(x11) $(hostname) "
-  fi
-}
-
-# display an OS logo (nerd fonts)
-function os_logo {
-  if [ "$(uname -s)" = "Darwin" ]; then
-    echo -e "\uf179"
-  elif [ "$(uname -s)" = "Linux" ]; then
-    echo -e "\uf17c"
-  else
-    echo ""
-  fi
-}
-
 # color a segment
 function _seg() {
   local fg
@@ -50,13 +23,11 @@ function _seg() {
 }
 
 # prompt components
-local host="$(_seg "$(remote_host)" yellow)"
 local directory="$(_seg %1~ white)"
-local git_status="$(_seg "$(git_prompt_info)" blue)"
 local prompt_char="%(?:$(_seg "\uFF04" white):$(_seg "\uFF04" red))"
 
 # prompt
-PROMPT='${host}${directory}$(_seg "$(git_prompt_info)" blue)${prompt_char}'
+PROMPT='${directory}${prompt_char}'
 
 # Right-justified prompt
 RPROMPT=''

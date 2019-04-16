@@ -15,6 +15,7 @@ setopt auto_cd              # if a command is invalid and the name of a director
 setopt append_history       # zsh sessions will append their history list to the history file
 setopt extended_history     # save each commands timestamp and duration to the history file
 setopt correct              # correct mistyped commands
+setopt prompt_subst         # perform expansions
 
 # -----------------------
 # -- Prompt and colors --
@@ -26,8 +27,18 @@ export CLICOLOR=1
 export LC_CTYPE=en_US.UTF-8
 
 # custom prompt
-source $HOME/.zsh/prompt.zsh
+function _seg() {
+  local fg
+  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
+  echo "%{$fg%}$1%{$reset_color%}"
+}
+local directory="$(_seg %1~ white)"
+local prompt_char="%(?:$(_seg "\uFF04" white):$(_seg "\uFF04" red))"
+export PROMPT='${directory}${prompt_char}'
 export RPROMPT=''
+
+# Substitution prompt
+SPROMPT="Correct %{$fg[red]%}%R%{$reset_color%} to %{$fg[green]%}%r?%{$reset_color%} (%{%U%}y%{%u%}es/%{%U%}n%{%u%}o/%{%U%}a%{%u%}bort/%{%U%}e%{%u%}dit) "
 
 # Use vim keybindings
 bindkey -v

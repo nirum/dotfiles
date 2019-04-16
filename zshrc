@@ -1,10 +1,4 @@
-#           _              
-#          | |             
-#   _______| |__  _ __ ___ 
-#  |_  / __| '_ \| '__/ __|
-#   / /\__ \ | | | | | (__ 
-#  /___|___/_| |_|_|  \___|
-#                          
+# zshrc
 # Author: Niru Maheswaranathan
 # Website: https://github.com/nirum/dotfiles
 

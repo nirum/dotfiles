@@ -17,7 +17,7 @@ c = get_config()
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'osx',
 # 'pyglet', 'qt', 'qt5', 'tk', 'wx').
-c.InteractiveShellApp.gui = 'osx'
+#c.InteractiveShellApp.gui = 'qt5'
 
 # Configure matplotlib for interactive use with the default matplotlib backend.
 # c.TerminalIPythonApp.matplotlib = 'qt5'
@@ -27,14 +27,14 @@ c.TerminalIPythonApp.display_banner = False
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
-c.TerminalIPythonApp.pylab = 'agg'
+#c.TerminalIPythonApp.pylab = 'agg'
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'osx',
 # 'pyglet', 'qt', 'qt5', 'tk', 'wx').
-c.TerminalIPythonApp.gui = 'qt5'
+#c.TerminalIPythonApp.gui = 'qt5'
 
 # Set the size of the output cache. The default is 1000
-c.TerminalInteractiveShell.cache_size = 5000
+#c.TerminalInteractiveShell.cache_size = 5000
 
 # Set the editor used by IPython (default to $EDITOR/vi/notepad).
 c.TerminalInteractiveShell.editor = '$EDITOR'
@@ -78,7 +78,7 @@ c.IPCompleter.omit__names = 2
 c.IPCompleter.limit_to__all__ = False
 
 # If True, any %store-d variables will be automatically restored when IPython starts.
-c.StoreMagics.autorestore = True
+#c.StoreMagics.autorestore = True
 
 # --------------------
 # Prompt configuration

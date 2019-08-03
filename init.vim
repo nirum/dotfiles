@@ -6,12 +6,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-signify'                      " vcs gutter
 Plug '/Users/nirum/code/homebrew/opt/fzf'     " load fzf
 Plug 'junegunn/fzf.vim'                       " fzf
-Plug 'SirVer/ultisnips'                       " snippets
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next', 'do': 'sh install.sh' }
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
 Plug 'w0rp/ale'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'kana/vim-textobj-user'                  " custom text objects
 Plug 'bps/vim-textobj-python'                 " python text objects
 Plug 'chriskempson/base16-vim'                " base16 colorschemes
@@ -60,7 +61,7 @@ nnoremap t :Buffers<CR>
 
 " language server
 let g:LanguageClient_serverCommands = {
-      \ 'python': ['/usr/local/bin/pyls'],
+      \ 'python': ['pyls'],
       \ }
 
 " autocompletion (ncm2)
@@ -72,13 +73,13 @@ inoremap <expr> <buffer> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" ultisnips
+" Ultisnips
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " language server
-" let g:LanguageClient_autoStart = 1
+let g:LanguageClient_autoStart = 1
 " nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 " nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 " nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
@@ -88,3 +89,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "let g:ale_sign_column_always=1
 let g:ale_sign_error='✘'
 let g:ale_sign_warning='⚑'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
+nnoremap <c-j> :ALENext<cr>
+nnoremap <c-k> :ALEPrevious<cr>

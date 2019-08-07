@@ -4,11 +4,15 @@
 
 call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-signify'                      " vcs gutter
-Plug '/Users/nirum/code/homebrew/opt/fzf'     " load fzf
+Plug 'junegunn/fzf', {
+      \ 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'                       " fzf
 Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next', 'do': 'sh install.sh' }
 Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-ultisnips'
 Plug 'roxma/nvim-yarp'
 Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
@@ -18,6 +22,7 @@ Plug 'bps/vim-textobj-python'                 " python text objects
 Plug 'chriskempson/base16-vim'                " base16 colorschemes
 Plug 'vim-airline/vim-airline'                " statusline
 Plug 'vim-airline/vim-airline-themes'         " statusline themes
+Plug 'scrooloose/nerdcommenter'               " easy comments
 call plug#end()
 
 syntax on                           " Enable syntax highlighting
@@ -50,7 +55,7 @@ nnoremap <Esc> :noh<Esc>
 
 " colorscheme
 set background=dark
-colorscheme base16-chalk
+colorscheme base16-tomorrow-night
 let g:airline_theme='atomic'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -58,6 +63,7 @@ let g:airline_powerline_fonts = 1
 " fzf
 nnoremap f :Files<CR>
 nnoremap t :Buffers<CR>
+nnoremap s :Ag<CR>
 
 " language server
 let g:LanguageClient_serverCommands = {
@@ -86,12 +92,14 @@ let g:LanguageClient_autoStart = 1
 "nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " ale
-"let g:ale_sign_column_always=1
 let g:ale_sign_error='✘'
 let g:ale_sign_warning='⚑'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 1
+let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 nnoremap <c-j> :ALENext<cr>
 nnoremap <c-k> :ALEPrevious<cr>
+
+" nerdcommenter
+"nnoremap <leader><space> <plug>NERDCommenterToggle

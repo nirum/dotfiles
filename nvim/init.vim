@@ -3,12 +3,9 @@
 " Website: https://github.com/nirum/dotfiles
 
 call plug#begin('~/.vim/plugged')
-Plug 'mhinz/vim-signify'                      " vcs gutter
-Plug 'junegunn/fzf', {
-      \ 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'                       " fzf
-Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next', 'do': 'sh install.sh' }
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'sh install.sh'}
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
@@ -17,12 +14,14 @@ Plug 'roxma/nvim-yarp'
 Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'kana/vim-textobj-user'                  " custom text objects
-Plug 'bps/vim-textobj-python'                 " python text objects
-Plug 'chriskempson/base16-vim'                " base16 colorschemes
-Plug 'vim-airline/vim-airline'                " statusline
-Plug 'vim-airline/vim-airline-themes'         " statusline themes
-Plug 'scrooloose/nerdcommenter'               " easy comments
+Plug 'mhinz/vim-signify'                                    " vcs gutter
+Plug 'kana/vim-textobj-user'                                " custom text objects
+Plug 'bps/vim-textobj-python'                               " python text objects
+Plug 'tpope/vim-commentary'                                 " easy comments
+Plug 'mattn/emmet-vim'                                      " HTML convenince
+"Plug 'owickstrom/vim-colors-paramount'
+"Plug 'hauleth/blame.vim'
+Plug 'seesleestak/duo-mini'
 call plug#end()
 
 syntax on                           " Enable syntax highlighting
@@ -43,8 +42,8 @@ set undofile
 set undodir=~/.vim-undo
 
 " circular window navigation
-nnoremap <tab>   :bNext<cr>
-nnoremap <S-tab> :bprevious<cr>
+"nnoremap <tab>   :bNext<cr>
+"nnoremap <S-tab> :bprevious<cr>
 
 " reduce having to type shift for commands
 nnoremap ; :
@@ -55,10 +54,9 @@ nnoremap <Esc> :noh<Esc>
 
 " colorscheme
 set background=dark
-colorscheme base16-tomorrow-night
-let g:airline_theme='atomic'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:duo_mini_bg = "#1d1f21"
+let g:duo_mini_primary = "#aac4cb"
+colorscheme duo-mini
 
 " fzf
 nnoremap f :Files<CR>
@@ -101,5 +99,5 @@ let g:ale_lint_on_save = 1
 nnoremap <c-j> :ALENext<cr>
 nnoremap <c-k> :ALEPrevious<cr>
 
-" nerdcommenter
-"nnoremap <leader><space> <plug>NERDCommenterToggle
+" emmet html
+let g:user_emmet_leader_key=','

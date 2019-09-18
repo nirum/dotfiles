@@ -6,6 +6,6 @@ import matplotlib.cm as cm
 plt.ion()
 
 # customization
-plt.style.use(['ocean'])
+#plt.style.use(['ocean'])
 from matplotlib.pyplot import *
 from jetpack import *

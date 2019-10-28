@@ -27,7 +27,7 @@ function _seg() {
   echo "%{$fg%}$1%{$reset_color%}"
 }
 local directory="$(_seg %1~ white)"
-local prompt_char="%(?:$(_seg "\uFF04" white):$(_seg "\uFF04" red))"
+local prompt_char="$(_seg "\uFF04" white)"
 export PROMPT='${directory}${prompt_char}'
 export RPROMPT=''
 
@@ -102,15 +102,13 @@ alias ipy='ipython3 --nosep --no-banner --profile=mbp'
 alias iyp='ipython3 --nosep --no-banner --profile=mbp'
 
 # Paths
-export PATH="/usr/local/texlive/2017/bin/x86_64-darwin:$PATH"
+#export PATH="/usr/local/texlive/2017/bin/x86_64-darwin:$PATH"
 export PATH="/Users/nirum/.cabal/bin:$PATH"
-export PATH="/Users/nirum/miniconda3/bin:$PATH"
+export PATH="/Users/nirum/anaconda3/bin:$PATH"
 
-# CUDA
-export CUDA_HOME="/usr/local/cuda"
-export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:/usr/local/cuda/extras/CUPTI/lib"
-export LD_LIBRARY_PATH="/usr/local/cuda/lib"
-export PATH="/usr/local/cuda/bin:/usr/local/cuda/lib:/usr/local/cuda/extras/CUPTI/lib:$PATH"
+# Homebrew
+[ -e ~/code/homebrew ] && export PATH=$HOME/code/homebrew/bin:$PATH
+[ -e ~/code/homebrew ] && export LD_LIBRARY_PATH=$HOME/code/homebrew/lib:$LD_LIBRARY_PATH
 
 # --------------
 # -- Finalize --
@@ -121,4 +119,4 @@ export PATH="/usr/local/cuda/bin:/usr/local/cuda/lib:/usr/local/cuda/extras/CUPT
 export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 
 # syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

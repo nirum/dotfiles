@@ -12,3 +12,4 @@ __pycache__
 *.pyc
 tags
 .mypy_cache
+img/

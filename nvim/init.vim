@@ -4,9 +4,10 @@
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-commentary'                                 " easy comments
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'arcticicestudio/nord-vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'vim-airline/vim-airline'
+Plug 'neovim/nvim-lsp'
 call plug#end()
 
 syntax on                           " Enable syntax highlighting
@@ -35,7 +36,45 @@ nnoremap <Esc> :noh<Esc>
 
 " colorscheme
 set background=dark
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+colorscheme nord
+let g:airline_theme='nord'
+
+let lsp_settings = {
+          \   "pyls" : {
+          \     "enable" : v:true,
+          \     "trace" : { "server" : "verbose", },
+          \     "commandPath" : "",
+          \     "configurationSources" : [ "pycodestyle" ],
+          \     "plugins" : {
+          \       "jedi_completion" : { "enabled" : v:true, },
+          \       "jedi_hover" : { "enabled" : v:true, },
+          \       "jedi_references" : { "enabled" : v:true, },
+          \       "jedi_signature_help" : { "enabled" : v:true, },
+          \       "jedi_symbols" : {
+          \         "enabled" : v:true,
+          \         "all_scopes" : v:true,
+          \       },
+          \       "mccabe" : {
+          \         "enabled" : v:true,
+          \         "threshold" : 15,
+          \       },
+          \       "preload" : { "enabled" : v:true, },
+          \       "pycodestyle" : { "enabled" : v:true, },
+          \       "pydocstyle" : {
+          \         "enabled" : v:false,
+          \         "match" : "(?!test_).*\\.py",
+          \         "matchDir" : "[^\\.].*",
+          \       },
+          \       "pyflakes" : { "enabled" : v:true, },
+          \       "rope_completion" : { "enabled" : v:true, },
+          \       "yapf" : { "enabled" : v:true, },
+          \     }}}
+call nvim_lsp#setup("pyls", lsp_settings)
+
+" disable preview window
+set completeopt-=preview
+
+" use omni completion provided by lsp
+set omnifunc=lsp#omnifunc
 
 highlight Comment cterm=italic gui=italic

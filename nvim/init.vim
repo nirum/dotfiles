@@ -31,6 +31,9 @@ set undodir=~/.vim-undo
 nnoremap ; :
 nnoremap : ;
 
+set splitright
+set splitbelow
+
 nnoremap <CR> :noh<CR>
 nnoremap <Esc> :noh<Esc>
 
@@ -72,9 +75,16 @@ let lsp_settings = {
 call nvim_lsp#setup("pyls", lsp_settings)
 
 " disable preview window
-set completeopt-=preview
+"set completeopt-=preview
 
 " use omni completion provided by lsp
 set omnifunc=lsp#omnifunc
+
+nnoremap <silent> :dc :call lsp#text_document_declaration()<CR>
+nnoremap <silent> :df :call lsp#text_document_definition()<CR>
+nnoremap <silent> :h  :call lsp#text_document_hover()<CR>
+nnoremap <silent> :i  :call lsp#text_document_implementation()<CR>
+nnoremap <silent> :s  :call lsp#text_document_signature_help()<CR>
+nnoremap <silent> :td :call lsp#text_document_type_definition()<CR>
 
 highlight Comment cterm=italic gui=italic

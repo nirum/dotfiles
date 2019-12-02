@@ -14,8 +14,8 @@ env:
 
 window:
   padding:
-    x: 10
-    y: 10
+    x: 0
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -29,7 +29,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: buttonless
+  decorations: none
 
   # Window title
   title: Alacritty
@@ -70,7 +70,7 @@ tabspaces: 4
 
 # Font configuration
 font:
-  size: 16.0
+  size: 14.0
   normal:
     family: Dank Mono
     style: Regular

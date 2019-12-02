@@ -40,7 +40,16 @@ nnoremap <Esc> :noh<Esc>
 " colorscheme
 set background=dark
 colorscheme nord
+
+" nord
+let g:nord_uniform_diff_background = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+
+" airline
 let g:airline_theme='nord'
+let g:airline#extensions#tabline#enabled = 0
+let g:airline_powerline_fonts = 1
 
 let lsp_settings = {
           \   "pyls" : {

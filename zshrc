@@ -39,6 +39,13 @@ alias gba='git branch -a'
 alias gr='git remote'
 alias grv='git remote -v'
 
+# tmux
+alias tls='tmux ls'
+alias lts='tmux ls'
+alias tsl='tmux ls'
+alias tma='tmux attach -d -t'
+alias tmn='tmux new -s'
+
 # moving around
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -55,6 +62,21 @@ bindkey '^r' history-incremental-search-backward
 # ipython
 alias ipy='ipython3 --nosep --no-banner --profile=mbp'
 alias iyp='ipython3 --nosep --no-banner --profile=mbp'
+
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "\e[A" history-beginning-search-backward-end  # cursor up
+bindkey "\e[B" history-beginning-search-forward-end   # cursor down
+
+# edit command in vim
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+# Autocompletion settings
+zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
+zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
 
 # Local configuration
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh

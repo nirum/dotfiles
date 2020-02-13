@@ -22,7 +22,6 @@ alias v='nvim'
 # system
 alias lf='ls -lSFh'
 alias la='ls -a'
-alias s='ls'
 alias sl='ls'
 
 # git
@@ -77,6 +76,9 @@ bindkey '^e' edit-command-line
 # Autocompletion settings
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
 zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
+
+# Bashmarks
+[[ -f ~/.local/bin/bashmarks.sh ]] && source ~/.local/bin/bashmarks.sh
 
 # Local configuration
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh

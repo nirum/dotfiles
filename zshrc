@@ -6,6 +6,8 @@ setopt auto_cd              # if a command is invalid and the name of a director
 setopt correct              # correct mistyped commands
 setopt prompt_subst         # perform expansions
 
+export TERM=xterm-256color-italic   # Custom terminfo for italic support.
+
 export HISTFILE=~/.zhistory
 export HISTSIZE=10000
 export SAVEHIST=10000

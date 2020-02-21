@@ -9,7 +9,12 @@ setopt correct              # correct mistyped commands
 setopt prompt_subst         # perform expansions
 
 # prompt
-export PROMPT="%1~$(echo "\uFF04")"
+function _seg() {
+  echo "%{%F{$2}%}$1%{%F{white}%}"
+}
+local directory="$(_seg %1~ gray)"
+local prompt_char="$(_seg "\uFF04" blue)"
+export PROMPT='${directory}${prompt_char}'
 export RPROMPT=''
 SPROMPT="Correct %{$fg[red]%}%R%{$reset_color%} to %{$fg[green]%}%r?%{$reset_color%} (%{%U%}y%{%u%}es/%{%U%}n%{%u%}o/%{%U%}a%{%u%}bort/%{%U%}e%{%u%}dit) "
 
@@ -27,13 +32,13 @@ alias sl='ls'
 
 # git
 alias gcm='git commit -m'
-alias gs='git st'
-alias sg='git st'
+alias gs='git status'
+alias sg='git status'
 alias ga='git add'
 alias gu='git pull'
 alias gp='git push'
 alias gd='git diff'
-alias gl='git lg'
+alias gl='git log'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gr='git remote'

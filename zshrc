@@ -3,10 +3,25 @@
 # Website: https://github.com/nirum/dotfiles
 
 setopt auto_cd              # if a command is invalid and the name of a directory, cd to that directory
-setopt append_history       # zsh sessions will append their history list to the history file
-setopt extended_history     # save each commands timestamp and duration to the history file
 setopt correct              # correct mistyped commands
 setopt prompt_subst         # perform expansions
+
+export TERM=xterm-256color-italic   # Custom terminfo for italic support.
+
+export HISTFILE=~/.zhistory
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt bang_hist                 # Treat the '!' character specially during expansion.
+setopt inc_append_history        # Incrementally append to the history file.
+setopt extended_history          # Write the history file in the ':start:elapsed;command' format.
+setopt share_history             # Share history between all sessions.
+setopt hist_expire_dups_first    # Expire a duplicate event first when trimming history.
+setopt hist_ignore_dups          # Do not record an event that was just recorded again.
+setopt hist_ignore_all_dups      # Delete an old recorded event if a new event is a duplicate.
+setopt hist_find_no_dups         # Do not display a previously found event.
+setopt hist_ignore_space         # Do not record an event starting with a space.
+setopt hist_save_no_dups         # Do not write a duplicate event to the history file.
+setopt hist_verify               # Do not execute immediately upon history expansion.
 
 # prompt
 function _seg() {
@@ -27,7 +42,6 @@ alias v='nvim'
 # system
 alias lf='ls -lSFh'
 alias la='ls -a'
-alias s='ls'
 alias sl='ls'
 
 # git
@@ -82,6 +96,9 @@ bindkey '^e' edit-command-line
 # Autocompletion settings
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
 zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
+
+# Bashmarks
+[[ -f ~/.local/bin/bashmarks.sh ]] && source ~/.local/bin/bashmarks.sh
 
 # Local configuration
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh

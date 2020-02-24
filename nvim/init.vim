@@ -5,11 +5,13 @@
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-commentary'                                 " easy comments
 Plug 'tpope/vim-surround'
-Plug 'arcticicestudio/nord-vim'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'vim-airline/vim-airline'
-Plug 'neovim/nvim-lsp'
+Plug 'arcticicestudio/nord-vim'                             " theme
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}      " python syntax
+Plug 'vim-airline/vim-airline'                              " statusline
 call plug#end()
+
+let g:python3_host_prog = '/Users/nirum/anaconda3/bin/python3'
+let g:loaded_python_provider = 0
 
 syntax on                           " Enable syntax highlighting
 filetype plugin indent on           " filetype-specific plugins
@@ -51,51 +53,6 @@ let g:nord_italic_comments = 1
 let g:airline_theme='nord'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
-
-" let lsp_settings = {
-"           \   "pyls" : {
-"           \     "enable" : v:true,
-"           \     "trace" : { "server" : "verbose", },
-"           \     "commandPath" : "",
-"           \     "configurationSources" : [ "pycodestyle" ],
-"           \     "plugins" : {
-"           \       "jedi_completion" : { "enabled" : v:true, },
-"           \       "jedi_hover" : { "enabled" : v:true, },
-"           \       "jedi_references" : { "enabled" : v:true, },
-"           \       "jedi_signature_help" : { "enabled" : v:true, },
-"           \       "jedi_symbols" : {
-"           \         "enabled" : v:true,
-"           \         "all_scopes" : v:true,
-"           \       },
-"           \       "mccabe" : {
-"           \         "enabled" : v:true,
-"           \         "threshold" : 15,
-"           \       },
-"           \       "preload" : { "enabled" : v:true, },
-"           \       "pycodestyle" : { "enabled" : v:true, },
-"           \       "pydocstyle" : {
-"           \         "enabled" : v:false,
-"           \         "match" : "(?!test_).*\\.py",
-"           \         "matchDir" : "[^\\.].*",
-"           \       },
-"           \       "pyflakes" : { "enabled" : v:true, },
-"           \       "rope_completion" : { "enabled" : v:true, },
-"           \       "yapf" : { "enabled" : v:true, },
-"           \     }}}
-" call nvim_lsp#setup("pyls", lsp_settings)
-
-" disable preview window
-"set completeopt-=preview
-
-" use omni completion provided by lsp
-" set omnifunc=lsp#omnifunc
-
-" nnoremap <silent> :dc :call lsp#text_document_declaration()<CR>
-" nnoremap <silent> :df :call lsp#text_document_definition()<CR>
-" nnoremap <silent> :h  :call lsp#text_document_hover()<CR>
-" nnoremap <silent> :i  :call lsp#text_document_implementation()<CR>
-" nnoremap <silent> :s  :call lsp#text_document_signature_help()<CR>
-" nnoremap <silent> :td :call lsp#text_document_type_definition()<CR>
 
 highlight Folded guifg=#d8dee9 guibg=#2e3440
 highlight Comment cterm=italic gui=italic

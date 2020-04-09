@@ -5,9 +5,11 @@
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-commentary'                                 " easy comments
 Plug 'tpope/vim-surround'
-Plug 'arcticicestudio/nord-vim'                             " theme
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}      " python syntax
 Plug 'vim-airline/vim-airline'                              " statusline
+Plug 'jremmen/vim-ripgrep'                                  " fast searching
+Plug 'stefandtw/quickfix-reflector.vim'                     " bulk edits in quickfix
+Plug 'morhetz/gruvbox'                                      " theme
 call plug#end()
 
 let g:python3_host_prog = '/Users/nirum/anaconda3/bin/python3'
@@ -42,15 +44,10 @@ nnoremap <Esc> :noh<Esc>
 
 " colorscheme
 set background=dark
-colorscheme nord
-
-" nord
-let g:nord_uniform_diff_background = 1
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
+colorscheme gruvbox
 
 " airline
-let g:airline_theme='nord'
+let g:airline_theme='gruvbox'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
 

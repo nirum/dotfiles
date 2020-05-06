@@ -10,9 +10,11 @@ Plug 'vim-airline/vim-airline'                              " statusline
 Plug 'jremmen/vim-ripgrep'                                  " fast searching
 Plug 'stefandtw/quickfix-reflector.vim'                     " bulk edits in quickfix
 Plug 'morhetz/gruvbox'                                      " theme
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
-let g:python3_host_prog = '/Users/nirum/anaconda3/bin/python3'
+let g:python3_host_prog = '/Users/niru/miniconda3/bin/python3'
 let g:loaded_python_provider = 0
 
 syntax on                           " Enable syntax highlighting

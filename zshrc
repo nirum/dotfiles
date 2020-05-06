@@ -102,3 +102,6 @@ zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|s
 
 # Local configuration
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

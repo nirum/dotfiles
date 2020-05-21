@@ -4,7 +4,11 @@ vim/.vim/.netrwhist
 jupyter/migrated
 nvim/.init.vim-rplugin~
 nvim/autoload
+nvim/UltiSnips
+nvim/ale_linters
 nvim/.netrwhist
+nvim/UltiSnips
+nvim/ale_linters
 config/.config/nvim/spell
 fontList.*
 *.cache

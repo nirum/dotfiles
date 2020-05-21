@@ -12,6 +12,9 @@ Plug 'stefandtw/quickfix-reflector.vim'                     " bulk edits in quic
 Plug 'morhetz/gruvbox'                                      " theme
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 call plug#end()
 
 let g:python3_host_prog = '/Users/niru/miniconda3/bin/python3'
@@ -29,6 +32,8 @@ set gdefault ignorecase smartcase   " smart searching
 
 " tabs and indenting
 set tabstop=2 shiftwidth=2 expandtab smartindent
+nnoremap <tab> :tabnext<CR>
+nnoremap <S-tab> :tabprevious<CR>
 
 " persistent undo
 set undofile
@@ -55,3 +60,7 @@ let g:airline_powerline_fonts = 1
 
 highlight Folded guifg=#d8dee9 guibg=#2e3440
 highlight Comment cterm=italic gui=italic
+
+" fzf.vim
+nnoremap <silent> f :GFiles<CR>
+nnoremap <silent> t :Buffers<CR>

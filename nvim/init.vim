@@ -17,12 +17,9 @@ Plug 'morhetz/gruvbox'                                      " theme
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-lsp'
 
-" Plug 'dense-analysis/ale'                                   " linting
 Plug 'junegunn/fzf'                                         " fuzzy finder
 Plug 'junegunn/fzf.vim'                                     " fzf bindings
 Plug 'neovim/nvim-lsp'                                      " LSP
-Plug 'liuchengxu/vista.vim'
-" Plug 'wbthomason/lsp-status.nvim'
 
 Plug 'mhinz/vim-signify'
 Plug 'SirVer/ultisnips'
@@ -33,8 +30,6 @@ call plug#end()
 
 syntax on                           " Enable syntax highlighting
 filetype plugin indent on           " filetype-specific plugins
-nnoremap <SPACE> <nop>
-let mapleader = "\<Space>"          " use the spacebar as my leader
 
 " Edit this file.
 command! Erc edit $MYVIMRC
@@ -78,25 +73,58 @@ colorscheme gruvbox
 set signcolumn=yes:1
 
 " statusline
-set statusline=%#GruvboxYellowSign#       " Yellow font color.
-set statusline+=%{&modified?'✘':'✔'}      " Has the file been modified?
-set statusline+=\                         " Space.
-set statusline+=%#GruvboxBlueSign#        " Italics.
-set statusline+=\ %f\ %r                  " Path to the file
+ set statusline=%#GruvboxFg0#       " Yellow font color.
+set statusline+=\ %{ReadOnly()}
+" set statusline+=%{&modified?'✘':'✔'}      " Has the file been modified?
+set statusline+=%#Comment#        " Italics.
+set statusline+=\ %f                  " Path to the file
 set statusline+=%=                        " Switch to the right side
-set statusline+=%#GruvboxYellowSign#      " Blue font color.
+set statusline+=%#GruvboxFg0#       " Yellow font color.
+set statusline+=%{LspStatus()}
+" set statusline+=%#GruvboxYellowSign#      " Blue font color.
+set statusline+=%#GruvboxBlue#       " Yellow font color.
 set statusline+=ⅽ\ %c\ ℓ\ %l/%L\ %y\      " Current column and row (ℓ = \u2113, ⅽ = \u217d).
+
+function! LspStatus() abort
+  let sl = ''
+  if luaeval('vim.lsp.buf.server_ready()')
+    let sl.='⬢  LSP '
+
+    let num_errors = luaeval('vim.lsp.util.buf_diagnostics_count("Error")')
+    if num_errors
+      let sl.=num_errors.'❗'
+    endif
+    let num_warn = luaeval('vim.lsp.util.buf_diagnostics_count("Warning")')
+    if num_warn
+      let sl.=num_warn.'❕'
+    endif
+    let sl.=' '
+  endif
+  return sl
+endfunction
+
+function! ReadOnly()
+  if &readonly || !&modifiable
+    return '🔒 '
+  else
+    if &modified
+      return 'M'
+    else
+      return '💾 '
+    endif
+  endif
+endfunction
 
 " fzf.vim
 nnoremap <silent> f :Files<CR>
 nnoremap <silent> s :Rg 
-nnoremap <silent> t :Buffers<CR>
-let g:fzf_layout = { 'up': '~50%' }
+nnoremap <silent> t :Tags<CR>
+nnoremap <silent> <space> :Buffers<CR>
+let g:fzf_layout = { 'up': '~60%' }
 
 " vim-slime
 " let g:slime_target = "tmux"
 " let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
-"
 
 " LSP
 lua << EOF
@@ -105,7 +133,6 @@ nvim_lsp.texlab.setup{}
 nvim_lsp.ccls.setup{}
 nvim_lsp.pyls.setup{}
 EOF
-" root_dir = nvim_lsp.util.root_pattern('.git');
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
@@ -132,16 +159,6 @@ set shortmess+=c
 let g:signify_sign_add = '‣'
 let g:signify_sign_delete = '-'
 let g:signify_sign_change = '―'
-
-" Vista
-" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-" let g:vista_default_executive = 'nvim-lsp'
-" let g:vista_fzf_preview = ['right:50%']
-" let g:vista#renderer#enable_icon = 1
-" let g:vista#renderer#icons = {
-" \   "function": "\uf794",
-" \   "variable": "\uf71b",
-" \  }
 
 " system specific configuration
 let localconfig = expand("~/.local_config.vim")

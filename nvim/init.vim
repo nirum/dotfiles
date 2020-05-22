@@ -17,17 +17,17 @@ Plug 'morhetz/gruvbox'                                      " theme
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-lsp'
 
-" Plug 'SirVer/ultisnips'                                     " snippets
-
 " Plug 'dense-analysis/ale'                                   " linting
 Plug 'junegunn/fzf'                                         " fuzzy finder
 Plug 'junegunn/fzf.vim'                                     " fzf bindings
 Plug 'neovim/nvim-lsp'                                      " LSP
 Plug 'liuchengxu/vista.vim'
-" Plug 'haorenW1025/completion-nvim'
+" Plug 'wbthomason/lsp-status.nvim'
 
 Plug 'mhinz/vim-signify'
 Plug 'SirVer/ultisnips'
+
+Plug 'chrisbra/unicode.vim'
 
 call plug#end()
 
@@ -103,8 +103,8 @@ lua << EOF
 local nvim_lsp = require'nvim_lsp'
 nvim_lsp.texlab.setup{}
 nvim_lsp.ccls.setup{}
+nvim_lsp.pyls.setup{}
 EOF
-" nvim_lsp.pyls.setup{}
 " root_dir = nvim_lsp.util.root_pattern('.git');
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -117,39 +117,25 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
-" Use completion-nvim in every buffer
-" autocmd BufEnter * lua require'completion'.on_attach()
-
 " Use <Tab> and <S-Tab> to navigate through popup menu
-" ultisnips
 let g:UltiSnipsExpandTrigger="<C-e>"
 inoremap <expr><Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" Set completeopt to have a better completion experience
-" set completeopt=menuone,noinsert,noselect
-
 " Avoid showing message extra message when using completion
-" let g:completion_enable_snippet = 'UltiSnips'
 let g:deoplete#enable_at_startup = 1
 
 set updatetime=100
 set shortmess+=c
 
 " signify
-let g:signify_sign_add = '●'
-" let g:signify_sign_delete = '●'
-" let g:signify_sign_delete_first_line = '●'
-" let g:signify_sign_change = '●'
-
-" highlight SignifySignAdd    guifg=#00ff00 guibg=NONE
-" highlight SignifySignDelete guifg=#ff0000 guibg=NONE
-" highlight SignifySignChange guifg=#ffff00 guibg=NONE
-" highlight Folded guifg=#d8dee9 guibg=#2e3440
+let g:signify_sign_add = '‣'
+let g:signify_sign_delete = '-'
+let g:signify_sign_change = '―'
 
 " Vista
 " let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'nvim-lsp'
+" let g:vista_default_executive = 'nvim-lsp'
 " let g:vista_fzf_preview = ['right:50%']
 " let g:vista#renderer#enable_icon = 1
 " let g:vista#renderer#icons = {

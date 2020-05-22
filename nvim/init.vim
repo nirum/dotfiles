@@ -27,6 +27,7 @@ Plug 'liuchengxu/vista.vim'
 " Plug 'haorenW1025/completion-nvim'
 
 Plug 'mhinz/vim-signify'
+Plug 'SirVer/ultisnips'
 
 call plug#end()
 
@@ -35,10 +36,13 @@ filetype plugin indent on           " filetype-specific plugins
 nnoremap <SPACE> <nop>
 let mapleader = "\<Space>"          " use the spacebar as my leader
 
-command! Edit edit $MYVIMRC
+" Edit this file.
+command! Erc edit $MYVIMRC
+command! Trc tabf $MYVIMRC
 command! Src source $MYVIMRC
+command! Hi source $VIMRUNTIME/syntax/hitest.vim
 
-set termguicolors                 " 24-bit color
+set termguicolors                   " 24-bit color
 set clipboard+=unnamedplus          " use system clipboard
 set relativenumber number           " relative line numbers
 set gdefault ignorecase smartcase   " smart searching
@@ -65,30 +69,29 @@ set foldlevelstart=99
 nnoremap <tab> gt
 nnoremap s-<tab> gT
 
-" colorscheme
+" colorscheme (gruvbox)
 set background=dark
+let g:gruvbox_italic=1
+let g:gruvbox_sign_column='bg0'
+let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
+set signcolumn=yes:1
 
 " statusline
-set statusline=%#GruvboxYellow#           " Yellow font color.
-set statusline+=%{repeat('\ ',1)}         " Space.
+set statusline=%#GruvboxYellowSign#       " Yellow font color.
 set statusline+=%{&modified?'✘':'✔'}      " Has the file been modified?
 set statusline+=\                         " Space.
-set statusline+=%#Comment#                " Italics.
+set statusline+=%#GruvboxBlueSign#        " Italics.
 set statusline+=\ %f\ %r                  " Path to the file
 set statusline+=%=                        " Switch to the right side
-set statusline+=%1*                       " Switch to User1 highlight group (italics).
-set statusline+=%#GruvboxBlue#            " Blue font color.
+set statusline+=%#GruvboxYellowSign#      " Blue font color.
 set statusline+=ⅽ\ %c\ ℓ\ %l/%L\ %y\      " Current column and row (ℓ = \u2113, ⅽ = \u217d).
 
-" italics
-highlight Folded guifg=#d8dee9 guibg=#2e3440
-highlight Comment cterm=italic gui=italic
-
 " fzf.vim
-nnoremap <silent> f :GFiles<CR>
+nnoremap <silent> f :Files<CR>
 nnoremap <silent> s :Rg 
 nnoremap <silent> t :Buffers<CR>
+let g:fzf_layout = { 'up': '~50%' }
 
 " vim-slime
 " let g:slime_target = "tmux"
@@ -98,10 +101,10 @@ nnoremap <silent> t :Buffers<CR>
 " LSP
 lua << EOF
 local nvim_lsp = require'nvim_lsp'
-nvim_lsp.pyls.setup{}
 nvim_lsp.texlab.setup{}
 nvim_lsp.ccls.setup{}
 EOF
+" nvim_lsp.pyls.setup{}
 " root_dir = nvim_lsp.util.root_pattern('.git');
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -118,7 +121,8 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 " autocmd BufEnter * lua require'completion'.on_attach()
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
-" let g:UltiSnipsExpandTrigger='<C-j>'
+" ultisnips
+let g:UltiSnipsExpandTrigger="<C-e>"
 inoremap <expr><Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -132,6 +136,17 @@ let g:deoplete#enable_at_startup = 1
 set updatetime=100
 set shortmess+=c
 
+" signify
+let g:signify_sign_add = '●'
+" let g:signify_sign_delete = '●'
+" let g:signify_sign_delete_first_line = '●'
+" let g:signify_sign_change = '●'
+
+" highlight SignifySignAdd    guifg=#00ff00 guibg=NONE
+" highlight SignifySignDelete guifg=#ff0000 guibg=NONE
+" highlight SignifySignChange guifg=#ffff00 guibg=NONE
+" highlight Folded guifg=#d8dee9 guibg=#2e3440
+
 " Vista
 " let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'nvim-lsp'
@@ -141,3 +156,9 @@ let g:vista_default_executive = 'nvim-lsp'
 " \   "function": "\uf794",
 " \   "variable": "\uf71b",
 " \  }
+
+" system specific configuration
+let localconfig = expand("~/.local_config.vim")
+if filereadable(localconfig)
+  execute 'source' localconfig
+endif

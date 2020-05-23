@@ -73,22 +73,24 @@ colorscheme gruvbox
 set signcolumn=yes:1
 
 " statusline
- set statusline=%#GruvboxFg0#       " Yellow font color.
-set statusline+=\ %{ReadOnly()}
-" set statusline+=%{&modified?'✘':'✔'}      " Has the file been modified?
-set statusline+=%#Comment#        " Italics.
-set statusline+=\ %f                  " Path to the file
-set statusline+=%=                        " Switch to the right side
-set statusline+=%#GruvboxFg0#       " Yellow font color.
-set statusline+=%{LspStatus()}
-" set statusline+=%#GruvboxYellowSign#      " Blue font color.
-set statusline+=%#GruvboxBlue#       " Yellow font color.
-set statusline+=ⅽ\ %c\ ℓ\ %l/%L\ %y\      " Current column and row (ℓ = \u2113, ⅽ = \u217d).
+hi User1 guibg=#83a598 guifg=#1d2021                  " Blue background
+hi User2 guibg=#3c3836 guifg=#83a598                  " Blue foreground
+hi User3 guibg=#3c3836 guifg=#ebdbb2 gui=italic       " White foreground, italic
+set statusline=%1*\ \ %{ReadOnly()}
+set statusline+=%2*                     " Icon
+set statusline+=%3*\ %f%2*                            " Path to the file
+set statusline+=%{&modified?'\ ✘':'\ ✔'}              " Has the file been modified?
+set statusline+=%=                                    " Switch to the right side
+set statusline+=%{LspStatus()}                        " LSP Status
+set statusline+=%3*col\ %c                            " Current column
+set statusline+=\ %2*│\                               " Separator
+set statusline+=%3*line\ %l/%L                        " Line number
+set statusline+=\                                     " Filetype
 
 function! LspStatus() abort
   let sl = ''
   if luaeval('vim.lsp.buf.server_ready()')
-    let sl.='⬢  LSP '
+    let sl.='｟ LSP '
 
     let num_errors = luaeval('vim.lsp.util.buf_diagnostics_count("Error")')
     if num_errors
@@ -98,7 +100,7 @@ function! LspStatus() abort
     if num_warn
       let sl.=num_warn.'❕'
     endif
-    let sl.=' '
+    let sl.='｠'
   endif
   return sl
 endfunction
@@ -107,11 +109,7 @@ function! ReadOnly()
   if &readonly || !&modifiable
     return '🔒 '
   else
-    if &modified
-      return 'M'
-    else
-      return '💾 '
-    endif
+    return '   '
   endif
 endfunction
 

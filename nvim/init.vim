@@ -72,6 +72,12 @@ let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 set signcolumn=yes:1
 
+" tab line colors
+hi TabLineFill guibg=#3c3836
+hi TabLine guifg=#ebdbb2 guibg=#3c3836
+hi TabLineSel guifg=#080808 guibg=#83a598
+hi Title guifg=#080808 guibg=#83a598
+
 " statusline
 hi User1 guibg=#83a598 guifg=#1d2021                  " Blue background
 hi User2 guibg=#3c3836 guifg=#83a598                  " Blue foreground
@@ -82,9 +88,11 @@ set statusline+=%3*\ %f%2*                            " Path to the file
 set statusline+=%{&modified?'\ ✘':'\ ✔'}              " Has the file been modified?
 set statusline+=%=                                    " Switch to the right side
 set statusline+=%{LspStatus()}                        " LSP Status
-set statusline+=%3*col\ %c                            " Current column
-set statusline+=\ %2*│\                               " Separator
-set statusline+=%3*line\ %l/%L                        " Line number
+set statusline+=%2*
+set statusline+=%1*\ 
+set statusline+=col\ %c                            " Current column
+set statusline+=\ %1*│\                               " Separator
+set statusline+=%1*line\ %l/%L                        " Line number
 set statusline+=\                                     " Filetype
 
 function! LspStatus() abort

@@ -6,13 +6,12 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-commentary'                                 " easy comments
 Plug 'tpope/vim-surround'
+Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}      " python syntax
 
-" Plug 'jremmen/vim-ripgrep'                                  " fast searching
-" Plug 'stefandtw/quickfix-reflector.vim'                     " bulk edits in quickfix
-
 Plug 'morhetz/gruvbox'                                      " theme
+Plug 'Yggdroot/indentLine'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-lsp'
@@ -23,8 +22,6 @@ Plug 'neovim/nvim-lsp'                                      " LSP
 
 Plug 'mhinz/vim-signify'
 Plug 'SirVer/ultisnips'
-
-Plug 'chrisbra/unicode.vim'
 
 call plug#end()
 
@@ -127,6 +124,8 @@ nnoremap <silent> s :Rg
 nnoremap <silent> t :Tags<CR>
 nnoremap <silent> <space> :Buffers<CR>
 let g:fzf_layout = { 'up': '~60%' }
+
+let g:indentLine_char = '│'
 
 " vim-slime
 " let g:slime_target = "tmux"

@@ -10,8 +10,9 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}      " python syntax
 
-Plug 'morhetz/gruvbox'                                      " theme
+Plug 'arcticicestudio/nord-vim'
 Plug 'Yggdroot/indentLine'
+Plug 'vim-airline/vim-airline'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-lsp'
@@ -61,13 +62,10 @@ set foldlevelstart=99
 nnoremap <tab> gt
 nnoremap s-<tab> gT
 
-" colorscheme (gruvbox)
-set background=dark
-let g:gruvbox_italic=1
-let g:gruvbox_sign_column='bg0'
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+" colorscheme
+colorscheme nord
 set signcolumn=yes:1
+let g:airline_powerline_fonts = 1
 
 " tab line colors
 hi TabLineFill guibg=#3c3836

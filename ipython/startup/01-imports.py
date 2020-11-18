@@ -11,7 +11,7 @@ from numpy import arange, zeros, ones, eye, linspace, pi, inf, nan, cov, array, 
 
 # scipy
 import scipy
-from scipy.stats import kurtosis, skew, zscore
+from scipy.stats import kurtosis, skew, zscore, sem
 
 # other
 from functools import partial

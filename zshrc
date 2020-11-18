@@ -24,12 +24,16 @@ setopt hist_save_no_dups         # Do not write a duplicate event to the history
 setopt hist_verify               # Do not execute immediately upon history expansion.
 
 # prompt
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '❲%b❳'
+setopt PROMPT_SUBST
 function _seg() {
   echo "%{%F{$2}%}$1%{%F{white}%}"
 }
 local directory="$(_seg %1~ gray)"
 local prompt_char="$(_seg "\uFF04" blue)"
-export PROMPT='${directory}${prompt_char}'
+export PROMPT='${directory}${vcs_info_msg_0_}${prompt_char}'
 export RPROMPT=''
 SPROMPT="Correct %{$fg[red]%}%R%{$reset_color%} to %{$fg[green]%}%r?%{$reset_color%} (%{%U%}y%{%u%}es/%{%U%}n%{%u%}o/%{%U%}a%{%u%}bort/%{%U%}e%{%u%}dit) "
 
@@ -108,5 +112,8 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --ignore-vcs'
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# latex
+export PATH="/usr/local/texlive/2020/bin/x86_64-darwin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

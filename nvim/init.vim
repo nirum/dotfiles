@@ -4,25 +4,25 @@
 
 call plug#begin('~/.vim/plugged')
 
+" Utilities
 Plug 'tpope/vim-commentary'                                 " easy comments
-Plug 'tpope/vim-surround'
-Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tpope/vim-surround'                                   " quotes/parens/brackets/etc
+Plug 'AndrewRadev/splitjoin.vim'                            " gS and gJ
+Plug 'Yggdroot/indentLine'                                  " Indentation lines
 
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}      " python syntax
+" LSP
+Plug 'neovim/nvim-lspconfig'                                " LSP
 
-Plug 'arcticicestudio/nord-vim'
-Plug 'Yggdroot/indentLine'
+" Completion
+Plug 'hrsh7th/nvim-compe'                                   " Completion Engine
+
+" Style
+Plug 'arcticicestudio/nord-vim'                             " Theme
 Plug 'vim-airline/vim-airline'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-lsp'
-
+" Search
 Plug 'junegunn/fzf'                                         " fuzzy finder
 Plug 'junegunn/fzf.vim'                                     " fzf bindings
-Plug 'neovim/nvim-lsp'                                      " LSP
-
-Plug 'mhinz/vim-signify'
-Plug 'SirVer/ultisnips'
 
 call plug#end()
 
@@ -42,8 +42,6 @@ set gdefault ignorecase smartcase   " smart searching
 
 " tabs and indenting
 set tabstop=2 shiftwidth=2 expandtab smartindent
-nnoremap <tab> :tabnext<CR>
-nnoremap <S-tab> :tabprevious<CR>
 
 " persistent undo
 set undofile
@@ -61,84 +59,77 @@ nnoremap <Esc> :noh<Esc>
 set foldlevelstart=99
 nnoremap <tab> gt
 nnoremap s-<tab> gT
+" nnoremap <tab> :tabnext<CR>
+" nnoremap <S-tab> :tabprevious<CR>
 
 " colorscheme
 colorscheme nord
 set signcolumn=yes:1
-let g:airline_powerline_fonts = 1
-
-" tab line colors
-hi TabLineFill guibg=#3c3836
-hi TabLine guifg=#ebdbb2 guibg=#3c3836
-hi TabLineSel guifg=#080808 guibg=#83a598
-hi Title guifg=#080808 guibg=#83a598
-
-" statusline
-hi User1 guibg=#83a598 guifg=#1d2021                  " Blue background
-hi User2 guibg=#3c3836 guifg=#83a598                  " Blue foreground
-hi User3 guibg=#3c3836 guifg=#ebdbb2 gui=italic       " White foreground, italic
-set statusline=%1*\ \ %{ReadOnly()}
-set statusline+=%2*                     " Icon
-set statusline+=%3*\ %f%2*                            " Path to the file
-set statusline+=%{&modified?'\ ✘':'\ ✔'}              " Has the file been modified?
-set statusline+=%=                                    " Switch to the right side
-set statusline+=%{LspStatus()}                        " LSP Status
-set statusline+=%2*
-set statusline+=%1*\ 
-set statusline+=col\ %c                            " Current column
-set statusline+=\ %1*│\                               " Separator
-set statusline+=%1*line\ %l/%L                        " Line number
-set statusline+=\                                     " Filetype
-
-function! LspStatus() abort
-  let sl = ''
-  if luaeval('vim.lsp.buf.server_ready()')
-    let sl.='｟ LSP '
-
-    let num_errors = luaeval('vim.lsp.util.buf_diagnostics_count("Error")')
-    if num_errors
-      let sl.=num_errors.'❗'
-    endif
-    let num_warn = luaeval('vim.lsp.util.buf_diagnostics_count("Warning")')
-    if num_warn
-      let sl.=num_warn.'❕'
-    endif
-    let sl.='｠'
-  endif
-  return sl
-endfunction
-
-function! ReadOnly()
-  if &readonly || !&modifiable
-    return '🔒 '
-  else
-    return '   '
-  endif
-endfunction
 
 " fzf.vim
 nnoremap <silent> f :Files<CR>
-nnoremap <silent> s :Rg 
+nnoremap <silent> s :Rg<CR>
 nnoremap <silent> t :Tags<CR>
 nnoremap <silent> <space> :Buffers<CR>
 let g:fzf_layout = { 'up': '~60%' }
 
 let g:indentLine_char = '│'
 
-" vim-slime
-" let g:slime_target = "tmux"
-" let g:slime_default_config = {"socket_name": get(split($TMUX, ","), 0), "target_pane": ":.2"}
-
 " LSP
 lua << EOF
-local nvim_lsp = require'nvim_lsp'
-nvim_lsp.texlab.setup{}
-nvim_lsp.ccls.setup{}
-nvim_lsp.pyls.setup{}
+local nvim_lsp = require'lspconfig'
+nvim_lsp.pyright.setup{}
+
+vim.o.completeopt = "menuone,noselect"
+
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = false;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    vsnip = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    spell = true;
+    tags = true;
+    snippets_nvim = true;
+    treesitter = true;
+  };
+}
+
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
+  else
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 EOF
 
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
@@ -147,24 +138,5 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
-" Use <Tab> and <S-Tab> to navigate through popup menu
-let g:UltiSnipsExpandTrigger="<C-e>"
-inoremap <expr><Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Avoid showing message extra message when using completion
-let g:deoplete#enable_at_startup = 1
-
-set updatetime=100
+" set updatetime=100
 set shortmess+=c
-
-" signify
-let g:signify_sign_add = '‣'
-let g:signify_sign_delete = '-'
-let g:signify_sign_change = '―'
-
-" system specific configuration
-let localconfig = expand("~/.local_config.vim")
-if filereadable(localconfig)
-  execute 'source' localconfig
-endif

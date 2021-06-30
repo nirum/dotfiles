@@ -69,7 +69,7 @@ scrolling:
 
 # Font configuration
 font:
-  size: 16.0
+  size: 18.0
   normal:
     family: Dank Mono
     style: Regular

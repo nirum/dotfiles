@@ -6,7 +6,7 @@ setopt auto_cd              # if a command is invalid and the name of a director
 setopt correct              # correct mistyped commands
 setopt prompt_subst         # perform expansions
 
-export TERM=xterm-256color-italic   # Custom terminfo for italic support.
+#export TERM=xterm-256color-italic   # Custom terminfo for italic support.
 
 export HISTFILE=~/.zhistory
 export HISTSIZE=10000
@@ -107,13 +107,28 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --ignore-vcs'
 # Bashmarks
 [[ -f ~/.local/bin/bashmarks.sh ]] && source ~/.local/bin/bashmarks.sh
 
-# Local configuration
-[[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # latex
-export PATH="/usr/local/texlive/2020/bin/x86_64-darwin:$PATH"
+#export PATH="/usr/local/texlive/2020/bin/x86_64-darwin:$PATH"
+#export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH="/usr/local/bin:$PATH"
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/Users/niru/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/Users/niru/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/niru/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/Users/niru/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda initialize <<<
+
+# Local configuration
+[[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh

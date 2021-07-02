@@ -20,12 +20,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'                        " Fuzzy Finding
 
 " Style
-Plug 'arcticicestudio/nord-vim'                             " Theme
-Plug 'hoob3rt/lualine.nvim'                                 " Status line
+Plug 'folke/tokyonight.nvim'                                " Theme
 Plug 'kyazdani42/nvim-web-devicons'                         " Icons
-
-" Search
-" Plug 'junegunn/fzf'                                         " fuzzy finder
-" Plug 'junegunn/fzf.vim'                                     " fzf bindings
+Plug 'hoob3rt/lualine.nvim'                                 " Status line
+Plug 'romgrk/barbar.nvim'                                   " Tab line
 
 call plug#end()

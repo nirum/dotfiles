@@ -30,23 +30,12 @@ set splitbelow
 nnoremap <CR> :noh<CR>
 nnoremap <Esc> :noh<Esc>
 set foldlevelstart=99
-nnoremap <tab> gt
-nnoremap s-<tab> gT
-" nnoremap <tab> :tabnext<CR>
-" nnoremap <S-tab> :tabprevious<CR>
-
-" colorscheme
-" colorscheme nord
-set signcolumn=yes:1
+nnoremap <tab> :bnext<CR>
+nnoremap <S-tab> :bprevious<CR>
 
 " telescope.nvim
 nnoremap <silent> f <cmd>Telescope find_files<CR>
 nnoremap <silent> s <cmd>Telescope live_grep<CR>
-" nnoremap <silent> t :Tags<CR>
-" nnoremap <silent> <space> :Buffers<CR>
-" let g:fzf_layout = { 'up': '~60%' }
-
-let g:indentLine_char = '│'
 
 " LSP
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
@@ -64,7 +53,3 @@ set completeopt=menuone,noinsert,noselect
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set shortmess+=c
-
-highlight Comment cterm=italic
-set t_ZH=[3m
-set t_ZR=23m

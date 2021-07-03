@@ -113,7 +113,8 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --ignore-vcs'
 # latex
 #export PATH="/usr/local/texlive/2020/bin/x86_64-darwin:$PATH"
 #export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-# export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/Users/niru/miniconda3/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

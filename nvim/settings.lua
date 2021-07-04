@@ -9,10 +9,10 @@ nvim_lsp.tsserver.setup{}
 
 local saga = require 'lspsaga'
 saga.init_lsp_saga {
-  error_sign = 'x',
-  warn_sign = 'w',
-  hint_sign = 'h',
-  infor_sign = 'i',
+  error_sign = ' ',
+  warn_sign = ' ',
+  hint_sign = ' ',
+  infor_sign = ' ',
   border_style = "round",
 }
 
@@ -43,6 +43,11 @@ local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
     mappings = {
+      i = {
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-[>"] = actions.close,
+      },
       n = {
         ["q"] = actions.close
       },
@@ -64,3 +69,6 @@ local lualine = require 'lualine'
 lualine.setup {
   options = {theme = 'tokyonight'}
 }
+
+-- git signs
+require('gitsigns').setup()

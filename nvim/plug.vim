@@ -7,6 +7,7 @@ call plug#begin('~/.vim/plugged')
 " Utilities
 Plug 'tpope/vim-commentary'                                 " easy comments
 Plug 'tpope/vim-surround'                                   " quotes/parens/brackets/etc
+Plug 'lewis6991/gitsigns.nvim'                              " git sign column
 " Plug 'AndrewRadev/splitjoin.vim'                            " gS and gJ
 " Plug 'Yggdroot/indentLine'                                  " Indentation lines
 

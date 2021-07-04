@@ -33,8 +33,9 @@ nnoremap <CR> :noh<CR>
 nnoremap <Esc> :noh<Esc>
 nnoremap <tab> :bnext<CR>
 nnoremap <S-tab> :bprevious<CR>
-nnoremap <c-w> :bd<CR>
 nnoremap <c-t> :enew<CR>
+vnoremap < <gv
+vnoremap > >gv
 
 " telescope.nvim
 nnoremap <silent> f <cmd>Telescope find_files<CR>
@@ -56,3 +57,7 @@ set completeopt=menuone,noinsert,noselect
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set shortmess+=c
+
+" indentline
+let g:indent_blankline_char = ''
+let g:indent_blankline_use_treesitter = v:true

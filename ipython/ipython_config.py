@@ -89,7 +89,7 @@ c.TerminalInteractiveShell.true_color = True
 class MyPrompt(Prompts):
 
     def in_prompt_tokens(self, cli=None):
-        return [(Token.Prompt, u'\u2207 ')]
+        return [(Token.Prompt, u'\uf499 ')]
 
     def out_prompt_tokens(self):
         return [(Token.OutPrompt, u'\u21AA ')]

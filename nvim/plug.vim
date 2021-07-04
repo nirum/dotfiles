@@ -11,13 +11,15 @@ Plug 'lewis6991/gitsigns.nvim'                              " git sign column
 Plug 'lukas-reineke/indent-blankline.nvim'                  " indent guides
 Plug 'kyazdani42/nvim-tree.lua'                             " file explorer
 
-" Core
+" LSP
 Plug 'neovim/nvim-lspconfig'                                " LSP
 Plug 'glepnir/lspsaga.nvim'                                 " LSP UI
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter
-Plug 'nvim-lua/completion-nvim'                             " Completion Engine
+
+" Completion
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'hrsh7th/nvim-compe'                                   " Completion Engine
 Plug 'nvim-telescope/telescope.nvim'                        " Fuzzy Finding
 
 " Style

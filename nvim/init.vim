@@ -41,14 +41,21 @@ nnoremap <silent> s <cmd>Telescope live_grep<CR>
 nnoremap <silent> <space> <cmd>NvimTreeToggle<CR>
 
 " LSP
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-" nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> K :Lspsaga hover_doc<CR>
+nnoremap <silent> <C-j> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent> <C-k> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+nnoremap <silent> ga :Lspsaga code_action<CR>
+nnoremap <silent> ge :Lspsaga show_line_diagnostics<CR>
+nnoremap <silent> gh :Lspsaga lsp_finder<CR>
+nnoremap <silent> gr :Lspsaga rename<CR>
+nnoremap <silent> gs :Lspsaga signature_help<CR>
+nnoremap <silent> gd :Lspsaga preview_definition<CR>
+nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
+
+" terminal
+nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
+tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
 
 " completion
 set completeopt=menuone,noinsert,noselect

@@ -69,7 +69,7 @@ scrolling:
 
 # Font configuration
 font:
-  size: 18.0
+  size: 16.0
   normal:
     family: DankMono Nerd Font
     style: Regular

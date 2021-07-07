@@ -10,6 +10,7 @@ Plug 'tpope/vim-surround'                                   " quotes/parens/brac
 Plug 'lewis6991/gitsigns.nvim'                              " git sign column
 Plug 'lukas-reineke/indent-blankline.nvim'                  " indent guides
 Plug 'kyazdani42/nvim-tree.lua'                             " file explorer
+Plug 'norcalli/nvim-colorizer.lua'                          " color hex codes
 
 " LSP
 Plug 'neovim/nvim-lspconfig'                                " LSP

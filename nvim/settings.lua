@@ -91,6 +91,8 @@ require'compe'.setup {
   };
 }
 
+-- Colorizer
+require 'colorizer'.setup()
 
 -- Theme
 vim.g.tokyonight_style = "night"

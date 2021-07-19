@@ -2,13 +2,13 @@
 " Author: Niru Maheswaranathan
 " Website: https://github.com/nirum/dotfiles
 
+set termguicolors                   " 24-bit color
 runtime ./plug.vim                  " Load plugins
 runtime ./settings.lua              " Plugin settings
 
 syntax on                           " Enable syntax highlighting
 filetype plugin indent on           " filetype-specific plugins
 
-set termguicolors                   " 24-bit color
 set clipboard+=unnamedplus          " use system clipboard
 set norelativenumber nonumber       " relative line numbers
 set gdefault ignorecase smartcase   " smart searching

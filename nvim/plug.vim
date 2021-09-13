@@ -9,8 +9,9 @@ Plug 'tpope/vim-commentary'                                 " easy comments
 Plug 'tpope/vim-surround'                                   " quotes/parens/brackets/etc
 Plug 'lewis6991/gitsigns.nvim'                              " git sign column
 Plug 'lukas-reineke/indent-blankline.nvim'                  " indent guides
-Plug 'kyazdani42/nvim-tree.lua'                             " file explorer
+" Plug 'kyazdani42/nvim-tree.lua'                             " file explorer
 Plug 'norcalli/nvim-colorizer.lua'                          " color hex codes
+Plug 'vimwiki/vimwiki'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'                                " LSP
@@ -22,6 +23,9 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'hrsh7th/nvim-compe'                                   " Completion Engine
 Plug 'nvim-telescope/telescope.nvim'                        " Fuzzy Finding
+
+" Python
+Plug 'sbdchd/neoformat'                                     " yapf formatting
 
 " Style
 Plug 'folke/tokyonight.nvim'                                " Theme

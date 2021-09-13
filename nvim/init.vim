@@ -38,7 +38,7 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap <silent> f <cmd>Telescope find_files<CR>
 nnoremap <silent> s <cmd>Telescope live_grep<CR>
-nnoremap <silent> <space> <cmd>NvimTreeToggle<CR>
+" nnoremap <silent> <space> <cmd>NvimTreeToggle<CR>
 
 " LSP
 nnoremap <silent> K :Lspsaga hover_doc<CR>
@@ -62,6 +62,13 @@ set completeopt=menuone,noinsert,noselect
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set shortmess+=c
+
+" yapf
+let g:neoformat_enabled_python = ['yapf']
+augroup autofmt
+  autocmd!
+  autocmd BufWritePre * Neoformat
+augroup END
 
 " indentline
 let g:indent_blankline_char = ''

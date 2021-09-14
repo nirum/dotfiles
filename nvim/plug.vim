@@ -23,6 +23,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'hrsh7th/nvim-compe'                                   " Completion Engine
 Plug 'nvim-telescope/telescope.nvim'                        " Fuzzy Finding
 
+" Python
+Plug 'sbdchd/neoformat'                                     " yapf formatting
+
 " Style
 Plug 'folke/tokyonight.nvim'                                " Theme
 Plug 'kyazdani42/nvim-web-devicons'                         " Icons

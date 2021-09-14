@@ -65,6 +65,13 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set shortmess+=c
 
+" yapf
+let g:neoformat_enabled_python = ['yapf']
+augroup autofmt
+  autocmd!
+  autocmd BufWritePre * Neoformat
+augroup END
+
 " indentline
 let g:indent_blankline_char = ''
 let g:indent_blankline_use_treesitter = v:true

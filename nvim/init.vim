@@ -6,9 +6,6 @@ set termguicolors                   " 24-bit color
 runtime ./plug.vim                  " Load plugins
 runtime ./settings.lua              " Plugin settings
 
-syntax on                           " Enable syntax highlighting
-filetype plugin indent on           " filetype-specific plugins
-
 set clipboard+=unnamedplus          " use system clipboard
 set norelativenumber nonumber       " relative line numbers
 set gdefault ignorecase smartcase   " smart searching
@@ -38,12 +35,11 @@ vnoremap < <gv
 vnoremap > >gv
 nnoremap <silent> f <cmd>Telescope find_files<CR>
 nnoremap <silent> s <cmd>Telescope live_grep<CR>
-nnoremap <silent> <space> <cmd>NvimTreeToggle<CR>
 
 " LSP
 nnoremap <silent> K :Lspsaga hover_doc<CR>
-nnoremap <silent> <C-j> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-nnoremap <silent> <C-k> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+" nnoremap <silent> <C-j> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+" nnoremap <silent> <C-k> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 nnoremap <silent> ga :Lspsaga code_action<CR>
 nnoremap <silent> ge :Lspsaga show_line_diagnostics<CR>
 nnoremap <silent> gh :Lspsaga lsp_finder<CR>
@@ -52,6 +48,12 @@ nnoremap <silent> gs :Lspsaga signature_help<CR>
 nnoremap <silent> gd :Lspsaga preview_definition<CR>
 nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
+
+" vimwiki
+nmap <bs> <Plug>VimwikiIndex
+nmap <space> <Plug>VimwikiToggleListItem
+let g:vimwiki_list = [{'path': '~/wiki/',
+                      \ 'syntax': 'default', 'ext': '.md'}]
 
 " terminal
 nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>

@@ -7,7 +7,7 @@ runtime ./plug.vim                  " Load plugins
 runtime ./settings.lua              " Plugin settings
 
 set clipboard+=unnamedplus          " use system clipboard
-set norelativenumber nonumber       " relative line numbers
+set relativenumber number           " relative line numbers
 set gdefault ignorecase smartcase   " smart searching
 set splitright
 set splitbelow

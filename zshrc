@@ -44,7 +44,7 @@ export EDITOR="nvim"
 alias v='nvim'
 
 # system
-alias lf='ls -lSFh'
+alias lf="ls -lSFh | awk '{print \$5, \"\t\", \$9}'"
 alias la='ls -a'
 alias sl='ls'
 
@@ -61,6 +61,7 @@ alias gb='git branch'
 alias gba='git branch -a'
 alias gr='git remote'
 alias grv='git remote -v'
+alias gco='git checkout'
 
 # tmux
 alias tls='tmux ls'

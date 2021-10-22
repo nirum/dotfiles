@@ -31,7 +31,7 @@ Plug 'sbdchd/neoformat'                                     " yapf formatting
 " Style
 Plug 'folke/tokyonight.nvim'                                " Theme
 Plug 'kyazdani42/nvim-web-devicons'                         " Icons
-Plug 'hoob3rt/lualine.nvim'                                 " Status line
+Plug 'nvim-lualine/lualine.nvim'                            " Status line
 Plug 'romgrk/barbar.nvim'                                   " Tab line
 
 call plug#end()

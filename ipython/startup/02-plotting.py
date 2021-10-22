@@ -8,4 +8,4 @@ plt.ion()
 
 # customization
 from matplotlib.pyplot import *
-from jetpack import *
+from jetplot import *

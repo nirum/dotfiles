@@ -56,7 +56,7 @@ alias ga='git add'
 alias gu='git pull'
 alias gp='git push'
 alias gd='git diff'
-alias gl='git log'
+alias gl='git log --oneline --graph'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gr='git remote'
@@ -111,26 +111,7 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --ignore-vcs'
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# latex
-#export PATH="/usr/local/texlive/2020/bin/x86_64-darwin:$PATH"
-#export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-
-# Local configuration
-[[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
-
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/Users/niru/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/Users/niru/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/Users/niru/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/Users/niru/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# # <<< conda initialize <<<
-
+# configure PATH
+export PATH="/usr/local/texlive/2021/bin/universal-darwin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"

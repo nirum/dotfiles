@@ -7,10 +7,15 @@ call plug#begin('~/.vim/plugged')
 " Utilities
 Plug 'tpope/vim-commentary'                                 " easy comments
 Plug 'tpope/vim-surround'                                   " quotes/parens/brackets/etc
-Plug 'lewis6991/gitsigns.nvim'                              " git sign column
 Plug 'lukas-reineke/indent-blankline.nvim'                  " indent guides
 Plug 'norcalli/nvim-colorizer.lua'                          " color hex codes
 Plug 'vimwiki/vimwiki'                                      " wiki
+
+" git
+Plug 'lewis6991/gitsigns.nvim'                              " git sign column
+Plug 'tpope/vim-fugitive'                                   " git command support
+Plug 'tpope/vim-rhubarb'                                    " GitHub command support
+Plug 'junegunn/gv.vim'                                      " git commit browser (:gv)
 
 " LSP
 Plug 'neovim/nvim-lspconfig'                                " LSP

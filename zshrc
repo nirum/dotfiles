@@ -115,3 +115,6 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --ignore-vcs'
 export PATH="/usr/local/texlive/2021/bin/universal-darwin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+
+# local config
+[[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh

@@ -36,9 +36,10 @@ nnoremap <S-tab> :bprevious<CR>
 nnoremap <c-t> :enew<CR>
 vnoremap < <gv
 vnoremap > >gv
+
+" Telescope
 nnoremap <silent> f <cmd>Telescope find_files<CR>
 nnoremap <silent> s <cmd>Telescope live_grep<CR>
-" nnoremap <silent> <space> <cmd>NvimTreeToggle<CR>
 
 " LSP
 nnoremap <silent> K :Lspsaga hover_doc<CR>

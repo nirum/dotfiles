@@ -14,6 +14,12 @@ Plug 'norcalli/nvim-colorizer.lua'                          " color hex codes
 Plug 'tpope/vim-fugitive'                                   " git commands
 Plug 'lewis6991/gitsigns.nvim'                              " git sign column
 
+" git
+Plug 'lewis6991/gitsigns.nvim'                              " git sign column
+Plug 'tpope/vim-fugitive'                                   " git command support
+Plug 'tpope/vim-rhubarb'                                    " GitHub command support
+Plug 'junegunn/gv.vim'                                      " git commit browser (:gv)
+
 " LSP
 Plug 'neovim/nvim-lspconfig'                                " LSP
 Plug 'glepnir/lspsaga.nvim'                                 " LSP UI

@@ -1,3 +1,7 @@
+-- plugins.lua
+-- Author: Niru Maheswaranathan
+-- Website: https://github.com/nirum/dotfiles
+
 packer = require('packer')
 
 packer.startup(function(use) 
@@ -22,10 +26,3 @@ packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons'              -- Icons
   use 'nvim-lualine/lualine.nvim'                 -- Status line
 end)
-
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])

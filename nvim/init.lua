@@ -1,9 +1,10 @@
+-- init.lua
+-- Author: Niru Maheswaranathan
+-- Website: https://github.com/nirum/dotfiles
+
 vim.o.termguicolors = true
-vim.cmd([[
-  runtime ./plug.vim
-  runtime ./settings.lua
-]])
--- require 'settings.lua'
+require('plugins')
+require('settings')
 
 vim.opt.relativenumber = true
 vim.opt.number = true
@@ -20,9 +21,7 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
-
 vim.opt.undofile = true
-vim.opt.undodir:append { "~/.vim-undo" }
 
 local key_mapper = function(mode, key, result)
   vim.api.nvim_set_keymap(

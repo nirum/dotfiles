@@ -7,14 +7,14 @@ local nvim_lsp = require 'lspconfig'
 nvim_lsp.pyright.setup{}
 nvim_lsp.tsserver.setup{}
 
-local saga = require 'lspsaga'
-saga.init_lsp_saga {
-  error_sign = ' ',
-  warn_sign = ' ',
-  hint_sign = ' ',
-  infor_sign = ' ',
-  border_style = "round",
-}
+-- local saga = require 'lspsaga'
+-- saga.init_lsp_saga {
+--   error_sign = ' ',
+--   warn_sign = ' ',
+--   hint_sign = ' ',
+--   infor_sign = ' ',
+--   border_style = "round",
+-- }
 
 -- Treesitter
 require 'nvim-treesitter.configs'.setup {
@@ -57,7 +57,7 @@ require('telescope').setup{
 
 
 -- Completion
-require'compe'.setup {
+require'cmp'.setup {
   enabled = true;
   autocomplete = true;
   debug = false;
@@ -72,7 +72,7 @@ require'compe'.setup {
   max_menu_width = 100;
   documentation = {
     border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-    winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+    -- winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
     max_width = 120,
     min_width = 60,
     max_height = math.floor(vim.o.lines * 0.3),

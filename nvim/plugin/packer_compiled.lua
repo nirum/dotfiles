@@ -89,6 +89,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/niru/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/Users/niru/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/niru/.local/share/nvim/site/pack/packer/start/lualine.nvim"

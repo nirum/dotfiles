@@ -19,15 +19,22 @@ packer.startup(function(use)
   use 'neovim/nvim-lspconfig'                     -- LSP
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
+
   use 'hrsh7th/cmp-nvim-lsp'                      -- [cmp] LSP source
   use 'hrsh7th/cmp-path'                          -- [cmp] path source
   use 'hrsh7th/cmp-buffer'                        -- [cmp] buffer source
   use 'hrsh7th/nvim-cmp'                          -- Completion Engine
+
+  use 'onsails/lspkind-nvim'                      -- adds symbols to LSP completion
+
   use 'nvim-telescope/telescope.nvim'             -- Fuzzy Finding
   use 'sbdchd/neoformat'                          -- yapf formatting
   use 'folke/tokyonight.nvim'                     -- Theme
-  use 'kyazdani42/nvim-web-devicons'              -- Icons
-  use 'nvim-lualine/lualine.nvim'                 -- Status line
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
 
   use { 
     'kdheepak/tabline.nvim',
@@ -49,9 +56,6 @@ packer.startup(function(use)
       })
     end,
     requires = { { 'nvim-lualine/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
-
   }
-
-
 
 end)

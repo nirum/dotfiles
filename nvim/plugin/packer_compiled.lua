@@ -69,6 +69,18 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/Users/niru/.local/share/nvim/site/pack/packer/start/cmp-buffer"
+  },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/Users/niru/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+  },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "/Users/niru/.local/share/nvim/site/pack/packer/start/cmp-path"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/Users/niru/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
@@ -117,6 +129,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/niru/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
+  ["tabline.nvim"] = {
+    config = { "\27LJ\2\n�\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0035\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\foptions\25component_separators\1\3\0\0\b\b\23section_separators\1\0\5\21show_tabs_always\1\27max_bufferline_percent\3B\18show_devicons\2\23show_filename_only\1\15show_bufnr\1\1\3\0\0\b\b\1\0\1\venable\2\nsetup\ftabline\frequire\0" },
+    loaded = true,
+    path = "/Users/niru/.local/share/nvim/site/pack/packer/start/tabline.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/niru/.local/share/nvim/site/pack/packer/start/telescope.nvim"
@@ -140,6 +157,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: tabline.nvim
+time([[Config for tabline.nvim]], true)
+try_loadstring("\27LJ\2\n�\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0035\4\a\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\foptions\25component_separators\1\3\0\0\b\b\23section_separators\1\0\5\21show_tabs_always\1\27max_bufferline_percent\3B\18show_devicons\2\23show_filename_only\1\15show_bufnr\1\1\3\0\0\b\b\1\0\1\venable\2\nsetup\ftabline\frequire\0", "config", "tabline.nvim")
+time([[Config for tabline.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

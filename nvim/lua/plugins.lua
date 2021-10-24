@@ -19,10 +19,39 @@ packer.startup(function(use)
   use 'neovim/nvim-lspconfig'                     -- LSP
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
+  use 'hrsh7th/cmp-nvim-lsp'                      -- [cmp] LSP source
+  use 'hrsh7th/cmp-path'                          -- [cmp] path source
+  use 'hrsh7th/cmp-buffer'                        -- [cmp] buffer source
   use 'hrsh7th/nvim-cmp'                          -- Completion Engine
   use 'nvim-telescope/telescope.nvim'             -- Fuzzy Finding
   use 'sbdchd/neoformat'                          -- yapf formatting
   use 'folke/tokyonight.nvim'                     -- Theme
   use 'kyazdani42/nvim-web-devicons'              -- Icons
   use 'nvim-lualine/lualine.nvim'                 -- Status line
+
+  use { 
+    'kdheepak/tabline.nvim',
+    config = function()
+      require('tabline').setup({
+        -- Defaults configuration options
+        enable = true,
+        options = {
+        -- If lualine is installed tabline will use separators configured in lualine by default.
+        -- These options can be used to override those settings.
+          section_separators = {'', ''},
+          component_separators = {'', ''},
+          max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
+          show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
+          show_devicons = true, -- this shows devicons in buffer section
+          show_bufnr = false, -- this appends [bufnr] to buffer section,
+          show_filename_only = false, -- shows base filename only instead of relative path in filename
+        }
+      })
+    end,
+    requires = { { 'nvim-lualine/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
+
+  }
+
+
+
 end)

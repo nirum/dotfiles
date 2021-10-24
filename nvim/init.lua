@@ -5,31 +5,46 @@ vim.cmd([[
 ]])
 -- require 'settings.lua'
 
+vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.clipboard:append { "unnamedplus" }
+vim.opt.gdefault = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.foldlevelstart = 99
+vim.opt.signcolumn = 'yes'
+
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+
+vim.opt.undofile = true
+vim.opt.undodir:append { "~/.vim-undo" }
+
+local key_mapper = function(mode, key, result)
+  vim.api.nvim_set_keymap(
+    mode,
+    key,
+    result,
+    {noremap = true, silent = true}
+  )
+end
+
+key_mapper('', ';', ':')
+key_mapper('', ':', ';')
+
+key_mapper('n', '<CR>', ':noh<CR>')
+key_mapper('n', '<Esc>', ':noh<Esc>')
+key_mapper('n', '<tab>', ':next<CR>')
+key_mapper('n', '<S-tab>', ':previous<CR>')
+
+key_mapper('i', '<', '<gv')
+key_mapper('i', '>', '>gv')
+
 vim.cmd([[
-  set clipboard+=unnamedplus
-  set relativenumber number
-  set gdefault ignorecase smartcase
-  set splitright
-  set splitbelow
-  set foldlevelstart=99
-  set signcolumn=yes
-
-  set tabstop=2 shiftwidth=2 expandtab smartindent
-
-  set undofile
-  set undodir=~/.vim-undo
-
-  nnoremap ; :
-  nnoremap : ;
-
-  nnoremap <CR> :noh<CR>
-  nnoremap <Esc> :noh<Esc>
-  nnoremap <tab> :next<CR>
-  nnoremap <S-tab> :previous<CR>
-
-  vnoremap < <gv
-  vnoremap > >gv
-
   nnoremap <silent> f <cmd>Telescope find_files<CR>
   nnoremap <silent> s <cmd>Telescope live_grep<CR>
 

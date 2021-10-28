@@ -62,7 +62,7 @@ alias gba='git branch -a'
 alias gr='git remote'
 alias grv='git remote -v'
 alias gco='git checkout'
-alias gpsu="git push --set-upstream origin $(git branch --show-current)"
+alias gpsu='git push --set-upstream origin $(git branch --show-current)'
 
 # tmux
 alias tls='tmux ls'

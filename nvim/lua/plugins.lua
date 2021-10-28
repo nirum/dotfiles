@@ -10,6 +10,7 @@ packer.startup(function(use)
 
   use 'tpope/vim-commentary'                      -- comments
   use 'tpope/vim-surround'                        -- quotes/parens/brackets/etc
+  use 'tpope/vim-unimpaired'                      -- [] mappings
 
   use 'lukas-reineke/indent-blankline.nvim'       -- indent guides
   use 'norcalli/nvim-colorizer.lua'               -- color hex codes

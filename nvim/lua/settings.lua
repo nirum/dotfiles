@@ -43,6 +43,23 @@ require('telescope').setup({
         ["q"] = actions.close
       },
     },
+  },
+  extensions = {
+    dash = {
+      dash_app_path = '/Applications/Dash.app',
+      search_engine = 'ddg',
+        file_type_keywords = {
+        dashboard = false,
+        NvimTree = false,
+        TelescopePrompt = false,
+        terminal = false,
+        packer = false,
+        -- a table of strings will search on multiple keywords
+        python = { 'py', 'np', 'scipy', 'pd', 'plt', 'pl', 'torch' },
+        -- you can also do a string, for example,
+        bash = 'sh'
+      },
+    },
   }
 })
 

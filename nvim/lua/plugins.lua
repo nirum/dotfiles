@@ -26,6 +26,12 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-path'                          -- [cmp] path source
   use 'hrsh7th/cmp-buffer'                        -- [cmp] buffer source
   use 'hrsh7th/nvim-cmp'                          -- Completion Engine
+  use({
+    'mrjones2014/dash.nvim',
+    requires = { 'nvim-telescope/telescope.nvim' },
+    run = 'make install',
+    disable = not vim.fn.has('macunix'),
+  })
 
   use 'onsails/lspkind-nvim'                      -- adds symbols to LSP completion
 

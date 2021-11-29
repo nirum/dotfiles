@@ -19,6 +19,8 @@ packer.startup(function(use)
   use 'tpope/vim-fugitive'                        -- git command support
 
   use 'neovim/nvim-lspconfig'                     -- LSP
+  use 'mfussenegger/nvim-dap'                     -- DAP
+  use 'mfussenegger/nvim-dap-python'              -- pip install debugpy
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
 

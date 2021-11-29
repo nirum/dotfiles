@@ -40,8 +40,8 @@ key_mapper('n', '<Esc>', ':noh<Esc>')
 key_mapper('n', '<tab>', ':tabnext<CR>')
 key_mapper('n', '<S-tab>', ':tabprevious<CR>')
 
-key_mapper('i', '<', '<gv')
-key_mapper('i', '>', '>gv')
+key_mapper('v', '<', '<gv')
+key_mapper('v', '>', '>gv')
 
 vim.cmd([[
   nnoremap <silent> f <cmd>Telescope find_files<CR>

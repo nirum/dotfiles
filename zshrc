@@ -120,3 +120,4 @@ export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
 
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
+autoload -Uz compinit && compinit

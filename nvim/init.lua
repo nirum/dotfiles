@@ -47,7 +47,13 @@ vim.cmd([[
   nnoremap <silent> f <cmd>Telescope find_files<CR>
   nnoremap <silent> s <cmd>Telescope live_grep<CR>
 
-  let g:neoformat_enabled_python = ['yapf']
+  let g:neoformat_python_ufmt = {
+  \ 'exe': 'ufmt',
+  \ 'args': ['format'],
+  \ 'replace': 1,
+  \ }
+
+  let g:neoformat_enabled_python = ['ufmt', 'black']
   augroup autofmt
     autocmd!
     autocmd BufWritePre * Neoformat

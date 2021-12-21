@@ -30,8 +30,8 @@ vim.opt.foldlevelstart = 99
 vim.opt.signcolumn = 'yes'
 
 -- Number of spaces a <Tab> counts for.
--- vim.opt.tabstop = 2
--- vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 
 -- Replace <Tab> with spaces in insert mode.
 vim.opt.expandtab = true

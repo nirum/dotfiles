@@ -4,6 +4,7 @@
 
 require('core.options')
 require('core.mappings')
+
 -- require('plugins')
 -- require('settings')
 -- require('dbg')

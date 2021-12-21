@@ -18,7 +18,7 @@ vim.cmd([[
   \ 'replace': 1,
   \ }
 
-  let g:neoformat_enabled_python = ['ufmt', 'black']
+  let g:neoformat_enabled_python = ['ufmt']
   augroup autofmt
     autocmd!
     autocmd BufWritePre * Neoformat

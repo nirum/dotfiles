@@ -36,6 +36,9 @@ keymap('n', '<S-h>', ':bprevious<CR>', opts)
 keymap('v', '<', '<gv', opts)
 keymap('v', '>', '>gv', opts)
 
--- -- Move text up and down when visually selected.
+-- Move text up and down when visually selected.
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+
+-- Directory explorer
+keymap("n", "<leader>e", ":Lex 30<cr>", opts)

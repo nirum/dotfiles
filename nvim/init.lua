@@ -5,10 +5,7 @@
 require('core.options')
 require('core.mappings')
 require('core.plugins')
-
--- require('plugins')
--- require('settings')
--- require('dbg')
+require('core.settings')
 
 -- vim.cmd([[
 --   nnoremap <silent> f <cmd>Telescope find_files<CR>

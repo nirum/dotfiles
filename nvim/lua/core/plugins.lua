@@ -56,7 +56,7 @@ packer.startup(function(use)
   -- use 'nvim-telescope/telescope.nvim'             -- Fuzzy Finding
   -- use 'nvim-telescope/telescope-dap.nvim'
   -- use 'sbdchd/neoformat'                          -- yapf formatting
-  -- use 'folke/tokyonight.nvim'                     -- Theme
+  use 'folke/tokyonight.nvim'                     -- colorscheme
 
   -- use {
     -- 'nvim-lualine/lualine.nvim',

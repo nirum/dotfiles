@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def main(*args):
     pass
 
@@ -20,6 +21,8 @@ def f(x):
 def multiply(x: int, y: int):
 
     z = np.random.randn(32, 500)
+
+    c = Foo()
 
     return x * y
 

@@ -1,3 +1,7 @@
+-- mappings.lua
+-- Author: Niru Maheswaranathan
+-- Website: https://github.com/nirum/dotfiles
+
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
@@ -11,8 +15,8 @@ keymap('', ';', ':', opts)
 keymap('', ':', ';', opts)
 
 -- Clear highlighting..
--- keymap('n', '<CR>', ':noh<CR>', opts)
--- keymap('n', '<Esc>', ':noh<Esc>', opts)
+keymap('n', '<CR>', ':noh<CR>', opts)
+keymap('n', '<Esc>', ':noh<Esc>', opts)
 
 -- Window navigation.
 keymap('n', '<C-h>', '<C-w>h', opts)
@@ -23,6 +27,10 @@ keymap('n', '<C-l>', '<C-w>l', opts)
 -- Tab navigation.
 keymap('n', '<tab>', ':tabnext<CR>', opts)
 keymap('n', '<S-tab>', ':tabprevious<CR>', opts)
+
+-- Buffer navigation.
+keymap('n', '<S-l>', ':bnext<CR>', opts)
+keymap('n', '<S-h>', ':bprevious<CR>', opts)
 
 -- Visual mode persistent indenting.
 keymap('v', '<', '<gv', opts)

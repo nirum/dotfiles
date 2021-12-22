@@ -1,3 +1,7 @@
+-- options.lua
+-- Author: Niru Maheswaranathan
+-- Website: https://github.com/nirum/dotfiles
+
 local options = {
   termguicolors = true,       -- User 24 bit color in the terminal.
   relativenumber = true,      -- Use relative line numbers.

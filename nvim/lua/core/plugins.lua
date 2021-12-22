@@ -31,17 +31,17 @@ packer.startup(function(use)
   use 'nvim-lua/popup.nvim'                       -- An implementation of the Popup API in neovim.
   use 'nvim-lua/plenary.nvim'                     -- Useful lua functions used by lots of plugins.
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   use 'tpope/vim-commentary'                      -- comments
   -- use 'tpope/vim-surround'                        -- quotes/parens/brackets/etc
   -- use 'tpope/vim-unimpaired'                      -- [] mappings
 
-  use 'lukas-reineke/indent-blankline.nvim'       -- indent guides
-  use 'norcalli/nvim-colorizer.lua'               -- color hex codes
+  -- use 'lukas-reineke/indent-blankline.nvim'       -- indent guides
+  -- use 'norcalli/nvim-colorizer.lua'               -- color hex codes
 
-  use 'lewis6991/gitsigns.nvim'                   -- git sign column
-  use 'tpope/vim-fugitive'                        -- git command support
+  -- use 'lewis6991/gitsigns.nvim'                   -- git sign column
+  -- use 'tpope/vim-fugitive'                        -- git command support
 
   -- use 'neovim/nvim-lspconfig'                     -- LSP
   -- use 'mfussenegger/nvim-dap'                     -- DAP

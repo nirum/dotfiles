@@ -6,6 +6,7 @@ require('core.options')
 require('core.mappings')
 require('core.plugins')
 require('core.colorscheme')
+require('core.cmp')
 
 -- vim.cmd([[
 --   nnoremap <silent> f <cmd>Telescope find_files<CR>

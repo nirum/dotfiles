@@ -47,15 +47,21 @@ packer.startup(function(use)
   -- use 'mfussenegger/nvim-dap'                     -- DAP
   -- use 'mfussenegger/nvim-dap-python'              -- pip install debugpy
 
+  use 'hrsh7th/nvim-cmp'                          -- Completion Engine
+  use 'hrsh7th/cmp-path'                          -- [cmp] path source
+  use 'hrsh7th/cmp-buffer'                        -- [cmp] buffer source
+  use 'hrsh7th/cmp-cmdline'                        -- [cmp] buffer source
+
   -- use 'hrsh7th/cmp-nvim-lsp'                      -- [cmp] LSP source
-  -- use 'hrsh7th/cmp-path'                          -- [cmp] path source
-  -- use 'hrsh7th/cmp-buffer'                        -- [cmp] buffer source
-  -- use 'hrsh7th/nvim-cmp'                          -- Completion Engine
   -- use 'onsails/lspkind-nvim'                      -- adds symbols to LSP completion
+
+  use 'L3MON4D3/LuaSnip'                          -- snippets engine
+  use 'rafamadriz/friendly-snippets'              -- preset snippets
 
   -- use 'nvim-telescope/telescope.nvim'             -- Fuzzy Finding
   -- use 'nvim-telescope/telescope-dap.nvim'
   -- use 'sbdchd/neoformat'                          -- yapf formatting
+  --
   use 'folke/tokyonight.nvim'                     -- colorscheme
 
   -- use {

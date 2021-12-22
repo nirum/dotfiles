@@ -50,7 +50,8 @@ packer.startup(function(use)
   use 'hrsh7th/nvim-cmp'                          -- Completion Engine
   use 'hrsh7th/cmp-path'                          -- [cmp] path source
   use 'hrsh7th/cmp-buffer'                        -- [cmp] buffer source
-  use 'hrsh7th/cmp-cmdline'                        -- [cmp] buffer source
+  use 'hrsh7th/cmp-cmdline'                       -- [cmp] cmdline source
+  use 'saadparwaiz1/cmp_luasnip'                  -- snippet completions
 
   -- use 'hrsh7th/cmp-nvim-lsp'                      -- [cmp] LSP source
   -- use 'onsails/lspkind-nvim'                      -- adds symbols to LSP completion

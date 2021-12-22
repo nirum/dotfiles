@@ -20,6 +20,7 @@ local options = {
   smartindent = false,        -- Try to be smart about indents on new lines.
   undofile = true,            -- Use an undo file.
   scrolloff = 8,              -- Padding when scrolling.
+  completeopt = { "menuone", "noselect" }, -- mostly just for cmp
 }
 
 for k, v in pairs(options) do

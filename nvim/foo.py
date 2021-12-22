@@ -22,3 +22,7 @@ def multiply(x: int, y: int):
     z = np.random.randn(32, 500)
 
     return x * y
+
+
+if __name__ == "__main__":
+    main()

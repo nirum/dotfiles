@@ -25,7 +25,7 @@ packer.init {
   },
 }
 
-packer.startup(function(use) 
+packer.startup(function(use)
 
   use 'wbthomason/packer.nvim'                    -- Haver packer manage itself.
   use 'nvim-lua/popup.nvim'                       -- An implementation of the Popup API in neovim.
@@ -62,9 +62,9 @@ packer.startup(function(use)
   use 'neovim/nvim-lspconfig'                     -- LSP
   use "williamboman/nvim-lsp-installer"           -- simple to use language server installer
 
-  -- use 'nvim-telescope/telescope.nvim'             -- Fuzzy Finding
+  use 'nvim-telescope/telescope.nvim'             -- Fuzzy Finding
   -- use 'nvim-telescope/telescope-dap.nvim'
-  -- use 'sbdchd/neoformat'                          -- yapf formatting
+  use 'sbdchd/neoformat'                          -- yapf formatting
   --
   use 'folke/tokyonight.nvim'                     -- colorscheme
 

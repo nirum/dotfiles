@@ -42,3 +42,7 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Directory explorer
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+
+-- Telescope
+keymap("n", "f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "s", "<cmd>Telescope live_grep<cr>", opts)

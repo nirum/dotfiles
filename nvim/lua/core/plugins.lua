@@ -31,7 +31,11 @@ packer.startup(function(use)
   use 'nvim-lua/popup.nvim'                       -- An implementation of the Popup API in neovim.
   use 'nvim-lua/plenary.nvim'                     -- Useful lua functions used by lots of plugins.
 
-  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',            -- treesitter support
+    run = ':TSUpdate'
+  }
+  use 'p00f/nvim-ts-rainbow'                      -- rainbow colored parentheses
 
   use 'tpope/vim-commentary'                      -- comments
   -- use 'tpope/vim-surround'                        -- quotes/parens/brackets/etc

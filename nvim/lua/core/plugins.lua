@@ -37,7 +37,7 @@ packer.startup(function(use)
   }
   use 'p00f/nvim-ts-rainbow'                      -- rainbow colored parentheses
 
-  use 'tpope/vim-commentary'                      -- comments
+  -- use 'tpope/vim-commentary'                      -- comments
   -- use 'tpope/vim-surround'                        -- quotes/parens/brackets/etc
   -- use 'tpope/vim-unimpaired'                      -- [] mappings
 
@@ -71,6 +71,27 @@ packer.startup(function(use)
   use 'sbdchd/neoformat'                          -- yapf formatting
   --
   use 'folke/tokyonight.nvim'                     -- colorscheme
+
+  use {
+    'numToStr/Comment.nvim',                    -- commenting plugin
+    config = function()
+      require('Comment').setup()
+    end
+  }
+
+  use {
+    'windwp/nvim-autopairs',                    -- commenting plugin
+    config = function()
+      require('nvim-autopairs').setup()
+    end
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim',                  -- git signs
+    config = function()
+      require('gitsigns').setup()
+    end
+}
 
   -- use {
   --   'nvim-lualine/lualine.nvim',

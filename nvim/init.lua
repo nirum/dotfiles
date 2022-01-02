@@ -10,7 +10,6 @@ require('core.cmp')
 require('core.lsp')
 require('core.telescope')
 require('core.treesitter')
--- require('core.gitsigns')
 
 vim.cmd([[
 

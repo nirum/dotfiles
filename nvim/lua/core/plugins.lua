@@ -125,6 +125,9 @@ packer.startup(function(use)
 			})
 		end,
 	})
+
+	use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
+
 	-- use {
 	--   'kdheepak/tabline.nvim',
 	--   config = function()

@@ -2,6 +2,7 @@ import numpy as np
 
 
 def main(*args):
+    del args
     pass
 
 
@@ -11,10 +12,14 @@ if __name__ == "__main__":
 
 class Foo:
     def __init__(self):
+
         pass
 
 
 def f(x):
+    y = 2 + 4 - 2
+    if y == 42:
+        print("flo")
     return x ** 2
 
 

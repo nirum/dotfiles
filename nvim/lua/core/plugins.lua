@@ -91,12 +91,24 @@ packer.startup(function(use)
     config = function()
       require('gitsigns').setup()
     end
-}
+  }
 
-  -- use {
-  --   'nvim-lualine/lualine.nvim',
-  --   requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  -- }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    config = function() require'nvim-tree'.setup {} end
+  }
+
+  use {
+    'akinsho/bufferline.nvim',
+    requires = {
+      {'kyazdani42/nvim-web-devicons', opt = true},
+      {'moll/vim-bbye', opt = false},
+    },
+    config = function()
+      require('bufferline').setup()
+    end
+  }
 
   -- use { 
   --   'kdheepak/tabline.nvim',

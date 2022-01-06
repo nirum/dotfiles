@@ -41,7 +41,7 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Directory explorer (NvimTree)
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+--keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Format (null-ls)
 keymap("n", "<leader>f", ":lua vim.lsp.buf.formatting_sync()<CR>", opts)

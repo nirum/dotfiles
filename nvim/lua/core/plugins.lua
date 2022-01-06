@@ -34,13 +34,14 @@ packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter", -- treesitter support
 		run = ":TSUpdate",
 	})
-	-- use("p00f/nvim-ts-rainbow") -- rainbow colored parentheses
 
-	-- use 'tpope/vim-commentary'                      -- comments
-	-- use 'tpope/vim-surround'                        -- quotes/parens/brackets/etc
-	-- use 'tpope/vim-unimpaired'                      -- [] mappings
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("indent_blankline").setup()
+		end,
+	})
 
-	-- use 'lukas-reineke/indent-blankline.nvim'       -- indent guides
 	-- use 'norcalli/nvim-colorizer.lua'               -- color hex codes
 
 	-- use 'lewis6991/gitsigns.nvim'                   -- git sign column
@@ -138,9 +139,11 @@ packer.startup(function(use)
 
 	use({
 		"akinsho/toggleterm.nvim",
-		require("toggleterm").setup({
-			open_mapping = [[<c-t>]],
-		}),
+		config = function()
+			require("toggleterm").setup({
+				open_mapping = [[<c-t>]],
+			})
+		end,
 	})
 
 	-- use {

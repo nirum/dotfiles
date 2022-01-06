@@ -128,6 +128,21 @@ packer.startup(function(use)
 
 	use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		config = function()
+			require("lualine").setup()
+		end,
+	})
+
+	use({
+		"akinsho/toggleterm.nvim",
+		require("toggleterm").setup({
+			open_mapping = [[<c-t>]],
+		}),
+	})
+
 	-- use {
 	--   'kdheepak/tabline.nvim',
 	--   config = function()

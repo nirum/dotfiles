@@ -2,14 +2,15 @@
 -- Author: Niru Maheswaranathan
 -- Website: https://github.com/nirum/dotfiles
 
-require('core.options')
-require('core.mappings')
-require('core.plugins')
-require('core.colorscheme')
-require('core.cmp')
-require('core.lsp')
-require('core.telescope')
-require('core.treesitter')
+require("impatient")
+require("core.options")
+require("core.mappings")
+require("core.plugins")
+require("core.colorscheme")
+require("core.cmp")
+require("core.lsp")
+require("core.telescope")
+require("core.treesitter")
 
 vim.cmd([[
 
@@ -26,7 +27,7 @@ vim.cmd([[
   augroup END
 
 ]])
-  -- nnoremap <silent> f <cmd>Telescope find_files<CR>
-  -- nnoremap <silent> s <cmd>Telescope live_grep<CR>
+-- nnoremap <silent> f <cmd>Telescope find_files<CR>
+-- nnoremap <silent> s <cmd>Telescope live_grep<CR>
 --   let g:indent_blankline_char = ''
 --   let g:indent_blankline_use_treesitter = v:true

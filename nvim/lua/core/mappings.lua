@@ -41,7 +41,7 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Directory explorer (NvimTree)
---keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Format (null-ls)
 keymap("n", "<leader>f", ":lua vim.lsp.buf.formatting_sync()<CR>", opts)
@@ -54,3 +54,11 @@ keymap(
 	opts
 )
 keymap("n", "s", "<cmd>Telescope live_grep<cr>", opts)
+
+-- toggleterm
+-- local Terminal = require("toggleterm.terminal").Terminal
+-- local ipython = Terminal:new({ cmd = "ipython3 --nosep --no-banner --profile=mbp", hidden = true })
+-- function _IPYTHON_TOGGLE()
+-- 	ipython:toggle()
+-- end
+-- keymap("n", "<leader>p", "_IPYTHON_TOGGLE()", opts)

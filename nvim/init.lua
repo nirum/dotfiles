@@ -27,7 +27,3 @@ vim.cmd([[
   augroup END
 
 ]])
--- nnoremap <silent> f <cmd>Telescope find_files<CR>
--- nnoremap <silent> s <cmd>Telescope live_grep<CR>
---   let g:indent_blankline_char = ''
---   let g:indent_blankline_use_treesitter = v:true

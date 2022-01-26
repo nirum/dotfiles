@@ -73,6 +73,7 @@ alias tmn='tmux new -s'
 
 # moving around
 alias ls="exa --icons"
+alias icat="kitty +kitten icat"
 alias ..='cd ..'
 alias ...='cd ../..'
 

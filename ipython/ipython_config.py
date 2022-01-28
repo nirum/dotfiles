@@ -17,7 +17,7 @@ c = get_config()
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'osx',
 # 'pyglet', 'qt', 'qt5', 'tk', 'wx').
-#c.InteractiveShellApp.gui = 'qt5'
+# c.InteractiveShellApp.gui = 'qt5'
 
 # Configure matplotlib for interactive use with the default matplotlib backend.
 # c.TerminalIPythonApp.matplotlib = 'qt5'
@@ -27,17 +27,17 @@ c.TerminalIPythonApp.display_banner = False
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
-#c.TerminalIPythonApp.pylab = 'agg'
+# c.TerminalIPythonApp.pylab = 'agg'
 
 # Enable GUI event loop integration with any of ('glut', 'gtk', 'gtk3', 'osx',
 # 'pyglet', 'qt', 'qt5', 'tk', 'wx').
-#c.TerminalIPythonApp.gui = 'qt5'
+# c.TerminalIPythonApp.gui = 'qt5'
 
 # Set the size of the output cache. The default is 1000
-#c.TerminalInteractiveShell.cache_size = 5000
+# c.TerminalInteractiveShell.cache_size = 5000
 
 # Set the editor used by IPython (default to $EDITOR/vi/notepad).
-c.TerminalInteractiveShell.editor = '$EDITOR'
+c.TerminalInteractiveShell.editor = "$EDITOR"
 
 # Use colors for displaying information about objects. Because this information
 # is passed through a pager (like 'less'), and some pagers get confused with
@@ -52,11 +52,14 @@ c.TerminalInteractiveShell.color_info = True
 # no arguments are present).
 c.TerminalInteractiveShell.autocall = 2
 
+# disable automatic formatting using black.
+c.TerminalInteractiveShell.autoformatter = None
+
 # Set the color scheme (NoColor, Linux, or LightBG).
-c.TerminalInteractiveShell.colors = 'linux'
+c.TerminalInteractiveShell.colors = "linux"
 
 # set the color scheme for syntax highlighting
-c.TerminalInteractiveShell.highlighting_style = 'monokai'
+c.TerminalInteractiveShell.highlighting_style = "monokai"
 
 # The shell program to be used for paging.
 # c.TerminalInteractiveShell.pager = 'less'
@@ -78,7 +81,7 @@ c.IPCompleter.omit__names = 2
 c.IPCompleter.limit_to__all__ = False
 
 # If True, any %store-d variables will be automatically restored when IPython starts.
-#c.StoreMagics.autorestore = True
+# c.StoreMagics.autorestore = True
 
 # --------------------
 # Prompt configuration
@@ -86,21 +89,22 @@ c.IPCompleter.limit_to__all__ = False
 
 c.TerminalInteractiveShell.true_color = True
 
-class MyPrompt(Prompts):
 
+class MyPrompt(Prompts):
     def in_prompt_tokens(self, cli=None):
-        return [(Token.Prompt, u'\ufb26 ')]
+        return [(Token.Prompt, u"\ufb26 ")]
 
     def out_prompt_tokens(self):
-        return [(Token.OutPrompt, u'\u21AA ')]
+        return [(Token.OutPrompt, u"\u21AA ")]
 
     def rewrite_prompt_tokens(self):
         width = self._width()
-        return [(Token.Prompt, (' ' * (width - 2)) + '\u21A3 ')]
+        return [(Token.Prompt, (" " * (width - 2)) + "\u21A3 ")]
 
     def continuation_prompt_tokens(self, cli=None, width=None):
         if width is None:
             width = self._width()
-        return [(Token.Prompt, (' ' * (width - 2)) + u'\u2502 ')]
+        return [(Token.Prompt, (" " * (width - 2)) + u"\u2502 ")]
+
 
 c.TerminalInteractiveShell.prompts_class = MyPrompt

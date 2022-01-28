@@ -1,9 +1,10 @@
 # matplotlib backend
 import matplotlib
+import matplotlib.cm as cm
 
 # matplotlib.use('Qt5Agg')
 import matplotlib.pyplot as plt
-import matplotlib.cm as cm
+
 plt.ion()
 
 # customization

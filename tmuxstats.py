@@ -1,4 +1,4 @@
-import psutil;
+import psutil
 
 cpu = 100 * psutil.getloadavg()[0] / psutil.cpu_count()
 mem = psutil.virtual_memory().percent

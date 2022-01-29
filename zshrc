@@ -26,7 +26,7 @@ setopt hist_verify               # Do not execute immediately upon history expan
 # prompt
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '❲%b❳'
+zstyle ':vcs_info:git:*' formats '(%b)'
 setopt PROMPT_SUBST
 function _seg() {
   echo "%{%F{$2}%}$1%{%F{white}%}"

@@ -6,8 +6,6 @@ setopt auto_cd              # if a command is invalid and the name of a director
 setopt correct              # correct mistyped commands
 setopt prompt_subst         # perform expansions
 
-#export TERM=xterm-256color-italic   # Custom terminfo for italic support.
-
 export HISTFILE=~/.zhistory
 export HISTSIZE=10000
 export SAVEHIST=10000
@@ -105,19 +103,13 @@ bindkey '^e' edit-command-line
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
 zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
 
-# fzf + ripgrep
-export FZF_DEFAULT_COMMAND='rg --files --follow --ignore-vcs'
-
 # Bashmarks
 [[ -f ~/.local/bin/bashmarks.sh ]] && source ~/.local/bin/bashmarks.sh
 
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # configure PATH
-export PATH="/usr/local/texlive/2021/bin/universal-darwin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+# export PATH="/usr/local/texlive/2021/bin/universal-darwin:$PATH"
+# export PATH="/opt/homebrew/bin:$PATH"
+# export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
 
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh

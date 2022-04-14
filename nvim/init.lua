@@ -21,9 +21,5 @@ vim.cmd([[
   \ }
 
   let g:neoformat_enabled_python = ['ufmt']
-  " augroup autofmt
-  "   autocmd!
-  "   autocmd BufWritePre * Neoformat
-  " augroup END
 
 ]])

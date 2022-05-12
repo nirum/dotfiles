@@ -2,4 +2,5 @@
 %load_ext autoreload
 %load_ext autotime
 %load_ext loggerhead
+%load_ext pyflyby
 %autoreload 2

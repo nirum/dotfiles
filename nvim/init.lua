@@ -22,4 +22,22 @@ vim.cmd([[
 
   let g:neoformat_enabled_python = ['ufmt']
 
+  function! s:PyPreSave()
+    execute "echo('foo')"
+  endfunction
+
+  function! s:PyPostSave()
+    execute "silent !tidy-imports --black --quiet --replace-star-imports --action REPLACE " . bufname("%")
+    execute "e"
+  endfunction
+
+  :command! PyPreSave :call s:PyPreSave()
+  :command! PyPostSave :call s:PyPostSave()
+
+  augroup pyflyby
+    autocmd!
+    autocmd bufwritepre *.py execute 'PyPreSave'
+    autocmd bufwritepost *.py execute 'PyPostSave'
+  augroup end
+
 ]])

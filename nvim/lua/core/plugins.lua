@@ -45,10 +45,12 @@ packer.startup({
 			end,
 		})
 
-		-- use 'norcalli/nvim-colorizer.lua'               -- color hex codes
-
-		-- use 'lewis6991/gitsigns.nvim'                   -- git sign column
-		-- use 'tpope/vim-fugitive'                        -- git command support
+		use({
+      "norcalli/nvim-colorizer.lua", -- color hex codes
+      config = function()
+        require("colorizer").setup()
+      end,
+    })
 
 		-- use 'mfussenegger/nvim-dap'                     -- DAP
 		-- use 'mfussenegger/nvim-dap-python'              -- pip install debugpy
@@ -110,6 +112,7 @@ packer.startup({
 				{ "kyazdani42/nvim-web-devicons", opt = true },
 				{ "moll/vim-bbye", opt = false },
 			},
+			tag = "v2.*",
 			config = function()
 				require("bufferline").setup()
 			end,
@@ -142,10 +145,11 @@ packer.startup({
 
 		use({
 			"akinsho/toggleterm.nvim",
+			tag = "v1.*",
 			config = function()
 				require("toggleterm").setup({
 					size = 20,
-					-- open_mapping = [[<c-t>]],
+					open_mapping = [[<c-t>]],
 					hide_numbers = true,
 					shade_terminals = true,
 					shading_factor = 1,

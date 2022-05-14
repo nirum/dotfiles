@@ -21,6 +21,7 @@ local options = {
   undofile = true,            -- Use an undo file.
   scrolloff = 8,              -- Padding when scrolling.
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
+  timeoutlen = 300,
 }
 
 for k, v in pairs(options) do

@@ -18,19 +18,13 @@ keymap("", ":", ";", opts)
 keymap("n", "<CR>", ":noh<CR>", opts)
 keymap("n", "<Esc>", ":noh<Esc>", opts)
 
--- Window navigation.
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
-
 -- Tab navigation.
 keymap("n", "<tab>", ":tabnext<CR>", opts)
 keymap("n", "<S-tab>", ":tabprevious<CR>", opts)
 
 -- Buffer navigation.
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- keymap("n", "<S-l>", ":bnext<CR>", opts)
+-- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Visual mode persistent indenting.
 keymap("v", "<", "<gv", opts)
@@ -56,9 +50,9 @@ keymap(
 keymap("n", "s", "<cmd>Telescope live_grep<cr>", opts)
 
 -- toggleterm
--- local Terminal = require("toggleterm.terminal").Terminal
--- local ipython = Terminal:new({ cmd = "ipython3 --nosep --no-banner --profile=mbp", hidden = true })
--- function _IPYTHON_TOGGLE()
--- 	ipython:toggle()
--- end
--- keymap("n", "<leader>p", "_IPYTHON_TOGGLE()", opts)
+local Terminal = require("toggleterm.terminal").Terminal
+local ipython = Terminal:new({ cmd = "ipython3 --nosep --no-banner --profile=mbp", hidden = true })
+function _IPYTHON_TOGGLE()
+	ipython:toggle()
+end
+keymap("n", "<leader>p", "_IPYTHON_TOGGLE()", opts)

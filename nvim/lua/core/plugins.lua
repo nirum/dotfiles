@@ -27,7 +27,7 @@ packer.init({
 
 packer.startup({
 	function(use)
-		use("lewis6991/impatient.nvim")
+		use("lewis6991/impatient.nvim") -- speeds up neovim startup time.
 
 		use("wbthomason/packer.nvim") -- Haver packer manage itself.
 		use("nvim-lua/popup.nvim") -- An implementation of the Popup API in neovim.
@@ -85,7 +85,7 @@ packer.startup({
 		})
 
 		use({
-			"windwp/nvim-autopairs", -- commenting plugin
+			"windwp/nvim-autopairs",
 			config = function()
 				require("nvim-autopairs").setup()
 			end,

@@ -23,8 +23,8 @@ keymap("n", "<tab>", ":tabnext<CR>", opts)
 keymap("n", "<S-tab>", ":tabprevious<CR>", opts)
 
 -- Buffer navigation.
--- keymap("n", "<S-l>", ":bnext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Visual mode persistent indenting.
 keymap("v", "<", "<gv", opts)

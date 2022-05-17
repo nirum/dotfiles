@@ -9,12 +9,12 @@ if not status_ok then
 end
 
 -- Autocommand that reloads neovim whenever we save this file.
-vim.cmd([[
-  augroup packer_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+-- vim.cmd([[
+--   augroup packer_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerSync
+--   augroup end
+-- ]])
 
 -- Have packer use a popup window
 packer.init({
@@ -29,7 +29,7 @@ packer.startup({
 	function(use)
 		use("lewis6991/impatient.nvim") -- speeds up neovim startup time.
 
-		use("wbthomason/packer.nvim") -- Haver packer manage itself.
+		use("wbthomason/packer.nvim") -- Have packer manage itself.
 		use("nvim-lua/popup.nvim") -- An implementation of the Popup API in neovim.
 		use("nvim-lua/plenary.nvim") -- Useful lua functions used by lots of plugins.
 
@@ -59,14 +59,14 @@ packer.startup({
 		use("hrsh7th/cmp-path") -- [cmp] path source
 		use("hrsh7th/cmp-buffer") -- [cmp] buffer source
 		use("hrsh7th/cmp-cmdline") -- [cmp] cmdline source?
-		use("saadparwaiz1/cmp_luasnip") -- snippet completions
+		-- use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
 		use("hrsh7th/cmp-nvim-lsp") -- [cmp] LSP source
 		use("hrsh7th/cmp-nvim-lua") -- [cmp] neovim-lua completions
 		use("onsails/lspkind-nvim") -- adds symbols to LSP completion
 
-		use("L3MON4D3/LuaSnip") -- snippets engine
-		use("rafamadriz/friendly-snippets") -- preset snippets
+		-- use("L3MON4D3/LuaSnip") -- snippets engine
+		-- use("rafamadriz/friendly-snippets") -- preset snippets
 
 		use("neovim/nvim-lspconfig") -- LSP
 		use("williamboman/nvim-lsp-installer") -- simple to use language server installer
@@ -99,26 +99,6 @@ packer.startup({
 		})
 
 		use({
-			"kyazdani42/nvim-tree.lua",
-			requires = { "kyazdani42/nvim-web-devicons", opt = true },
-			config = function()
-				require("nvim-tree").setup({})
-			end,
-		})
-
-		use({
-			"akinsho/bufferline.nvim",
-			requires = {
-				{ "kyazdani42/nvim-web-devicons", opt = true },
-				{ "moll/vim-bbye", opt = false },
-			},
-			tag = "v2.*",
-			config = function()
-				require("bufferline").setup()
-			end,
-		})
-
-		use({
 			"jose-elias-alvarez/null-ls.nvim",
 			requires = {},
 			config = function()
@@ -133,20 +113,17 @@ packer.startup({
 			end,
 		})
 
-    use({
-      "folke/which-key.nvim",
-      config = function()
-        require("which-key").setup({
-
-        })
-      end
+		use({
+      "rcarriga/vim-ultest",
+      requires = { "vim-test/vim-test" },
+      cmd = { "Ultest" },
+      run = ":UpdateRemotePlugins",
     })
-
-		use({ "rcarriga/vim-ultest", requires = { "vim-test/vim-test" }, run = ":UpdateRemotePlugins" })
 
 		use({
 			"nvim-lualine/lualine.nvim",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
+      cmd = { "Ultest" },
 			config = function()
 				require("lualine").setup()
 			end,

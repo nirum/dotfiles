@@ -34,9 +34,6 @@ keymap("v", ">", ">gv", opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
--- Directory explorer (NvimTree)
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
 -- Format (null-ls)
 keymap("n", "<leader>f", ":lua vim.lsp.buf.formatting_sync()<CR>", opts)
 
@@ -55,4 +52,3 @@ local ipython = Terminal:new({ cmd = "ipython3 --nosep --no-banner --profile=mbp
 function _IPYTHON_TOGGLE()
 	ipython:toggle()
 end
-keymap("n", "<leader>p", "_IPYTHON_TOGGLE()", opts)

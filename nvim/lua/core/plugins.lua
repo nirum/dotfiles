@@ -8,14 +8,6 @@ if not status_ok then
 	return
 end
 
--- Autocommand that reloads neovim whenever we save this file.
--- vim.cmd([[
---   augroup packer_config
---     autocmd!
---     autocmd BufWritePost plugins.lua source <afile> | PackerSync
---   augroup end
--- ]])
-
 -- Have packer use a popup window
 packer.init({
 	display = {
@@ -119,15 +111,6 @@ packer.startup({
       cmd = { "Ultest" },
       run = ":UpdateRemotePlugins",
     })
-
-		use({
-			"nvim-lualine/lualine.nvim",
-			requires = { "kyazdani42/nvim-web-devicons", opt = true },
-      cmd = { "Ultest" },
-			config = function()
-				require("lualine").setup()
-			end,
-		})
 
 		use({
 			"akinsho/toggleterm.nvim",

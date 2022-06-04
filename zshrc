@@ -106,15 +106,9 @@ zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|s
 # Bashmarks
 [[ -f ~/.local/bin/bashmarks.sh ]] && source ~/.local/bin/bashmarks.sh
 
-# configure PATH
-# export PATH="/usr/local/texlive/2021/bin/universal-darwin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-# export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-
-# local config
-[[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
-autoload -Uz compinit && compinit
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# local config
+[[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh

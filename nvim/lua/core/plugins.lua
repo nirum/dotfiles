@@ -44,8 +44,10 @@ packer.startup({
       end,
     })
 
-		-- use 'mfussenegger/nvim-dap'                     -- DAP
-		-- use 'mfussenegger/nvim-dap-python'              -- pip install debugpy
+		use('mfussenegger/nvim-dap')                    -- DAP
+		use('mfussenegger/nvim-dap-python')             -- pip install debugpy
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use { "theHamsta/nvim-dap-virtual-text", requires = {"mfussenegger/nvim-dap"} }
 
 		use("hrsh7th/nvim-cmp") -- Completion Engine
 		use("hrsh7th/cmp-path") -- [cmp] path source
@@ -64,7 +66,7 @@ packer.startup({
 		use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 
 		use("nvim-telescope/telescope.nvim") -- Fuzzy Finding
-		-- use 'nvim-telescope/telescope-dap.nvim'
+		use('nvim-telescope/telescope-dap.nvim')
 		use("sbdchd/neoformat") -- yapf formatting
 		--
 		use("folke/tokyonight.nvim") -- colorscheme

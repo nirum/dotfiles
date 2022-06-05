@@ -38,16 +38,15 @@ packer.startup({
 		})
 
 		use({
-      "norcalli/nvim-colorizer.lua", -- color hex codes
-      config = function()
-        require("colorizer").setup()
-      end,
-    })
+			"norcalli/nvim-colorizer.lua", -- color hex codes
+			config = function()
+				require("colorizer").setup()
+			end,
+		})
 
-		use('mfussenegger/nvim-dap')                    -- DAP
-		use('mfussenegger/nvim-dap-python')             -- pip install debugpy
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
-    use { "theHamsta/nvim-dap-virtual-text", requires = {"mfussenegger/nvim-dap"} }
+		use("mfussenegger/nvim-dap") -- DAP
+		use("mfussenegger/nvim-dap-python") -- pip install debugpy
+		use({ "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap" } })
 
 		use("hrsh7th/nvim-cmp") -- Completion Engine
 		use("hrsh7th/cmp-path") -- [cmp] path source
@@ -66,7 +65,7 @@ packer.startup({
 		use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 
 		use("nvim-telescope/telescope.nvim") -- Fuzzy Finding
-		use('nvim-telescope/telescope-dap.nvim')
+		use("nvim-telescope/telescope-dap.nvim")
 		use("sbdchd/neoformat") -- yapf formatting
 		--
 		use("folke/tokyonight.nvim") -- colorscheme
@@ -91,6 +90,10 @@ packer.startup({
 				require("gitsigns").setup()
 			end,
 		})
+		use({
+			"ldelossa/gh.nvim",
+			requires = { { "ldelossa/litee.nvim" } },
+		})
 
 		use({
 			"jose-elias-alvarez/null-ls.nvim",
@@ -108,11 +111,31 @@ packer.startup({
 		})
 
 		use({
-      "rcarriga/vim-ultest",
-      requires = { "vim-test/vim-test" },
-      cmd = { "Ultest" },
-      run = ":UpdateRemotePlugins",
-    })
+			"rcarriga/vim-ultest",
+			requires = { "vim-test/vim-test" },
+			cmd = { "Ultest" },
+			run = ":UpdateRemotePlugins",
+		})
+
+		use({
+			"nvim-lualine/lualine.nvim",
+			requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		})
+		use({
+			"kdheepak/tabline.nvim",
+			requires = { { "nvim-lualine/lualine.nvim", opt = true }, { "kyazdani42/nvim-web-devicons", opt = true } },
+		})
+		use({ "mortepau/codicons.nvim" })
+		use({
+			"yamatsum/nvim-nonicons",
+			requires = { "kyazdani42/nvim-web-devicons" },
+		})
+		use({
+			"kyazdani42/nvim-tree.lua",
+			requires = {
+				"kyazdani42/nvim-web-devicons", -- optional, for file icon
+			},
+		})
 
 		use({
 			"akinsho/toggleterm.nvim",

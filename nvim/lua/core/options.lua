@@ -12,6 +12,7 @@ local options = {
   smartcase = true,           -- Override the ignorecase option if the search contains uppercase letters.
   splitright = true,          -- Position horizontal splits to the right.
   splitbelow = true,          -- Position vertical splits to the bottom.
+  foldmethod = "indent",      -- Fold using indents.
   foldlevelstart = 99,        -- On start, open all folds.
   signcolumn = 'yes',         -- Always show the sign column.
   tabstop = 2,                -- Number of spaces a <Tab> counts for.

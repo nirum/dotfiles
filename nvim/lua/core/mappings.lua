@@ -37,6 +37,9 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- Format (null-ls)
 keymap("n", "<leader>f", ":lua vim.lsp.buf.formatting_sync()<CR>", opts)
 
+-- Tree
+keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
+
 -- Telescope
 keymap(
 	"n",

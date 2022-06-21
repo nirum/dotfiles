@@ -111,13 +111,6 @@ packer.startup({
 		})
 
 		use({
-			"rcarriga/vim-ultest",
-			requires = { "vim-test/vim-test" },
-			cmd = { "Ultest" },
-			run = ":UpdateRemotePlugins",
-		})
-
-		use({
 			"nvim-lualine/lualine.nvim",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})

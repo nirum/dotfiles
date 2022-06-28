@@ -48,6 +48,8 @@ packer.startup({
 		use("mfussenegger/nvim-dap-python") -- pip install debugpy
 		use({ "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap" } })
 
+		use({ "michaelb/sniprun", run = "bash ./install.sh" }) -- REPL driven development
+
 		use("hrsh7th/nvim-cmp") -- Completion Engine
 		use("hrsh7th/cmp-path") -- [cmp] path source
 		use("hrsh7th/cmp-buffer") -- [cmp] buffer source

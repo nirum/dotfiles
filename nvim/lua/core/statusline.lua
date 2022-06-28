@@ -1,8 +1,8 @@
-local icons = require("nvim-nonicons")
-icons.get("file")
-
-local codicons = require("codicons")
-codicons.setup()
+-- local icons = require("nvim-nonicons")
+-- icons.get("file")
+--
+-- local codicons = require("codicons")
+-- codicons.setup()
 
 local lualine = require("lualine")
 lualine.setup({})

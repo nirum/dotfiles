@@ -52,14 +52,14 @@ packer.startup({
 		use("hrsh7th/cmp-path") -- [cmp] path source
 		use("hrsh7th/cmp-buffer") -- [cmp] buffer source
 		use("hrsh7th/cmp-cmdline") -- [cmp] cmdline source?
-		-- use("saadparwaiz1/cmp_luasnip") -- snippet completions
+		use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
 		use("hrsh7th/cmp-nvim-lsp") -- [cmp] LSP source
 		use("hrsh7th/cmp-nvim-lua") -- [cmp] neovim-lua completions
 		use("onsails/lspkind-nvim") -- adds symbols to LSP completion
 
-		-- use("L3MON4D3/LuaSnip") -- snippets engine
-		-- use("rafamadriz/friendly-snippets") -- preset snippets
+		use("L3MON4D3/LuaSnip") -- snippets engine
+		use("rafamadriz/friendly-snippets") -- preset snippets
 
 		use("neovim/nvim-lspconfig") -- LSP
 		use("williamboman/nvim-lsp-installer") -- simple to use language server installer
@@ -117,11 +117,6 @@ packer.startup({
 		use({
 			"kdheepak/tabline.nvim",
 			requires = { { "nvim-lualine/lualine.nvim", opt = true }, { "kyazdani42/nvim-web-devicons", opt = true } },
-		})
-		use({ "mortepau/codicons.nvim" })
-		use({
-			"yamatsum/nvim-nonicons",
-			requires = { "kyazdani42/nvim-web-devicons" },
 		})
 		use({
 			"kyazdani42/nvim-tree.lua",

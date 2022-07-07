@@ -1,5 +1,5 @@
 local pydap = require('dap-python')
-pydap.setup('~/miniconda3/bin/python')
+pydap.setup('~/miniconda3/envs/ctrldev/bin/python')
 pydap.test_runner = 'pytest'
 
 -- keymaps

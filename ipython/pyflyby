@@ -1,9 +1,3 @@
-import os
-import sys
-from glob import glob
-from pathlib import Path
-from os.path import join, expanduser
-
 import numpy as np
 from numpy.random import rand, randn, shuffle, choice, sample
 from numpy import arange, zeros, ones, eye, linspace, pi, inf, nan, cov, array, sqrt, log
@@ -11,17 +5,23 @@ from numpy import arange, zeros, ones, eye, linspace, pi, inf, nan, cov, array, 
 import scipy
 from scipy.stats import kurtosis, skew, zscore, sem
 
+import matplotlib
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import clf, cla, close
+from matplotlib.pyplot import *
+import jetplot as jp
+
+import sys
+from glob import glob
+from pathlib import Path
+from os.path import join, expanduser
+
 import sklearn
 from sklearn.decomposition import PCA, FastICA, NMF
 from sklearn.cluster import KMeans, SpectralClustering
 from sklearn.linear_model import LinearRegression, Ridge, LogisticRegression, Lasso, ElasticNet
 from sklearn.manifold import TSNE, MDS, trustworthiness
-
-import matplotlib
-import matplotlib.cm as cm
-import matplotlib.pyplot as plt
-from matplotlib.pyplot import *
-import jetplot as jp
 
 import pandas as pd
 

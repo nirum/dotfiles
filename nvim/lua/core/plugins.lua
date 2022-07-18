@@ -90,10 +90,6 @@ packer.startup({
 				require("gitsigns").setup()
 			end,
 		})
-		use({
-			"ldelossa/gh.nvim",
-			requires = { { "ldelossa/litee.nvim" } },
-		})
 
 		use({
 			"jose-elias-alvarez/null-ls.nvim",

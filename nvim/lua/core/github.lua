@@ -1,2 +1,2 @@
-require('litee.lib').setup()
-require('litee.gh').setup()
+-- require('litee.lib').setup()
+-- require('litee.gh').setup()

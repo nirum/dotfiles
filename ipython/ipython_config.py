@@ -67,7 +67,7 @@ c.TerminalInteractiveShell.highlighting_style = "monokai"
 # Automatically call the pdb debugger after every exception.
 c.TerminalInteractiveShell.pdb = False
 
-c.InteractiveShell.sphinxify_docstring = True
+c.InteractiveShell.sphinxify_docstring = False
 c.InteractiveShell.mouse_support = True
 
 c.PlainTextFormatter.max_width = 120

@@ -6,9 +6,9 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Remap space as leader key.
-keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- keymap("", "<Space>", "<Nop>", opts)
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = " "
 
 -- Swap colon and semicolon.
 keymap("", ";", ":", opts)
@@ -23,8 +23,8 @@ keymap("n", "<tab>", ":tabnext<CR>", opts)
 keymap("n", "<S-tab>", ":tabprevious<CR>", opts)
 
 -- Buffer navigation.
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- keymap("n", "<S-l>", ":bnext<CR>", opts)
+-- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Visual mode persistent indenting.
 keymap("v", "<", "<gv", opts)
@@ -35,10 +35,10 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Format (null-ls)
-keymap("n", "<leader>f", ":lua vim.lsp.buf.formatting_sync()<CR>", opts)
+-- keymap("n", "<leader>f", ":lua vim.lsp.buf.formatting_sync()<CR>", opts)
 
 -- Tree
-keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
+-- keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap(
@@ -50,8 +50,8 @@ keymap(
 keymap("n", "s", "<cmd>Telescope live_grep<cr>", opts)
 
 -- toggleterm
-local Terminal = require("toggleterm.terminal").Terminal
-local ipython = Terminal:new({ cmd = "ipython3 --nosep --no-banner --profile=mbp", hidden = true })
-function _IPYTHON_TOGGLE()
-	ipython:toggle()
-end
+-- local Terminal = require("toggleterm.terminal").Terminal
+-- local ipython = Terminal:new({ cmd = "ipython3 --nosep --no-banner --profile=mbp", hidden = true })
+-- function _IPYTHON_TOGGLE()
+-- 	ipython:toggle()
+-- end

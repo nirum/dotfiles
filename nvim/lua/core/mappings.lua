@@ -6,9 +6,9 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Remap space as leader key.
--- keymap("", "<Space>", "<Nop>", opts)
--- vim.g.mapleader = " "
--- vim.g.maplocalleader = " "
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Swap colon and semicolon.
 keymap("", ";", ":", opts)
@@ -22,10 +22,6 @@ keymap("n", "<Esc>", ":noh<Esc>", opts)
 keymap("n", "<tab>", ":tabnext<CR>", opts)
 keymap("n", "<S-tab>", ":tabprevious<CR>", opts)
 
--- Buffer navigation.
--- keymap("n", "<S-l>", ":bnext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
 -- Visual mode persistent indenting.
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -34,11 +30,15 @@ keymap("v", ">", ">gv", opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
--- Format (null-ls)
--- keymap("n", "<leader>f", ":lua vim.lsp.buf.formatting_sync()<CR>", opts)
-
--- Tree
--- keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
+-- Format (Neoformat)
+keymap("n", "<leader>f", ":Neoformat <CR>", opts)
+vim.cmd([[
+  let g:neoformat_python_ufmt = {'exe': 'ufmt', 'args': ['format'], 'replace': 1}
+  let g:neoformat_python_tidy = {'exe': 'tidy-imports', 'args': ['--black', '--quiet', '--replace-star-imports', '--action REPLACE'], 'replace': 1}
+  let g:neoformat_enabled_python = ['tidy', 'ufmt']
+  let g:neoformat_run_all_formatters = 1
+  let g:neoformat_only_msg_on_error = 0
+]])
 
 -- Telescope
 keymap(
@@ -48,10 +48,3 @@ keymap(
 	opts
 )
 keymap("n", "s", "<cmd>Telescope live_grep<cr>", opts)
-
--- toggleterm
--- local Terminal = require("toggleterm.terminal").Terminal
--- local ipython = Terminal:new({ cmd = "ipython3 --nosep --no-banner --profile=mbp", hidden = true })
--- function _IPYTHON_TOGGLE()
--- 	ipython:toggle()
--- end

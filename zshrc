@@ -70,6 +70,7 @@ alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
 
 # moving around
+alias z="zoxide"
 alias ls="exa --icons"
 alias icat="kitty +kitten icat"
 alias ..='cd ..'

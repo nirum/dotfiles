@@ -30,30 +30,36 @@ packer.startup({
 			run = ":TSUpdate",
 		})
 
-    use({
-      "lukas-reineke/indent-blankline.nvim",
-      config = function()
-        require("indent_blankline").setup()
-      end,
-    })
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("indent_blankline").setup()
+			end,
+		})
 
-    use("hrsh7th/nvim-cmp") -- Completion Engine
-    use("hrsh7th/cmp-path") -- [cmp] path source
-    use("hrsh7th/cmp-buffer") -- [cmp] buffer source
-    use("hrsh7th/cmp-cmdline") -- [cmp] cmdline source?
---		use("saadparwaiz1/cmp_luasnip") -- snippet completions
+		use("hrsh7th/nvim-cmp") -- Completion Engine
+		use("hrsh7th/cmp-path") -- [cmp] path source
+		use("hrsh7th/cmp-buffer") -- [cmp] buffer source
+		use("hrsh7th/cmp-cmdline") -- [cmp] cmdline source?
+		--		use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
-    use("hrsh7th/cmp-nvim-lsp") -- [cmp] LSP source
-    use("hrsh7th/cmp-nvim-lua") -- [cmp] neovim-lua completions
-    use("onsails/lspkind-nvim") -- adds symbols to LSP completion
+		use("hrsh7th/cmp-nvim-lsp") -- [cmp] LSP source
+		use("hrsh7th/cmp-nvim-lua") -- [cmp] neovim-lua completions
+		use("onsails/lspkind-nvim") -- adds symbols to LSP completion
 
-    use("neovim/nvim-lspconfig") -- LSP
-    use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+		use("neovim/nvim-lspconfig") -- LSP
+		use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 
-    use("nvim-telescope/telescope.nvim") -- Fuzzy Finding
---		use("nvim-telescope/telescope-dap.nvim")
-    use("sbdchd/neoformat") -- yapf formatting
-		--
+		use("nvim-telescope/telescope.nvim") -- Fuzzy Finding
+		--		use("nvim-telescope/telescope-dap.nvim")
+		use("sbdchd/neoformat") -- yapf formatting
+
+		use({
+			"dccsillag/magma-nvim", -- connects to jupyter/python kernels
+			run = ":UpdateRemotePlugins",
+		})
+		use("rcarriga/nvim-notify")
+
 		use("folke/tokyonight.nvim") -- colorscheme
 
 		use({
@@ -63,17 +69,16 @@ packer.startup({
 			end,
 		})
 
-    use({
-      "lewis6991/gitsigns.nvim", -- git signs
-      config = function()
-        require("gitsigns").setup()
-      end,
-    })
+		use({
+			"lewis6991/gitsigns.nvim", -- git signs
+			config = function()
+				require("gitsigns").setup()
+			end,
+		})
 
-    use({
-      "nvim-lualine/lualine.nvim",
-      requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    })
-
+		use({
+			"nvim-lualine/lualine.nvim",
+			requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		})
 	end,
 })

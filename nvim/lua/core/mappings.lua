@@ -48,3 +48,17 @@ keymap(
 	opts
 )
 keymap("n", "s", "<cmd>Telescope live_grep<cr>", opts)
+
+-- Magma
+vim.cmd([[
+  " nnoremap <silent><expr> <LocalLeader>r  :MagmaEvaluateOperator<CR>
+  nnoremap <silent>       <leader><Enter> :MagmaEvaluateLine<CR>
+  xnoremap <silent>       <leader>r  :<C-u>MagmaEvaluateVisual<CR>
+  nnoremap <silent>       <leader>rc :MagmaReevaluateCell<CR>
+  nnoremap <silent>       <leader>rd :MagmaDelete<CR>
+  nnoremap <silent>       <leader>o :MagmaShowOutput<CR>
+  nnoremap <silent>       <leader>i :MagmaInit python3<CR>
+
+  let g:magma_automatically_open_output = v:false
+  let g:magma_image_provider = "kitty"
+]])

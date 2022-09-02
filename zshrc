@@ -104,6 +104,8 @@ bindkey '^e' edit-command-line
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
 zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
 
+autoload -Uz compinit && compinit
+
 # Bashmarks
 [[ -f ~/.local/bin/bashmarks.sh ]] && source ~/.local/bin/bashmarks.sh
 

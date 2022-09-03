@@ -80,5 +80,16 @@ packer.startup({
 			"nvim-lualine/lualine.nvim",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})
+
+		use({
+			"akinsho/toggleterm.nvim",
+			tag = "v2.*",
+			config = function()
+				require("toggleterm").setup({
+          size = 20,
+          open_mapping = [[<c-t>]],
+        })
+			end,
+		})
 	end,
 })

@@ -1,6 +1,11 @@
 # ipython extensions
-%load_ext autoreload
-%load_ext autotime
-%load_ext loggerhead
-%load_ext pyflyby
+# %load_ext autoreload
+# %load_ext autotime
+# %load_ext loggerhead
+# %load_ext pyflyby
 %autoreload 2
+
+import matplotlib.pyplot as plt
+import jetplot as jp
+plt.ion()
+jp.light_mode()

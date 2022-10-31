@@ -3,6 +3,14 @@ from IPython.terminal.prompts import Prompts, Token
 # Configuration file for ipython.
 c = get_config()
 
+c.InteractiveShellApp.extensions = [ 
+    "autoreload",
+    "autotime",
+    "loggerhead",
+    "pyflyby",
+]
+    # .append("pyflyby")
+
 # A list of dotted module names of IPython extensions to load.
 # c.InteractiveShellApp.extensions = [
 #     'line_profiler',

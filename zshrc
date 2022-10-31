@@ -61,6 +61,7 @@ alias gr='git remote'
 alias grv='git remote -v'
 alias gco='git checkout'
 alias gpsu='git push --set-upstream origin $(git branch --show-current)'
+alias prs='gh pr list --author "@me"'
 
 # tmux
 alias tls='tmux ls'

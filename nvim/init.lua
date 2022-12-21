@@ -2,14 +2,17 @@
 -- Author: Niru Maheswaranathan
 -- Website: https://github.com/nirum/dotfiles
 
-require("impatient")
-require("core.options")
-require("core.mappings")
-require("core.plugins")
-require("core.colorscheme")
-require("core.cmp")
-require("core.lsp")
-require("core.statusline")
-require("core.telescope")
-require("core.treesitter")
-vim.notify = require("notify")
+local status_ok, _ = pcall(require, "impatient")
+if not status_ok then
+    print("Impatient not installed!")
+end
+
+require("options")
+require("mappings")
+require("plugins")
+require("colorscheme")
+require("gitsigns")
+require("telescope")
+require("treesitter")
+require("lsp")
+require("cmp")

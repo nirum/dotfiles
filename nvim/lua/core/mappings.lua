@@ -38,12 +38,11 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Format (Neoformat)
--- keymap("n", "<leader>f", ":Neoformat <CR>", opts)
--- vim.cmd([[
---   let g:neoformat_python_ufmt = {'exe': 'ufmt', 'args': ['format'], 'replace': 1}
---   let g:neoformat_python_tidy = {'exe': 'tidy-imports', 'args': ['--black', '--quiet', '--replace-star-imports', '--action REPLACE'], 'replace': 1}
---   let g:neoformat_enabled_python = ['tidy', 'ufmt']
---   let g:neoformat_run_all_formatters = 1
---   let g:neoformat_only_msg_on_error = 0
--- ]])
+keymap("n", "<leader>f", ":Neoformat <CR>", opts)
+vim.cmd([[
+  let g:neoformat_python_pyfmt = {'exe': 'pyfmt', 'replace': 1}
+  let g:neoformat_enabled_python = ['pyfmt']
+  let g:neoformat_run_all_formatters = 1
+  let g:neoformat_only_msg_on_error = 0
+]])
 

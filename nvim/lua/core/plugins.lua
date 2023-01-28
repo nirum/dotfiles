@@ -75,15 +75,15 @@ packer.startup({
         "nvim-lua/plenary.nvim",
       },
     }
---use("nvim-lua/popup.nvim") -- An implementation of the Popup API in neovim.
---use("") -- Useful lua functions used by lots of plugins.
---		use("rcarriga/nvim-notify")
+
     use("sbdchd/neoformat") -- yapf formatting
     use("folke/tokyonight.nvim") -- Colorscheme.
+
     use({ -- Statusline.
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
+
     use({ -- 'gc' to comment regions/lines.
       "numToStr/Comment.nvim",
       config = function()

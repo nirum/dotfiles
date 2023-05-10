@@ -76,6 +76,10 @@ packer.startup({
       },
     }
 
+    use {
+      "hkupty/iron.nvim",
+    }
+
     use("sbdchd/neoformat") -- yapf formatting
     use("folke/tokyonight.nvim") -- Colorscheme.
 

@@ -75,6 +75,12 @@ packer.startup({
         "nvim-lua/plenary.nvim",
       },
     }
+
+    use {
+      "hkupty/iron.nvim",
+    }
+
+
 --use("nvim-lua/popup.nvim") -- An implementation of the Popup API in neovim.
 --use("") -- Useful lua functions used by lots of plugins.
 --		use("rcarriga/nvim-notify")

@@ -105,6 +105,13 @@ packer.startup({
     use("lewis6991/gitsigns.nvim") -- Git sign column.
     use("tpope/vim-sleuth") -- Detect tabstop and shiftwidth automatically.
 
+    use({ -- Test runner.
+      "klen/nvim-test",
+      config = function()
+        require('nvim-test').setup()
+      end
+    })
+
     if is_bootstrap then
       packer.sync()
     end

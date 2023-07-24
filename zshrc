@@ -24,13 +24,19 @@ setopt hist_verify               # Do not execute immediately upon history expan
 # prompt
 autoload -Uz vcs_info
 precmd() { vcs_info }
+zstyle ':vcs_info:hg:*' get-bookmarks true
+zstyle ':vcs_info:hg:*' get-revision true
+zstyle ':vcs_info:hg:*' check-for-changes true
+zstyle ':vcs_info:hg:*' use-simple true
 zstyle ':vcs_info:git:*' formats '(%b)'
+zstyle ':vcs_info:hg:*' formats '(%m:%i)'
 setopt PROMPT_SUBST
 function _seg() {
   echo "%{%F{$2}%}$1%{%F{white}%}"
 }
 local directory="$(_seg %1~ gray)"
 local prompt_char="$(_seg "\uFF04" blue)"
+# export PROMPT='${directory}${vcs_info_msg_0_}${prompt_char}'
 export PROMPT='${directory}${vcs_info_msg_0_}${prompt_char}'
 export RPROMPT=''
 SPROMPT="Correct %{$fg[red]%}%R%{$reset_color%} to %{$fg[green]%}%r?%{$reset_color%} (%{%U%}y%{%u%}es/%{%U%}n%{%u%}o/%{%U%}a%{%u%}bort/%{%U%}e%{%u%}dit) "
@@ -62,6 +68,22 @@ alias grv='git remote -v'
 alias gco='git checkout'
 alias gpsu='git push --set-upstream origin $(git branch --show-current)'
 alias prs='gh pr list --author "@me"'
+
+# mercurial
+alias hb='hg bookmarks'
+alias hd='hg diff'
+alias hdc='hg diff -r .^' # Diff between now and last commit
+alias hda='hg odiff' # Diff between now and last amend
+alias hsc='hg st --change .' # hg status (modified files) between now and last commit
+alias hs='hg status'
+alias ha='hg amend'
+alias hn='hg next' # Move up a commit in the stack
+alias hp='hg prev' # Move down a commit in the stack
+alias hrm='hg rebase -d remote/master' # Rebase current commit to remote/master
+alias hcm='hg checkout remote/master'
+alias hu='hg pull'
+alias hc='hg checkout'
+alias hl='hg ssl'
 
 # tmux
 alias tls='tmux ls'

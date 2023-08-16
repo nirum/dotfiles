@@ -29,14 +29,13 @@ zstyle ':vcs_info:hg:*' get-revision true
 zstyle ':vcs_info:hg:*' check-for-changes true
 zstyle ':vcs_info:hg:*' use-simple true
 zstyle ':vcs_info:git:*' formats '(%b)'
-zstyle ':vcs_info:hg:*' formats '(%m:%i)'
+zstyle ':vcs_info:hg:*' formats '(%m)'
 setopt PROMPT_SUBST
 function _seg() {
   echo "%{%F{$2}%}$1%{%F{white}%}"
 }
 local directory="$(_seg %1~ gray)"
 local prompt_char="$(_seg "\uFF04" blue)"
-# export PROMPT='${directory}${vcs_info_msg_0_}${prompt_char}'
 export PROMPT='${directory}${vcs_info_msg_0_}${prompt_char}'
 export RPROMPT=''
 SPROMPT="Correct %{$fg[red]%}%R%{$reset_color%} to %{$fg[green]%}%r?%{$reset_color%} (%{%U%}y%{%u%}es/%{%U%}n%{%u%}o/%{%U%}a%{%u%}bort/%{%U%}e%{%u%}dit) "
@@ -83,6 +82,7 @@ alias hrm='hg rebase -d remote/master' # Rebase current commit to remote/master
 alias hcm='hg checkout remote/master'
 alias hu='hg pull'
 alias hc='hg checkout'
+alias hco='hg checkout'
 alias hl='hg ssl'
 
 # tmux

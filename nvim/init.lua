@@ -3,7 +3,7 @@
 -- Website: https://github.com/nirum/dotfiles
 
 require("core")
--- vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme tokyonight]])
 
 -- require("core.plugins")
 -- require("core.colorscheme")

@@ -3,6 +3,7 @@
 # Website: https://github.com/nirum/dotfiles
 
 # Profiling:
+# see also: https://stackoverflow.com/questions/4351244/can-i-profile-my-zshrc-zshenv/4351664
 # zmodload zsh/zprof
 # zprof > /tmp/startup.log  # put this at end of zshrc
 

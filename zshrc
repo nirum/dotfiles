@@ -2,6 +2,10 @@
 # Author: Niru Maheswaranathan
 # Website: https://github.com/nirum/dotfiles
 
+# Profiling:
+# zmodload zsh/zprof
+# zprof > /tmp/startup.log  # put this at end of zshrc
+
 setopt auto_cd              # if a command is invalid and the name of a directory, cd to that directory
 setopt correct              # correct mistyped commands
 setopt prompt_subst         # perform expansions
@@ -131,10 +135,6 @@ autoload -Uz compinit && compinit
 
 # Bashmarks
 [[ -f ~/.local/bin/bashmarks.sh ]] && source ~/.local/bin/bashmarks.sh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh

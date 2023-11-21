@@ -26,6 +26,9 @@ keymap("v", ">", ">gv", opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
+-- nvim-tree
+keymap("n", "<C-t>", ":NvimTreeToggle<CR>", opts)
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "?", vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)

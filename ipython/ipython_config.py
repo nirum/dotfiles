@@ -8,14 +8,9 @@ c.InteractiveShellApp.extensions = [
     "autotime",
     "loggerhead",
     "pyflyby",
-]
-    # .append("pyflyby")
-
-# A list of dotted module names of IPython extensions to load.
-# c.InteractiveShellApp.extensions = [
 #     'line_profiler',
 #     'memory_profiler',
-# ]
+]
 
 # A list of dotted module names of IPython extensions to load.
 # c.TerminalIPythonApp.extensions = [

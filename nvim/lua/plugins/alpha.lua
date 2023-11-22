@@ -46,7 +46,7 @@ return {
         dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
         dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
         dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-        dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+        dashboard.button("s", " " .. " Restore Session", [[<cmd>lua require("persistence").load()<cr>]]),
         dashboard.button("l", "⚡︎" .. " Lazy", ":Lazy<CR>"),
         dashboard.button("m", "⚙︎ " .. " Mason", ":Mason<CR>"),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
@@ -62,12 +62,12 @@ return {
           local stats = require("lazy").stats()
           local ms = math.floor(stats.startuptime * 100) / 100
           dashboard.section.footer.val = "⚡︎Lazy-loaded "
-            .. stats.loaded
-            .. "/"
-            .. stats.count
-            .. " plugins in "
-            .. ms
-            .. "ms"
+              .. stats.loaded
+              .. "/"
+              .. stats.count
+              .. " plugins in "
+              .. ms
+              .. "ms"
           pcall(vim.cmd.AlphaRedraw)
         end,
       })

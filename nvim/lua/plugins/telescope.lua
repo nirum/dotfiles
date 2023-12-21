@@ -1,7 +1,10 @@
 return {
 
   "nvim-telescope/telescope.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  },
 
   config = function()
     local telescope = require("telescope")
@@ -22,7 +25,19 @@ return {
           },
         },
       },
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
+        }
+      },
     })
+
+    telescope.load_extension("myles")
+    telescope.load_extension("biggrep")
+    telescope.load_extension("fzf")
 
     vim.keymap.set("n", "f", builtin.find_files, {})
     vim.keymap.set("n", "s", builtin.live_grep, {})

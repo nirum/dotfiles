@@ -107,7 +107,7 @@ alias tmn='tmux new -s'
 # moving around
 alias z="zoxide"
 alias ls="exa --icons"
-alias icat="kitty +kitten icat"
+alias icat="kitten icat"
 alias ..='cd ..'
 alias ...='cd ../..'
 
@@ -146,8 +146,6 @@ autoload -Uz compinit && compinit
 
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
-
-source /Users/niru/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

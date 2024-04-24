@@ -11,7 +11,7 @@ return {
     local lspconfig = require("lspconfig")
     local ts = require("telescope.builtin")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
-    -- local _ = require("meta.lsp")
+    local _ = require("meta.lsp")
 
     local on_attach = function(_, bufnr)
       -- Helper function to define keybindings.
@@ -44,7 +44,7 @@ return {
 
     -- Enable the following language servers
     local servers = { "rust-analyzer@meta", "pyls@meta",
-      "pyre@meta", "thriftlsp@meta", "cppls@meta", "clangd", "rust_analyzer", "tsserver", "jsonls" }
+      "pyre@meta", "pyre-codenav@meta", "thriftlsp@meta", "cppls@meta", "clangd", "rust_analyzer", "tsserver", "jsonls" }
     for _, server in ipairs(servers) do
       lspconfig[server].setup({
         on_attach = on_attach,

@@ -5,8 +5,8 @@ c = get_config()
 
 c.InteractiveShellApp.extensions = [ 
     "autoreload",
-    "autotime",
-    "loggerhead",
+    # "autotime",
+    # "loggerhead",
     "pyflyby",
 #     'line_profiler',
 #     'memory_profiler',
@@ -95,7 +95,7 @@ c.TerminalInteractiveShell.true_color = True
 
 class MyPrompt(Prompts):
     def in_prompt_tokens(self, cli=None):
-        return [(Token.Prompt, u"\ufb26 ")]
+        return [(Token.Prompt, u"\u2232 ")]
 
     def out_prompt_tokens(self):
         return [(Token.OutPrompt, u"\u21AA ")]

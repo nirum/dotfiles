@@ -9,11 +9,6 @@ fi
 # Author: Niru Maheswaranathan
 # Website: https://github.com/nirum/dotfiles
 
-# Profiling:
-# see also: https://stackoverflow.com/questions/4351244/can-i-profile-my-zshrc-zshenv/4351664
-# zmodload zsh/zprof
-# zprof > /tmp/startup.log  # put this at end of zshrc
-
 setopt auto_cd              # if a command is invalid and the name of a directory, cd to that directory
 setopt correct              # correct mistyped commands
 setopt prompt_subst         # perform expansions
@@ -34,23 +29,23 @@ setopt hist_save_no_dups         # Do not write a duplicate event to the history
 setopt hist_verify               # Do not execute immediately upon history expansion.
 
 # prompt
-autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:hg:*' get-bookmarks true
-zstyle ':vcs_info:hg:*' get-revision true
-zstyle ':vcs_info:hg:*' check-for-changes true
-zstyle ':vcs_info:hg:*' use-simple true
-zstyle ':vcs_info:git:*' formats '(%b)'
-zstyle ':vcs_info:hg:*' formats '(%m)'
-setopt PROMPT_SUBST
-function _seg() {
-  echo "%{%F{$2}%}$1%{%F{white}%}"
-}
-local directory="$(_seg %1~ gray)"
-local prompt_char="$(_seg "\uFF04" blue)"
-export PROMPT='${directory}${vcs_info_msg_0_}${prompt_char}'
-export RPROMPT=''
-SPROMPT="Correct %{$fg[red]%}%R%{$reset_color%} to %{$fg[green]%}%r?%{$reset_color%} (%{%U%}y%{%u%}es/%{%U%}n%{%u%}o/%{%U%}a%{%u%}bort/%{%U%}e%{%u%}dit) "
+# autoload -Uz vcs_info
+# precmd() { vcs_info }
+# zstyle ':vcs_info:hg:*' get-bookmarks true
+# zstyle ':vcs_info:hg:*' get-revision true
+# zstyle ':vcs_info:hg:*' check-for-changes true
+# zstyle ':vcs_info:hg:*' use-simple true
+# zstyle ':vcs_info:git:*' formats '(%b)'
+# zstyle ':vcs_info:hg:*' formats '(%m)'
+# setopt PROMPT_SUBST
+# function _seg() {
+  # echo "%{%F{$2}%}$1%{%F{white}%}"
+# }
+# local directory="$(_seg %1~ gray)"
+# local prompt_char="$(_seg "\uFF04" blue)"
+# export PROMPT='${directory}${vcs_info_msg_0_}${prompt_char}'
+# export RPROMPT=''
+# SPROMPT="Correct %{$fg[red]%}%R%{$reset_color%} to %{$fg[green]%}%r?%{$reset_color%} (%{%U%}y%{%u%}es/%{%U%}n%{%u%}o/%{%U%}a%{%u%}bort/%{%U%}e%{%u%}dit) "
 
 # other
 bindkey -v
@@ -105,7 +100,7 @@ alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
 
 # moving around
-alias z="zoxide"
+# alias z="zoxide"
 alias ls="exa --icons"
 alias icat="kitten icat"
 alias ..='cd ..'
@@ -151,3 +146,10 @@ autoload -Uz compinit && compinit
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$(starship init zsh)"
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
+alias src="exec zsh"

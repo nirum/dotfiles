@@ -5,48 +5,25 @@ return {
     opts = function()
       local dashboard = require("alpha.themes.dashboard")
       local logo = [[
-                                             
-      ████ ██████           █████      ██
-     ███████████             █████ 
-     █████████ ███████████████████ ███   ███████████
-    █████████  ███    █████████████ █████ ██████████████
-   █████████ ██████████ █████████ █████ █████ ████ █████
- ███████████ ███    ███ █████████ █████ █████ ████ █████
-██████  █████████████████████ ████ █████ █████ ████ ██████
+                       _           
+ _ __   ___  _____   _(_)_ __ ___  
+| '_ \ / _ \/ _ \ \ / / | '_ ` _ \ 
+| | | |  __/ (_) \ V /| | | | | | |
+|_| |_|\___|\___/ \_/ |_|_| |_| |_|
+
 ]]
-      local function getGreeting(name)
+      local function getGreeting()
         local tableTime = os.date("*t")
         local datetime = os.date(" %Y-%m-%d   %I:%M %p")
         local hour = tableTime.hour
-        local greetingsTable = {
-          [1] = "  Sleep well",
-          [2] = "  Good morning",
-          [3] = "  Good afternoon",
-          [4] = "  Good evening",
-          [5] = "☽ Good night",
-        }
-        local greetingIndex = 0
-        if hour == 23 or hour < 7 then
-          greetingIndex = 1
-        elseif hour < 12 then
-          greetingIndex = 2
-        elseif hour >= 12 and hour < 18 then
-          greetingIndex = 3
-        elseif hour >= 18 and hour < 21 then
-          greetingIndex = 4
-        elseif hour >= 21 then
-          greetingIndex = 5
-        end
-        return "\t\t\t\t\t\t" .. datetime .. "\t" .. greetingsTable[greetingIndex] .. ", " .. name
+        return "\t\t\t" .. datetime
       end
 
-      local greeting = getGreeting("Niru")
+      local greeting = getGreeting()
       dashboard.section.header.val = vim.split(logo .. "\n" .. greeting, "\n")
       dashboard.section.buttons.val = {
         dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
         dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-        dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
-        dashboard.button("s", " " .. " Restore Session", [[<cmd>lua require("persistence").load()<cr>]]),
         dashboard.button("l", "⚡︎" .. " Lazy", ":Lazy<CR>"),
         dashboard.button("m", "⚙︎ " .. " Mason", ":Mason<CR>"),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
@@ -62,12 +39,12 @@ return {
           local stats = require("lazy").stats()
           local ms = math.floor(stats.startuptime * 100) / 100
           dashboard.section.footer.val = "⚡︎Lazy-loaded "
-              .. stats.loaded
-              .. "/"
-              .. stats.count
-              .. " plugins in "
-              .. ms
-              .. "ms"
+            .. stats.loaded
+            .. "/"
+            .. stats.count
+            .. " plugins in "
+            .. ms
+            .. "ms"
           pcall(vim.cmd.AlphaRedraw)
         end,
       })

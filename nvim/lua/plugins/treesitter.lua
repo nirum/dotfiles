@@ -42,6 +42,7 @@ return {
           "dockerfile",
           "gitignore",
           "query",
+          "kdl",
         },
         -- incremental_selection = {
         --   enable = true,

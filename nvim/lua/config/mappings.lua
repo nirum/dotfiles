@@ -27,11 +27,11 @@ keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- nvim-tree
-keymap("n", "<C-t>", ":NvimTreeToggle<CR>", opts)
+-- keymap("n", "<C-t>", ":NvimTreeToggle<CR>", opts)
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "?", vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)      -- new default in 0.10
+-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next)      -- new default in 0.10
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)

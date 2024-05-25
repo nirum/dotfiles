@@ -108,6 +108,12 @@ alias zd="zellij delete-session"
 alias zda="zellij delete-all-sessions"
 alias z="zellij"
 
+# ruff
+alias rc="ruff check"
+alias rf="ruff format"
+alias rc="ruff clean"
+alias rr="ruff rule"
+
 # moving around
 # alias z="zoxide"
 alias ls="exa --icons"

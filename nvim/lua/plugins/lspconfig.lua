@@ -42,7 +42,7 @@ return {
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Enable the following language servers
-    local servers = { "clangd", "rust_analyzer", "tsserver", "jsonls" }
+    local servers = { "ruff", "pylsp", "clangd", "rust_analyzer", "tsserver", "jsonls" }
     for _, server in ipairs(servers) do
       lspconfig[server].setup({
         on_attach = on_attach,

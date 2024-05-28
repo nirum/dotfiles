@@ -100,8 +100,8 @@ alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
 
 # zellij
-# alias z="zellij-attach $(zellij list-sessions -n | awk '{print $1}' | fzf)"
 alias za="zellij attach"
+alias zn="zellij -s"
 alias zls="zellij list-sessions"
 alias zsl="zellij list-sessions"
 alias zd="zellij delete-session"

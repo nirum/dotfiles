@@ -118,6 +118,7 @@ alias rr="ruff rule"
 # moving around
 # alias z="zoxide"
 alias ls="eza --icons"
+alias lsl="eza --icons --long --time-style=relative --no-user --no-permissions --total-size --sort=size"
 alias icat="kitten icat"
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -169,5 +170,3 @@ timezsh() {
 }
 
 alias src="exec zsh"
-
-source /Users/niru/.config/broot/launcher/bash/br

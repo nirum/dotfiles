@@ -116,7 +116,7 @@ alias rr="ruff rule"
 
 # moving around
 # alias z="zoxide"
-alias ls="exa --icons"
+alias ls="eza --icons"
 alias icat="kitten icat"
 alias ..='cd ..'
 alias ...='cd ../..'

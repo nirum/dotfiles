@@ -100,13 +100,14 @@ alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
 
 # zellij
-# alias z="zellij-attach $(zellij list-sessions -n | awk '{print $1}' | fzf)"
 alias za="zellij attach"
+alias zn="zellij -s"
 alias zls="zellij list-sessions"
 alias zsl="zellij list-sessions"
 alias zd="zellij delete-session"
 alias zda="zellij delete-all-sessions"
 alias z="zellij"
+alias zz="zellij attach $(zellij list-sessions -n | awk '{print $1}' | sk)"
 
 # ruff
 alias rc="ruff check"
@@ -168,3 +169,5 @@ timezsh() {
 }
 
 alias src="exec zsh"
+
+source /Users/niru/.config/broot/launcher/bash/br

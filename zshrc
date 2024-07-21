@@ -107,7 +107,7 @@ alias zsl="zellij list-sessions"
 alias zd="zellij delete-session"
 alias zda="zellij delete-all-sessions"
 alias z="zellij"
-alias zz="zellij attach $(zellij list-sessions -n | awk '{print $1}' | sk)"
+# alias zz="zellij attach $(zellij list-sessions -n | awk '{print $1}' | sk)"
 
 # ruff
 alias rc="ruff check"

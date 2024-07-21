@@ -118,7 +118,7 @@ alias rr="ruff rule"
 # moving around
 # alias z="zoxide"
 alias ls="eza --icons"
-alias lsl="eza --icons --long --time-style=relative --no-user --no-permissions --total-size --sort=size"
+alias ll="eza --icons --long --time-style=relative --no-user --no-permissions --total-size --sort=size"
 alias icat="kitten icat"
 alias ..='cd ..'
 alias ...='cd ../..'

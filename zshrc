@@ -100,13 +100,13 @@ alias tma='tmux attach -d -t'
 alias tmn='tmux new -s'
 
 # zellij
-alias za="zellij attach"
-alias zn="zellij -s"
-alias zls="zellij list-sessions"
-alias zsl="zellij list-sessions"
-alias zd="zellij delete-session"
-alias zda="zellij delete-all-sessions"
-alias z="zellij"
+# alias za="zellij attach"
+# alias zn="zellij -s"
+# alias zls="zellij list-sessions"
+# alias zsl="zellij list-sessions"
+# alias zd="zellij delete-session"
+# alias zda="zellij delete-all-sessions"
+# alias z="zellij"
 # alias zz="zellij attach $(zellij list-sessions -n | awk '{print $1}' | sk)"
 
 # ruff
@@ -116,7 +116,6 @@ alias rc="ruff clean"
 alias rr="ruff rule"
 
 # moving around
-# alias z="zoxide"
 alias ls="eza --icons"
 alias ll="eza --icons --long --time-style=relative --no-user --no-permissions --total-size --sort=size"
 alias icat="kitten icat"
@@ -163,6 +162,7 @@ autoload -Uz compinit && compinit
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 timezsh() {
   shell=${1-$SHELL}

@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # zshrc
 # Author: Niru Maheswaranathan
 # Website: https://github.com/nirum/dotfiles
@@ -28,30 +21,13 @@ setopt hist_ignore_space         # Do not record an event starting with a space.
 setopt hist_save_no_dups         # Do not write a duplicate event to the history file.
 setopt hist_verify               # Do not execute immediately upon history expansion.
 
-# prompt
-# autoload -Uz vcs_info
-# precmd() { vcs_info }
-# zstyle ':vcs_info:hg:*' get-bookmarks true
-# zstyle ':vcs_info:hg:*' get-revision true
-# zstyle ':vcs_info:hg:*' check-for-changes true
-# zstyle ':vcs_info:hg:*' use-simple true
-# zstyle ':vcs_info:git:*' formats '(%b)'
-# zstyle ':vcs_info:hg:*' formats '(%m)'
-# setopt PROMPT_SUBST
-# function _seg() {
-  # echo "%{%F{$2}%}$1%{%F{white}%}"
-# }
-# local directory="$(_seg %1~ gray)"
-# local prompt_char="$(_seg "\uFF04" blue)"
-# export PROMPT='${directory}${vcs_info_msg_0_}${prompt_char}'
-# export RPROMPT=''
-# SPROMPT="Correct %{$fg[red]%}%R%{$reset_color%} to %{$fg[green]%}%r?%{$reset_color%} (%{%U%}y%{%u%}es/%{%U%}n%{%u%}o/%{%U%}a%{%u%}bort/%{%U%}e%{%u%}dit) "
-
 # other
 bindkey -v
 export KEYTIMEOUT=1
 export EDITOR="nvim"
 alias v='nvim'
+alias erc="nvim ~/.zshrc"
+alias src="exec zsh"
 
 # system
 alias lf="ls -lSFh | awk '{print \$5, \"\t\", \$9}'"
@@ -148,15 +124,6 @@ autoload -Uz compinit && compinit
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-
-timezsh() {
-  shell=${1-$SHELL}
-  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
-}
-
-alias src="exec zsh"
+alias cd="z"

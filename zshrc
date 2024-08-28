@@ -118,9 +118,6 @@ zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|s
 
 autoload -Uz compinit && compinit
 
-# Bashmarks
-[[ -f ~/.local/bin/bashmarks.sh ]] && source ~/.local/bin/bashmarks.sh
-
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
 

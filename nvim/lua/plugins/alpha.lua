@@ -25,7 +25,7 @@ return {
         dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
         dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
         dashboard.button("l", "⚡︎" .. " Lazy", ":Lazy<CR>"),
-        dashboard.button("m", "⚙︎ " .. " Mason", ":Mason<CR>"),
+        -- dashboard.button("m", "⚙︎ " .. " Mason", ":Mason<CR>"),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
       }
       dashboard.section.header.opts.hl = "AlphaHeader"

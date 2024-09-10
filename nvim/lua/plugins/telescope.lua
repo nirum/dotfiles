@@ -37,7 +37,7 @@ return {
 
     -- telescope.load_extension("myles")
     -- telescope.load_extension("biggrep")
-    -- telescope.load_extension("fzf")
+    telescope.load_extension("fzf")
 
     vim.keymap.set("n", "f", builtin.find_files, {})
     vim.keymap.set("n", "s", builtin.live_grep, {})

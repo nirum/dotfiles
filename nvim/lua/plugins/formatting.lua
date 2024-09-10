@@ -1,37 +1,55 @@
+-- Format on save and linters
 return {
-  "stevearc/conform.nvim",
-  lazy = true,
-  event = { "BufReadPre", "BufNewFile" },
+  "nvimtools/none-ls.nvim",
+  dependencies = {
+    "nvimtools/none-ls-extras.nvim",
+    "jayp0521/mason-null-ls.nvim", -- ensure dependencies are installed
+  },
   config = function()
-    local conform = require("conform")
+    local null_ls = require("null-ls")
+    local formatting = null_ls.builtins.formatting -- to setup formatters
+    local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
-    conform.setup({
-      formatters_by_ft = {
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
-        css = { "prettier" },
-        html = { "prettier" },
-        json = { "prettier" },
-        yaml = { "prettier" },
-        markdown = { "prettier" },
-        lua = { "stylua" },
-        python = { "ruff_organize_imports", "ruff_fix", "ruff_format" },
+    -- list of formatters & linters for mason to install
+    require("mason-null-ls").setup({
+      ensure_installed = {
+        "checkmake",
+        "prettier", -- ts/js formatter
+        "stylua", -- lua formatter
+        "eslint_d", -- ts/js linter
+        "shfmt",
+        "ruff",
       },
-      -- format_on_save = {
-      --   lsp_fallback = true,
-      --   async = false,
-      --   timeout_ms = 500,
-      -- },
+      -- auto-install configured formatters & linters (with null-ls)
+      automatic_installation = true,
     })
 
-    vim.keymap.set({ "n", "v" }, "<leader>f", function()
-      conform.format({
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 500,
-      })
-    end, { desc = "Format file or range (in visual model)" })
+    local sources = {
+      diagnostics.checkmake,
+      formatting.prettier.with({ filetypes = { "html", "json", "yaml", "markdown" } }),
+      formatting.stylua,
+      formatting.shfmt.with({ args = { "-i", "4" } }),
+      require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
+      require("none-ls.formatting.ruff_format"),
+    }
+
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    null_ls.setup({
+      -- debug = true, -- Enable debug mode. Inspect logs with :NullLsLog.
+      sources = sources,
+      -- you can reuse a shared lspconfig on_attach callback here
+      on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+              vim.lsp.buf.format({ async = false })
+            end,
+          })
+        end
+      end,
+    })
   end,
 }

@@ -3,13 +3,13 @@ from IPython.terminal.prompts import Prompts, Token
 # Configuration file for ipython.
 c = get_config()
 
-c.InteractiveShellApp.extensions = [ 
+c.InteractiveShellApp.extensions = [
     "autoreload",
-    # "autotime",
-    # "loggerhead",
+    "autotime",
+    "loggerhead",
     "pyflyby",
-#     'line_profiler',
-#     'memory_profiler',
+    #     'line_profiler',
+    #     'memory_profiler',
 ]
 
 # A list of dotted module names of IPython extensions to load.
@@ -95,19 +95,19 @@ c.TerminalInteractiveShell.true_color = True
 
 class MyPrompt(Prompts):
     def in_prompt_tokens(self, cli=None):
-        return [(Token.Prompt, u"\u2232 ")]
+        return [(Token.Prompt, "\u2232 ")]
 
     def out_prompt_tokens(self):
-        return [(Token.OutPrompt, u"\u21AA ")]
+        return [(Token.OutPrompt, "\u21aa ")]
 
     def rewrite_prompt_tokens(self):
         width = self._width()
-        return [(Token.Prompt, (" " * (width - 2)) + "\u21A3 ")]
+        return [(Token.Prompt, (" " * (width - 2)) + "\u21a3 ")]
 
     def continuation_prompt_tokens(self, cli=None, width=None):
         if width is None:
             width = self._width()
-        return [(Token.Prompt, (" " * (width - 2)) + u"\u2502 ")]
+        return [(Token.Prompt, (" " * (width - 2)) + "\u2502 ")]
 
 
 c.TerminalInteractiveShell.prompts_class = MyPrompt

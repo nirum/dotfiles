@@ -32,7 +32,7 @@ alias src="exec zsh"
 # system
 alias lf="ls -lSFh | awk '{print \$5, \"\t\", \$9}'"
 alias la='ls -a'
-alias sl='ls'
+# alias sl='ls'
 
 # git
 alias gcm='git commit -m'

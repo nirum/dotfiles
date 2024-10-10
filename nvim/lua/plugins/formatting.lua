@@ -29,7 +29,9 @@ return {
       formatting.prettier.with({ filetypes = { "html", "json", "yaml", "markdown" } }),
       formatting.stylua,
       formatting.shfmt.with({ args = { "-i", "4" } }),
-      require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
+      require("none-ls.formatting.ruff"),
+      -- Used this line for import sorting:
+      -- require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
       require("none-ls.formatting.ruff_format"),
     }
 

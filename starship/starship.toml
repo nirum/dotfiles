@@ -1,33 +1,37 @@
 add_newline = false
 
-"$schema" = 'https://starship.rs/config-schema.json'
-
 format = """
-[](color_orange)\
-$os\
-$username\
-[](bg:color_fg0 fg:color_orange)\
-$directory\
-[](fg:color_fg0 bg:color_aqua)\
-$git_branch\
-$git_status\
-[](fg:color_aqua bg:color_blue)\
-$c\
-$rust\
-$golang\
-$nodejs\
-$php\
-$java\
-$kotlin\
-$haskell\
-$python\
-[](fg:color_blue bg:color_bg3)\
-$docker_context\
-$conda\
-[](fg:color_bg3 bg:color_bg1)\
-$time\
-[ ](fg:color_bg1)\
-$line_break$character"""
+$os$directory$character
+"""
+
+# "$schema" = 'https://starship.rs/config-schema.json'
+
+# format = """
+# [](color_orange)\
+# $os\
+# $username\
+# [](bg:color_fg0 fg:color_orange)\
+# $directory\
+# [](fg:color_fg0 bg:color_aqua)\
+# $git_branch\
+# $git_status\
+# [](fg:color_aqua bg:color_blue)\
+# $c\
+# $rust\
+# $golang\
+# $nodejs\
+# $php\
+# $java\
+# $kotlin\
+# $haskell\
+# $python\
+# [](fg:color_blue bg:color_bg3)\
+# $docker_context\
+# $conda\
+# [](fg:color_bg3 bg:color_bg1)\
+# $time\
+# [ ](fg:color_bg1)\
+# $line_break$character"""
 
 palette = 'gruvbox_dark'
 
@@ -45,7 +49,8 @@ color_yellow = '#d79921'
 
 [os]
 disabled = false
-style = "bg:color_orange fg:color_fg0"
+# style = "bg:color_orange fg:color_fg0"
+style = "fg:color_fg0"
 
 [os.symbols]
 Windows = "󰍲"
@@ -75,7 +80,8 @@ style_root = "bg:color_orange fg:color_fg0"
 format = '[ $user ]($style)'
 
 [directory]
-style = "fg:color_bg1 bg:color_fg0"
+# style = "fg:color_bg1 bg:color_fg0"
+style = "fg:color_fg1"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -85,7 +91,7 @@ truncation_symbol = "…/"
 "Downloads" = " "
 "Music" = "󰝚 "
 "Pictures" = " "
-"Developer" = "󰲋 "
+"code" = "󰲋 "
 
 [git_branch]
 symbol = ""
@@ -161,9 +167,9 @@ disabled = false
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:color_green)'
-error_symbol = '[](bold fg:color_red)'
-vimcmd_symbol = '[](bold fg:color_green)'
-vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
-vimcmd_replace_symbol = '[](bold fg:color_purple)'
-vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+success_symbol = '[](bold fg:color_green)'
+error_symbol = '[](bold fg:color_red)'
+vimcmd_symbol = '[](bold fg:color_green)'
+vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
+vimcmd_replace_symbol = '[](bold fg:color_purple)'
+vimcmd_visual_symbol = '[](bold fg:color_yellow)'

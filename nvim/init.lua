@@ -7,7 +7,8 @@ require("config.mappings")
 require("config.interface")
 require("config.plugins")
 
-vim.cmd([[colorscheme tokyonight]])
+-- vim.cmd([[colorscheme tokyonight]])
+vim.cmd([[colorscheme kanso]])
 
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   callback = function()

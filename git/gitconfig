@@ -30,9 +30,6 @@
 [merge]
   tool=vimdiff
 
-[credential]
-	helper = store
-
 [push]
   default=simple
 
@@ -46,3 +43,9 @@
 	smudge = git-lfs smudge -- %f
 	required = true
 	process = git-lfs filter-process
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+	helper = manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true

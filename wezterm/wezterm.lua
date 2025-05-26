@@ -7,17 +7,14 @@ config.window_close_confirmation = "NeverPrompt"
 
 -- Colors and fonts.
 config.font = wezterm.font("DankMono Nerd Font")
--- config.color_scheme = "Tokyo Night"
 
-local config = {
-  force_reverse_video_cursor = true,
-  colors = {
+config.colors = {
     foreground = "#C5C9C7",
     background = "#090E13",
 
-    cursor_bg = "#090E13",
-    cursor_fg = "#C5C9C7",
-    cursor_border = "#C5C9C7",
+    cursor_bg = "#C5C9C7",
+    cursor_fg = "#090E13",
+    cursor_border = "#090E13",
 
     selection_fg = "#C5C9C7",
     selection_bg = "#24262D",
@@ -46,7 +43,6 @@ local config = {
       "#7AA89F",
       "#C5C9C7",
     },
-  },
 }
 
 config.font_size = 16
@@ -176,26 +172,26 @@ config.keys = {
 }
 
 -- status-pane
-wezterm.on("update-right-status", function(window, _)
-	local ACTIVE_BG = "#1a1b27"
-	local INACTIVE_BG = "#16161f"
-	local FG = "#faf0f0"
-
-	local prefix = "   "
-	if window:leader_is_active() then
-		prefix = " " .. utf8.char(0xf013) .. " " -- gear
-	end
-
-	local BG = ACTIVE_BG
-	if window:active_tab():tab_id() ~= 0 then
-		BG = INACTIVE_BG
-	end -- arrow color based on if tab is first pane
-
-	window:set_left_status(wezterm.format({
-		{ Foreground = { Color = FG } },
-		{ Background = { Color = BG } },
-		{ Text = prefix },
-	}))
-end)
+-- wezterm.on("update-right-status", function(window, _)
+-- 	local ACTIVE_BG = "none"
+-- 	local INACTIVE_BG = "none"
+-- 	local FG = "#faf0f0"
+--
+-- 	local prefix = "   "
+-- 	if window:leader_is_active() then
+-- 		prefix = " " .. utf8.char(0xf013) .. " " -- gear
+-- 	end
+--
+-- 	local BG = ACTIVE_BG
+-- 	if window:active_tab():tab_id() ~= 0 then
+-- 		BG = INACTIVE_BG
+-- 	end -- arrow color based on if tab is first pane
+--
+-- 	window:set_left_status(wezterm.format({
+-- 		{ Foreground = { Color = FG } },
+-- 		{ Background = { Color = BG } },
+-- 		{ Text = prefix },
+-- 	}))
+-- end)
 
 return config

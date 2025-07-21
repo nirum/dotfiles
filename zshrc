@@ -1,6 +1,7 @@
 # zshrc
 # Author: Niru Maheswaranathan
 # Website: https://github.com/nirum/dotfiles
+# zmodload zsh/zprof  # uncomment to profile
 
 setopt auto_cd              # if a command is invalid and the name of a directory, cd to that directory
 setopt correct              # correct mistyped commands
@@ -116,7 +117,13 @@ bindkey '^e' edit-command-line
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
 zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
 
-autoload -Uz compinit && compinit
+# only run compinit once per day
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    compinit
+else
+    compinit -C
+fi
 
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
@@ -125,19 +132,10 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 alias g="z"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/niru/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/niru/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/niru/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/niru/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+conda() {
+    unset -f conda
+    . "/Users/niru/miniconda3/etc/profile.d/conda.sh"
+    conda "$@"
+}
 
-. "/Users/niru/.deno/env"
+# zprof  # uncomment to profile

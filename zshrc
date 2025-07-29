@@ -128,9 +128,10 @@ fi
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
 
-eval "$(starship init zsh)"
+export PROMPT="%F{blue}%~%f  "
 eval "$(zoxide init zsh)"
 alias g="z"
+alias cd="z"
 
 conda() {
     unset -f conda

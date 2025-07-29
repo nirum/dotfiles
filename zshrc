@@ -128,7 +128,7 @@ fi
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
 
-export PROMPT="%F{blue}%~%f  "
+export PROMPT="%~ %F{blue}%f "
 eval "$(zoxide init zsh)"
 alias g="z"
 alias cd="z"

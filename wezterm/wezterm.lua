@@ -9,40 +9,75 @@ config.window_close_confirmation = "NeverPrompt"
 config.font = wezterm.font("DankMono Nerd Font")
 
 config.colors = {
-    foreground = "#C5C9C7",
-    background = "#090E13",
+  foreground = "#C5C9C7",
+  background = "#090E13",
 
-    cursor_bg = "#C5C9C7",
-    cursor_fg = "#090E13",
-    cursor_border = "#090E13",
+  cursor_bg = "#C5C9C7",
+  cursor_fg = "#090E13",
+  cursor_border = "#090E13",
 
-    selection_fg = "#C5C9C7",
-    selection_bg = "#24262D",
+  selection_fg = "#C5C9C7",
+  selection_bg = "#24262D",
 
-    scrollbar_thumb = "#24262D",
-    split = "#24262D",
+  scrollbar_thumb = "#24262D",
+  split = "#24262D",
 
-    ansi = {
-      "#090E13",
-      "#C4746E",
-      "#8A9A7B",
-      "#C4B28A",
-      "#8BA4B0",
-      "#A292A3",
-      "#8EA4A2",
-      "#A4A7A4",
+  tab_bar = {
+    -- The color of the strip that goes along the top of the window
+    -- (does not apply when fancy tab bar is in use)
+    background = '#020303',
+
+    -- The active tab is the one that has focus in the window
+    active_tab = {
+      bg_color = '#D7AF5F',
+      fg_color = '#1C1C1C',
+      intensity = 'Bold',
     },
 
-    brights = {
-      "#A4A7A4",
-      "#E46876",
-      "#87A987",
-      "#E6C384",
-      "#7FB4CA",
-      "#938AA9",
-      "#7AA89F",
-      "#C5C9C7",
+    -- Inactive tabs are the tabs that do not have focus
+    inactive_tab = {
+      bg_color = '#1C1C1C',
+      fg_color = '#807D78',
     },
+
+    inactive_tab_hover = {
+      bg_color = '#4E4E4E',
+      fg_color = '#909090',
+    },
+
+    new_tab = {
+      bg_color = '#1C1C1C',
+      fg_color = '#807D78',
+    },
+
+    new_tab_hover = {
+      bg_color = '#4E4E4E',
+      fg_color = '#909090',
+      italic = true,
+    },
+  },
+
+  ansi = {
+    "#090E13",
+    "#C4746E",
+    "#8A9A7B",
+    "#C4B28A",
+    "#8BA4B0",
+    "#A292A3",
+    "#8EA4A2",
+    "#A4A7A4",
+  },
+
+  brights = {
+    "#A4A7A4",
+    "#E46876",
+    "#87A987",
+    "#E6C384",
+    "#7FB4CA",
+    "#938AA9",
+    "#7AA89F",
+    "#C5C9C7",
+  },
 }
 
 config.font_size = 16
@@ -57,10 +92,15 @@ config.window_padding = {
 }
 
 -- Tab bar.
-config.hide_tab_bar_if_only_one_tab = false
-config.tab_bar_at_bottom = true
+config.hide_tab_bar_if_only_one_tab = true
+config.tab_bar_at_bottom = false
 config.use_fancy_tab_bar = false
-config.tab_and_split_indices_are_zero_based = true
+config.tab_and_split_indices_are_zero_based = false
+
+config.window_frame = {
+  font = wezterm.font { family = 'Helvetica Neue', weight = 'Bold' },
+  font_size = 14.0,
+}
 
 -- Background image.
 config.background = {
@@ -79,6 +119,21 @@ config.background = {
 -- tmux-like behavior
 config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 config.keys = {
+  {
+    mods = "LEADER",
+    key = "e",
+    action = wezterm.action.PromptInputLine({
+      description = "Enter new name for tab",
+      action = wezterm.action_callback(function(window, _, line)
+        -- line will be `nil` if they hit escape without entering anything
+        -- An empty string if they just hit enter
+        -- Or the actual line of text they wrote
+        if line then
+          window:active_tab():set_title(line)
+        end
+      end),
+    }),
+  },
 	{
 		mods = "LEADER",
 		key = "c",
@@ -170,28 +225,5 @@ config.keys = {
 		action = wezterm.action.AdjustPaneSize({ "Up", 10 }),
 	},
 }
-
--- status-pane
--- wezterm.on("update-right-status", function(window, _)
--- 	local ACTIVE_BG = "none"
--- 	local INACTIVE_BG = "none"
--- 	local FG = "#faf0f0"
---
--- 	local prefix = "   "
--- 	if window:leader_is_active() then
--- 		prefix = " " .. utf8.char(0xf013) .. " " -- gear
--- 	end
---
--- 	local BG = ACTIVE_BG
--- 	if window:active_tab():tab_id() ~= 0 then
--- 		BG = INACTIVE_BG
--- 	end -- arrow color based on if tab is first pane
---
--- 	window:set_left_status(wezterm.format({
--- 		{ Foreground = { Color = FG } },
--- 		{ Background = { Color = BG } },
--- 		{ Text = prefix },
--- 	}))
--- end)
 
 return config

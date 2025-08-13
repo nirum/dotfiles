@@ -8,5 +8,4 @@ require("config.interface")
 require("config.plugins")
 require("config.lsp")
 
--- vim.cmd([[colorscheme tokyonight]])
 vim.cmd([[colorscheme kanso]])

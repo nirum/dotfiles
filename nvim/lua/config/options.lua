@@ -23,6 +23,6 @@ opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 opt.timeoutlen = 500            -- Time in milliseconds to wait for a mapped sequence to complete.
 opt.updatetime = 1000           -- 
 opt.laststatus = 3              -- global statusline
--- opt.winborder = "rounded"       -- rounded borders in floating windows
+opt.winborder = "rounded"       -- rounded borders in floating windows
 
 vim.diagnostic.config({ virtual_lines = { current_line = true } })

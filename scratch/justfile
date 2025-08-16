@@ -1,0 +1,2 @@
+compile:
+    for f in *.fnl; do fennel --compile "$f" > "${f%.fnl}.lua"; done

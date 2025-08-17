@@ -7,121 +7,47 @@
 
 ; Colors and fonts.
 (tset config "font" ((. wezterm "font") "DankMono Nerd Font"))
-(tset config "colors" {
-  :foreground "#C5C9C7",
-  :background "#090E13",
-})
+(tset config "colors"
+  {:foreground "#C5C9C7"
+   :background "#090E13"
+   :cursor_bg "#C5C9C7"
+   :cursor_fg "#090E13"
+   :cursor_border "#090E13"
+   :selection_fg "#C5C9C7"
+   :selection_bg "#24262D"
+   :scrollbar_thumb "#24262D"
+   :split "#24262D"
+   :tab_bar
+    {:background "#020303"
+     :active_tab {:bg_color "#D7AF5F" :fg_color "#1C1C1C" :intensity "Bold"}
+     :inactive_tab {:bg_color "#1C1C1C" :fg_color "#807D78"}
+     :inactive_tab_hover {:bg_color "#4E4E4E" :fg_color "#909090"}
+     :new_tab {:bg_color "#1C1C1C" :fg_color "#807D78"}
+     :new_tab_hover {:bg_color "#4E4E4E" :fg_color "#909090" :italic true}}
+   :ansi ["#090E13" "#C4746E" "#8A9A7B" "#C4B28A" "#8BA4B0" "#A292A3" "#8EA4A2" "#A4A7A4"]
+   :brights ["#A4A7A4" "#E46876" "#87A987" "#E6C384" "#7FB4CA" "#938AA9" "#7AA89F" "#C5C9C7"]})
+(tset config "font_size" 16)
+
+; Window.
+(tset config "window_decorations" "RESIZE")
+(tset config "window_padding" {:left 10 :right 10 :top 10 :bottom 10})
+(tset config "window_frame"
+  {:font ((. wezterm "font") {:family "Helvetica Neue" :weight "Bold"})
+   :font_size 14.0})
+
+; Tab bar.
+(tset config "hide_tab_bar_if_only_one_tab" true)
+(tset config "tab_bar_at_bottom" true)
+(tset config "use_fancy_tab_bar" false)
+(tset config "tab_and_split_indices_are_zero_based" false)
+
+; Background image.
+(tset config "background"
+  [{:source {:File "/Users/niru/dotfiles/images/gradient.png"}
+    :hsb {:hue 1.0 :saturation 1.02 :brightness 0.25}}])
+
 
 config
-
-; config.colors = {
-;   foreground = "#C5C9C7",
-;   background = "#090E13",
-;
-;   cursor_bg = "#C5C9C7",
-;   cursor_fg = "#090E13",
-;   cursor_border = "#090E13",
-;
-;   selection_fg = "#C5C9C7",
-;   selection_bg = "#24262D",
-;
-;   scrollbar_thumb = "#24262D",
-;   split = "#24262D",
-;
-;   tab_bar = {
-;     -- The color of the strip that goes along the top of the window
-;     -- (does not apply when fancy tab bar is in use)
-;     background = '#020303',
-;
-;     -- The active tab is the one that has focus in the window
-;     active_tab = {
-;       bg_color = '#D7AF5F',
-;       fg_color = '#1C1C1C',
-;       intensity = 'Bold',
-;     },
-;
-;     -- Inactive tabs are the tabs that do not have focus
-;     inactive_tab = {
-;       bg_color = '#1C1C1C',
-;       fg_color = '#807D78',
-;     },
-;
-;     inactive_tab_hover = {
-;       bg_color = '#4E4E4E',
-;       fg_color = '#909090',
-;     },
-;
-;     new_tab = {
-;       bg_color = '#1C1C1C',
-;       fg_color = '#807D78',
-;     },
-;
-;     new_tab_hover = {
-;       bg_color = '#4E4E4E',
-;       fg_color = '#909090',
-;       italic = true,
-;     },
-;   },
-;
-;   ansi = {
-;     "#090E13",
-;     "#C4746E",
-;     "#8A9A7B",
-;     "#C4B28A",
-;     "#8BA4B0",
-;     "#A292A3",
-;     "#8EA4A2",
-;     "#A4A7A4",
-;   },
-;
-;   brights = {
-;     "#A4A7A4",
-;     "#E46876",
-;     "#87A987",
-;     "#E6C384",
-;     "#7FB4CA",
-;     "#938AA9",
-;     "#7AA89F",
-;     "#C5C9C7",
-;   },
-; }
-;
-; config.font_size = 16
-;
-; -- Window.
-; config.window_decorations = "RESIZE"
-; config.window_padding = {
-; 	left = 10,
-; 	right = 10,
-; 	top = 10,
-; 	bottom = 10,
-; }
-;
-; -- Tab bar.
-; config.hide_tab_bar_if_only_one_tab = true
-; config.tab_bar_at_bottom = true
-; config.use_fancy_tab_bar = false
-; config.tab_and_split_indices_are_zero_based = false
-;
-; config.window_frame = {
-;   font = wezterm.font { family = 'Helvetica Neue', weight = 'Bold' },
-;   font_size = 14.0,
-; }
-;
-; -- Background image.
-; config.background = {
-; 	{
-; 		source = {
-; 			File = "/Users/niru/dotfiles/images/gradient.png",
-; 		},
-; 		hsb = {
-; 			hue = 1.0,
-; 			saturation = 1.02,
-; 			brightness = 0.25,
-; 		},
-; 	},
-; }
-;
 ; -- tmux-like behavior
 ; config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 ; config.keys = {

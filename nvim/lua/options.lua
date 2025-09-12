@@ -24,7 +24,4 @@ opt.updatetime = 1000
 opt.laststatus = 3
 opt.winborder = "rounded"
 vim.diagnostic.config({virtual_lines = {current_line = true}})
-local function _1_(what)
-  return print(what, "is neat!")
-end
-return _1_
+return nil

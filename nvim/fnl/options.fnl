@@ -27,5 +27,4 @@
 
 (vim.diagnostic.config { :virtual_lines { :current_line true } })
 
-(fn [what]
-  (print what "is super neat!"))
+nil

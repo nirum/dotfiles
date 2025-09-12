@@ -1,0 +1,4 @@
+# Build neovim config
+build:
+  echo "Building neovim config..."
+  for file in fnl/*.fnl; do fennel --compile "$file" > "lua/$(basename "${file%.fnl}.lua")"; done

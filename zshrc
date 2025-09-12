@@ -143,3 +143,5 @@ conda() {
 }
 
 # zprof  # uncomment to profile
+
+[ -f "/Users/niru/.ghcup/env" ] && . "/Users/niru/.ghcup/env" # ghcup-env

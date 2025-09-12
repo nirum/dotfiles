@@ -2,10 +2,19 @@
 -- Author: Niru Maheswaranathan
 -- Website: https://github.com/nirum/dotfiles
 
-require("config.options")
+-- hotpot
+
+
+local opt = require("config.options")  -- lua
+opt("fennel")
+
+-- require("options")  -- fnl
+
+
+
 require("config.mappings")
 require("config.interface")
-require("config.plugins")
+-- require("config.plugins")
 require("config.lsp")
 
-vim.cmd([[colorscheme kanso]])
+-- vim.cmd([[colorscheme kanso]])

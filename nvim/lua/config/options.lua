@@ -1,26 +1,30 @@
 local opt = vim.opt
-opt["termguicolors"] = true
-opt["relativenumber"] = true
-opt["number"] = true
-opt["clipboard"] = "unnamedplus"
-opt["gdefault"] = true
-opt["ignorecase"] = true
-opt["smartcase"] = true
-opt["splitright"] = true
-opt["splitbelow"] = true
-opt["foldmethod"] = "indent"
-opt["foldlevelstart"] = 99
-opt["signcolumn"] = "yes"
-opt["tabstop"] = 2
-opt["shiftwidth"] = 2
-opt["expandtab"] = true
-opt["autoindent"] = true
-opt["smartindent"] = true
-opt["undofile"] = true
-opt["scrolloff"] = 8
-opt["completeopt"] = {"menuone", "noselect"}
-opt["timeoutlen"] = 500
-opt["updatetime"] = 1000
-opt["laststatus"] = 3
-opt["winborder"] = "rounded"
-return nil
+opt.termguicolors = true
+opt.relativenumber = true
+opt.number = true
+opt.clipboard = "unnamedplus"
+opt.gdefault = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.splitright = true
+opt.splitbelow = true
+opt.foldmethod = "indent"
+opt.foldlevelstart = 99
+opt.signcolumn = "yes"
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.autoindent = true
+opt.smartindent = true
+opt.undofile = true
+opt.scrolloff = 8
+opt.completeopt = {"menuone", "noselect"}
+opt.timeoutlen = 500
+opt.updatetime = 1000
+opt.laststatus = 3
+opt.winborder = "rounded"
+vim.diagnostic.config({virtual_lines = {current_line = true}})
+local function _1_(what)
+  return print(what, "is neat!")
+end
+return _1_

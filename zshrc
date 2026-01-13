@@ -82,6 +82,9 @@ alias rf="ruff format"
 alias rc="ruff clean"
 alias rr="ruff rule"
 
+# wezterm
+alias stt="wezterm cli set-tab-title"
+
 # moving around
 alias ls="eza --icons"
 alias ll="eza --icons --long --time-style=relative --no-user --no-permissions --total-size --sort=size"

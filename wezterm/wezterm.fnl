@@ -29,15 +29,15 @@
 (tset config "font_size" 16)
 
 ; Window.
-(tset config "window_decorations" "RESIZE")
+(tset config "window_decorations" "TITLE | RESIZE")
 (tset config "window_padding" {:left 10 :right 10 :top 10 :bottom 10})
 (tset config "window_frame"
   {:font ((. wezterm "font") {:family "Helvetica Neue" :weight "Bold"})
    :font_size 14.0})
 
 ; Tab bar.
-(tset config "hide_tab_bar_if_only_one_tab" true)
-(tset config "tab_bar_at_bottom" true)
+(tset config "hide_tab_bar_if_only_one_tab" false)
+(tset config "tab_bar_at_bottom" false)
 (tset config "use_fancy_tab_bar" false)
 (tset config "tab_and_split_indices_are_zero_based" false)
 

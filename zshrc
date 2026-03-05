@@ -7,9 +7,14 @@ setopt auto_cd              # if a command is invalid and the name of a director
 setopt correct              # correct mistyped commands
 setopt prompt_subst         # perform expansions
 
+export MANPAGER="nvim +Man!"
 export HISTFILE=~/.zhistory
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=50000
+export SAVEHIST=50000
+setopt appendhistory incappendhistory sharehistory hist_ignore_dups hist_reduce_blanks
+export FZF_CTRL_R_OPTS="--height 40% --layout=reverse --border \
+  --preview 'print -r -- {}' --preview-window=down:5:wrap"
+
 setopt bang_hist                 # Treat the '!' character specially during expansion.
 setopt inc_append_history        # Incrementally append to the history file.
 setopt extended_history          # Write the history file in the ':start:elapsed;command' format.
@@ -99,7 +104,7 @@ bindkey '^k' history-beginning-search-backward
 bindkey '^j' history-beginning-search-forward
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
-bindkey '^r' history-incremental-search-backward
+# bindkey '^r' history-incremental-search-backward
 
 # ipython
 alias ipy='ipython3 --nosep --no-banner --profile=mbp'
@@ -135,6 +140,8 @@ export PROMPT="%F{blue}%~%f 𝝺 "
 eval "$(zoxide init zsh)"
 alias g="z"
 alias cd="z"
+
+source <(fzf --zsh)
 
 conda() {
     unset -f conda

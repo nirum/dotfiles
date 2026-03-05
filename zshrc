@@ -12,8 +12,12 @@ export HISTFILE=~/.zhistory
 export HISTSIZE=50000
 export SAVEHIST=50000
 setopt appendhistory incappendhistory sharehistory hist_ignore_dups hist_reduce_blanks
+
 export FZF_CTRL_R_OPTS="--height 40% --layout=reverse --border \
   --preview 'print -r -- {}' --preview-window=down:5:wrap"
+export FZF_DEFAULT_COMMAND="rg --files --follow --hidden --glob '!.git'"
+export FZF_DEFAULT_OPTS="--highlight-line --info=inline-right --ansi --layout=reverse --border=none --bind shift-up:preview-page-up,shift-down:preview-page-down"
+export FZF_CTRL_T_OPTS="--height=100% --preview='bat --color=always {}'"
 
 setopt bang_hist                 # Treat the '!' character specially during expansion.
 setopt inc_append_history        # Incrementally append to the history file.
@@ -132,6 +136,7 @@ if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; t
 else
     compinit -C
 fi
+[[ -f ~/code/fzf-tab/fzf-tab.plugin.zsh ]] && source ~/code/fzf-tab/fzf-tab.plugin.zsh
 
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh

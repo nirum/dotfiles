@@ -1,11 +1,16 @@
-#!/usr/bin/python3
+#!/bin/sh
 
-import psutil
+# CPU: sample over 1 second for actual utilization
+cpu=$(top -l 2 -s 1 -n 0 | grep -m1 'CPU usage' | tail -1 | awk -F'[ %]+' '{for(i=1;i<=NF;i++) if($i=="idle") print 100-$(i-1)}')
 
-cpu = 100 * psutil.getloadavg()[0] / psutil.cpu_count()
-mem = psutil.virtual_memory().percent
+# Memory: percent used
+mem=$(memory_pressure | awk '/percentage/{gsub(/%/,""); print 100 - $5; exit}')
 
-sensors = psutil.sensors_battery()
-batt = f"   {sensors.percent}%" if sensors is not None else ""
+# Battery: only shown if present
+batt=""
+if pmset -g batt | grep -q InternalBattery; then
+    pct=$(pmset -g batt | grep -o '[0-9]\+%' | head -1)
+    batt="   $pct"
+fi
 
-print(f"  {cpu:0.1f}%   {mem}%{batt}")
+printf "  %.1f%%   %s%%%s\n" "$cpu" "$mem" "$batt"

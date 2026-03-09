@@ -157,3 +157,43 @@ conda() {
 # zprof  # uncomment to profile
 
 [ -f "/Users/niru/.ghcup/env" ] && . "/Users/niru/.ghcup/env" # ghcup-env
+
+# Load neovim, claude, and a terminal from the CWD.
+function code() {
+
+  # Get the session name from either the argument or the cwd.
+  local session_name="${1:-$(basename "$PWD")}"
+  echo $session_name
+
+  # If already inside tmux, don't nest.
+  if [[ -n "$TMUX" ]]; then
+    echo "Already in a tmux session. Detach first or run from outside tmux."
+    return 1
+  fi
+
+  # Attach if session already exists.
+  if tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux attach-session -t "$session_name"
+    return
+  fi
+
+  # Create session (pane 1: will become neovim)
+  tmux new-session -d -s "$session_name" -c "$PWD" -x "$(tput cols)" -y "$(tput lines)"
+
+  # Split bottom for full width terminal (20% height)
+  tmux split-window -v -t "$session_name" -c "$PWD" -l 20%
+
+  # Split the top pane right for claude code (30% width)
+  tmux split-window -h -t "$session_name":1.1 -c "$PWD" -l 30%
+
+  # Pane layout: 1=neovim (top left), 2=claude (top right), 3=terminal (bottom)
+  tmux send-keys -t "$session_name":1.1 "nvim" C-m
+  tmux send-keys -t "$session_name":1.2 "claude --dangerously-skip-permissions" C-m
+
+  # Focus on neovim pane
+  tmux select-pane -t "$session_name":1.1
+
+  # Attach
+  tmux attach-session -t "$session_name"
+
+}

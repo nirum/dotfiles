@@ -1,0 +1,32 @@
+{
+  "plugins": {
+    "fzf-lua": {
+      "rev": "83e4080ae886a42ec48c5c26ce5892ceb557c425",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "gitsigns.nvim": {
+      "rev": "6e3c66548035e50db7bd8e360a29aec6620c3641",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "indent-blankline.nvim": {
+      "rev": "005b56001b2cb30bfa61b7986bc50657816ba4ba",
+      "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
+    },
+    "kanso.nvim": {
+      "rev": "151dbc23fe890d09c26df11b1208dd8129dca012",
+      "src": "https://github.com/webhooked/kanso.nvim"
+    },
+    "nvim-treesitter": {
+      "rev": "42fc28ba918343ebfd5565147a42a26580579482",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "oil.nvim": {
+      "rev": "07f80ad645895af849a597d1cac897059d89b686",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "smear-cursor.nvim": {
+      "rev": "4b86df8a0c5f46e708616b21a02493bb0e47ecbd",
+      "src": "https://github.com/sphamba/smear-cursor.nvim"
+    }
+  }
+}

@@ -16,7 +16,7 @@ setopt appendhistory incappendhistory sharehistory hist_ignore_dups hist_reduce_
 export FZF_CTRL_R_OPTS="--height 40% --layout=reverse --border \
   --preview 'print -r -- {}' --preview-window=down:5:wrap"
 export FZF_DEFAULT_COMMAND="rg --files --follow --hidden --glob '!.git'"
-export FZF_DEFAULT_OPTS="--highlight-line --info=inline-right --ansi --layout=reverse --border=none --bind shift-up:preview-page-up,shift-down:preview-page-down"
+export FZF_DEFAULT_OPTS="--highlight-line --info=inline-right --ansi --layout=reverse --border=double --bind shift-up:preview-page-up,shift-down:preview-page-down"
 export FZF_CTRL_T_OPTS="--height=100% --preview='bat --color=always {}'"
 
 setopt bang_hist                 # Treat the '!' character specially during expansion.
@@ -129,14 +129,10 @@ bindkey '^e' edit-command-line
 zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)(CVS|.svn|.git)'
 zstyle ':completion:*:($EDITOR|v|nvim|gvim|vim|vi):*' ignored-patterns '*.(o|a|so|aux|dvi|swp|fig|bbl|blg|bst|idx|ind|out|toc|class|pdf|ps|eps|pyc|egg-info)'
 
-# only run compinit once per day
-autoload -Uz compinit
-if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
-    compinit
-else
-    compinit -C
-fi
-[[ -f ~/code/fzf-tab/fzf-tab.plugin.zsh ]] && source ~/code/fzf-tab/fzf-tab.plugin.zsh
+# completion
+autoload -Uz compinit; compinit
+[[ -f ~/.config/fzf-tab/fzf-tab.plugin.zsh ]] && source ~/.config/fzf-tab/fzf-tab.plugin.zsh
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 # local config
 [[ -f ~/.local_config.zsh ]] && source ~/.local_config.zsh
@@ -163,7 +159,6 @@ function code() {
 
   # Get the session name from either the argument or the cwd.
   local session_name="${1:-$(basename "$PWD")}"
-  echo $session_name
 
   # If already inside tmux, don't nest.
   if [[ -n "$TMUX" ]]; then
@@ -196,4 +191,16 @@ function code() {
   # Attach
   tmux attach-session -t "$session_name"
 
+}
+
+function path() {
+  echo -e ${PATH//:/\\n}
+}
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
 }

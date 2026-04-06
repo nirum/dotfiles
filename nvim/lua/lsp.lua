@@ -1,3 +1,4 @@
+vim.lsp.config("lua_ls", {cmd = {"lua-language-server"}, filetypes = {"lua"}, root_markers = {".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", ".git"}, settings = {Lua = {runtime = {version = "LuaJIT"}, diagnostics = {globals = {"vim"}}, workspace = {library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false}}}})
 vim.lsp.enable({"ruff", "pyrefly", "lua_ls"})
 local function _1_(ev)
   local client = vim.lsp.get_client_by_id(ev.data.client_id)

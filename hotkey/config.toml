@@ -1,0 +1,14 @@
+[[hotkey]]
+key = ";"
+modifiers = ["control"]
+app = "Ghostty"
+
+[[hotkey]]
+key = "space"
+modifiers = ["control"]
+app = "ChatGPT"
+
+[[hotkey]]
+key = "t"
+modifiers = ["control", "command"]
+app = "Things"

@@ -1,0 +1,19 @@
+# Font
+font-family = "Dank Mono"
+font-size = 16
+font-thicken
+
+# Theme
+theme = Tomorrow Night
+
+# Cursor
+cursor-style = block
+shell-integration-features = no-cursor
+
+# Notifications
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = no-bell,notify
+notify-on-command-finish-after = 10s
+
+# Make Ctrl-[ send Escape
+keybind = ctrl+left_bracket=text:\x1b

@@ -1,12 +1,40 @@
-vim.lsp.config("lua_ls", {cmd = {"lua-language-server"}, filetypes = {"lua"}, root_markers = {".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", ".git"}, settings = {Lua = {runtime = {version = "LuaJIT"}, diagnostics = {globals = {"vim"}}, workspace = {library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false}}}})
-vim.lsp.enable({"ruff", "pyrefly", "lua_ls"})
+vim.lsp.config("lua_ls",
+  {
+    cmd = { "lua-language-server" },
+    filetypes = { "lua" },
+    root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", ".git" },
+    settings = { Lua = { runtime = { version = "LuaJIT" }, diagnostics = { globals = { "vim" } }, workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false } } }
+  }
+)
+
+vim.lsp.config("ocamllsp", {
+  cmd = { "ocamllsp" },
+  filetypes = {
+    "ocaml",
+    "ocamlinterface",
+    "ocamllex",
+    "menhir",
+    "dune",
+  },
+  root_markers = {
+    "dune-project",
+    "dune-workspace",
+    "*.opam",
+    "esy.json",
+    ".git",
+  },
+})
+
+vim.lsp.enable({ "ruff", "pyrefly", "lua_ls", "ocamllsp" })
+
 local function _1_(ev)
   local client = vim.lsp.get_client_by_id(ev.data.client_id)
   if client:supports_method("textDocument/completion") then
-    return vim.lsp.completion.enable(true, client.id, ev.buf, {autotrigger = true})
+    return vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
   else
     return nil
   end
 end
-vim.api.nvim_create_autocmd("LspAttach", {callback = _1_})
+
+vim.api.nvim_create_autocmd("LspAttach", { callback = _1_ })
 return nil

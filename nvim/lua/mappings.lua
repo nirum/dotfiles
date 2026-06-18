@@ -1,5 +1,5 @@
 local keymap = vim.keymap.set
-local opts = {noremap = true, silent = true}
+local opts = { noremap = true, silent = true }
 keymap("", ";", ":", opts)
 keymap("", ":", ";", opts)
 keymap("n", "<CR>", ":noh<CR>", opts)

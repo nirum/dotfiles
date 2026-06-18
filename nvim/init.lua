@@ -34,7 +34,7 @@ local function statusline()
   local ft = vim.bo.filetype ~= "" and vim.bo.filetype or "text"
   local enc = (vim.bo.fileencoding ~= "" and vim.bo.fileencoding) or vim.o.encoding
   local fmt = vim.bo.fileformat
-  local diag = vim.diagnostic.status() -- built-in in 0.12
+  local diag = vim.diagnostic.status()      -- built-in in 0.12
   local progress = vim.ui.progress_status() -- built-in in 0.12
 
   return table.concat({
@@ -62,3 +62,5 @@ vim.api.nvim_create_autocmd({ "ModeChanged", "DiagnosticChanged", "LspProgress" 
     vim.cmd.redrawstatus()
   end,
 })
+
+require("vim._core.ui2").enable({ enable = true })

@@ -18,10 +18,11 @@ opt.autoindent = true
 opt.smartindent = true
 opt.undofile = true
 opt.scrolloff = 8
-opt.completeopt = {"menuone", "noselect"}
+opt.autocomplete = true
+opt.completeopt = { "menuone", "noselect" }
 opt.timeoutlen = 500
 opt.updatetime = 1000
 opt.laststatus = 3
 opt.winborder = "rounded"
-vim.diagnostic.config({virtual_lines = {current_line = true}})
+vim.diagnostic.config({ virtual_lines = { current_line = true } })
 return nil

@@ -12,3 +12,8 @@ app = "ChatGPT"
 key = "t"
 modifiers = ["control", "command"]
 app = "Things"
+
+[[hotkey]]
+key = "c"
+modifiers = ["control", "command"]
+app = "Calendar"

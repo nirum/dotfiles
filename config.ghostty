@@ -1,13 +1,14 @@
 # Font
-font-family = "Dank Mono"
+font-family = "DankMono Nerd Font"
 font-size = 16
-font-thicken
+# font-thicken
 
 # Theme
 theme = Tomorrow Night
 
 # Cursor
 cursor-style = block
+cursor-style-blink = false
 shell-integration-features = no-cursor
 
 # Notifications

@@ -213,3 +213,10 @@ function y() {
 # This section can be safely removed at any time if needed.
 [[ ! -r '/Users/niru/.opam/opam-init/init.zsh' ]] || source '/Users/niru/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+
+strip_tr() {
+  local s="$1"
+  local prefix="${s%%tr=*}"
+  prefix="${prefix%[?&]}"
+  print -rn -- "$prefix" | tee >(pbcopy)
+}
